@@ -9,3 +9,11 @@ class ImagePath {
   static const String onBoardingPath = "$_basePath/onBoarding";
   static const adImage = "$onBoardingPath/adImage.png";
 }
+
+class IconsPath {
+  IconsPath._();
+  static const String _basePath = 'assets/icons';
+  // ! -------- Selected Lang -------
+  static const String kingdom = "$_basePath/kingdom.svg";
+  static const String kuwait = "$_basePath/kuwait.svg";
+}
