@@ -12,4 +12,8 @@ class AppColor {
   static const Color gray = Color(0xff6E6E6E);
   static const Color whiteColorOpacity = Color(0xffFCFCFC);
   static const Color blackColorOpacity = Color(0xFF1E293B);
+  static const Color borderColor = Color(0xFFE6E6E6);
+  static const Color failedBorderColor = Color(0xFFE2E8F0);
+  static const Color blueColor = Color(0xFF3C9AFB);
+  static const Color greyWithOpacity = Color(0xFF64748B);
 }

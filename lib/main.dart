@@ -1,3 +1,5 @@
+import 'package:best_price/feature/auth/login/presentation/manager/cubit/login_cubit.dart';
+import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sign_up_cubit.dart';
 import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boarding_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
 import 'package:best_price/feature/splash/presentation/view/pages/splash.dart';
@@ -25,8 +27,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => OnBoardingCubit(),
         ),
+        BlocProvider(
+          create: (context) => LoginCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SignUpCubit(),
+        ),
       ],
       child: ScreenUtilInit(
+        designSize: const Size(393, 852),
+        minTextAdapt: true,
+        splitScreenMode: true,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Best Price',

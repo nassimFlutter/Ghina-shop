@@ -16,4 +16,7 @@ class IconsPath {
   // ! -------- Selected Lang -------
   static const String kingdom = "$_basePath/kingdom.svg";
   static const String kuwait = "$_basePath/kuwait.svg";
+// !  ------ shared ----------
+  static const String cancelIcon = "$_basePath/cancel.svg";
+  static const String arrowLeftIcon = "$_basePath/arrow_left.svg";
 }

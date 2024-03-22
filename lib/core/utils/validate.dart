@@ -14,4 +14,27 @@ class Validate {
     }
     return null;
   }
+
+  static String? validateFullName(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Full name is required";
+    }
+    return null;
+  }
+
+  static String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Password is required";
+    }
+    return null;
+  }
+
+  static String? validateConfirmPassword(String? value, String? password) {
+    if (value == null || value.isEmpty) {
+      return "Confirm password is required";
+    } else if (value != password) {
+      return "Passwords do not match";
+    }
+    return null;
+  }
 }

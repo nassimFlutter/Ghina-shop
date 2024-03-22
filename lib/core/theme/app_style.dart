@@ -17,4 +17,18 @@ class AppStyles {
     fontWeight: FontWeight.w400,
     height: 0,
   );
+  static TextStyle textStyle17 = TextStyle(
+    color: Colors.white,
+    fontSize: 17.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle textStyle16 = TextStyle(
+    color: AppColor.greyWithOpacity,
+    fontSize: 16.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w400,
+    height: 0.09,
+    letterSpacing: 0.16,
+  );
 }

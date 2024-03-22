@@ -18,7 +18,7 @@ class SplashView extends StatelessWidget {
           if (state is Connected) {
             HelperFunctions.navigateToScreen(context, const OnBoardingView());
           } else {
-            HelperFunctions.navigateToScreen(context, const NoInterNetView());
+            HelperFunctions.navigateToScreen(context, const OnBoardingView());
           }
         },
         builder: (context, state) {

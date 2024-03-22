@@ -1,6 +1,8 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,16 +30,23 @@ class SelectLanguage extends StatelessWidget {
               SizedBox(
                 height: 77.h,
               ),
-              const SelectedLanguage(
+              SelectedLanguage(
+                onTap: () {
+                  HelperFunctions.navigateToScreen(context, const LoginView());
+                },
                 title: "English",
-                borderSide: BorderSide(width: 0, color: Colors.white),
+                borderSide: const BorderSide(width: 0, color: Colors.white),
                 imagePath: IconsPath.kingdom,
               ),
               SizedBox(
                 height: 34.h,
               ),
-              const SelectedLanguage(
-                  borderSide: BorderSide(color: AppColor.buddhaGold, width: 1),
+              SelectedLanguage(
+                  onTap: () {
+                    HelperFunctions.navigateToScreen(context, const LoginView());
+                  },
+                  borderSide:
+                      const BorderSide(color: AppColor.buddhaGold, width: 1),
                   imagePath: IconsPath.kuwait,
                   title: "العربية"),
             ],
