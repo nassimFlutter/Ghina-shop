@@ -4,7 +4,6 @@ import 'package:best_price/feature/account/presentation/view/widgets/option_item
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'language_bottom_sheet.dart';
 
 class SettingsListOptions extends StatelessWidget {
@@ -41,13 +40,9 @@ class SettingsListOptions extends StatelessWidget {
                 showLanguageBottomSheet(context);
               },
               iconPath: IconsPath.languageIcon,
-              trailing: SizedBox(
-                height: 16.h,
-                child: Text(
-                  "English",
-                  style:
-                      AppStyles.textStyle16w400.copyWith(color: Colors.black),
-                ),
+              trailing: Text(
+                "English",
+                style: AppStyles.textStyle16w400.copyWith(color: Colors.black),
               )),
           SizedBox(
             height: 14.h,

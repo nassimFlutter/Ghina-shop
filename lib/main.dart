@@ -1,3 +1,6 @@
+import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/change_address_page/change_address_page_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/forget_password/forget_password_cubit.dart';
 import 'package:best_price/feature/auth/login/presentation/manager/cubit/login_cubit.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sign_up_cubit.dart';
 import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boarding_cubit.dart';
@@ -32,6 +35,15 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SignUpCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChangeAddressPageCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AddAddressCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ForgetPasswordCubit(),
         ),
       ],
       child: ScreenUtilInit(

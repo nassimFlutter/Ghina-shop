@@ -4,9 +4,10 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/account/presentation/view/pages/terminate_account_view.dart';
-import 'package:best_price/feature/account/presentation/view/widgets/terminate_account_dialog.dart';
+import 'package:best_price/feature/account/presentation/view/widgets/susses_account_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/widgets/app_bar_row.dart';
 import '../widgets/edit_account_form.dart';
 import '../widgets/terminate_account_bottom.dart';
 
@@ -22,19 +23,9 @@ class EditAccountView extends StatelessWidget {
           SizedBox(
             height: 14.h,
           ),
-          Row(
-            children: [
-              const AppBarBottom(
-                iconPath: IconsPath.arrowLeftIcon,
-              ),
-              SizedBox(
-                width: 10.w,
-              ),
-              Text(
-                "Edit Account",
-                style: AppStyles.textStyle20w700,
-              )
-            ],
+          AppBarRow(
+            iconPath: IconsPath.arrowLeftIcon,
+            title: "edit Account",
           ),
           SizedBox(
             height: 42.h,
@@ -49,7 +40,11 @@ class EditAccountView extends StatelessWidget {
               title: "update",
               onTap: () {
                 HelperFunctions.showCustomDialog(
-                    context, const UpdateAccountDialog());
+                    context,
+                    const UpdateAccountDialog(
+                      contain: "Your Account Has been\nsuccessfully updated",
+                      title: "Update Account",
+                    ));
               },
             ),
           ),

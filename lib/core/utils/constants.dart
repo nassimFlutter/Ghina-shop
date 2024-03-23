@@ -19,6 +19,7 @@ class IconsPath {
   // !  ------ shared ----------
   static const String cancelIcon = "$_basePath/cancel.svg";
   static const String arrowLeftIcon = "$_basePath/arrow_left.svg";
+  static const String notFound = "$_basePath/not_found.svg";
   //! -------- accounts --------
   static const String aboutIcon = "$_basePath/about.svg";
   static const String contactIcon = "$_basePath/Contact.svg";

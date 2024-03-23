@@ -2,6 +2,8 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/account/presentation/view/pages/edit_account_page_view.dart';
+import 'package:best_price/feature/account/presentation/view/pages/forget_password_page_view.dart';
+import 'package:best_price/feature/account/presentation/view/pages/my_address_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,6 +36,10 @@ class MyAccountOptions extends StatelessWidget {
               title: "My Orders",
               iconPath: IconsPath.policiesIcon),
           OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context, const MyAddressView());
+              },
               trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
               title: "My Addresses",
               iconPath: IconsPath.addressesIcon),
@@ -42,6 +48,10 @@ class MyAccountOptions extends StatelessWidget {
               title: "Wish list",
               iconPath: IconsPath.wishIcon),
           OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context, const ForgetPasswordView());
+              },
               trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
               title: "Change Password",
               iconPath: IconsPath.changeIcon),

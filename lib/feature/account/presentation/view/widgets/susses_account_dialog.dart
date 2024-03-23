@@ -6,8 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class UpdateAccountDialog extends StatelessWidget {
   const UpdateAccountDialog({
     super.key,
+    required this.title,
+    required this.contain,
   });
-
+  final String title, contain;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -16,7 +18,7 @@ class UpdateAccountDialog extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       content: Container(
         width: MediaQuery.of(context).size.width,
-        height: 320.h,
+        height: 265.h,
         decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -26,7 +28,7 @@ class UpdateAccountDialog extends StatelessWidget {
               height: 30.h,
             ),
             Text(
-              "Update Account",
+              title,
               style: AppStyles.textStyle24,
             ),
             SizedBox(
@@ -37,7 +39,7 @@ class UpdateAccountDialog extends StatelessWidget {
               height: 12.h,
             ),
             Text(
-              "Your Account Has been\nsuccessfully updated",
+              contain,
               textAlign: TextAlign.center,
               style: AppStyles.textStyle17w700
                   .copyWith(fontWeight: FontWeight.w400, color: Colors.black),
