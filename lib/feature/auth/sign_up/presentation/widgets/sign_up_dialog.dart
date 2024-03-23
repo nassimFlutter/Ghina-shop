@@ -39,7 +39,7 @@ class SignUpDialog extends StatelessWidget {
             Text(
               "You have successfully\nRegistered with Best Price",
               textAlign: TextAlign.center,
-              style: AppStyles.textStyle17
+              style: AppStyles.textStyle17w700
                   .copyWith(fontWeight: FontWeight.w400, color: Colors.black),
             ),
             SizedBox(
@@ -47,7 +47,7 @@ class SignUpDialog extends StatelessWidget {
             ),
             Text(
               "Happy Shopping!!",
-              style: AppStyles.textStyle17.copyWith(color: Colors.black),
+              style: AppStyles.textStyle17w700.copyWith(color: Colors.black),
             ),
             SizedBox(
               height: 24.h,

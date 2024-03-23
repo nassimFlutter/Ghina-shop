@@ -17,18 +17,38 @@ class AppStyles {
     fontWeight: FontWeight.w400,
     height: 0,
   );
-  static TextStyle textStyle17 = TextStyle(
+  static TextStyle textStyle17w700 = TextStyle(
     color: Colors.white,
     fontSize: 17.sp,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w700,
   );
-  static TextStyle textStyle16 = TextStyle(
+  static TextStyle textStyle18w700 = TextStyle(
+    color: Colors.black,
+    fontSize: 18.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle textStyle16w400 = TextStyle(
     color: AppColor.greyWithOpacity,
     fontSize: 16.sp,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w400,
-    height: 0.09,
-    letterSpacing: 0.16,
   );
+
+  static TextStyle textStyle20w700 = TextStyle(
+    color: Colors.black,
+    fontSize: 20.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w700,
+  );
+  //! Decoration 🔳
+  static ShapeDecoration accountContainerDecoration() {
+    return ShapeDecoration(
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(width: 1, color: Color(0xFF9F9F9F)),
+        borderRadius: BorderRadius.circular(15),
+      ),
+    );
+  }
 }

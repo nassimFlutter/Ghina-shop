@@ -3,8 +3,8 @@ import 'package:best_price/feature/auth/forget_password/presentation/widgets/for
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ForgetPasswordDialog extends StatelessWidget {
-  const ForgetPasswordDialog({
+class UpdateAccountDialog extends StatelessWidget {
+  const UpdateAccountDialog({
     super.key,
   });
 
@@ -26,7 +26,7 @@ class ForgetPasswordDialog extends StatelessWidget {
               height: 30.h,
             ),
             Text(
-              "Forgot Password",
+              "Update Account",
               style: AppStyles.textStyle24,
             ),
             SizedBox(
@@ -37,17 +37,10 @@ class ForgetPasswordDialog extends StatelessWidget {
               height: 12.h,
             ),
             Text(
-              "A password reset link has \nbeen sent to your email",
+              "Your Account Has been\nsuccessfully updated",
               textAlign: TextAlign.center,
               style: AppStyles.textStyle17w700
                   .copyWith(fontWeight: FontWeight.w400, color: Colors.black),
-            ),
-            SizedBox(
-              height: 12.h,
-            ),
-            Text(
-              "mohammed@gmail.com",
-              style: AppStyles.textStyle17w700.copyWith(color: Colors.black),
             ),
             SizedBox(
               height: 18.h,

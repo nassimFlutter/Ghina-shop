@@ -99,7 +99,7 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
       child: SizedBox(
         height: 32.h,
         child: Text('Already have an account? Login',
-            textAlign: TextAlign.center, style: AppStyles.textStyle16),
+            textAlign: TextAlign.center, style: AppStyles.textStyle16w400),
       ),
     );
   }

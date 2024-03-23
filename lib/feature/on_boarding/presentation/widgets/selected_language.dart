@@ -1,3 +1,4 @@
+import 'package:best_price/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,10 +10,12 @@ class SelectedLanguage extends StatelessWidget {
     required this.imagePath,
     required this.borderSide,
     this.onTap,
+    this.visible = false,
   });
   final String title, imagePath;
   final BorderSide borderSide;
   final void Function()? onTap;
+  final bool visible;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -47,6 +50,15 @@ class SelectedLanguage extends StatelessWidget {
                 fontFamily: 'Josefin Sans',
                 fontWeight: FontWeight.w400,
                 height: 0,
+              ),
+            ),
+            trailing: Visibility(
+              visible: visible,
+              child: Radio(
+                activeColor: Colors.black,
+                groupValue: 1,
+                value: 1,
+                onChanged: (int? value) {},
               ),
             ),
           ),

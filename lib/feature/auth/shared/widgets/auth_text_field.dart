@@ -1,9 +1,7 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
-import 'package:best_price/core/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 class AuthTextField extends StatelessWidget {
   const AuthTextField({
     super.key,
@@ -39,3 +37,4 @@ class AuthTextField extends StatelessWidget {
         ));
   }
 }
+  

@@ -7,7 +7,8 @@ class AppColor {
   static const Color yalow = Color(0xffFFDF01);
   static const Color corn = Color(0xffECC402);
   static const Color green = Color(0xff4AA547);
-  static const Color red = Color(0xffE52929);
+  static const Color red = Color(0xffFF5555);
+  static const Color redOpacity = Color(0xffD12E34);
   static const Color silver = Color(0xFF9F9F9F);
   static const Color gray = Color(0xff6E6E6E);
   static const Color whiteColorOpacity = Color(0xffFCFCFC);
@@ -16,4 +17,6 @@ class AppColor {
   static const Color failedBorderColor = Color(0xFFE2E8F0);
   static const Color blueColor = Color(0xFF3C9AFB);
   static const Color greyWithOpacity = Color(0xFF64748B);
+  static const Color brownOpacity = Color(0xFF272727);
+  static const Color greyColor = Color(0xffF7F4F4);
 }
