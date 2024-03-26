@@ -18,10 +18,11 @@ class MyAccountOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: AppStyles.accountContainerDecoration(),
+      padding: EdgeInsets.zero,
       child: Column(
         children: [
           SizedBox(
-            height: 25.h,
+            height: 15.h,
           ),
           OptionItem(
               onTap: () {

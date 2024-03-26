@@ -18,6 +18,9 @@ class OptionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         onTap: onTap,
+        contentPadding: EdgeInsetsDirectional.only(
+            bottom: 0.h, start: 16.w, end: 18.w, top: 0.h),
+        minVerticalPadding: 0,
         leading: SvgPicture.asset(
           iconPath,
           width: 24.w,

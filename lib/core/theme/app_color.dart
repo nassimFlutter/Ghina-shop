@@ -19,4 +19,7 @@ class AppColor {
   static const Color greyWithOpacity = Color(0xFF64748B);
   static const Color brownOpacity = Color(0xFF272727);
   static const Color greyColor = Color(0xffF7F4F4);
+  static const Color titleTextColor = Color(0xFF082431);
+  static const Color categoriesContainerTextColor = Color(0xFFF3F3F8);
+  static const Color greyOpacity = Color(0xFF9E9E9E);
 }

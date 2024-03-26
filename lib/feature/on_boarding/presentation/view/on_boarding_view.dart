@@ -12,10 +12,12 @@ class OnBoardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     OnBoardingCubit onBoardingCubit = OnBoardingCubit.get(context);
     return Scaffold(
-      body: ListView(children: [
+      body: Column(children: [
         Stack(
           children: [
-            ImageList(onBoardingCubit: onBoardingCubit),
+            SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: ImageList(onBoardingCubit: onBoardingCubit)),
             SmoothPageView(onBoardingCubit: onBoardingCubit),
             const SkipBottom(),
           ],

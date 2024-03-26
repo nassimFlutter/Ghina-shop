@@ -8,6 +8,10 @@ class ImagePath {
   //! ------- OnBoarding Images -----------
   static const String onBoardingPath = "$_basePath/onBoarding";
   static const adImage = "$onBoardingPath/adImage.png";
+  //! ----------- homePage Images ---------------
+  static const String homePath = "$_basePath/home";
+  static const headphonesImage = "$homePath/headphones.png";
+  static const iphoneImage = "$homePath/iphone.png";
 }
 
 class IconsPath {
@@ -35,4 +39,28 @@ class IconsPath {
   static const String terminateIcon = "$_basePath/terminate.svg";
   static const String terminateAccountAlert =
       "$_basePath/terminate_account_alert.svg";
+  //! ---------- Contact Us ------------
+  static const String callIcon = "$_basePath/call.svg";
+  static const String faceBookIcon = "$_basePath/facebook.svg";
+  static const String instagramIcon = "$_basePath/insta.svg";
+  static const String tikTokIcon = "$_basePath/tik.svg";
+  static const String whatsAppIcon = "$_basePath/whats_app.svg";
+  static const String xIcon = "$_basePath/x.svg";
+  static const String mailIcon = "$_basePath/mail.svg";
+  //! ---------- home --------------------------
+  static const String homeIcon = "$_basePath/home.svg";
+  static const String homeSelectedIcon = "$_basePath/home_selected.svg";
+  static const String categoryIcon = "$_basePath/category.svg";
+  static const String categorySelectedIcon = "$_basePath/category_selected.svg";
+  static const String cartIcon = "$_basePath/cart.svg";
+  static const String cartSelectedIcon = "$_basePath/cart_selected.svg";
+  static const String accountIcon = "$_basePath/account.svg";
+  static const String accountSelectedIcon = "$_basePath/account_selected.svg";
+  static const String homeLogoIcon = "$_basePath/home_logo.svg";
+  static const String searchIcon = "$_basePath/search.svg";
+  static const String mobileIcon = "$_basePath/smartphone.svg";
+  static const String laptopIcon = "$_basePath/laptop.svg";
+  static const String headphonesIcon = "$_basePath/headphones.svg";
+  static const String heartIcon = "$_basePath/heart.svg";
+  static const String appleIcon = "$_basePath/apple.svg";
 }

@@ -12,7 +12,7 @@ class MyBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    LoggerHelper.info('onChange -- ${bloc.runtimeType}, $change');
+    LoggerHelper.debug('onChange -- ${bloc.runtimeType}, $change');
   }
 
   @override
