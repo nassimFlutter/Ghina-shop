@@ -2,6 +2,7 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
+import 'package:best_price/feature/home/data/fucker/fucker_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,7 +55,10 @@ class HomePgeBody extends StatelessWidget {
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
             child: const HomeTitle(title: 'Featured products'),
           ),
-          const ProductsList(),
+          //! Featured products List
+          ProductsList(
+            productList: FuckerData.featuredProductsList,
+          ),
           SizedBox(height: 51.h),
 
           Padding(
@@ -62,7 +66,10 @@ class HomePgeBody extends StatelessWidget {
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
             child: const HomeTitle(title: 'Best Selling'),
           ),
-          const ProductsList(),
+          // ! Best Selling List
+          ProductsList(
+            productList: FuckerData.bestSellingList,
+          ),
           SizedBox(height: 26.h),
 
           Padding(
@@ -76,10 +83,12 @@ class HomePgeBody extends StatelessWidget {
           SizedBox(height: 46.h),
           Padding(
             padding:
-                EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
+                EdgeInsetsDirectional.only(end: Dimensions.dStartPadding.w),
             child: const HomeTitle(title: 'New Arrivals'),
           ),
-          const ProductsList(),
+          ProductsList(
+            productList: FuckerData.newArrivalsList,
+          ),
           SizedBox(height: 18.h),
         ],
       ),

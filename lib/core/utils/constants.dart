@@ -12,6 +12,11 @@ class ImagePath {
   static const String homePath = "$_basePath/home";
   static const headphonesImage = "$homePath/headphones.png";
   static const iphoneImage = "$homePath/iphone.png";
+  static const macImage = "$homePath/mac.png";
+  static const cameraImage = "$homePath/camera.png";
+  static const tabImage = "$homePath/tab.png";
+  static const iMacImage = "$homePath/iMac.png";
+  static const allInOneImage = "$homePath/all_on_one.png";
 }
 
 class IconsPath {
