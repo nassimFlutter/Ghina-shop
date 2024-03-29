@@ -1,6 +1,6 @@
 import 'package:best_price/feature/account/presentation/view/pages/my_account_page_view.dart';
 import 'package:best_price/feature/cart/cart_view_body.dart';
-import 'package:best_price/feature/category/category_body.dart';
+import 'package:best_price/feature/category/presentaion/view/pages/category_body.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/home_page_body.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';

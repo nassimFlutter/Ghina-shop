@@ -18,12 +18,19 @@ class FuckerData {
         brandName: 'MacBook',
         companyName: 'Apple'),
     Product(
-        title: 'iPhone 14 Pro Max',
-        mainImage: ImagePath.iphoneImage,
+        title: 'camera',
+        mainImage: ImagePath.cameraImage,
         price: 180.000,
         offerPrice: 150.000,
-        brandName: 'iPhone',
-        companyName: 'Apple'),
+        brandName: 'canon340',
+        companyName: 'sony'),
+    Product(
+        title: 'mp3',
+        mainImage: ImagePath.mp3Image,
+        price: 180.000,
+        offerPrice: 150.000,
+        brandName: 'mp3',
+        companyName: 'sony'),
     Product(
         title: 'MacBook Pro M2 Pro',
         mainImage: ImagePath.macImage,

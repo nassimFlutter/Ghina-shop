@@ -2,6 +2,9 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
+import 'package:best_price/feature/featured_products/presentation/view/widgets/featured_product_view_body.dart';
 import 'package:best_price/feature/home/data/fucker/fucker_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,7 +56,13 @@ class HomePgeBody extends StatelessWidget {
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: const HomeTitle(title: 'Featured products'),
+            child: HomeTitle(
+              title: 'Featured products',
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context, const FeaturedProductView());
+              },
+            ),
           ),
           //! Featured products List
           ProductsList(
@@ -110,7 +119,7 @@ class BrandsHomeList extends StatelessWidget {
         itemCount: 4,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return BrandsItem();
+          return const BrandsItem();
         },
       ),
     );

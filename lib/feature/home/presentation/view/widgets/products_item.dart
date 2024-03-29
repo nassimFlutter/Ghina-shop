@@ -31,19 +31,9 @@ class ProductsItem extends StatelessWidget {
             Positioned(
               bottom: 15.h,
               right: 6.w,
-              child: Container(
-                width: 36,
-                height: 36,
-                decoration: ShapeDecoration(
-                  color: AppColor.yalow,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                ),
-                child: Center(
-                    child: SvgPicture.asset(
-                  IconsPath.heartIcon,
-                  fit: BoxFit.cover,
-                )),
+              child: const SmallContainer(
+                imagePath: IconsPath.heartIcon,
+                color: AppColor.yalow,
               ),
             )
           ],
@@ -103,6 +93,34 @@ class ProductsItem extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class SmallContainer extends StatelessWidget {
+  const SmallContainer({
+    super.key,
+    required this.imagePath,
+    required this.color,
+  });
+  final String imagePath;
+  final Color color;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 36,
+      height: 36,
+      decoration: ShapeDecoration(
+        color: color,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+            side: BorderSide(color: AppColor.borderColor)),
+      ),
+      child: Center(
+          child: SvgPicture.asset(
+        imagePath,
+        fit: BoxFit.cover,
+      )),
     );
   }
 }
