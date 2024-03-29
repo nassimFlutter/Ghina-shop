@@ -2,6 +2,7 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -107,20 +108,45 @@ class SmallContainer extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 36,
-      height: 36,
-      decoration: ShapeDecoration(
-        color: color,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            side: BorderSide(color: AppColor.borderColor)),
+    return GestureDetector(
+      onTap: () {
+        HelperFunctions.showSnackBar(
+            context,
+            SnackBar(
+              content: Container(
+                height: 200.h,
+                width: double.infinity,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.only(start: 110.w, top: 20.h),
+                  child: Text(
+                    "Added to Wishlist",
+                    style: AppStyles.textStyle17w700,
+                  ),
+                ),
+              ),
+              backgroundColor: AppColor.corn,
+              behavior: SnackBarBehavior.floating,
+              dismissDirection: DismissDirection.up,
+              margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height - 80,
+              ),
+            ));
+      },
+      child: Container(
+        width: 36,
+        height: 36,
+        decoration: ShapeDecoration(
+          color: color,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: BorderSide(color: AppColor.borderColor)),
+        ),
+        child: Center(
+            child: SvgPicture.asset(
+          imagePath,
+          fit: BoxFit.cover,
+        )),
       ),
-      child: Center(
-          child: SvgPicture.asset(
-        imagePath,
-        fit: BoxFit.cover,
-      )),
     );
   }
 }

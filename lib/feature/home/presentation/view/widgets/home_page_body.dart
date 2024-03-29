@@ -6,6 +6,7 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
 import 'package:best_price/feature/featured_products/presentation/view/widgets/featured_product_view_body.dart';
 import 'package:best_price/feature/home/data/fucker/fucker_list.dart';
+import 'package:best_price/feature/new_arrivals/presentations/view/pages/new_arrivers_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -90,10 +91,17 @@ class HomePgeBody extends StatelessWidget {
 
           const BrandsHomeList(),
           SizedBox(height: 46.h),
+          // ! New Arrivals List
           Padding(
             padding:
                 EdgeInsetsDirectional.only(end: Dimensions.dStartPadding.w),
-            child: const HomeTitle(title: 'New Arrivals'),
+            child: HomeTitle(
+              title: 'New Arrivals',
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context, const NewArriversView());
+              },
+            ),
           ),
           ProductsList(
             productList: FuckerData.newArrivalsList,
