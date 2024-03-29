@@ -4,7 +4,8 @@ import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../../core/widgets/small_container.dart';
 
 class ProductsItem extends StatelessWidget {
   const ProductsItem({
@@ -93,34 +94,6 @@ class ProductsItem extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class SmallContainer extends StatelessWidget {
-  const SmallContainer({
-    super.key,
-    required this.imagePath,
-    required this.color,
-  });
-  final String imagePath;
-  final Color color;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 36,
-      height: 36,
-      decoration: ShapeDecoration(
-        color: color,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            side: BorderSide(color: AppColor.borderColor)),
-      ),
-      child: Center(
-          child: SvgPicture.asset(
-        imagePath,
-        fit: BoxFit.cover,
-      )),
     );
   }
 }
