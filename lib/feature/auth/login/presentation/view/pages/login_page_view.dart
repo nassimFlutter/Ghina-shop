@@ -1,7 +1,6 @@
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
-import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/feature/auth/login/presentation/manager/cubit/login_cubit.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/view/sign_up_view.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +65,7 @@ class LoginView extends StatelessWidget {
               HelperFunctions.navigateToScreen(context, const SignUpView());
             },
             child: Text('Don’t have an account? Register',
-                textAlign: TextAlign.center, style: AppStyles.textStyle16),
+                textAlign: TextAlign.center, style: AppStyles.textStyle16w400),
           ),
           SizedBox(
             height: 35.h,

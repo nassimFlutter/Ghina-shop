@@ -29,6 +29,13 @@ class Validate {
     return null;
   }
 
+  static String? validateFailed(String? value, String? title) {
+    if (value == null || value.isEmpty) {
+      return "$title is required";
+    }
+    return null;
+  }
+
   static String? validateConfirmPassword(String? value, String? password) {
     if (value == null || value.isEmpty) {
       return "Confirm password is required";

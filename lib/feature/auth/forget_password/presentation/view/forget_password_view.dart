@@ -68,7 +68,12 @@ class ForgetPasswordView extends StatelessWidget {
           AppBottom(
               onTap: () {
                 HelperFunctions.showCustomDialog(
-                    context, const ForgetPasswordDialog());
+                    context,
+                    const ForgetPasswordDialog(
+                      title: "Forgot Password",
+                      contain:
+                          "A password reset link has \nbeen sent to your email",
+                    ));
               },
               title: "send")
         ],

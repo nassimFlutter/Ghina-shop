@@ -19,6 +19,10 @@ class HelperFunctions {
     );
   }
 
+  static void showSnackBar(BuildContext context, SnackBar customSnackBar) {
+    ScaffoldMessenger.of(context).showSnackBar(customSnackBar);
+  }
+
   static bool isAndroid() {
     return Platform.isAndroid;
   }

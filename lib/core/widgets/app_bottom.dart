@@ -5,21 +5,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ! you can change in argument ...
 class AppBottom extends StatelessWidget {
-  const AppBottom({
-    super.key,
-    this.onTap,
-    required this.title,
-  });
+  const AppBottom(
+      {super.key,
+      this.onTap,
+      required this.title,
+      this.height = 50,
+      this.width = 361});
   final void Function()? onTap;
   final String title;
+  final double height, width;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 361.w,
-        height: 50.h,
-        margin: EdgeInsets.symmetric(horizontal: 16.w),
+        width: width.w,
+        height: height.h,
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           color: AppColor.buddhaGold,
@@ -27,7 +28,7 @@ class AppBottom extends StatelessWidget {
         ),
         child: Center(
           child: Text(title,
-              textAlign: TextAlign.center, style: AppStyles.textStyle17),
+              textAlign: TextAlign.center, style: AppStyles.textStyle17w700),
         ),
       ),
     );

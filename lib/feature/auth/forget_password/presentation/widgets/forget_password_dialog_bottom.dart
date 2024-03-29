@@ -6,8 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ForgetPasswordDialogBottom extends StatelessWidget {
   const ForgetPasswordDialogBottom({
     super.key,
+    this.bottomColor = AppColor.buddhaGold,
   });
-
+  final Color bottomColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,15 +19,14 @@ class ForgetPasswordDialogBottom extends StatelessWidget {
         width: 155.w,
         height: 40.h,
         decoration: ShapeDecoration(
-          color: AppColor.buddhaGold,
+          color: bottomColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(19.50.sp),
           ),
         ),
         child: Center(
           child: Text('OK',
-              textAlign: TextAlign.center,
-              style: AppStyles.textStyle17),
+              textAlign: TextAlign.center, style: AppStyles.textStyle17w700),
         ),
       ),
     );

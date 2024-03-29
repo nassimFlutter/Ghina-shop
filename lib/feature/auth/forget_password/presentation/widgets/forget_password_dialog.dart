@@ -6,8 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ForgetPasswordDialog extends StatelessWidget {
   const ForgetPasswordDialog({
     super.key,
+    required this.title,
+    required this.contain,
   });
-
+  final String title, contain;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -26,7 +28,7 @@ class ForgetPasswordDialog extends StatelessWidget {
               height: 30.h,
             ),
             Text(
-              "Forgot Password",
+              title,
               style: AppStyles.textStyle24,
             ),
             SizedBox(
@@ -37,9 +39,9 @@ class ForgetPasswordDialog extends StatelessWidget {
               height: 12.h,
             ),
             Text(
-              "A password reset link has \nbeen sent to your email",
+              contain,
               textAlign: TextAlign.center,
-              style: AppStyles.textStyle17
+              style: AppStyles.textStyle17w700
                   .copyWith(fontWeight: FontWeight.w400, color: Colors.black),
             ),
             SizedBox(
@@ -47,14 +49,14 @@ class ForgetPasswordDialog extends StatelessWidget {
             ),
             Text(
               "mohammed@gmail.com",
-              style: AppStyles.textStyle17.copyWith(color: Colors.black),
+              style: AppStyles.textStyle17w700.copyWith(color: Colors.black),
             ),
             SizedBox(
               height: 18.h,
             ),
             Text(
               "Happy Shopping!!",
-              style: AppStyles.textStyle17.copyWith(color: Colors.black),
+              style: AppStyles.textStyle17w700.copyWith(color: Colors.black),
             ),
             SizedBox(
               height: 24.h,

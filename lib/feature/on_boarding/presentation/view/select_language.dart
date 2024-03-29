@@ -2,7 +2,9 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/account/presentation/view/pages/my_account_page_view.dart';
 import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
+import 'package:best_price/feature/home/presentation/view/pages/home_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,7 +34,8 @@ class SelectLanguage extends StatelessWidget {
               ),
               SelectedLanguage(
                 onTap: () {
-                  HelperFunctions.navigateToScreen(context, const LoginView());
+                  HelperFunctions.navigateToScreen(
+                      context, const HomePageView());
                 },
                 title: "English",
                 borderSide: const BorderSide(width: 0, color: Colors.white),
@@ -43,7 +46,8 @@ class SelectLanguage extends StatelessWidget {
               ),
               SelectedLanguage(
                   onTap: () {
-                    HelperFunctions.navigateToScreen(context, const LoginView());
+                    HelperFunctions.navigateToScreen(
+                        context, const LoginView());
                   },
                   borderSide:
                       const BorderSide(color: AppColor.buddhaGold, width: 1),
