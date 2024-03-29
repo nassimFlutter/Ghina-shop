@@ -17,6 +17,10 @@ class ImagePath {
   static const tabImage = "$homePath/tab.png";
   static const iMacImage = "$homePath/iMac.png";
   static const allInOneImage = "$homePath/all_on_one.png";
+  static const sonyCameraImage = "$homePath/sonycamera.png";
+  static const mp3Image = "$homePath/mp3.png";
+
+  //! --------------- category item ----------------
 }
 
 class IconsPath {
@@ -29,6 +33,7 @@ class IconsPath {
   static const String cancelIcon = "$_basePath/cancel.svg";
   static const String arrowLeftIcon = "$_basePath/arrow_left.svg";
   static const String notFound = "$_basePath/not_found.svg";
+  static const String flitterIcon = "$_basePath/flitter.svg";
   //! -------- accounts --------
   static const String aboutIcon = "$_basePath/about.svg";
   static const String contactIcon = "$_basePath/Contact.svg";
@@ -68,4 +73,11 @@ class IconsPath {
   static const String headphonesIcon = "$_basePath/headphones.svg";
   static const String heartIcon = "$_basePath/heart.svg";
   static const String appleIcon = "$_basePath/apple.svg";
+  //! --------------- category item ----------------
+  static const computerIcon = "$_basePath/computer.svg";
+  static const gameConsolesIcon = "$_basePath/game-consoles.svg";
+  static const printerIcon = "$_basePath/printer.svg";
+  static const screenIcon = "$_basePath/screen.svg";
+  static const routerIcon = "$_basePath/router.svg";
+  static const watchIcon = "$_basePath/watch.svg";
 }

@@ -4,9 +4,9 @@ import 'package:best_price/feature/account/presentation/manager/change_address_p
 import 'package:best_price/feature/account/presentation/manager/contact_us_cubit/contact_us_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/forget_password/forget_password_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/our_policy_tab_change/our_policy_tab_change_cubit.dart';
-import 'package:best_price/feature/account/presentation/view/pages/contact_us.dart';
 import 'package:best_price/feature/auth/login/presentation/manager/cubit/login_cubit.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sign_up_cubit.dart';
+import 'package:best_price/feature/flitter_sort/presentaion/manager/flitter_cubit/flitter_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boarding_cubit.dart';
@@ -64,6 +64,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeCubit(),
         ),
+        BlocProvider(
+          create: (context) => FlitterCubit(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(393, 852),
@@ -74,7 +77,6 @@ class MyApp extends StatelessWidget {
           title: 'Best Price',
           theme: ThemeData(
             backgroundColor: Colors.white,
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
           home: const SplashView(),
