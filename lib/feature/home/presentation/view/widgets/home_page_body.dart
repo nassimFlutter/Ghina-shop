@@ -86,7 +86,7 @@ class HomePgeBody extends StatelessWidget {
             productList: FuckerData.bestSellingList,
           ),
           SizedBox(height: 26.h),
-
+//!Brands
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
@@ -129,10 +129,12 @@ class BrandsHomeList extends StatelessWidget {
       height: 62.h,
       child: ListView.builder(
         padding: EdgeInsets.zero,
-        itemCount: 4,
+        itemCount: FuckerData.brands.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const BrandsItem();
+          return BrandsItem(
+            imageUrl: FuckerData.brands[index],
+          );
         },
       ),
     );
@@ -142,8 +144,9 @@ class BrandsHomeList extends StatelessWidget {
 class BrandsItem extends StatelessWidget {
   const BrandsItem({
     super.key,
+    required this.imageUrl,
   });
-
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -156,7 +159,15 @@ class BrandsItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.r),
         ),
       ),
-      child: Center(child: SvgPicture.asset(IconsPath.appleIcon)),
+      child: Padding(
+        padding: const EdgeInsets.all(
+          12,
+        ),
+        child: Center(
+            child: SvgPicture.asset(
+          imageUrl,
+        )),
+      ),
     );
   }
 }

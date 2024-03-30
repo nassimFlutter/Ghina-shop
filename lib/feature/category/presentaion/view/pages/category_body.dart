@@ -12,43 +12,45 @@ class CategoryViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverPadding(
-          padding: EdgeInsetsDirectional.only(
-              top: Dimensions.dTopPadding, start: Dimensions.dStartPadding),
-          sliver: SliverToBoxAdapter(
-            child: Text('Categories', style: AppStyles.textStyle20w700),
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: EdgeInsetsDirectional.only(
+                top: Dimensions.dTopPadding, start: Dimensions.dStartPadding),
+            sliver: SliverToBoxAdapter(
+              child: Text('Categories', style: AppStyles.textStyle20w700),
+            ),
           ),
-        ),
-        SliverPadding(
-          padding: EdgeInsetsDirectional.only(
-              end: Dimensions.dStartPadding,
-              start: Dimensions.dStartPadding,
-              bottom: 10.h,
-              top: 35.h),
-          sliver: SliverGrid.builder(
-              itemCount: FuckerDataCategory.category.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisSpacing: 15.w,
-                mainAxisSpacing: 15.h,
-                crossAxisCount: 2,
-              ),
-              itemBuilder: (context, index) {
-                return CategoryCard(
-                  imageUrl: FuckerDataCategory.category[index].imageUrl,
-                  title: FuckerDataCategory.category[index].title,
-                  onTap: () {
-                    HelperFunctions.navigateToScreen(
-                        context,
-                        ProductCategoryView(
-                          title: FuckerDataCategory.category[index].title,
-                        ));
-                  },
-                );
-              }),
-        ),
-      ],
+          SliverPadding(
+            padding: EdgeInsetsDirectional.only(
+                end: Dimensions.dStartPadding,
+                start: Dimensions.dStartPadding,
+                bottom: 10.h,
+                top: 35.h),
+            sliver: SliverGrid.builder(
+                itemCount: FuckerDataCategory.category.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisSpacing: 15.w,
+                  mainAxisSpacing: 15.h,
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (context, index) {
+                  return CategoryCard(
+                    imageUrl: FuckerDataCategory.category[index].imageUrl,
+                    title: FuckerDataCategory.category[index].title,
+                    onTap: () {
+                      HelperFunctions.navigateToScreen(
+                          context,
+                          ProductCategoryView(
+                            title: FuckerDataCategory.category[index].title,
+                          ));
+                    },
+                  );
+                }),
+          ),
+        ],
+      ),
     );
   }
 }

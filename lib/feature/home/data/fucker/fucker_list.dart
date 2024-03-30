@@ -148,4 +148,11 @@ class FuckerData {
         brandName: 'MacBook',
         companyName: 'Apple'),
   ];
+  static List<String> brands = [
+  IconsPath.appleIcon,
+  IconsPath.vivoIcon,
+  IconsPath.sonyIcon,
+  IconsPath.dellIcon,
+  IconsPath.samsungIcon,
+  ];
 }
