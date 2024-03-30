@@ -21,10 +21,28 @@ class AppStyles {
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w700,
   );
+  static TextStyle textStyle16w700 = TextStyle(
+    color: AppColor.pirateGold,
+    fontSize: 16.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w700,
+  );
 
   static TextStyle textStyle16w400 = TextStyle(
     color: AppColor.greyWithOpacity,
     fontSize: 16.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle textStyle14w400 = TextStyle(
+    color: AppColor.greyOpacity,
+    fontSize: 14.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle textStyle18w400 = TextStyle(
+    color: AppColor.greyOpacity,
+    fontSize: 18.sp,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w400,
   );
