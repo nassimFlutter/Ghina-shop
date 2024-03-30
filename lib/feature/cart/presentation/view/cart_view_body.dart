@@ -64,6 +64,9 @@ class CartViewBody extends StatelessWidget {
               title: "Proceed to Checkout",
               onTap: () {},
             ),
+            SizedBox(
+              height: 24.h,
+            ),
           ],
         ),
       ),
@@ -164,11 +167,13 @@ class CartItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
+          const Expanded(
             child: AspectRatio(
               aspectRatio: 1,
-              child: Container(
-                color: Colors.amber,
+              child: Image(
+                image: AssetImage(
+                  ImagePath.headPhone,
+                ),
               ),
             ),
           ),

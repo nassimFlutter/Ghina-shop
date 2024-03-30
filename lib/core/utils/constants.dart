@@ -19,8 +19,9 @@ class ImagePath {
   static const allInOneImage = "$homePath/all_on_one.png";
   static const sonyCameraImage = "$homePath/sonycamera.png";
   static const mp3Image = "$homePath/mp3.png";
-
   //! --------------- category item ----------------
+  static const headPhone = "$homePath/headPhoneCart.png";
+
 }
 
 class IconsPath {
