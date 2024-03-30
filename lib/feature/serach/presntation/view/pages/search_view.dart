@@ -6,7 +6,6 @@ import 'package:best_price/core/widgets/product_grid_view.dart';
 import 'package:best_price/core/widgets/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
 
@@ -17,7 +16,6 @@ class SearchView extends StatelessWidget {
     );
   }
 }
-
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
 

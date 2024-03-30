@@ -33,6 +33,7 @@ class IconsPath {
   static const String cancelIcon = "$_basePath/cancel.svg";
   static const String arrowLeftIcon = "$_basePath/arrow_left.svg";
   static const String notFound = "$_basePath/not_found.svg";
+  static const String removeIcon = "$_basePath/remove.svg";
   static const String flitterIcon = "$_basePath/flitter.svg";
   //! -------- accounts --------
   static const String aboutIcon = "$_basePath/about.svg";
@@ -80,4 +81,12 @@ class IconsPath {
   static const screenIcon = "$_basePath/screen.svg";
   static const routerIcon = "$_basePath/router.svg";
   static const watchIcon = "$_basePath/watch.svg";
+  //! ------------------- brands item ---------------------
+  static const vivoIcon = "$_basePath/vivo.svg";
+  static const sonyIcon = "$_basePath/sony.svg";
+  static const dellIcon = "$_basePath/dell.svg";
+  static const canonIcon = "$_basePath/canon.svg";
+  static const samsungIcon = "$_basePath/samsung.svg";
+  //! --------------- cart icon ----------------
+  static const deleteIcon = "$_basePath/delete.svg";
 }
