@@ -3,6 +3,7 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/brands/presntations/view/pages/brands_view.dart';
 import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
 import 'package:best_price/feature/home/data/fucker/fucker_list.dart';
 import 'package:best_price/feature/new_arrivals/presentations/view/pages/new_arrivers_view.dart';
@@ -86,11 +87,16 @@ class HomePgeBody extends StatelessWidget {
             productList: FuckerData.bestSellingList,
           ),
           SizedBox(height: 26.h),
-//!Brands
+          //!Brands
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: const HomeTitle(title: 'Brands'),
+            child: HomeTitle(
+              title: 'Brands',
+              onTap: () {
+                HelperFunctions.navigateToScreen(context, const BrandsView());
+              },
+            ),
           ),
           SizedBox(height: 12.h),
 
