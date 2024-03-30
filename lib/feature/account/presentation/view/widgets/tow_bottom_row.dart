@@ -15,7 +15,7 @@ class TowBottomRow extends StatelessWidget {
         AppBottom(
           title: "Sign Up",
           height: 50,
-          width: 171,
+          // width: 171,
         )
       ],
     );
