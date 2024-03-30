@@ -50,6 +50,7 @@ class ProductsItem extends StatelessWidget {
                 offerPrice != null
                     ? offerPrice!.toStringAsFixed(3)
                     : price.toStringAsFixed(3),
+                maxLines: 1,
                 style: AppStyles.textStyle16w400.copyWith(
                     color: AppColor.redOpacity, fontWeight: FontWeight.w700),
               ),
@@ -83,11 +84,13 @@ class ProductsItem extends StatelessWidget {
               SizedBox(height: 5.h),
               Text(
                 title,
+                maxLines: 1,
                 style:
                     AppStyles.textStyle14.copyWith(color: AppColor.greyOpacity),
               ),
               Text(
                 "$brandName\n$companyName",
+                maxLines: 1,
                 style: AppStyles.textStyle14,
               ),
             ],

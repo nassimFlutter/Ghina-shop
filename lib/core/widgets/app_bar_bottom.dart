@@ -14,33 +14,33 @@ class AppBarBottom extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        GestureDetector(
-          onTap: onTap ??
-              () {
-                Navigator.of(context).pop();
-              },
-          child: Container(
-            width: 36.w,
-            height: 36.w,
-            padding: const EdgeInsets.all(9),
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(width: 1, color: AppColor.borderColor),
-                borderRadius: BorderRadius.circular(10.sp),
-              ),
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                iconPath,
-                fit: BoxFit.cover,
-              ),
+    return Material(
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.white,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        onTap: onTap ??
+            () {
+              Navigator.of(context).pop();
+            },
+        child: Container(
+          width: 36,
+          height: 36,
+          padding: const EdgeInsets.all(9),
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(width: 1, color: AppColor.borderColor),
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
-        )
-      ],
+          child: Center(
+            child: SvgPicture.asset(
+              iconPath,
+              // fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

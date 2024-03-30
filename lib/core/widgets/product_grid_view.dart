@@ -14,10 +14,12 @@ class ProductGridView extends StatelessWidget {
     return SliverGrid.builder(
       itemCount: FuckerData.featuredProductsList.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisSpacing: 50.w,
-          // mainAxisSpacing: 150.h,
-          crossAxisCount: 2,
-          mainAxisExtent: 355.h),
+        crossAxisSpacing: 50.w,
+        // mainAxisSpacing: 150.h,
+        // childAspectRatio: 160.w / 300.h,
+        crossAxisCount: 2,
+        mainAxisExtent: 320.w,
+      ),
       itemBuilder: (context, index) {
         Product productItem = FuckerData.featuredProductsList[index];
         return ProductsItem(
