@@ -1,7 +1,7 @@
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/change_address_page/change_address_page_cubit.dart';
-import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'accommodation_card.dart';
 
@@ -16,24 +16,28 @@ class AccommodatList extends StatelessWidget {
         ChangeAddressPageCubit.get(context);
     AddAddressCubit addAddressCubit = AddAddressCubit.get(context);
 
-    return ListView.builder(
-        padding: EdgeInsets.zero,
-        clipBehavior: Clip.none,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemCount: 3,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              changeAddressPageCubit.changePage(index);
-              addAddressCubit.clearControllers();
-            },
-            child: AccommodationCard(
-              title: changeAddressPageCubit.accommodationTypeList[index],
-              index: index,
-              selectedIndex: changeAddressPageCubit.selectedIndex,
-            ),
-          );
-        });
+    return BlocBuilder<ChangeAddressPageCubit, ChangeAddressPageState>(
+      builder: (context, state) {
+        return ListView.builder(
+            padding: EdgeInsets.zero,
+            clipBehavior: Clip.none,
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: 3,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  changeAddressPageCubit.changePage(index);
+                  addAddressCubit.clearControllers();
+                },
+                child: AccommodationCard(
+                  title: changeAddressPageCubit.accommodationTypeList[index],
+                  index: index,
+                  selectedIndex: changeAddressPageCubit.selectedIndex,
+                ),
+              );
+            });
+      },
+    );
   }
 }
