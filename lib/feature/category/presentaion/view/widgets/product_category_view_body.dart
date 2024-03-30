@@ -14,7 +14,10 @@ class ProductCategoryViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.only(start: Dimensions.dStartPadding.w),
+      padding: EdgeInsetsDirectional.only(
+        start: Dimensions.dStartPadding.w,
+        end: Dimensions.dStartPadding.w,
+      ),
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -30,7 +33,7 @@ class ProductCategoryViewBody extends StatelessWidget {
           SliverToBoxAdapter(
             child: Row(
               children: [
-                const SearchField(),
+                const Expanded(child: SearchField()),
                 SizedBox(
                   width: 6.w,
                 ),

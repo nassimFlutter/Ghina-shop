@@ -13,69 +13,67 @@ class MyAccountViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        padding: EdgeInsetsDirectional.only(start: 16.w),
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.only(top: 14.h),
-            child: Text('My Account', style: AppStyles.textStyle20w700),
-          ),
-          SizedBox(
-            height: 25.h,
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.only(end: 16.w),
-            child: const MyAccountInfo(),
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          const OptionsListTitle(
-            title: "My Account",
-          ),
-          SizedBox(
-            height: 14.h,
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.only(end: 16.w),
-            child: const MyAccountOptions(),
-          ),
-          SizedBox(
-            height: 25.h,
-          ),
-          const OptionsListTitle(
-            title: "Settings",
-          ),
-          SizedBox(
-            height: 14.h,
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.only(end: 16.w),
-            child: const SettingsListOptions(),
-          ),
-          SizedBox(
-            height: 25.h,
-          ),
-          const OptionsListTitle(
-            title: "Support",
-          ),
-          SizedBox(
-            height: 14.h,
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.only(end: 16.w),
-            child: const SupportListOptions(),
-          ),
-          SizedBox(
-            height: 23.h,
-          ),
-          const CopyRightsWidgets(),
-          SizedBox(
-            height: 19.h,
-          ),
-        ],
-      ),
+    return ListView(
+      padding: EdgeInsetsDirectional.only(start: 16.w),
+      children: [
+        Padding(
+          padding: EdgeInsetsDirectional.only(top: 14.h),
+          child: Text('My Account', style: AppStyles.textStyle20w700),
+        ),
+        SizedBox(
+          height: 25.h,
+        ),
+        Padding(
+          padding: EdgeInsetsDirectional.only(end: 16.w),
+          child: const MyAccountInfo(),
+        ),
+        SizedBox(
+          height: 30.h,
+        ),
+        const OptionsListTitle(
+          title: "My Account",
+        ),
+        SizedBox(
+          height: 14.h,
+        ),
+        Padding(
+          padding: EdgeInsetsDirectional.only(end: 16.w),
+          child: const MyAccountOptions(),
+        ),
+        SizedBox(
+          height: 25.h,
+        ),
+        const OptionsListTitle(
+          title: "Settings",
+        ),
+        SizedBox(
+          height: 14.h,
+        ),
+        Padding(
+          padding: EdgeInsetsDirectional.only(end: 16.w),
+          child: const SettingsListOptions(),
+        ),
+        SizedBox(
+          height: 25.h,
+        ),
+        const OptionsListTitle(
+          title: "Support",
+        ),
+        SizedBox(
+          height: 14.h,
+        ),
+        Padding(
+          padding: EdgeInsetsDirectional.only(end: 16.w),
+          child: const SupportListOptions(),
+        ),
+        SizedBox(
+          height: 23.h,
+        ),
+        const CopyRightsWidgets(),
+        SizedBox(
+          height: 19.h,
+        ),
+      ],
     );
   }
 }
