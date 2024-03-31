@@ -1,7 +1,9 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
+import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -62,7 +64,9 @@ class CartViewBody extends StatelessWidget {
             ),
             AppBottom(
               title: "Proceed to Checkout",
-              onTap: () {},
+              onTap: () {
+                HelperFunctions.navigateToScreen(context, const CheckoutView());
+              },
             ),
             SizedBox(
               height: 24.h,

@@ -28,11 +28,15 @@ class MyAddressView extends StatelessWidget {
           SizedBox(
             height: 44.h,
           ),
-          AppBottom(
-            title: "Add New Address",
-            onTap: () {
-              HelperFunctions.navigateToScreen(context, const AddAddressView());
-            },
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: AppBottom(
+              title: "Add New Address",
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context, const AddAddressView());
+              },
+            ),
           ),
           SizedBox(
             height: 104.h,

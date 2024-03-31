@@ -39,13 +39,9 @@ class AddAddressView extends StatelessWidget {
           SizedBox(
             height: 14.h,
           ),
-          BlocBuilder<ChangeAddressPageCubit, ChangeAddressPageState>(
-            builder: (context, state) {
-              return SizedBox(
-                height: 40.h,
-                child: const AccommodatList(),
-              );
-            },
+          SizedBox(
+            height: 40.h,
+            child: const AccommodatList(),
           ),
           SizedBox(
             height: 35.h,
