@@ -22,7 +22,9 @@ class AppColor {
   static const Color titleTextColor = Color(0xFF082431);
   static const Color categoriesContainerTextColor = Color(0xFFF3F3F8);
   static const Color greyOpacity = Color(0xFF9E9E9E);
+  static const Color greyText = Color(0xffA0A0A0);
   static const Color black2 = Color(0xFF0D0D0D);
   static const Color black3 = Color(0xFF0C0C0C);
   static const Color black = Colors.black;
+  static const Color containerBackColor = Color(0xFFF9F9F9);
 }

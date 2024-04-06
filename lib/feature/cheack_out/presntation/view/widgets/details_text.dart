@@ -10,7 +10,7 @@ class DetailsText extends StatelessWidget {
     required this.value,
   });
   final String title;
-  final double value;
+  final value;
   @override
   Widget build(BuildContext context) {
     return ListTile(

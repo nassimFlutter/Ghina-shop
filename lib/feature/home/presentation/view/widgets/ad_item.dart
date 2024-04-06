@@ -1,14 +1,16 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
-import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/feature/home/data/models/home_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdItem extends StatelessWidget {
   const AdItem({
     super.key,
+    required this.banner,
   });
-
+  final HomeBanner? banner;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,33 +23,36 @@ class AdItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.only(top: 22.h, start: 24.w),
                 child: Text(
-                  "Lorem ipsum\ndolor",
+                  banner?.title ?? "No title",
                   style: AppStyles.textStyle20w700.copyWith(
                       fontWeight: FontWeight.w400, color: Colors.white),
                 ),
               ),
               SizedBox(height: 8.h),
-              Text(
-                "Noice Cancelling\n Wireless Headphone",
-                style: AppStyles.textStyle12w700
-                    .copyWith(fontWeight: FontWeight.w400, color: Colors.white),
+              Padding(
+                padding: EdgeInsetsDirectional.only(start: 24.w),
+                child: Text(
+                  banner?.details ?? "No details",
+                  style: AppStyles.textStyle12w700.copyWith(
+                      fontWeight: FontWeight.w400, color: Colors.white),
+                ),
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           SizedBox(width: 20.w),
           Padding(
-            padding: EdgeInsetsDirectional.only(top: 20.h),
-            child: Image.asset(
-              ImagePath.headphonesImage,
-              width: 126.w,
-              fit: BoxFit.cover,
-            ),
-          )
+              padding: EdgeInsetsDirectional.only(top: 20.h),
+              child: CachedNetworkImage(
+                width: 126.w,
+                fit: BoxFit.cover,
+                imageUrl: banner?.image ?? "",
+              ))
         ],
       ),
     );

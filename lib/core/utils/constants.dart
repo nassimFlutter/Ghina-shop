@@ -21,7 +21,6 @@ class ImagePath {
   static const mp3Image = "$homePath/mp3.png";
   //! --------------- category item ----------------
   static const headPhone = "$homePath/headPhoneCart.png";
-
 }
 
 class IconsPath {
@@ -90,4 +89,6 @@ class IconsPath {
   static const samsungIcon = "$_basePath/samsung.svg";
   //! --------------- cart icon ----------------
   static const deleteIcon = "$_basePath/delete.svg";
+  //! ------------ checkOut --------------
+  static const succescheckOut = "$_basePath/success.svg";
 }

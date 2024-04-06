@@ -1,11 +1,15 @@
+import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/utils/bloc_observer.dart';
+import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/change_address_page/change_address_page_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/contact_us_cubit/contact_us_cubit.dart';
-import 'package:best_price/feature/account/presentation/manager/forget_password/forget_password_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/our_policy_tab_change/our_policy_tab_change_cubit.dart';
+import 'package:best_price/feature/auth/forget_password/presentation/manager/cubit/forget_password_cubit.dart';
 import 'package:best_price/feature/auth/login/presentation/manager/cubit/login_cubit.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sign_up_cubit.dart';
+import 'package:best_price/feature/category/presentaion/manager/category_cubit/category_cubit.dart';
+import 'package:best_price/feature/category/presentaion/manager/category_product_cubit/category_product_cubit.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/manager/flitter_cubit/flitter_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
@@ -19,14 +23,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
+  setupServiceLocator();
+  CacheHelper.cacheInit();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -50,7 +54,7 @@ class MyApp extends StatelessWidget {
           create: (context) => AddAddressCubit(),
         ),
         BlocProvider(
-          create: (context) => ForgetPasswordCubit(),
+          create: (context) => SendForgetPasswordCubit(),
         ),
         BlocProvider(
           create: (context) => OurPolicyTabChangeCubit(),
@@ -66,6 +70,15 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => FlitterCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SendForgetPasswordCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CategoryCubit()..fetchAllCategory(),
+        ),
+        BlocProvider(
+          create: (context) => CategoryProductCubit(),
         ),
       ],
       child: ScreenUtilInit(
