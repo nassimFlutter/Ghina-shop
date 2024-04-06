@@ -1,8 +1,9 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CategoryHomeItem extends StatelessWidget {
   const CategoryHomeItem({
@@ -27,11 +28,15 @@ class CategoryHomeItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SvgPicture.asset(
-            imageUrl,
+          CachedNetworkImage(
             fit: BoxFit.cover,
-            clipBehavior: Clip.none,
+            imageUrl: imageUrl,
           ),
+          // SvgPicture.asset(
+          //   imageUrl,
+          //   fit: BoxFit.cover,
+          //   clipBehavior: Clip.none,
+          // ),
           SizedBox(
             width: 6.w,
           ),

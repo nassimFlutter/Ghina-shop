@@ -2,6 +2,7 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,8 +20,8 @@ class ProductsItem extends StatelessWidget {
     required this.offerPercentage,
   });
   final String imageUrl, brandName, companyName, title;
-  final double price, offerPercentage;
-  final double? offerPrice;
+  final num price, offerPercentage;
+  final num? offerPrice;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,7 +29,7 @@ class ProductsItem extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Image.asset(imageUrl),
+            CachedNetworkImage(width: 160.w, height: 200.h, imageUrl: imageUrl),
             Positioned(
               bottom: 15.h,
               right: 6.w,
@@ -89,7 +90,12 @@ class ProductsItem extends StatelessWidget {
                     AppStyles.textStyle14.copyWith(color: AppColor.greyOpacity),
               ),
               Text(
-                "$brandName\n$companyName",
+                brandName,
+                maxLines: 1,
+                style: AppStyles.textStyle14,
+              ),
+              Text(
+                companyName,
                 maxLines: 1,
                 style: AppStyles.textStyle14,
               ),

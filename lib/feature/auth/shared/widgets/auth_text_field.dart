@@ -28,6 +28,7 @@ class AuthTextField extends StatelessWidget {
         child: TextFormField(
           minLines: minLine,
           maxLines: maxLine,
+          keyboardType: TextInputType.emailAddress,
           controller: textEditingController,
           validator: validator,
           decoration: InputDecoration(

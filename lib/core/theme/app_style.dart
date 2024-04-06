@@ -63,7 +63,6 @@ class AppStyles {
     fontSize: 24.sp,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w700,
-    height: 0.06,
   );
   //! Decoration 🔳
   static ShapeDecoration accountContainerDecoration() {

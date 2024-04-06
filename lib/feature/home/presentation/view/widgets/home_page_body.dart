@@ -1,19 +1,26 @@
-import 'package:best_price/core/theme/app_color.dart';
-import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/brands/presntations/view/pages/brands_view.dart';
 import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
-import 'package:best_price/feature/home/data/fucker/fucker_list.dart';
+import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
+import 'package:best_price/feature/home/presentation/view/widgets/shimmer_ad_list.dart';
+import 'package:best_price/feature/home/presentation/view/widgets/shimmer_brands_home_list.dart';
+import 'package:best_price/feature/home/presentation/view/widgets/shimmer_category_home_list.dart';
+import 'package:best_price/feature/home/presentation/view/widgets/shimmer_home_title.dart';
+import 'package:best_price/feature/home/presentation/view/widgets/shimmer_let_start_text.dart';
+import 'package:best_price/feature/home/presentation/view/widgets/shimmer_products_list.dart';
 import 'package:best_price/feature/new_arrivals/presentations/view/pages/new_arrivers_view.dart';
 import 'package:best_price/feature/serach/presntation/view/pages/search_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'ad_list.dart';
+import 'brands_home_list.dart';
 import 'category_home_list.dart';
 import 'home_title.dart';
+import 'let_start_text.dart';
 import 'products_list.dart';
 
 class HomePgeBody extends StatelessWidget {
@@ -21,6 +28,8 @@ class HomePgeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeCubit homeCubit = HomeCubit.get(context);
+    homeCubit.getHomePage();
     return SafeArea(
       child: ListView(
         padding: EdgeInsetsDirectional.symmetric(
@@ -42,137 +51,185 @@ class HomePgeBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: 26.h),
-          Text(
-            "Let’s start shopping!",
-            style: AppStyles.textStyle17w700.copyWith(color: Colors.black),
+          BlocConsumer<HomeCubit, HomeCubitState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is HomeCubitLoading) {
+                return const ShimmerLetStartText();
+              } else {
+                return const LetStartText();
+              }
+            },
           ),
           SizedBox(height: 12.h),
           //!................ here Ad list .......
-          const AdList(),
+          BlocConsumer<HomeCubit, HomeCubitState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is HomeCubitLoading) {
+                return const ShimmerAdList();
+              } else {
+                return const AdList();
+              }
+            },
+          ),
           SizedBox(height: 26.h),
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: const HomeTitle(title: 'Categories'),
+            child: BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerHomeTitle(
+                    title: "",
+                  );
+                } else {
+                  return const HomeTitle(title: 'Categories');
+                }
+              },
+            ),
           ),
           SizedBox(height: 26.h),
           //! in this there ara margin ..
-          const CategoryHomeList(),
+          //? this category in home page ..
+          BlocBuilder<HomeCubit, HomeCubitState>(
+            builder: (context, state) {
+              if (state is HomeCubitLoading) {
+                return const ShimmerCategoryHomeList();
+              } else {
+                return const CategoryHomeList();
+              }
+            },
+          ),
           SizedBox(height: 30.h),
 
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: HomeTitle(
-              title: 'Featured products',
-              onTap: () {
-                HelperFunctions.navigateToScreen(
-                    context, const FeaturedProductView());
+            child: BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerHomeTitle(title: "");
+                } else {
+                  return HomeTitle(
+                    title: 'Featured products',
+                    onTap: () {
+                      HelperFunctions.navigateToScreen(
+                          context, const FeaturedProductView());
+                    },
+                  );
+                }
               },
             ),
           ),
           //! Featured products List
-          ProductsList(
-            productList: FuckerData.featuredProductsList,
+          BlocBuilder<HomeCubit, HomeCubitState>(
+            builder: (context, state) {
+              if (state is HomeCubitLoading) {
+                return const ShimmerProductsList();
+              } else {
+                return ProductsList(
+                  productList:
+                      homeCubit.homeApiResponse.item?.featuredProducts ?? [],
+                );
+              }
+            },
           ),
           SizedBox(height: 51.h),
 
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: const HomeTitle(title: 'Best Selling'),
+            child: BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerHomeTitle(title: "");
+                } else {
+                  return const HomeTitle(title: 'Best Selling');
+                }
+              },
+            ),
           ),
           // ! Best Selling List
-          ProductsList(
-            productList: FuckerData.bestSellingList,
+          BlocBuilder<HomeCubit, HomeCubitState>(
+            builder: (context, state) {
+              if (state is HomeCubitLoading) {
+                return const ShimmerProductsList();
+              } else {
+                return ProductsList(
+                  productList:
+                      homeCubit.homeApiResponse.item?.bestSellerProducts ?? [],
+                );
+              }
+            },
           ),
           SizedBox(height: 26.h),
           //!Brands
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: HomeTitle(
-              title: 'Brands',
-              onTap: () {
-                HelperFunctions.navigateToScreen(context, const BrandsView());
+            child: BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerHomeTitle(title: "");
+                } else {
+                  return HomeTitle(
+                    title: 'Brands',
+                    onTap: () {
+                      HelperFunctions.navigateToScreen(
+                          context, const BrandsView());
+                    },
+                  );
+                }
               },
             ),
           ),
           SizedBox(height: 12.h),
-
-          const BrandsHomeList(),
+          //! brands List
+          BlocBuilder<HomeCubit, HomeCubitState>(
+            builder: (context, state) {
+              if (state is HomeCubitLoading) {
+                return const ShimmerBrandsHomeList();
+              } else {
+                return const BrandsHomeList();
+              }
+            },
+          ),
           SizedBox(height: 46.h),
           // ! New Arrivals List
           Padding(
             padding:
                 EdgeInsetsDirectional.only(end: Dimensions.dStartPadding.w),
-            child: HomeTitle(
-              title: 'New Arrivals',
-              onTap: () {
-                HelperFunctions.navigateToScreen(
-                    context, const NewArriversView());
+            child: BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerHomeTitle(title: "");
+                } else {
+                  return HomeTitle(
+                    title: 'New Arrivals',
+                    onTap: () {
+                      HelperFunctions.navigateToScreen(
+                          context, const NewArriversView());
+                    },
+                  );
+                }
               },
             ),
           ),
-          ProductsList(
-            productList: FuckerData.newArrivalsList,
+          BlocBuilder<HomeCubit, HomeCubitState>(
+            builder: (context, state) {
+              if (state is HomeCubitLoading) {
+                return const ShimmerProductsList();
+              } else {
+                return ProductsList(
+                  productList:
+                      homeCubit.homeApiResponse.item?.newstProducts ?? [],
+                );
+              }
+            },
           ),
           SizedBox(height: 18.h),
         ],
-      ),
-    );
-  }
-}
-
-class BrandsHomeList extends StatelessWidget {
-  const BrandsHomeList({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 62.h,
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: FuckerData.brands.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return BrandsItem(
-            imageUrl: FuckerData.brands[index],
-          );
-        },
-      ),
-    );
-  }
-}
-
-class BrandsItem extends StatelessWidget {
-  const BrandsItem({
-    super.key,
-    required this.imageUrl,
-  });
-  final String imageUrl;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 61.h,
-      width: 102.w,
-      margin: EdgeInsetsDirectional.only(end: 10.w),
-      decoration: ShapeDecoration(
-        color: AppColor.greyColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.r),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(
-          12,
-        ),
-        child: Center(
-            child: SvgPicture.asset(
-          imageUrl,
-        )),
       ),
     );
   }

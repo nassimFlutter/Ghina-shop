@@ -14,12 +14,14 @@ class CategoryHomeList extends StatelessWidget {
     return SizedBox(
       height: 50.h,
       child: ListView.builder(
-        itemCount: 3,
+        itemCount: homeCubit.homeApiResponse.item?.categories?.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return CategoryHomeItem(
-            categoryTitle: homeCubit.categoryTitleList[index],
-            imageUrl: homeCubit.imageList[index],
+            categoryTitle:
+                homeCubit.homeApiResponse.item?.categories?[index].name ?? "",
+            imageUrl:
+                homeCubit.homeApiResponse.item?.categories?[index].image ?? "",
           );
         },
       ),

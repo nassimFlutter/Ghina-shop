@@ -8,8 +8,9 @@ class ForgetPasswordDialog extends StatelessWidget {
     super.key,
     required this.title,
     required this.contain,
+    required this.email,
   });
-  final String title, contain;
+  final String title, contain, email;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -48,7 +49,7 @@ class ForgetPasswordDialog extends StatelessWidget {
               height: 12.h,
             ),
             Text(
-              "mohammed@gmail.com",
+              email,
               style: AppStyles.textStyle17w700.copyWith(color: Colors.black),
             ),
             SizedBox(

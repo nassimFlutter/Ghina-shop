@@ -37,7 +37,10 @@ class NewArriversViewBody extends StatelessWidget {
               height: 23.h,
             ),
           ),
-          const ProductGridView()
+           ProductGridView(
+           
+           productList: [],
+           )
         ],
       ),
     );

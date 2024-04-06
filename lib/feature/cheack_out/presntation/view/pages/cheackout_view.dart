@@ -6,6 +6,7 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
+import 'package:best_price/feature/cheack_out/presntation/view/pages/checkout_success.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -89,7 +90,12 @@ class CheckoutBody extends StatelessWidget {
         SizedBox(
           height: 40.h,
         ),
-        const AppBottom(title: "Proceed to Pay"),
+        AppBottom(
+          title: "Proceed to Pay",
+          onTap: () {
+            HelperFunctions.navigateToScreen(context, const CheckOutSuccess());
+          },
+        ),
         SizedBox(
           height: 26.h,
         ),

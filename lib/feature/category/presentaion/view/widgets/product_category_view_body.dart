@@ -4,15 +4,21 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/flitter_bottom.dart';
 import 'package:best_price/core/widgets/product_grid_view.dart';
 import 'package:best_price/core/widgets/search_field.dart';
+import 'package:best_price/feature/category/presentaion/manager/category_product_cubit/category_product_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductCategoryViewBody extends StatelessWidget {
-  const ProductCategoryViewBody({super.key, required this.title});
+  const ProductCategoryViewBody(
+      {super.key, required this.title, required this.id});
   final String title;
-
+  final int id;
   @override
   Widget build(BuildContext context) {
+    CategoryProductCubit categoryProductCubit =
+        CategoryProductCubit.get(context);
+    categoryProductCubit.fetchProductByCategoryId(id);
     return Padding(
       padding: EdgeInsetsDirectional.only(
         start: Dimensions.dStartPadding.w,
@@ -41,7 +47,23 @@ class ProductCategoryViewBody extends StatelessWidget {
               ],
             ),
           ),
-          const ProductGridView()
+          BlocBuilder<CategoryProductCubit, CategoryProductState>(
+            builder: (context, state) {
+              if (state is CategoryProductSuccess) {
+                return ProductGridView(
+                  productList: categoryProductCubit
+                          .productCategoryResponse.items?.first.products ??
+                      [],
+                );
+              } else if (state is CategoryProductFailure) {
+                return SliverToBoxAdapter(child: Text(state.errMessage));
+              } else {
+                return const SliverToBoxAdapter(
+                  child: Text("data"),
+                );
+              }
+            },
+          )
         ],
       ),
     );

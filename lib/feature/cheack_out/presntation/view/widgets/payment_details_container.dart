@@ -1,7 +1,7 @@
-import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/details_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'custom_divider.dart';
 
 class PaymentDetailsContainer extends StatelessWidget {
   const PaymentDetailsContainer({
@@ -26,23 +26,17 @@ class PaymentDetailsContainer extends StatelessWidget {
             title: "Sub Total",
             value: 1019.800,
           ),
-          const Divider(
-            color: AppColor.borderColor,
-          ),
+          const CustomDivider(),
           const DetailsText(
             title: "Discount",
             value: 0.000,
           ),
-          const Divider(
-            color: AppColor.borderColor,
-          ),
+          const CustomDivider(),
           const DetailsText(
             title: 'Delivery',
             value: 0.000,
           ),
-          const Divider(
-            color: AppColor.borderColor,
-            ),
+          const CustomDivider(),
           const DetailsText(
             title: "Total",
             value: 1019.800,

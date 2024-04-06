@@ -1,3 +1,7 @@
+import 'package:best_price/core/utils/logger.dart';
+import 'package:best_price/core/utils/service_locator.dart';
+import 'package:best_price/feature/auth/sign_up/data/model/user_model.dart';
+import 'package:best_price/feature/auth/sign_up/data/signup_repo/signup_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,5 +22,21 @@ class SignUpCubit extends Cubit<SignUpState> {
     if (!signUpFormKey.currentState!.validate()) {
       return;
     }
+    emit(SignUpLoading());
+    UserModel newUser = UserModel(
+        name: fullNameController.text.trim(),
+        email: emailController.text.trim(),
+        mobile: phoneController.text.trim(),
+        password: passwordController.text.trim(),
+        confirmPassword: confirmPasswordController.text.trim());
+    LoggerHelper.debug(newUser.toString());
+    var result = await getIt.get<SignUprRepo>().signUp(newUser);
+    result.fold((error) {
+      LoggerHelper.error(error.errMassage);
+      emit(SignUpFailure(errMessage: error.errMassage));
+    }, (success) {
+      emit(SignUpSuccess(
+          statueMessage: success.value1, message: success.value2));
+    });
   }
 }
