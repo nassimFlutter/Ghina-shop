@@ -18,7 +18,7 @@ class UpdateAccountDialog extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       content: Container(
         width: MediaQuery.of(context).size.width,
-        height: 265.h,
+        height: 320.h,
         decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(10))),

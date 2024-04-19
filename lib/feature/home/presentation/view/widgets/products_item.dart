@@ -29,7 +29,12 @@ class ProductsItem extends StatelessWidget {
       children: [
         Stack(
           children: [
-            CachedNetworkImage(width: 160.w, height: 200.h, imageUrl: imageUrl),
+            CachedNetworkImage(
+              width: 160.w,
+              imageUrl: imageUrl,
+              height: 200.h,
+              fit: BoxFit.scaleDown,
+            ),
             Positioned(
               bottom: 15.h,
               right: 6.w,
@@ -39,6 +44,9 @@ class ProductsItem extends StatelessWidget {
               ),
             )
           ],
+        ),
+        const SizedBox(
+          height: 8,
         ),
         Padding(
           padding:

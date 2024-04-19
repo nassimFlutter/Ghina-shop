@@ -1,7 +1,8 @@
 import 'package:best_price/core/theme/app_color.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 class BrandItem extends StatelessWidget {
   const BrandItem({
@@ -23,11 +24,10 @@ class BrandItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Center(
-          child: SvgPicture.asset(
-            imageUrl,
-            clipBehavior: Clip.none,
-          ),
-        ),
+            child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.cover,
+        )),
       ),
     );
   }

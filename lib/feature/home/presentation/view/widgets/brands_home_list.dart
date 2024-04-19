@@ -1,4 +1,3 @@
-import 'package:best_price/feature/home/data/fucker/fucker_list.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/brands_item.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,7 @@ class BrandsHomeList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return BrandsItem(
+              brandId: homeCubit.homeApiResponse.item?.brands?[index].id ?? -1,
               imageUrl:
                   homeCubit.homeApiResponse.item?.brands?[index].image ?? "");
         },

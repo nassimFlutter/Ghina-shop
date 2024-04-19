@@ -1,7 +1,9 @@
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/best_selling/presntations/view/pages/best_selling_view.dart';
 import 'package:best_price/feature/brands/presntations/view/pages/brands_view.dart';
+import 'package:best_price/feature/category/presentaion/view/pages/category_body.dart';
 import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_ad_list.dart';
@@ -84,7 +86,13 @@ class HomePgeBody extends StatelessWidget {
                     title: "",
                   );
                 } else {
-                  return const HomeTitle(title: 'Categories');
+                  return HomeTitle(
+                    title: 'Categories',
+                    onTap: () {
+                      HelperFunctions.navigateToScreen(
+                          context, const Scaffold(body: CategoryViewBody()));
+                    },
+                  );
                 }
               },
             ),
@@ -102,7 +110,7 @@ class HomePgeBody extends StatelessWidget {
             },
           ),
           SizedBox(height: 30.h),
-
+//! Featured products
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
@@ -122,6 +130,8 @@ class HomePgeBody extends StatelessWidget {
               },
             ),
           ),
+          SizedBox(height: 19.h),
+
           //! Featured products List
           BlocBuilder<HomeCubit, HomeCubitState>(
             builder: (context, state) {
@@ -145,11 +155,18 @@ class HomePgeBody extends StatelessWidget {
                 if (state is HomeCubitLoading) {
                   return const ShimmerHomeTitle(title: "");
                 } else {
-                  return const HomeTitle(title: 'Best Selling');
+                  return HomeTitle(
+                    title: 'Best Selling',
+                    onTap: () {
+                      HelperFunctions.navigateToScreen(
+                          context, const BestSellingView());
+                    },
+                  );
                 }
               },
             ),
           ),
+          SizedBox(height: 19.h),
           // ! Best Selling List
           BlocBuilder<HomeCubit, HomeCubitState>(
             builder: (context, state) {
@@ -216,6 +233,8 @@ class HomePgeBody extends StatelessWidget {
               },
             ),
           ),
+          SizedBox(height: 19.h),
+
           BlocBuilder<HomeCubit, HomeCubitState>(
             builder: (context, state) {
               if (state is HomeCubitLoading) {

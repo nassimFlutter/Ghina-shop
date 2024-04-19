@@ -1,10 +1,13 @@
+import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/feature/account/presentation/view/pages/edit_account_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/forget_password_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/my_address_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
+import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -57,6 +60,11 @@ class MyAccountOptions extends StatelessWidget {
               title: "Change Password",
               iconPath: IconsPath.changeIcon),
           OptionItem(
+              onTap: () async {
+                HelperFunctions.navigateToScreenAndRemove(
+                    context, const LoginView());
+                await CacheHelper.setData(key: Keys.kIsLogin, value: false);
+              },
               trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
               title: "Logout",
               iconPath: IconsPath.logoutIcon),

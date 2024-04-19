@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/category_card.dart';
 
 class CategoryViewBody extends StatelessWidget {
-  const CategoryViewBody({Key? key});
+  const CategoryViewBody({super.key,});
 
   @override
   Widget build(BuildContext context) {

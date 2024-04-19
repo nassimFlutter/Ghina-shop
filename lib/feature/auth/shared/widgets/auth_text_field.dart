@@ -1,6 +1,7 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthTextField extends StatelessWidget {
@@ -11,11 +12,15 @@ class AuthTextField extends StatelessWidget {
     this.validator,
     this.minLine = 1,
     this.maxLine = 1,
+    this.inputFormatters,
+    required this.keyboardType,
   });
   final TextEditingController textEditingController;
   final String hintText;
   final String? Function(String?)? validator;
   final int minLine, maxLine;
+  final TextInputType keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,16 +33,17 @@ class AuthTextField extends StatelessWidget {
         child: TextFormField(
           minLines: minLine,
           maxLines: maxLine,
-          keyboardType: TextInputType.emailAddress,
+          inputFormatters: inputFormatters,
+          style: AppStyles.textStyle14.copyWith(color: AppColor.silver),
+          keyboardType: keyboardType,
           controller: textEditingController,
           validator: validator,
           decoration: InputDecoration(
+              hintText: hintText,
               errorStyle:
                   AppStyles.textStyle14.copyWith(color: Colors.red[400]),
-              contentPadding:
-                  EdgeInsetsDirectional.only(start: 16.w, bottom: 8.h),
+              contentPadding: EdgeInsetsDirectional.only(start: 16.w, top: 5.h),
               border: InputBorder.none,
-              hintText: hintText,
               hintStyle:
                   AppStyles.textStyle14.copyWith(color: AppColor.silver)),
         ));

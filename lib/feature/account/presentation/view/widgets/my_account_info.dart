@@ -1,4 +1,6 @@
+import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/theme/app_style.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,21 +23,21 @@ class MyAccountInfo extends StatelessWidget {
               height: 18.h,
             ),
             Text(
-              "Mohammed Al Simari",
+              CacheHelper.getData(key: Keys.kUserName),
               style: AppStyles.textStyle20w700,
             ),
             SizedBox(
               height: 5.h,
             ),
             Text(
-              "Mohammed@gmail.com",
+              CacheHelper.getData(key: Keys.kUserEmail),
               style: AppStyles.textStyle16w400.copyWith(color: Colors.black),
             ),
             SizedBox(
               height: 7.h,
             ),
             Text(
-              "+965 98888988",
+              CacheHelper.getData(key: Keys.kUserMobile),
               style: AppStyles.textStyle16w400.copyWith(color: Colors.black),
             ),
             SizedBox(

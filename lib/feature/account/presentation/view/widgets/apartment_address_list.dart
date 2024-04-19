@@ -23,6 +23,8 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.addressTitleController,
+          keyboardType: TextInputType.text,
+          
         ),
         SizedBox(
           height: 25.h,
@@ -33,6 +35,8 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.mobileNumberController,
+          keyboardType: TextInputType.text,
+          
         ),
         SizedBox(
           height: 25.h,
@@ -43,6 +47,8 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.fullNameController,
+          keyboardType: TextInputType.text,
+          
         ),
         SizedBox(
           height: 25.h,
@@ -53,6 +59,8 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.addressTitleController,
+          keyboardType: TextInputType.text,
+          
         ),
         SizedBox(
           height: 25.h,
@@ -63,6 +71,8 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.blockNoController,
+          keyboardType: TextInputType.text,
+          
         ),
         SizedBox(
           height: 25.h,
@@ -73,6 +83,8 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.streetController,
+          keyboardType: TextInputType.text,
+          
         ),
         SizedBox(
           height: 25.h,
@@ -83,6 +95,8 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.avenueController,
+          keyboardType: TextInputType.text,
+          
         ),
         SizedBox(
           height: 25.h,
@@ -93,6 +107,7 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.floorNoController,
+          keyboardType: TextInputType.text,
         ),
         SizedBox(
           height: 25.h,
@@ -103,6 +118,7 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.flatNoController,
+          keyboardType: TextInputType.text,
         ),
         SizedBox(
           height: 25.h,
@@ -113,6 +129,7 @@ class ApartmentAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.extraDirectionsController,
+          keyboardType: TextInputType.text,
           minLine: 4,
           maxLine: 4,
         ),
