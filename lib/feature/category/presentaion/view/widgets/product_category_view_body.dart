@@ -19,52 +19,55 @@ class ProductCategoryViewBody extends StatelessWidget {
     CategoryProductCubit categoryProductCubit =
         CategoryProductCubit.get(context);
     categoryProductCubit.fetchProductByCategoryId(id);
-    return Padding(
-      padding: EdgeInsetsDirectional.only(
-        start: Dimensions.dStartPadding.w,
-        end: Dimensions.dStartPadding.w,
-      ),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-              child: Padding(
-            padding: EdgeInsetsDirectional.only(top: Dimensions.dTopPadding.h),
-            child: AppBarRow(iconPath: IconsPath.arrowLeftIcon, title: title),
-          )),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 21.h,
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsetsDirectional.only(
+          start: Dimensions.dStartPadding.w,
+          end: Dimensions.dStartPadding.w,
+        ),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+                child: Padding(
+              padding:
+                  EdgeInsetsDirectional.only(top: Dimensions.dTopPadding.h),
+              child: AppBarRow(iconPath: IconsPath.arrowLeftIcon, title: title),
+            )),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 21.h,
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Row(
-              children: [
-                const Expanded(child: SearchField()),
-                SizedBox(
-                  width: 6.w,
-                ),
-                const FlitterBottom()
-              ],
+            SliverToBoxAdapter(
+              child: Row(
+                children: [
+                  const Expanded(child: SearchField()),
+                  SizedBox(
+                    width: 6.w,
+                  ),
+                  const FlitterBottom()
+                ],
+              ),
             ),
-          ),
-          BlocBuilder<CategoryProductCubit, CategoryProductState>(
-            builder: (context, state) {
-              if (state is CategoryProductSuccess) {
-                return ProductGridView(
-                  productList: categoryProductCubit
-                          .productCategoryResponse.items?.first.products ??
-                      [],
-                );
-              } else if (state is CategoryProductFailure) {
-                return SliverToBoxAdapter(child: Text(state.errMessage));
-              } else {
-                return const SliverToBoxAdapter(
-                  child: Text("data"),
-                );
-              }
-            },
-          )
-        ],
+            BlocBuilder<CategoryProductCubit, CategoryProductState>(
+              builder: (context, state) {
+                if (state is CategoryProductSuccess) {
+                  return ProductGridView(
+                    productList: categoryProductCubit
+                            .productCategoryResponse.items?.first.products ??
+                        [],
+                  );
+                } else if (state is CategoryProductFailure) {
+                  return SliverToBoxAdapter(child: Text(state.errMessage));
+                } else {
+                  return const SliverToBoxAdapter(
+                    child: Text("data"),
+                  );
+                }
+              },
+            )
+          ],
+        ),
       ),
     );
   }

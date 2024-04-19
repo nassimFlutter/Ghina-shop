@@ -22,6 +22,8 @@ class CategoryHomeList extends StatelessWidget {
                 homeCubit.homeApiResponse.item?.categories?[index].name ?? "",
             imageUrl:
                 homeCubit.homeApiResponse.item?.categories?[index].image ?? "",
+                categoryId:   homeCubit.homeApiResponse.item?.categories?[index].id??-1,
+               
           );
         },
       ),

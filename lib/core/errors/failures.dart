@@ -74,3 +74,13 @@ class ServerFailure extends Failure {
     }
   }
 }
+class ErrorHandler {
+  static Failure handleError(dynamic e) {
+    if (e is DioException) {
+      LoggerHelper.error(' ########### Dio Exception #################');
+      LoggerHelper.error(e.message ?? "");
+      return ServerFailure.fromDioError(e);
+    }
+    return ServerFailure(e.toString(), 500);
+  }
+}

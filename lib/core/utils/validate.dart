@@ -38,9 +38,9 @@ class Validate {
     return null;
   }
 
-  static String? validateFailed(String? value, String? title) {
+  static String? validateFailed(String? value) {
     if (value == null || value.isEmpty) {
-      return "$title is required";
+      return "this is required";
     }
     return null;
   }

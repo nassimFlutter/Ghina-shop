@@ -49,15 +49,18 @@ class SignUpView extends StatelessWidget {
             SizedBox(
               height: 27.h,
             ),
-            Text(
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
-                textAlign: TextAlign.center,
-                style: AppStyles.textStyle14),
+            Padding(
+              padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+              child: Text(
+                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+                  textAlign: TextAlign.center,
+                  style: AppStyles.textStyle14),
+            ),
             SizedBox(
               height: 80.h,
             ),
             Padding(
-              padding: EdgeInsetsDirectional.only(start: 16.w, end: 16.w),
+              padding: EdgeInsetsDirectional.only(start: 16.w),
               child: const SignUpForm(),
             ),
             Padding(

@@ -1,5 +1,7 @@
 import 'package:best_price/core/api/api_service.dart';
+import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/errors/failures.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/auth/login/data/login_repo/login_repo.dart';
@@ -25,6 +27,7 @@ class LoginRepoImpl implements LoginRepo {
           await cacheUserInfo(response['user']);
         }
       }
+      await CacheHelper.setData(key: Keys.kIsFirstTime, value: true);
       return right(Tuple2<bool, String>(status, message ?? ""));
     } catch (e) {
       if (e is DioException) {

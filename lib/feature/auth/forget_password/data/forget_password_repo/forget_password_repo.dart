@@ -5,3 +5,4 @@ abstract class ForgetPasswordRepo {
   Future<Either<Failure, Tuple2<bool, String>>> generateForgetPasswordToken(
       String email);
 }
+  

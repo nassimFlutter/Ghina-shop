@@ -23,6 +23,7 @@ class HomeAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.addressTitleController,
+          keyboardType: TextInputType.streetAddress,
         ),
         SizedBox(
           height: 25.h,
@@ -33,6 +34,7 @@ class HomeAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.mobileNumberController,
+          keyboardType: TextInputType.phone,
         ),
         SizedBox(
           height: 25.h,
@@ -43,6 +45,7 @@ class HomeAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.fullNameController,
+          keyboardType: TextInputType.text,
         ),
         SizedBox(
           height: 25.h,
@@ -53,6 +56,7 @@ class HomeAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.addressTitleController,
+          keyboardType: TextInputType.streetAddress,
         ),
         SizedBox(
           height: 25.h,
@@ -63,6 +67,7 @@ class HomeAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.blockNoController,
+          keyboardType: TextInputType.streetAddress,
         ),
         SizedBox(
           height: 25.h,
@@ -73,6 +78,7 @@ class HomeAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.streetController,
+          keyboardType: TextInputType.streetAddress,
         ),
         SizedBox(
           height: 25.h,
@@ -83,6 +89,7 @@ class HomeAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.houseNoController,
+          keyboardType: TextInputType.streetAddress,
         ),
         SizedBox(
           height: 25.h,
@@ -93,6 +100,7 @@ class HomeAddressList extends StatelessWidget {
         ),
         AuthTextField(
           textEditingController: addAddressCubit.extraDirectionsController,
+          keyboardType: TextInputType.multiline,
           minLine: 4,
           maxLine: 4,
         ),

@@ -19,7 +19,7 @@ class ForgetPasswordDialog extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       content: Container(
         width: MediaQuery.of(context).size.width,
-        height: 320.h,
+        height: 350.h,
         decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -63,6 +63,9 @@ class ForgetPasswordDialog extends StatelessWidget {
               height: 24.h,
             ),
             const ForgetPasswordDialogBottom(),
+            SizedBox(
+              height: 24.h,
+            ),
           ],
         ),
       ),

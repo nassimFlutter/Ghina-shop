@@ -33,7 +33,7 @@ class LoginView extends StatelessWidget {
                 children: [
                   AppBarBottom(
                     iconPath: IconsPath.cancelIcon,
-                  ),
+                    ),
                 ],
               ),
             ),
@@ -47,10 +47,13 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 27.h,
             ),
-            Text(
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
-                textAlign: TextAlign.center,
-                style: AppStyles.textStyle14),
+            Padding(
+              padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+              child: Text(
+                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+                  textAlign: TextAlign.center,
+                  style: AppStyles.textStyle14),
+            ),
             SizedBox(
               height: 80.h,
             ),
@@ -65,6 +68,9 @@ class LoginView extends StatelessWidget {
             BlocConsumer<LoginCubit, LoginState>(
               listener: (context, state) {
                 if (state is LoginSuccess) {
+                  //! state from response , if true the login is success and if false the login error and message
+                  //! know what the error ...
+                  // Todo :
                   if (state.status) {
                     CacheHelper.setData(key: Keys.kIsFirstTime, value: true);
                     HelperFunctions.navigateToScreen(

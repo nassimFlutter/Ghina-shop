@@ -11,7 +11,7 @@ class AuthFieldText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(title,
-        style:
-            AppStyles.textStyle14.copyWith(color: AppColor.blackColorOpacity));
+        style: AppStyles.textStyle14.copyWith(
+            color: AppColor.blackColorOpacity, fontWeight: FontWeight.w500));
   }
 }

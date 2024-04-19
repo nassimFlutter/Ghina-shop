@@ -1,3 +1,4 @@
+import 'package:best_price/feature/account/presentation/manager/edit_account_cubit/edit_account_cubit.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class EditAccountForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    EditAccountCubit editAccountCubit = EditAccountCubit.get(context);
     return Form(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,8 +21,9 @@ class EditAccountForm extends StatelessWidget {
             height: 10.h,
           ),
           AuthTextField(
-              textEditingController: TextEditingController(),
-              hintText: "Mohammed"),
+              textEditingController: editAccountCubit.nameController,
+              keyboardType: TextInputType.text,
+              hintText: editAccountCubit.nameController.text),
           SizedBox(
             height: 30.h,
           ),
@@ -29,8 +32,9 @@ class EditAccountForm extends StatelessWidget {
             height: 10.h,
           ),
           AuthTextField(
-              textEditingController: TextEditingController(),
-              hintText: "Mohammed@gmail.com"),
+              textEditingController: editAccountCubit.emailController,
+              keyboardType: TextInputType.emailAddress,
+              hintText: editAccountCubit.emailController.text),
           SizedBox(
             height: 30.h,
           ),
@@ -39,8 +43,9 @@ class EditAccountForm extends StatelessWidget {
             height: 10.h,
           ),
           AuthTextField(
-              textEditingController: TextEditingController(),
-              hintText: "98988888"),
+              textEditingController: editAccountCubit.phoneController,
+              keyboardType: TextInputType.phone,
+              hintText: editAccountCubit.phoneController.text),
         ],
       ),
     );

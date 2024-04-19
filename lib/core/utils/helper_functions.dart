@@ -10,6 +10,18 @@ class HelperFunctions {
         ));
   }
 
+  static void navigateToScreenAndRemove(BuildContext context, Widget screen) {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (_) => screen,
+      ),
+      (route) {
+        return false;
+      },
+    );
+  }
+
   static void showCustomDialog(BuildContext context, Widget dialog) {
     showDialog(
       context: context,

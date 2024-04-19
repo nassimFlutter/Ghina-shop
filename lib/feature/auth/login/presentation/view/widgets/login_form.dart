@@ -27,6 +27,8 @@ class LoginForm extends StatelessWidget {
               ),
               AuthTextField(
                   textEditingController: loginCubit.emailController,
+          keyboardType: TextInputType.emailAddress,
+                  
                   validator: Validate.validateEmail,
                   hintText: "Enter your email"),
               SizedBox(
@@ -39,6 +41,8 @@ class LoginForm extends StatelessWidget {
               AuthTextField(
                   textEditingController: loginCubit.passwordController,
                   validator: Validate.validatePassword,
+          keyboardType: TextInputType.visiblePassword,
+                  
                   hintText: "Enter your password"),
             ],
           ),

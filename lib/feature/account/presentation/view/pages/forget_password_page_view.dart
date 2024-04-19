@@ -32,7 +32,8 @@ class ForgetPasswordView extends StatelessWidget {
             height: 8.h,
           ),
           AuthTextField(
-              textEditingController: forgetPasswordCubit.oldPasswordController),
+              textEditingController: forgetPasswordCubit.oldPasswordController,
+              keyboardType: TextInputType.visiblePassword),
           SizedBox(
             height: 25.h,
           ),
@@ -41,7 +42,8 @@ class ForgetPasswordView extends StatelessWidget {
             height: 8.h,
           ),
           AuthTextField(
-              textEditingController: forgetPasswordCubit.newPasswordController),
+              textEditingController: forgetPasswordCubit.newPasswordController,
+              keyboardType: TextInputType.streetAddress),
           SizedBox(
             height: 25.h,
           ),
@@ -51,7 +53,8 @@ class ForgetPasswordView extends StatelessWidget {
           ),
           AuthTextField(
               textEditingController:
-                  forgetPasswordCubit.confirmPasswordController),
+                  forgetPasswordCubit.confirmPasswordController,
+              keyboardType: TextInputType.visiblePassword),
           SizedBox(
             height: 348.h,
           ),

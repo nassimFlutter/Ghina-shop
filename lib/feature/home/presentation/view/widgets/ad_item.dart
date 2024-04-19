@@ -24,32 +24,44 @@ class AdItem extends StatelessWidget {
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.only(top: 22.h, start: 24.w),
-                child: Text(
-                  banner?.title ?? "No title",
-                  style: AppStyles.textStyle20w700.copyWith(
-                      fontWeight: FontWeight.w400, color: Colors.white),
+              SizedBox(
+                width: 176.w,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.only(top: 22.h, start: 24.w),
+                  child: Text(
+                    banner?.title ?? "No title",
+                    style: AppStyles.textStyle20w700.copyWith(
+                        fontWeight: FontWeight.w400, color: Colors.white),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
                 ),
               ),
               SizedBox(height: 8.h),
-              Padding(
-                padding: EdgeInsetsDirectional.only(start: 24.w),
-                child: Text(
-                  banner?.details ?? "No details",
-                  style: AppStyles.textStyle12w700.copyWith(
-                      fontWeight: FontWeight.w400, color: Colors.white),
+              SizedBox(
+                width: 143.w,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.only(start: 24.w),
+                  child: Text(
+                    banner?.details ?? "No details",
+                    style: AppStyles.textStyle12w700.copyWith(
+                        fontWeight: FontWeight.w400, color: Colors.white),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                  ),
                 ),
               ),
             ],
           ),
           const Spacer(),
-          SizedBox(width: 20.w),
+          // SizedBox(width: 20.w),
           Padding(
-              padding: EdgeInsetsDirectional.only(top: 20.h),
+              padding: EdgeInsetsDirectional.only(top: 20.h, end: 8.w),
               child: CachedNetworkImage(
                 width: 126.w,
+                height: 130.17.h,
                 fit: BoxFit.cover,
                 imageUrl: banner?.image ?? "",
               ))

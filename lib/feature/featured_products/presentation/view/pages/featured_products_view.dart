@@ -7,6 +7,7 @@ class FeaturedProductView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     return const SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
