@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/auth/sign_up/data/model/user_model.dart';
@@ -20,6 +22,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   Future<void> signUp() async {
     if (!signUpFormKey.currentState!.validate()) {
+      LoggerHelper.debug("there is an validate error");
       return;
     }
     emit(SignUpLoading());
@@ -29,6 +32,7 @@ class SignUpCubit extends Cubit<SignUpState> {
         mobile: phoneController.text.trim(),
         password: passwordController.text.trim(),
         confirmPassword: confirmPasswordController.text.trim());
+
     LoggerHelper.debug(newUser.toString());
     var result = await getIt.get<SignUprRepo>().signUp(newUser);
     result.fold((error) {

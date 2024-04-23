@@ -11,20 +11,23 @@ class SignUpRepoImpl implements SignUprRepo {
   @override
   Future<Either<Failure, Tuple2<bool, String>>> signUp(UserModel user) async {
     try {
-      var response = await getIt
-          .get<ApiService>()
-          .post(endPoint: "signUp", data: user.toJson());
+      var response = await getIt.get<ApiService>().post(
+            endPoint: "signUp",
+            data: user.toJson(),
+            isLogin: true,
+          );
+
       String? message;
       bool status = response['status'];
-      //! handel message from backEnd 
+      //! handel message from backEnd
       if (response['message'] != null) {
         message = response['message'];
       }
-      //! handel statue .... 
+      //! handel statue ....
       if (status) {
-      if (response[user]!=null) {
-        await cacheUserInfo(response['user']);
-      }
+        if (response[user] != null) {
+          await cacheUserInfo(response['user']);
+        }
       }
       return right(Tuple2<bool, String>(status, message ?? ""));
     } catch (e) {

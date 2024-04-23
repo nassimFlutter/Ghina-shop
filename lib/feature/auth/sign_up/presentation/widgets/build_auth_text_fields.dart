@@ -55,7 +55,7 @@ List<Widget> buildAuthTextFields(SignUpCubit signUpCubit) {
             keyboardType: data['keyboardType'],
           ),
           SizedBox(
-            height: 30.h,
+            height: 20.h,
           ),
         ],
       ),
