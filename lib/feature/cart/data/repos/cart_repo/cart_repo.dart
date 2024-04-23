@@ -4,4 +4,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class CartRepo {
   Future<Either<Failure, CartModel>> getMyCart();
+  Future<Either<Failure, String>> deleteFromCart(int productId);
+  Future<Either<Failure, String>> changeQuantityFromCart(
+      Map<String, dynamic> data);
 }
