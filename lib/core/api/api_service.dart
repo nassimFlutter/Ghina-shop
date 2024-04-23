@@ -38,8 +38,8 @@ class ApiService {
     CancelToken? cancelToken,
   }) async {
     if (!isLogin) {
-      String token = await CacheHelper.getData(key: Keys.kUserToken);
-      LoggerHelper.info(token);
+      String? token = await CacheHelper.getData(key: Keys.kUserToken);
+      LoggerHelper.info(token ?? "cache helper null");
       dio.options.headers["Authorization"] = "Bearer $token";
     }
     var response =

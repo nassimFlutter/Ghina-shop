@@ -23,26 +23,24 @@ class LoginForm extends StatelessWidget {
             children: [
               const AuthFieldText(title: "E-mail"),
               SizedBox(
-                height: 20.h,
+                height: 10.h,
               ),
               AuthTextField(
                   textEditingController: loginCubit.emailController,
-          keyboardType: TextInputType.emailAddress,
-                  
+                  keyboardType: TextInputType.emailAddress,
                   validator: Validate.validateEmail,
                   hintText: "Enter your email"),
               SizedBox(
-                height: 30.h,
+                height: 15.h,
               ),
               const AuthFieldText(title: "Password"),
               SizedBox(
-                height: 20.h,
+                height: 10.h,
               ),
               AuthTextField(
                   textEditingController: loginCubit.passwordController,
                   validator: Validate.validatePassword,
-          keyboardType: TextInputType.visiblePassword,
-                  
+                  keyboardType: TextInputType.visiblePassword,
                   hintText: "Enter your password"),
             ],
           ),

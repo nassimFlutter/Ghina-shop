@@ -23,7 +23,7 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SignUpCubit signUpCubit = SignUpCubit.get(context);
-
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -40,14 +40,14 @@ class SignUpView extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 60.h,
+              height: 27.h,
             ),
             Center(
               child: Text('Sign Up',
                   textAlign: TextAlign.center, style: AppStyles.textStyle24),
             ),
             SizedBox(
-              height: 27.h,
+              height: 10.h,
             ),
             Padding(
               padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
@@ -57,7 +57,7 @@ class SignUpView extends StatelessWidget {
                   style: AppStyles.textStyle14),
             ),
             SizedBox(
-              height: 80.h,
+              height: 40.h,
             ),
             Padding(
               padding: EdgeInsetsDirectional.only(start: 16.w),
@@ -68,7 +68,7 @@ class SignUpView extends StatelessWidget {
               child: const TermOk(),
             ),
             SizedBox(
-              height: 60.h,
+              height: height * 0.07, //60.h,
             ),
             BlocConsumer<SignUpCubit, SignUpState>(
               listener: (context, state) {
@@ -84,7 +84,9 @@ class SignUpView extends StatelessWidget {
                         ));
                     Future.delayed(const Duration(seconds: 3), () {
                       HelperFunctions.navigateToScreen(
-                          context, const HomePageView());
+                        context,
+                        const HomePageView(),
+                      );
                     });
                   } else {
                     HelperFunctions.showCustomDialog(

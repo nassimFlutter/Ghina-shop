@@ -22,10 +22,11 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginCubit loginCubit = LoginCubit.get(context);
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Column(
+          // padding: EdgeInsets.zero,
           children: [
             Padding(
               padding: EdgeInsetsDirectional.only(start: 16.w, top: 4.h),
@@ -33,19 +34,19 @@ class LoginView extends StatelessWidget {
                 children: [
                   AppBarBottom(
                     iconPath: IconsPath.cancelIcon,
-                    ),
+                  ),
                 ],
               ),
             ),
             SizedBox(
-              height: 60.h,
+              height: height * 0.03, //27.h,
             ),
             Center(
               child: Text('Login',
                   textAlign: TextAlign.center, style: AppStyles.textStyle24),
             ),
             SizedBox(
-              height: 27.h,
+              height: 10.h,
             ),
             Padding(
               padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
@@ -55,7 +56,7 @@ class LoginView extends StatelessWidget {
                   style: AppStyles.textStyle14),
             ),
             SizedBox(
-              height: 80.h,
+              height: height * 0.06, //50.h,
             ),
             const LoginForm(),
             SizedBox(
@@ -63,7 +64,7 @@ class LoginView extends StatelessWidget {
             ),
             const ForgetPasswordText(),
             SizedBox(
-              height: 76.h,
+              height: height * 0.09, //76.h,
             ),
             BlocConsumer<LoginCubit, LoginState>(
               listener: (context, state) {
@@ -101,8 +102,8 @@ class LoginView extends StatelessWidget {
                 }
               },
             ),
-            SizedBox(
-              height: 270.h,
+            const Expanded(
+              child: SizedBox(),
             ),
             GestureDetector(
               onTap: () {

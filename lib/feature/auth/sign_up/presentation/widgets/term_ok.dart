@@ -10,15 +10,15 @@ class TermOk extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 328.64.w,
+        width: double.infinity,
         child: Text.rich(TextSpan(children: [
           TextSpan(
               text: 'By creating an account, you agree to our\n',
               style: AppStyles.textStyle14),
           TextSpan(
               text: 'Term & Conditions',
-              style: AppStyles.textStyle14
-                  .copyWith(fontWeight: FontWeight.w700))
+              style:
+                  AppStyles.textStyle14.copyWith(fontWeight: FontWeight.w700))
         ])));
   }
 }
