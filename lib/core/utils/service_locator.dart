@@ -3,6 +3,8 @@ import 'package:best_price/feature/account/data/repo/contact_us_repo/contact_us_
 import 'package:best_price/feature/account/data/repo/contact_us_repo/contact_us_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/edit_account_repo/edit_account_repo.dart';
 import 'package:best_price/feature/account/data/repo/edit_account_repo/edit_account_repo_imple.dart';
+import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo.dart';
+import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo_impl.dart';
 import 'package:best_price/feature/auth/forget_password/data/forget_password_repo/forget_password_repo.dart';
@@ -15,6 +17,8 @@ import 'package:best_price/feature/best_selling/data/best_selling_repo/best_sell
 import 'package:best_price/feature/best_selling/data/best_selling_repo/best_selling_repo_impl.dart';
 import 'package:best_price/feature/brands/data/repo/brand_repo.dart';
 import 'package:best_price/feature/brands/data/repo/brand_repo_impl.dart';
+import 'package:best_price/feature/cart/data/repos/cart_repo/cart_repo.dart';
+import 'package:best_price/feature/cart/data/repos/cart_repo/cart_repo_impl.dart';
 import 'package:best_price/feature/category/data/repo/category_repo.dart';
 import 'package:best_price/feature/category/data/repo/category_repo_impl.dart';
 import 'package:best_price/feature/featured_products/data/featured_producte_repo/featured_producte_repo.dart';
@@ -54,6 +58,7 @@ void setupServiceLocator() {
   getIt.registerSingleton<BestSellingRepo>(BestSellingRepoImpl());
   getIt.registerSingleton<NewArrivalsProductsRepo>(
       NewArrivalsProductsRepoImpl());
-  getIt.registerSingleton<StaticPageRepo>(
-      StaticPageRepoImpl());
+  getIt.registerSingleton<StaticPageRepo>(StaticPageRepoImpl());
+  getIt.registerSingleton<SettingRepo>(SettingRepoImpl());
+  getIt.registerSingleton<CartRepo>(CartRepoImpl());
 }
