@@ -15,8 +15,10 @@ class CartItem extends StatelessWidget {
   const CartItem({
     super.key,
     required this.cartProduct,
+    required this.quantity,
   });
   final Product cartProduct;
+  final num quantity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -109,7 +111,7 @@ class CartItem extends StatelessWidget {
                         .copyWith(color: AppColor.greyOpacity),
                     children: [
                       TextSpan(
-                        text: ": ${cartProduct.quantity}",
+                        text: ": $quantity",
                         style: AppStyles.textStyle16w400
                             .copyWith(color: AppColor.black2),
                       ),
