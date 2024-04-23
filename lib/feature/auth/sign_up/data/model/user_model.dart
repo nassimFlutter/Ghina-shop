@@ -34,6 +34,7 @@ class UserModel {
     return 'Name: $name\nEmail: $email\nPassword: $password\nConfirm Password: $confirmPassword\nMobile: $mobile';
   }
 }
+
 //! cached User
 Future<void> cacheUserInfo(Map<String, dynamic> userInfo) async {
   if (userInfo['name'] != null) {
