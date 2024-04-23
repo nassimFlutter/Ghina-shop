@@ -40,6 +40,12 @@ class AppStyles {
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w400,
   );
+  static TextStyle textStyle14w700 = TextStyle(
+    color: AppColor.greyOpacity,
+    fontSize: 14.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle textStyle18w400 = TextStyle(
     color: AppColor.greyOpacity,
     fontSize: 18.sp,
@@ -60,6 +66,12 @@ class AppStyles {
   );
   static TextStyle textStyle24 = TextStyle(
     color: AppColor.blackColorOpacity,
+    fontSize: 24.sp,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle textStyle24w700 = TextStyle(
+    color: AppColor.black2,
     fontSize: 24.sp,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w700,

@@ -23,6 +23,7 @@ import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.da
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
 import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boarding_cubit.dart';
+import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
 import 'package:best_price/feature/splash/presentation/view/pages/splash.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,7 @@ class MyApp extends StatelessWidget {
         designSize: const Size(393, 852),
         minTextAdapt: true,
         splitScreenMode: true,
-        child: MaterialApp(
+        builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Best Price',
           theme: ThemeData(
@@ -129,6 +130,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: const SplashView(),
+          // home: const ProductDetailsPage(),
         ),
       ),
     );
