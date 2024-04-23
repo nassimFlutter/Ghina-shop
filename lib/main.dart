@@ -14,6 +14,7 @@ import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sig
 import 'package:best_price/feature/best_selling/presntations/manager/best_selling_cubit/best_selling_cubit.dart';
 import 'package:best_price/feature/brands/presntations/manager/brands_cubit/brands_cubit.dart';
 import 'package:best_price/feature/brands/presntations/manager/product_brands_cubit/product_brands_cubit.dart';
+import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_cubit/category_cubit.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_product_cubit/category_product_cubit.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
@@ -111,6 +112,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SettingCubitCubit(),
+        ),
+        BlocProvider(
+          create: (context) => MyCartCubit()..getMyCart(),
         ),
       ],
       child: ScreenUtilInit(
