@@ -1,7 +1,11 @@
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
+import 'package:best_price/core/widgets/circular_progress_indicator.dart';
+import 'package:best_price/feature/cart/data/models/cart_model.dart';
+import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_style.dart';
 import '../widgets/cart_item.dart';
@@ -13,6 +17,7 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyCartCubit myCartCubit = MyCartCubit.get(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: SingleChildScrollView(
@@ -31,14 +36,27 @@ class CartViewBody extends StatelessWidget {
             SizedBox(
               height: 24.h,
             ),
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 2,
-              separatorBuilder: (context, index) => SizedBox(
-                height: 20.h,
-              ),
-              itemBuilder: (context, index) => const CartItem(),
+            BlocBuilder<MyCartCubit, MyCartState>(
+              builder: (context, state) {
+                if (state is MyCartLoading) {
+                  return const Center(
+                    child: CustomCircularProgressIndicator(),
+                  );
+                } else {
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: myCartCubit.myCart.myCart?.length ?? 0,
+                    separatorBuilder: (context, index) => SizedBox(
+                      height: 20.h,
+                    ),
+                    itemBuilder: (context, index) => CartItem(
+                      cartProduct: myCartCubit.myCart.myCart?[index].product ??
+                          Product(),
+                    ),
+                  );
+                }
+              },
             ),
             SizedBox(
               height: 43.h,
@@ -54,11 +72,15 @@ class CartViewBody extends StatelessWidget {
               dashWidth: 3,
             ),
             const SizedBox(height: 5),
-            CustomRowText(
-              text1: 'Total',
-              textStyle1: AppStyles.textStyle18w400,
-              text2: '1019.800 KD',
-              textStyle2: AppStyles.textStyle18w700,
+            BlocBuilder<MyCartCubit, MyCartState>(
+              builder: (context, state) {
+                return CustomRowText(
+                  text1: 'Total',
+                  textStyle1: AppStyles.textStyle18w400,
+                  text2: myCartCubit.myCart.totalFinally.toString(),
+                  textStyle2: AppStyles.textStyle18w700,
+                );
+              },
             ),
             AppBottom(
               title: "Proceed to Checkout",
