@@ -24,6 +24,7 @@ class LoginView extends StatelessWidget {
     LoginCubit loginCubit = LoginCubit.get(context);
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           // padding: EdgeInsets.zero,
