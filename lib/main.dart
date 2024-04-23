@@ -6,6 +6,7 @@ import 'package:best_price/feature/account/presentation/manager/change_address_p
 import 'package:best_price/feature/account/presentation/manager/contact_us_cubit/contact_us_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/edit_account_cubit/edit_account_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/our_policy_tab_change/our_policy_tab_change_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/setting_cubit_cubit/setting_cubit_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/static_page_cubit/static_page_cubit.dart';
 import 'package:best_price/feature/auth/forget_password/presentation/manager/cubit/forget_password_cubit.dart';
 import 'package:best_price/feature/auth/login/presentation/manager/cubit/login_cubit.dart';
@@ -107,6 +108,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => StaticPageCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SettingCubitCubit(),
         ),
       ],
       child: ScreenUtilInit(

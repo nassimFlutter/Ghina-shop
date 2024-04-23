@@ -11,4 +11,5 @@ class UrlKeys {
   static const categoryEndPoint = "getCategories";
   static const productCategoryEndPoint = "getBrandById";
   static const brandsEndPoint = "getBrands";
+  static const getMyCartEndPoint = "getMyCart";
 }
