@@ -61,9 +61,11 @@ class MyAccountOptions extends StatelessWidget {
               iconPath: IconsPath.changeIcon),
           OptionItem(
               onTap: () async {
+                HelperFunctions.clearUserData();
                 HelperFunctions.navigateToScreenAndRemove(
-                    context, const LoginView());
-                await CacheHelper.setData(key: Keys.kIsLogin, value: false);
+                  context,
+                  const LoginView(),
+                );
               },
               trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
               title: "Logout",
