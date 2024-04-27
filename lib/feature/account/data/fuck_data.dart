@@ -1,4 +1,0 @@
-class FuckData {
-  static String termText =
-      "These Terms and Conditions  govern your use of Best Price By accessing or using our website or mobile application, you agree to comply with and be bound by these Terms. If you do not agree to these Terms, please do not use our services.1. User EligibilityYou must be at least 18 years old to use our services. By using our services, you represent and warrant that you are of legal age to form a binding contract with us and meet all eligibility requirements.2. Acceptable UseYou agree to use our services in compliance with all applicable laws and regulations and in a manner that does not infringe on the rights of others. You also agree not to:Use our services for illegal, harmful, or unethical purposes.Attempt to gain unauthorized access to our";
-}

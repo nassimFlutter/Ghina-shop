@@ -9,6 +9,8 @@ import 'package:best_price/feature/account/data/repo/contact_us_repo/contact_us_
 import 'package:best_price/feature/account/data/repo/contact_us_repo/contact_us_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/edit_account_repo/edit_account_repo.dart';
 import 'package:best_price/feature/account/data/repo/edit_account_repo/edit_account_repo_imple.dart';
+import 'package:best_price/feature/account/data/repo/logout_repo/logout_repo.dart';
+import 'package:best_price/feature/account/data/repo/logout_repo/logout_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo.dart';
 import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo.dart';
@@ -73,4 +75,5 @@ void setupServiceLocator() {
   getIt.registerSingleton<AddressRepo>(AddressRepoImpl());
   getIt.registerSingleton<WishRepo>(WishRepoImpl());
   getIt.registerSingleton<ChangePasswordRepo>(ChangePasswordRepoImpl());
+  getIt.registerSingleton<LogoutRepo>(LogoutRepoImpl());
 }

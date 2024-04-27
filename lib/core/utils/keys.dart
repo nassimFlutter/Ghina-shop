@@ -24,6 +24,8 @@ class UrlKeys {
   //! MyWish
   static const getMyWishEndPoint = 'getMyFavorites';
   //!  change password
-  static const changePassEndPoint = 'getMyFavorites';
-  
+  static const changePassEndPoint = 'changePassword';
+  //! UserAccounts
+  static const editAccountEndPoint = 'editUserProfile';
+  static const logoutEndPoint = 'logout';
 }

@@ -1,7 +1,7 @@
 import 'package:best_price/core/api/api_service.dart';
 import 'package:best_price/core/errors/failures.dart';
 import 'package:best_price/core/utils/service_locator.dart';
-import 'package:best_price/feature/account/data/models/static_page_model.dart';
+import 'package:best_price/feature/account/data/models/static_page_model/static_page_model.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo.dart';
 import 'package:dartz/dartz.dart';
 
