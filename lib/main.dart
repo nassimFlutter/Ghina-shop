@@ -39,7 +39,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   setupServiceLocator();
-  CacheHelper.cacheInit();
+  await CacheHelper.cacheInit();
+  // CacheHelper.clearCashe();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }

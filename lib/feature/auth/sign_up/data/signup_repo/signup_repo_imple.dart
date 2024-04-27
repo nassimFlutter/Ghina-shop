@@ -25,7 +25,7 @@ class SignUpRepoImpl implements SignUprRepo {
       }
       //! handel statue ....
       if (status) {
-        if (response[user] != null) {
+        if (response["user"] != null) {
           await cacheUserInfo(response['user']);
         }
       }
