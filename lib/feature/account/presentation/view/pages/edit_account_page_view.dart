@@ -1,7 +1,5 @@
-import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
-import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/manager/edit_account_cubit/edit_account_cubit.dart';
@@ -20,6 +18,7 @@ class EditAccountView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     EditAccountCubit editAccountCubit = EditAccountCubit.get(context);
+    editAccountCubit.initTextController();
     return Scaffold(
       body: SafeArea(
         child: ListView(

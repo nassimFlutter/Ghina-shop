@@ -1,5 +1,6 @@
 import 'package:best_price/core/api/api_service.dart';
 import 'package:best_price/core/errors/failures.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/account/data/repo/edit_account_repo/edit_account_repo.dart';
@@ -10,7 +11,9 @@ class EditAccountRepoImpl implements EditAccountRepo {
   @override
   Future<Either<Failure, String>> editAccount(Map<String, dynamic> data) async {
     try {
-      await getIt.get<ApiService>().post(endPoint: "", data: data);
+      await getIt
+          .get<ApiService>()
+          .post(endPoint: UrlKeys.editAccountEndPoint, data: data);
       return right("edited");
     } catch (e) {
       if (e is DioException) {

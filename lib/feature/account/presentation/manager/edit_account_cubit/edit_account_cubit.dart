@@ -12,12 +12,10 @@ import 'package:meta/meta.dart';
 part 'edit_account_state.dart';
 
 class EditAccountCubit extends Cubit<EditAccountState> {
-  EditAccountCubit() : super(EditAccountInitial()) {
-    nameController.text = CacheHelper.getData(key: Keys.kUserName);
-    emailController.text = CacheHelper.getData(key: Keys.kUserEmail);
-    phoneController.text = CacheHelper.getData(key: Keys.kUserMobile);
-  }
+  EditAccountCubit() : super(EditAccountInitial());
   static EditAccountCubit get(context) => BlocProvider.of(context);
+  GlobalKey<FormState> editAccountFormKey = GlobalKey<FormState>();
+
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -29,7 +27,16 @@ class EditAccountCubit extends Cubit<EditAccountState> {
         key: Keys.kUserMobile, value: phoneController.text);
   }
 
+  Future<void> initTextController() async {
+    nameController.text = await CacheHelper.getData(key: Keys.kUserName);
+    emailController.text = await CacheHelper.getData(key: Keys.kUserEmail);
+    phoneController.text = await CacheHelper.getData(key: Keys.kUserMobile);
+  }
+
   Future<void> updateUserAccount() async {
+    if (!editAccountFormKey.currentState!.validate()) {
+      return;
+    }
     emit(EditAccountLoading());
     UserModel updateUser = UserModel(
         name: nameController.text,

@@ -3,6 +3,7 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/keys.dart';
+import 'package:best_price/core/widgets/question_dialog.dart';
 import 'package:best_price/feature/account/presentation/view/pages/edit_account_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/change_password_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/my_address_page_view.dart';
@@ -69,11 +70,16 @@ class MyAccountOptions extends StatelessWidget {
               iconPath: IconsPath.changeIcon),
           OptionItem(
               onTap: () async {
-                HelperFunctions.clearUserData();
-                HelperFunctions.navigateToScreenAndRemove(
-                  context,
-                  const LoginView(),
-                );
+                // HelperFunctions.navigateToScreenAndRemove(
+                //     context, const LoginView());
+                // await CacheHelper.setData(key: Keys.kIsLogin, value: false);
+                HelperFunctions.showCustomDialog(
+                    context,
+                    QuestionDialog(
+                      title: "Logout",
+                      contain: "Are you sure you want to logout?",
+                      onTapYes: () {},
+                    ));
               },
               trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
               title: "Logout",

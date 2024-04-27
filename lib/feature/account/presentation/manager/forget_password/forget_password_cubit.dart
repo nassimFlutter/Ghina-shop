@@ -1,4 +1,5 @@
 import 'package:best_price/core/api/api_response_model.dart';
+import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/account/data/models/change_password_model/chnage_password_model.dart';
 import 'package:best_price/feature/account/data/repo/chnage_password_repo/change_password_repo.dart';
@@ -31,6 +32,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
         .get<ChangePasswordRepo>()
         .changeMyPassword(chnagePassword.toJson());
     result.fold((error) {
+      LoggerHelper.error(error.errMassage);
       emit(ForgetPasswordFailures(errMessage: error.errMassage));
     }, (changed) {
       changePasswordResponse = changed;
