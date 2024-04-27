@@ -22,6 +22,7 @@ class AddAddressCubit extends Cubit<AddAddressState> {
       TextEditingController();
   final TextEditingController houseNoController = TextEditingController();
   final TextEditingController officeNoController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   void clearControllers() {
     addressTitleController.clear();
     mobileNumberController.clear();
@@ -36,5 +37,11 @@ class AddAddressCubit extends Cubit<AddAddressState> {
     extraDirectionsController.clear();
     houseNoController.clear();
     officeNoController.clear();
+  }
+
+  Future<void> addAddress() async {
+    if (formKey.currentState!.validate()) {
+      return;
+    }
   }
 }

@@ -28,11 +28,9 @@ class AppBarRow extends StatelessWidget {
           SizedBox(
             width: 10.w,
           ),
-          Expanded(
-            child: Text(
-              title,
-              style: AppStyles.textStyle20w700,
-            ),
+          Text(
+            title,
+            style: AppStyles.textStyle20w700,
           ),
           if (secondIconPath != null)
             AppBarBottom(

@@ -9,6 +9,7 @@ final class ChangeQuantityLoading extends ChangeQuantityState {}
 
 final class ChangeQuantitySuccess extends ChangeQuantityState {}
 final class IncrementQuantitySuccess extends ChangeQuantityState {}
+final class DecrementQuantitySuccess extends ChangeQuantityState {}
 
 final class ChangeQuantityFailures extends ChangeQuantityState {
   final String errMessage;

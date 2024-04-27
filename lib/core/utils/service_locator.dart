@@ -1,4 +1,10 @@
 import 'package:best_price/core/api/api_service.dart';
+import 'package:best_price/feature/account/data/repo/address_repo/address_repo.dart';
+import 'package:best_price/feature/account/data/repo/address_repo/address_repo_impl.dart';
+import 'package:best_price/feature/account/data/repo/area_repo/area_repo.dart';
+import 'package:best_price/feature/account/data/repo/area_repo/area_repo_impl.dart';
+import 'package:best_price/feature/account/data/repo/chnage_password_repo/change_password_repo.dart';
+import 'package:best_price/feature/account/data/repo/chnage_password_repo/change_password_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/contact_us_repo/contact_us_repo.dart';
 import 'package:best_price/feature/account/data/repo/contact_us_repo/contact_us_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/edit_account_repo/edit_account_repo.dart';
@@ -27,6 +33,8 @@ import 'package:best_price/feature/home/data/home_repo/home_repo.dart';
 import 'package:best_price/feature/home/data/home_repo/home_repo_impl.dart';
 import 'package:best_price/feature/new_arrivals/data/repo/new_arrivals_repo/new_arrivals_repo.dart';
 import 'package:best_price/feature/new_arrivals/data/repo/new_arrivals_repo/new_arrivals_repo_imple.dart';
+import 'package:best_price/feature/wish/data/repo/wish_repo.dart';
+import 'package:best_price/feature/wish/data/repo/wish_repo_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -61,4 +69,8 @@ void setupServiceLocator() {
   getIt.registerSingleton<StaticPageRepo>(StaticPageRepoImpl());
   getIt.registerSingleton<SettingRepo>(SettingRepoImpl());
   getIt.registerSingleton<CartRepo>(CartRepoImpl());
+  getIt.registerSingleton<AreaRepo>(AreaRepoImpl());
+  getIt.registerSingleton<AddressRepo>(AddressRepoImpl());
+  getIt.registerSingleton<WishRepo>(WishRepoImpl());
+  getIt.registerSingleton<ChangePasswordRepo>(ChangePasswordRepoImpl());
 }

@@ -2,6 +2,7 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
+import 'package:best_price/core/utils/logger.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,12 +19,15 @@ class ProductsItem extends StatelessWidget {
     required this.offerPrice,
     required this.title,
     required this.offerPercentage,
+    required this.isFavorite,
   });
   final String imageUrl, brandName, companyName, title;
   final num price, offerPercentage;
   final num? offerPrice;
+  final String isFavorite;
   @override
   Widget build(BuildContext context) {
+    LoggerHelper.debug(isFavorite);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,8 +42,10 @@ class ProductsItem extends StatelessWidget {
             Positioned(
               bottom: 15.h,
               right: 6.w,
-              child: const SmallContainer(
-                imagePath: IconsPath.heartIcon,
+              child: SmallContainer(
+                imagePath: isFavorite == '1'
+                    ? IconsPath.favoriteRedIcon
+                    : IconsPath.heartIcon,
                 color: AppColor.yalow,
               ),
             )

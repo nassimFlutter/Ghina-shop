@@ -25,6 +25,7 @@ class ProductGridView extends StatelessWidget {
         return ProductsItem(
           imageUrl: productItem.image ?? "",
           brandName: productItem.brandName ?? "No brand Name",
+          isFavorite: productItem.isFavorite ?? "0",
           companyName: productItem.companyName ?? "company Name",
           price: productItem.price ?? 0.000,
           offerPrice: productItem.discountPrice ?? 0.000,

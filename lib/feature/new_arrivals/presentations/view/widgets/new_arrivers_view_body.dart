@@ -33,7 +33,7 @@ class NewArriversViewBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const AppBarRow(
-                      iconPath: IconsPath.arrowLeftIcon, title: "Best Selling"),
+                      iconPath: IconsPath.arrowLeftIcon, title: "New Arrivals"),
                   AppBarBottom(
                     iconPath: IconsPath.flitterIcon,
                     onTap: () {
@@ -77,6 +77,7 @@ class NewArriversViewBody extends StatelessWidget {
                       price: productItem.price ?? 0.000,
                       offerPrice: productItem.discountPrice ?? 0.000,
                       title: productItem.name ?? "No title",
+                      isFavorite: productItem.isFavorite ?? "0",
                       offerPercentage:
                           productItem.calculateOfferPercentage() ?? 0,
                     );

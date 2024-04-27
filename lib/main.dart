@@ -2,9 +2,12 @@ import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/utils/bloc_observer.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/address_cubit/address_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/area_cubit/area_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/change_address_page/change_address_page_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/contact_us_cubit/contact_us_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/edit_account_cubit/edit_account_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/forget_password/forget_password_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/our_policy_tab_change/our_policy_tab_change_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/setting_cubit_cubit/setting_cubit_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/static_page_cubit/static_page_cubit.dart';
@@ -14,6 +17,7 @@ import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sig
 import 'package:best_price/feature/best_selling/presntations/manager/best_selling_cubit/best_selling_cubit.dart';
 import 'package:best_price/feature/brands/presntations/manager/brands_cubit/brands_cubit.dart';
 import 'package:best_price/feature/brands/presntations/manager/product_brands_cubit/product_brands_cubit.dart';
+import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_cubit/category_cubit.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_product_cubit/category_product_cubit.dart';
@@ -26,6 +30,7 @@ import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boa
 import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
 import 'package:best_price/feature/splash/presentation/view/pages/splash.dart';
+import 'package:best_price/feature/wish/presentation/manager/cubit/my_wish_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -113,6 +118,24 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SettingCubitCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChangeQuantityCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SettingCubitCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ForgetPasswordCubit(),
+        ),
+        BlocProvider(
+          create: (context) => MyWishCubit()..getMyWish(),
+        ),
+        BlocProvider(
+          create: (context) => AreaCubit()..getAllArea(),
+        ),
+        BlocProvider(
+          create: (context) => AddressCubit()..getMyAddress(),
         ),
         BlocProvider(
           create: (context) => MyCartCubit()..getMyCart(),

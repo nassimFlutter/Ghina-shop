@@ -22,6 +22,7 @@ class ProductsList extends StatelessWidget {
           Product productItem = productList[index];
           return ProductsItem(
             title: productItem.name ?? "",
+            isFavorite: productItem.isFavorite ?? "0",
             offerPrice: productItem.discountPrice,
             price: productItem.price ?? 0.0,
             offerPercentage: productItem.calculateOfferPercentage() ?? 0.0,

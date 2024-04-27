@@ -71,6 +71,7 @@ class BestSellingBody extends StatelessWidget {
                   return ProductsItem(
                     imageUrl: productItem.image ?? "",
                     brandName: productItem.brandName ?? "Brand name",
+                    isFavorite: productItem.isFavorite ?? '0',
                     companyName: productItem.companyName ?? "",
                     price: productItem.price ?? 0.000,
                     offerPrice: productItem.discountPrice ?? 0.000,

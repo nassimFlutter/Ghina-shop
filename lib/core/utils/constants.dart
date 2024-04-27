@@ -95,4 +95,7 @@ class IconsPath {
   //! ------------ product details icon --------------
   static const buyIcon = "$_basePath/buy_svg_icon.svg";
   static const favoriteIcon = "$_basePath/favorite_svg_icon.svg";
+  static const favoriteRedIcon = "$_basePath/redHeart.svg";
+  //! ----------------- address ---------------------
+  static const dropDownIcon = "$_basePath/down_arrow.svg";
 }

@@ -25,6 +25,8 @@ class AuthTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: 385.w,
+        padding: EdgeInsets.only(bottom: 5.h),
+        clipBehavior: Clip.none,
         margin: EdgeInsetsDirectional.only(end: 16.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.sp),
@@ -38,6 +40,7 @@ class AuthTextField extends StatelessWidget {
           keyboardType: keyboardType,
           controller: textEditingController,
           validator: validator,
+          clipBehavior: Clip.none,
           decoration: InputDecoration(
               hintText: hintText,
               errorStyle:

@@ -22,7 +22,7 @@ class CustomEditQuantity extends StatelessWidget {
             CustomEditButton(
               color: AppColor.greyOpacity,
               onTap: () {
-                changeQuantityCubit.incrementQuantity();
+                changeQuantityCubit.decrementQuantity();
               },
               child: const Icon(
                 Icons.remove,
