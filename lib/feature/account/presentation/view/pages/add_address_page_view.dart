@@ -59,7 +59,11 @@ class AddAddressView extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsetsDirectional.only(end: 16.w),
-            child: const AppBottom(title: "Add Address"),
+            child: AppBottom(
+                onTap: () async {
+                  await addAddressCubit.addAddress();
+                },
+                title: "Add Address"),
           ),
           SizedBox(
             height: 26.h,

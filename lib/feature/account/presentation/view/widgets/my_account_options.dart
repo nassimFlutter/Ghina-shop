@@ -4,10 +4,12 @@ import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/feature/account/presentation/view/pages/edit_account_page_view.dart';
-import 'package:best_price/feature/account/presentation/view/pages/forget_password_page_view.dart';
+import 'package:best_price/feature/account/presentation/view/pages/change_password_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/my_address_page_view.dart';
+import 'package:best_price/feature/account/presentation/view/widgets/my_orders_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
 import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
+import 'package:best_price/feature/wish/presentation/view/view/my_wish_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,6 +38,9 @@ class MyAccountOptions extends StatelessWidget {
               title: "Edit Account",
               iconPath: IconsPath.editAccountIcon),
           OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(context, const MyOrders());
+              },
               trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
               title: "My Orders",
               iconPath: IconsPath.policiesIcon),
@@ -48,6 +53,9 @@ class MyAccountOptions extends StatelessWidget {
               title: "My Addresses",
               iconPath: IconsPath.addressesIcon),
           OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(context, const MyWishView());
+              },
               trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
               title: "Wish list",
               iconPath: IconsPath.wishIcon),

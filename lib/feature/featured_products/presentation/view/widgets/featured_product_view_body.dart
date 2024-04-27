@@ -74,6 +74,7 @@ class FeaturedProductViewBody extends StatelessWidget {
                     imageUrl: productItem.image ?? "",
                     brandName: productItem.brandName ?? "Brand name",
                     companyName: productItem.companyName ?? "",
+                    isFavorite: productItem.isFavorite ?? '0',
                     price: productItem.price ?? 0.000,
                     offerPrice: productItem.discountPrice ?? 0.000,
                     title: productItem.name ?? "No title",

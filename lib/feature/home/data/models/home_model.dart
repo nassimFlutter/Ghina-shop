@@ -196,7 +196,7 @@ class Product {
   int? brandId;
   int? isCart;
   int? isOutStock;
-  String? isFevorite;
+  String? isFavorite;
   String? urlLink;
   String? description;
   String? name;
@@ -221,7 +221,7 @@ class Product {
       this.brandId,
       this.isCart,
       this.isOutStock,
-      this.isFevorite,
+      this.isFavorite,
       this.urlLink,
       this.description,
       this.name,
@@ -252,7 +252,7 @@ class Product {
     brandId = json['brand_id'];
     isCart = json['is_cart'];
     isOutStock = json['is_out_stock'];
-    isFevorite = json['is_fevorite'];
+    isFavorite = json['is_fevorite'];
     urlLink = json['url_link'];
     description = json['description'];
     name = json['name'];
