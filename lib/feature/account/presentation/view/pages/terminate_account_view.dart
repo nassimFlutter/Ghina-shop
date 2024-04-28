@@ -59,7 +59,7 @@ class TerminateAccountView extends StatelessWidget {
               SizedBox(
                 height: 309.h,
               ),
-              AppBottom2(
+              const AppBottom2(
                 width: 361,
                 color: AppColor.redOpacity,
                 title: "Terminate my Accounts",

@@ -10,6 +10,7 @@ class Keys {
 }
 
 class UrlKeys {
+//!
   static const categoryEndPoint = "getCategories";
   static const productCategoryEndPoint = "getBrandById";
   static const brandsEndPoint = "getBrands";
@@ -28,4 +29,6 @@ class UrlKeys {
   //! UserAccounts
   static const editAccountEndPoint = 'editUserProfile';
   static const logoutEndPoint = 'logout';
+  //! order
+  static const getOrdersEndPoint = 'getMyOrders';
 }

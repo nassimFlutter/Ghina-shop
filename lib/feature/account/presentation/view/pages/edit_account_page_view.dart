@@ -41,18 +41,30 @@ class EditAccountView extends StatelessWidget {
             BlocConsumer<EditAccountCubit, EditAccountState>(
               listener: (context, state) {
                 if (state is EditAccountSuccess) {
-                  HelperFunctions.showCustomDialog(
-                      context,
-                      const UpdateAccountDialog(
-                        contain: "Your Account Has been\nsuccessfully updated",
-                        title: "Update Account",
-                      ));
+                  if (editAccountCubit.editAccountResponse.status) {
+                    HelperFunctions.showCustomDialog(
+                        context,
+                        const UpdateAccountDialog(
+                          contain:
+                              "Your Account Has been\nsuccessfully updated",
+                          title: "Update Account",
+                        ));
+                  } else {
+                    HelperFunctions.showCustomDialog(
+                        context,
+                        UpdateAccountDialog(
+                          contain:
+                              "${editAccountCubit.editAccountResponse.message}",
+                          title: "Update Account Error",
+                        ));
+                  }
                 } else if (state is EditAccountFailure) {
+                  editAccountCubit.initTextController();
                   HelperFunctions.showCustomDialog(
                       context,
                       const UpdateAccountDialog(
                         contain: "Your Account Has not \nsuccessfully updated",
-                        title: "Update Account",
+                        title: "Update Account Error",
                       ));
                 }
               },

@@ -22,6 +22,10 @@ class HelperFunctions {
     );
   }
 
+  static void navigateToBack(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
   static void showCustomDialog(BuildContext context, Widget dialog) {
     showDialog(
       context: context,

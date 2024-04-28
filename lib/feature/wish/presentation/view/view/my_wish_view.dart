@@ -1,3 +1,4 @@
+import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
@@ -19,71 +20,77 @@ class MyWishView extends StatelessWidget {
   Widget build(BuildContext context) {
     MyWishCubit myWishCubit = MyWishCubit.get(context);
     return Scaffold(
-      body: CustomScrollView(slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsetsDirectional.only(
-                top: Dimensions.dTopPadding.h,
-                end: Dimensions.dStartPadding,
-                start: Dimensions.dStartPadding),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const AppBarRow(
-                    iconPath: IconsPath.arrowLeftIcon, title: "Wish list"),
-                AppBarBottom(
-                  iconPath: IconsPath.flitterIcon,
-                  onTap: () {
-                    HelperFunctions.navigateToScreen(
-                        context, const FlitterSortView());
-                  },
-                )
-              ],
+      body: RefreshIndicator(
+        color: AppColor.buddhaGold,
+        onRefresh: () async {
+          myWishCubit.getMyWish();
+        },
+        child: CustomScrollView(slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsetsDirectional.only(
+                  top: Dimensions.dTopPadding.h,
+                  end: Dimensions.dStartPadding,
+                  start: Dimensions.dStartPadding),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const AppBarRow(
+                      iconPath: IconsPath.arrowLeftIcon, title: "Wish list"),
+                  AppBarBottom(
+                    iconPath: IconsPath.flitterIcon,
+                    onTap: () {
+                      HelperFunctions.navigateToScreen(
+                          context, const FlitterSortView());
+                    },
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 17.h,
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 17.h,
+            ),
           ),
-        ),
-        BlocConsumer<MyWishCubit, MyWishState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            if (state is MyWishLoading) {
-              return const SliverFillRemaining(
-                child: Center(
-                  child: CustomCircularProgressIndicator(),
-                ),
-              );
-            } else {
-              return SliverGrid.builder(
-                itemCount: myWishCubit.myWishModel.items?.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 50.w,
-                    // mainAxisSpacing: 150.h,
-                    crossAxisCount: 2,
-                    mainAxisExtent: 355.h),
-                itemBuilder: (context, index) {
-                  Product productItem =
-                      myWishCubit.myWishModel.items?[index] ?? Product();
-                  return ProductsItem(
-                    imageUrl: productItem.image ?? "",
-                    brandName: productItem.brandName ?? "Brand name",
-                    isFavorite: productItem.isFavorite ?? '0',
-                    companyName: productItem.companyName ?? "",
-                    price: productItem.price ?? 0.000,
-                    offerPrice: productItem.discountPrice ?? 0.000,
-                    title: productItem.name ?? "No title",
-                    offerPercentage:
-                        productItem.calculateOfferPercentage() ?? 0,
-                  );
-                },
-              );
-            }
-          },
-        )
-      ]),
+          BlocConsumer<MyWishCubit, MyWishState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is MyWishLoading) {
+                return const SliverFillRemaining(
+                  child: Center(
+                    child: CustomCircularProgressIndicator(),
+                  ),
+                );
+              } else {
+                return SliverGrid.builder(
+                  itemCount: myWishCubit.myWishModel.items?.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 50.w,
+                      // mainAxisSpacing: 150.h,
+                      crossAxisCount: 2,
+                      mainAxisExtent: 355.h),
+                  itemBuilder: (context, index) {
+                    Product productItem =
+                        myWishCubit.myWishModel.items?[index] ?? Product();
+                    return ProductsItem(
+                      imageUrl: productItem.image ?? "",
+                      brandName: productItem.brandName ?? "Brand name",
+                      isFavorite: productItem.isFavorite ?? '0',
+                      companyName: productItem.companyName ?? "",
+                      price: productItem.price ?? 0.000,
+                      offerPrice: productItem.discountPrice ?? 0.000,
+                      title: productItem.name ?? "No title",
+                      offerPercentage:
+                          productItem.calculateOfferPercentage() ?? 0,
+                    );
+                  },
+                );
+              }
+            },
+          )
+        ]),
+      ),
     );
   }
 }
