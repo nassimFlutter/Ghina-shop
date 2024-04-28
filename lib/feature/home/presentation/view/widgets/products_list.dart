@@ -2,6 +2,8 @@ import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.da
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/helper_functions.dart';
+import '../../../../product_details/presentation/view/product_details_page.dart';
 import '../../../data/models/home_model.dart';
 import 'products_item.dart';
 
@@ -11,6 +13,7 @@ class ProductsList extends StatelessWidget {
     required this.productList,
   });
   final List<Product> productList;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,6 +24,16 @@ class ProductsList extends StatelessWidget {
         itemBuilder: (context, index) {
           Product productItem = productList[index];
           return ProductsItem(
+            onTap: () {
+              print("[[[[[[[[[[[[[[[[[[[[[");
+              print(productItem.id);
+
+              HelperFunctions.navigateToScreen(
+                  context,
+                  ProductDetailsPage(
+                    id: productItem.id ?? 0,
+                  ));
+            },
             title: productItem.name ?? "",
             isFavorite: productItem.isFavorite ?? "0",
             offerPrice: productItem.discountPrice,
