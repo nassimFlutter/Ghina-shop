@@ -1,3 +1,4 @@
+import 'package:best_price/core/api/api_response_model.dart';
 import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/logger.dart';
@@ -15,7 +16,7 @@ class EditAccountCubit extends Cubit<EditAccountState> {
   EditAccountCubit() : super(EditAccountInitial());
   static EditAccountCubit get(context) => BlocProvider.of(context);
   GlobalKey<FormState> editAccountFormKey = GlobalKey<FormState>();
-
+  Response editAccountResponse = Response(status: false);
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -48,8 +49,13 @@ class EditAccountCubit extends Cubit<EditAccountState> {
     result.fold((error) {
       emit(EditAccountFailure(errMessage: error.errMassage));
     }, (edited) async {
-      await updateCached();
-      emit(EditAccountSuccess());
+      if (edited.status) {
+        await updateCached();
+        emit(EditAccountSuccess());
+      } else {
+        emit(EditAccountFailure(
+            errMessage: edited.message ?? "The Account not edit"));
+      }
     });
   }
 }

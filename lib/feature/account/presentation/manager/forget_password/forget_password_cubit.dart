@@ -12,6 +12,7 @@ part 'forget_password_state.dart';
 
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   ForgetPasswordCubit() : super(ForgetPasswordInitial());
+  //! --------------- Var ---------------------------------------
   static ForgetPasswordCubit get(context) => BlocProvider.of(context);
   final TextEditingController oldPasswordController = TextEditingController();
   final TextEditingController newPasswordController = TextEditingController();
@@ -19,18 +20,29 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
       TextEditingController();
   GlobalKey<FormState> changePassFormKey = GlobalKey<FormState>();
   Response changePasswordResponse = Response(status: false);
+  //! --------------- End Var ---------------------------------------
+  
+//* -------------------- Functions -----------------------------------
+void clearControllers() {
+    oldPasswordController.clear();
+    newPasswordController.clear();
+    confirmPasswordController.clear();
+}
+//* -------------------- End Functions -----------------------------------
+  
+//? ------------------- Apis -------------------------------------
   Future<void> changePassword() async {
     if (!changePassFormKey.currentState!.validate()) {
       return;
     }
-    ChangePasswordModel chnagePassword = ChangePasswordModel(
+    ChangePasswordModel changePassword = ChangePasswordModel(
         oldPassword: oldPasswordController.text,
         password: newPasswordController.text,
         confirmPassword: confirmPasswordController.text);
     emit(ForgetPasswordLoading());
     var result = await getIt
         .get<ChangePasswordRepo>()
-        .changeMyPassword(chnagePassword.toJson());
+        .changeMyPassword(changePassword.toJson());
     result.fold((error) {
       LoggerHelper.error(error.errMassage);
       emit(ForgetPasswordFailures(errMessage: error.errMassage));
@@ -39,4 +51,6 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
       emit(ForgetPasswordSuccess());
     });
   }
+//? ------------------- End Apis -------------------------------------
+  
 }

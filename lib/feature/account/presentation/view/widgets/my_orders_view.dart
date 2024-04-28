@@ -1,7 +1,11 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
+import 'package:best_price/core/widgets/circular_progress_indicator.dart';
+import 'package:best_price/feature/account/data/models/order_model/order_model.dart';
+import 'package:best_price/feature/account/presentation/manager/order_cubit/order_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyOrders extends StatelessWidget {
@@ -9,19 +13,55 @@ class MyOrders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OrderCubit orderCubit = OrderCubit.get(context);
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsetsDirectional.only(start: 16.w),
-        children: [
-          SizedBox(
-            height: 4.h,
+      body: RefreshIndicator(
+        color: AppColor.buddhaGold,
+        onRefresh: () async {
+          await orderCubit.getAllMyOrder();
+        },
+        child: Padding(
+          padding: EdgeInsetsDirectional.only(start: 16.w),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 4.h,
+              ),
+              const AppBarRow(title: "My Orders"),
+              SizedBox(
+                height: 35.h,
+              ),
+              BlocConsumer<OrderCubit, OrderState>(
+                listener: (context, state) {},
+                builder: (context, state) {
+                  if (state is OrderLoading) {
+                    return const Center(
+                      child: CustomCircularProgressIndicator(),
+                    );
+                  } else {
+                    return Expanded(
+                      child: ListView.builder(
+                        itemCount: orderCubit.orderModel.allOrders?.length,
+                        itemBuilder: (context, index) {
+                          AllOrder? order =
+                              orderCubit.orderModel.allOrders?[index];
+                          return OrderItem(
+                            amount:
+                                order?.totalCommissionAmount.toString() ?? "0",
+                            date: order?.createdAt.toString() ?? "",
+                            orderId: order?.id.toString() ?? "",
+                            statue: order?.status.toString() ?? "",
+                          );
+                        },
+                      ),
+                    );
+                  }
+                },
+              ),
+            ],
           ),
-          const AppBarRow(title: "My Orders"),
-          SizedBox(
-            height: 35.h,
-          ),
-          OrderItem(),
-        ],
+        ),
       ),
     );
   }
@@ -30,8 +70,12 @@ class MyOrders extends StatelessWidget {
 class OrderItem extends StatelessWidget {
   const OrderItem({
     super.key,
+    required this.orderId,
+    required this.date,
+    required this.amount,
+    required this.statue,
   });
-
+  final String orderId, date, amount, statue;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,18 +97,18 @@ class OrderItem extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: const Row(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   InfoWidgetLeft(
                     title: 'Order ID',
-                    value: 'BPR976EH55',
+                    value: orderId,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InfoWidgetRight(
                     title: "Date",
-                    value: "12/5/2025",
+                    value: date.substring(0, 10),
                   ),
                 ],
               ),
@@ -78,9 +122,9 @@ class OrderItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const InfoWidgetLeft(
+                  InfoWidgetLeft(
                     title: 'Amount',
-                    value: '1019.800 KD',
+                    value: amount,
                   ),
                   const Spacer(),
                   Container(
@@ -92,13 +136,13 @@ class OrderItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        'Placed',
+                        statue,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontFamily: 'Josefin Sans',
                           fontWeight: FontWeight.w400,
                         ),

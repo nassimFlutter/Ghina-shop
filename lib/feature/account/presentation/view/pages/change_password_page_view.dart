@@ -19,107 +19,120 @@ class ForgetPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     ForgetPasswordCubit forgetPasswordCubit = ForgetPasswordCubit.get(context);
     return Scaffold(
-      body: Form(
-        key: forgetPasswordCubit.changePassFormKey,
-        child: ListView(
-          padding: EdgeInsetsDirectional.only(start: 16.w),
-          children: [
-            SizedBox(
-              height: 14.h,
-            ),
-            const AppBarRow(
-                iconPath: IconsPath.arrowLeftIcon, title: 'Change Password'),
-            SizedBox(
-              height: 41.h,
-            ),
-            const AuthFieldText(title: "Old Password*"),
-            SizedBox(
-              height: 8.h,
-            ),
-            AuthTextField(
-                validator: Validate.validatePassword,
-                textEditingController:
-                    forgetPasswordCubit.oldPasswordController,
-                keyboardType: TextInputType.visiblePassword),
-            SizedBox(
-              height: 25.h,
-            ),
-            const AuthFieldText(title: "new Password*"),
-            SizedBox(
-              height: 8.h,
-            ),
-            AuthTextField(
-                validator: Validate.validatePassword,
-                textEditingController:
-                    forgetPasswordCubit.newPasswordController,
-                keyboardType: TextInputType.streetAddress),
-            SizedBox(
-              height: 25.h,
-            ),
-            const AuthFieldText(title: "Confirm Password*"),
-            SizedBox(
-              height: 8.h,
-            ),
-            AuthTextField(
-                validator: (p0) {
-                  return Validate.validateConfirmPassword(
-                      p0, forgetPasswordCubit.newPasswordController.text);
+      body: WillPopScope(
+        onWillPop: () async {
+          forgetPasswordCubit.clearControllers();
+          return true;
+        },
+        child: Form(
+          key: forgetPasswordCubit.changePassFormKey,
+          child: ListView(
+            padding: EdgeInsetsDirectional.only(start: 16.w),
+            children: [
+              SizedBox(
+                height: 14.h,
+              ),
+              AppBarRow(
+                iconPath: IconsPath.arrowLeftIcon,
+                title: 'Change Password',
+                onFirstIconTap: () {
+                  HelperFunctions.navigateToBack(context);
+                  forgetPasswordCubit.clearControllers();
                 },
-                textEditingController:
-                    forgetPasswordCubit.confirmPasswordController,
-                keyboardType: TextInputType.visiblePassword),
-            SizedBox(
-              height: 348.h,
-            ),
-            BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
-              listener: (context, state) {
-                if (state is ForgetPasswordSuccess) {
-                  if (forgetPasswordCubit.changePasswordResponse.status) {
-                    HelperFunctions.showCustomDialog(
-                        context,
-                        const UpdateAccountDialog(
-                          contain:
-                              "You have successfully\nChanged Your Password",
-                          title: 'Change Password',
-                        ));
-                  } else {
+              ),
+              SizedBox(
+                height: 41.h,
+              ),
+              const AuthFieldText(title: "Old Password*"),
+              SizedBox(
+                height: 8.h,
+              ),
+              AuthTextField(
+                  validator: Validate.validatePassword,
+                  textEditingController:
+                      forgetPasswordCubit.oldPasswordController,
+                  keyboardType: TextInputType.visiblePassword),
+              SizedBox(
+                height: 25.h,
+              ),
+              const AuthFieldText(title: "new Password*"),
+              SizedBox(
+                height: 8.h,
+              ),
+              AuthTextField(
+                  validator: Validate.validatePassword,
+                  textEditingController:
+                      forgetPasswordCubit.newPasswordController,
+                  keyboardType: TextInputType.streetAddress),
+              SizedBox(
+                height: 25.h,
+              ),
+              const AuthFieldText(title: "Confirm Password*"),
+              SizedBox(
+                height: 8.h,
+              ),
+              AuthTextField(
+                  validator: (p0) {
+                    return Validate.validateConfirmPassword(
+                        p0, forgetPasswordCubit.newPasswordController.text);
+                  },
+                  textEditingController:
+                      forgetPasswordCubit.confirmPasswordController,
+                  keyboardType: TextInputType.visiblePassword),
+              SizedBox(
+                height: 348.h,
+              ),
+              BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
+                listener: (context, state) {
+                  if (state is ForgetPasswordSuccess) {
+                    if (forgetPasswordCubit.changePasswordResponse.status) {
+                      HelperFunctions.showCustomDialog(
+                          context,
+                          const UpdateAccountDialog(
+                            contain:
+                                "You have successfully\nChanged Your Password",
+                            title: 'Change Password',
+                          ));
+                    } else {
+                      HelperFunctions.showCustomDialog(
+                          context,
+                          UpdateAccountDialog(
+                            contain: forgetPasswordCubit
+                                    .changePasswordResponse.message ??
+                                "",
+                            title: 'Change Password',
+                          ));
+                    }
+                    //! if state is ForgetPasswordFailures
+                  } else if (state is ForgetPasswordFailures) {
                     HelperFunctions.showCustomDialog(
                         context,
                         UpdateAccountDialog(
-                          contain: forgetPasswordCubit
-                                  .changePasswordResponse.message ??
-                              "",
-                          title: 'Change Password',
+                          contain: state.errMessage,
+                          title: 'Change Password Error',
                         ));
                   }
-                } else if (state is ForgetPasswordFailures) {
-                  HelperFunctions.showCustomDialog(
-                      context,
-                      UpdateAccountDialog(
-                        contain: state.errMessage,
-                        title: 'Change Password Error',
-                      ));
-                }
-              },
-              builder: (context, state) {
-                if (state is ForgetPasswordLoading) {
-                  return const Center(
-                    child: CustomCircularProgressIndicator(),
-                  );
-                } else {
-                  return Padding(
-                    padding:
-                        EdgeInsetsDirectional.only(end: 16.0.w, bottom: 64.h),
-                    child: AppBottom(
-                        onTap: () async {
-                          await forgetPasswordCubit.changePassword();
-                        },
-                        title: 'Change'),
-                  );
-                }
-              },
-            )
-          ],
+                },
+                builder: (context, state) {
+                  if (state is ForgetPasswordLoading) {
+                    return const Center(
+                      child: CustomCircularProgressIndicator(),
+                    );
+                  } else {
+                    return Padding(
+                      padding:
+                          EdgeInsetsDirectional.only(end: 16.0.w, bottom: 64.h),
+                      child: AppBottom(
+                          onTap: () async {
+                            await forgetPasswordCubit.changePassword();
+                          },
+                          title: 'Change'),
+                    );
+                  }
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
