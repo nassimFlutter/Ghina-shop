@@ -13,10 +13,12 @@ class AppBarRow extends StatelessWidget {
     this.thirdIconPath,
     this.onSecondIconTap,
     this.onThirdIconTap,
+    this.onFirstIconTap,
   });
   final String iconPath, title;
   final String? secondIconPath;
   final String? thirdIconPath;
+  final void Function()? onFirstIconTap;
   final void Function()? onSecondIconTap;
   final void Function()? onThirdIconTap;
   @override
@@ -24,7 +26,7 @@ class AppBarRow extends StatelessWidget {
     return SafeArea(
       child: Row(
         children: [
-          AppBarBottom(iconPath: iconPath),
+          AppBarBottom(iconPath: iconPath, onTap: onFirstIconTap),
           SizedBox(
             width: 10.w,
           ),

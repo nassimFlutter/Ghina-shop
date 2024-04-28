@@ -14,7 +14,7 @@ class EditAccountForm extends StatelessWidget {
   Widget build(BuildContext context) {
     EditAccountCubit editAccountCubit = EditAccountCubit.get(context);
     return Form(
-    key: editAccountCubit.editAccountFormKey,
+      key: editAccountCubit.editAccountFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,7 +26,7 @@ class EditAccountForm extends StatelessWidget {
               textEditingController: editAccountCubit.nameController,
               validator: Validate.validateFailed,
               keyboardType: TextInputType.name,
-              hintText: editAccountCubit.nameController.text),
+              hintText: "Enter your name"),
           SizedBox(
             height: 30.h,
           ),
@@ -38,7 +38,7 @@ class EditAccountForm extends StatelessWidget {
               textEditingController: editAccountCubit.emailController,
               keyboardType: TextInputType.emailAddress,
               validator: Validate.validateEmail,
-              hintText: editAccountCubit.emailController.text),
+              hintText: "Enter your E-mail"),
           SizedBox(
             height: 30.h,
           ),
@@ -50,7 +50,7 @@ class EditAccountForm extends StatelessWidget {
               textEditingController: editAccountCubit.phoneController,
               keyboardType: TextInputType.phone,
               validator: Validate.validatePhoneNumber,
-              hintText: editAccountCubit.phoneController.text),
+              hintText: "Enter your phone"),
         ],
       ),
     );
