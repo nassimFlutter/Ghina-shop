@@ -13,19 +13,21 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     ConnectivityCubit().checkInternetStatus();
     return Scaffold(
-      body: BlocConsumer<ConnectivityCubit, ConnectivityState>(
-        listener: (context, state) {
-          if (state is Connected) {
-            HelperFunctions.navigateToScreenAndRemove(
-                context, const OnBoardingView());
-          } else {
-            HelperFunctions.navigateToScreenAndRemove(
-                context, const OnBoardingView());
-          }
-        },
-        builder: (context, state) {
-          return const SplashViewBody();
-        },
+      body: SafeArea(
+        child: BlocConsumer<ConnectivityCubit, ConnectivityState>(
+          listener: (context, state) {
+            if (state is Connected) {
+              HelperFunctions.navigateToScreenAndRemove(
+                  context, const OnBoardingView());
+            } else {
+              HelperFunctions.navigateToScreenAndRemove(
+                  context, const OnBoardingView());
+            }
+          },
+          builder: (context, state) {
+            return const SplashViewBody();
+          },
+        ),
       ),
     );
   }

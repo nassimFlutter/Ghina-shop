@@ -19,6 +19,7 @@ class BrandsHomeList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return BrandsItem(
+              title: homeCubit.homeApiResponse.item?.brands?[index].name ?? "",
               brandId: homeCubit.homeApiResponse.item?.brands?[index].id ?? -1,
               imageUrl:
                   homeCubit.homeApiResponse.item?.brands?[index].image ?? "");

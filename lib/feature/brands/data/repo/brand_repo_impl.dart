@@ -1,6 +1,7 @@
 import 'package:best_price/core/api/api_service.dart';
 import 'package:best_price/core/errors/failures.dart';
 import 'package:best_price/core/utils/keys.dart';
+import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/brands/data/model/brand_model.dart';
 import 'package:best_price/feature/brands/data/model/product_brands_model.dart';
@@ -30,8 +31,8 @@ class BrandRepoImpl implements BrandRepo {
     try {
       dynamic response = await getIt
           .get<ApiService>()
-          .get(endPoint: "${UrlKeys.brandsEndPoint}/$brandId");
-      return right(response);
+          .get(endPoint: "${UrlKeys.productCategoryEndPoint}/$brandId");
+      return right(ProductBrandsResponse.fromJson(response));
     } catch (e) {
       return left(ErrorHandler.handleError(e));
     }

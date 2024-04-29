@@ -31,7 +31,7 @@ class HomePgeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeCubit homeCubit = HomeCubit.get(context);
-    homeCubit.getHomePage();
+    // homeCubit.getHomePage();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
