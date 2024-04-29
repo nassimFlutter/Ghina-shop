@@ -32,54 +32,68 @@ class HomePgeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit homeCubit = HomeCubit.get(context);
     homeCubit.getHomePage();
-    return SafeArea(
-      child: ListView(
-        padding: EdgeInsetsDirectional.symmetric(
-            horizontal: Dimensions.dStartPadding.w),
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 14.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset(IconsPath.homeLogoIcon),
-                GestureDetector(
-                    onTap: () {
-                      HelperFunctions.navigateToScreen(
-                          context, const SearchView());
-                    },
-                    child: SvgPicture.asset(IconsPath.searchIcon)),
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SvgPicture.asset(IconsPath.homeLogoIcon),
+            GestureDetector(
+              onTap: () {
+                HelperFunctions.navigateToScreen(context, const SearchView());
+              },
+              child: SvgPicture.asset(IconsPath.searchIcon),
             ),
-          ),
-          SizedBox(height: 26.h),
-          BlocConsumer<HomeCubit, HomeCubitState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              if (state is HomeCubitLoading) {
-                return const ShimmerLetStartText();
-              } else {
-                return const LetStartText();
-              }
-            },
-          ),
-          SizedBox(height: 12.h),
-          //!................ here Ad list .......
-          BlocConsumer<HomeCubit, HomeCubitState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              if (state is HomeCubitLoading) {
-                return const ShimmerAdList();
-              } else {
-                return const AdList();
-              }
-            },
-          ),
-          SizedBox(height: 26.h),
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: BlocBuilder<HomeCubit, HomeCubitState>(
+          ],
+        ),
+      ),
+      body: SafeArea(
+        child: ListView(
+          padding: EdgeInsetsDirectional.symmetric(
+              horizontal: Dimensions.dStartPadding.w),
+          children: [
+            // Padding(
+            //   padding: EdgeInsets.only(top: 14.h),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       SvgPicture.asset(IconsPath.homeLogoIcon),
+            //       GestureDetector(
+            //           onTap: () {
+            //             HelperFunctions.navigateToScreen(
+            //                 context, const SearchView());
+            //           },
+            //           child: SvgPicture.asset(IconsPath.searchIcon)),
+            //     ],
+            //   ),
+            // ),
+            SizedBox(height: 26.h),
+            BlocConsumer<HomeCubit, HomeCubitState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerLetStartText();
+                } else {
+                  return const LetStartText();
+                }
+              },
+            ),
+            SizedBox(height: 12.h),
+            //!................ here Ad list .......
+            BlocConsumer<HomeCubit, HomeCubitState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerAdList();
+                } else {
+                  return const AdList();
+                }
+              },
+            ),
+            SizedBox(height: 26.h),
+            BlocBuilder<HomeCubit, HomeCubitState>(
               builder: (context, state) {
                 if (state is HomeCubitLoading) {
                   return const ShimmerHomeTitle(
@@ -96,25 +110,21 @@ class HomePgeBody extends StatelessWidget {
                 }
               },
             ),
-          ),
-          SizedBox(height: 26.h),
-          //! in this there ara margin ..
-          //? this category in home page ..
-          BlocBuilder<HomeCubit, HomeCubitState>(
-            builder: (context, state) {
-              if (state is HomeCubitLoading) {
-                return const ShimmerCategoryHomeList();
-              } else {
-                return const CategoryHomeList();
-              }
-            },
-          ),
-          SizedBox(height: 30.h),
-//! Featured products
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: BlocBuilder<HomeCubit, HomeCubitState>(
+            SizedBox(height: 26.h),
+            //! in this there ara margin ..
+            //? this category in home page ..
+            BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerCategoryHomeList();
+                } else {
+                  return const CategoryHomeList();
+                }
+              },
+            ),
+            SizedBox(height: 30.h),
+            //! Featured products
+            BlocBuilder<HomeCubit, HomeCubitState>(
               builder: (context, state) {
                 if (state is HomeCubitLoading) {
                   return const ShimmerHomeTitle(title: "");
@@ -129,33 +139,29 @@ class HomePgeBody extends StatelessWidget {
                 }
               },
             ),
-          ),
-          SizedBox(height: 19.h),
+            SizedBox(height: 19.h),
 
-          //! Featured products List
-          BlocBuilder<HomeCubit, HomeCubitState>(
-            builder: (context, state) {
-              if (state is HomeCubitLoading) {
-                return const ShimmerProductsList();
-              } else {
-                // HelperFunctions.navigateToScreen(
-                //                   context,
-                //                   ProductDetailsPage(
-                //                     id: productItem.id ?? 0,
-                //                   ));
-                return ProductsList(
-                  productList:
-                      homeCubit.homeApiResponse.item?.featuredProducts ?? [],
-                );
-              }
-            },
-          ),
-          SizedBox(height: 51.h),
+            //! Featured products List
+            BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerProductsList();
+                } else {
+                  // HelperFunctions.navigateToScreen(
+                  //                   context,
+                  //                   ProductDetailsPage(
+                  //                     id: productItem.id ?? 0,
+                  //                   ));
+                  return ProductsList(
+                    productList:
+                        homeCubit.homeApiResponse.item?.featuredProducts ?? [],
+                  );
+                }
+              },
+            ),
+            SizedBox(height: 51.h),
 
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: BlocBuilder<HomeCubit, HomeCubitState>(
+            BlocBuilder<HomeCubit, HomeCubitState>(
               builder: (context, state) {
                 if (state is HomeCubitLoading) {
                   return const ShimmerHomeTitle(title: "");
@@ -170,27 +176,24 @@ class HomePgeBody extends StatelessWidget {
                 }
               },
             ),
-          ),
-          SizedBox(height: 19.h),
-          // ! Best Selling List
-          BlocBuilder<HomeCubit, HomeCubitState>(
-            builder: (context, state) {
-              if (state is HomeCubitLoading) {
-                return const ShimmerProductsList();
-              } else {
-                return ProductsList(
-                  productList:
-                      homeCubit.homeApiResponse.item?.bestSellerProducts ?? [],
-                );
-              }
-            },
-          ),
-          SizedBox(height: 26.h),
-          //!Brands
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: BlocBuilder<HomeCubit, HomeCubitState>(
+            SizedBox(height: 19.h),
+            // ! Best Selling List
+            BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerProductsList();
+                } else {
+                  return ProductsList(
+                    productList:
+                        homeCubit.homeApiResponse.item?.bestSellerProducts ??
+                            [],
+                  );
+                }
+              },
+            ),
+            SizedBox(height: 26.h),
+            //!Brands
+            BlocBuilder<HomeCubit, HomeCubitState>(
               builder: (context, state) {
                 if (state is HomeCubitLoading) {
                   return const ShimmerHomeTitle(title: "");
@@ -205,24 +208,20 @@ class HomePgeBody extends StatelessWidget {
                 }
               },
             ),
-          ),
-          SizedBox(height: 12.h),
-          //! brands List
-          BlocBuilder<HomeCubit, HomeCubitState>(
-            builder: (context, state) {
-              if (state is HomeCubitLoading) {
-                return const ShimmerBrandsHomeList();
-              } else {
-                return const BrandsHomeList();
-              }
-            },
-          ),
-          SizedBox(height: 46.h),
-          // ! New Arrivals List
-          Padding(
-            padding:
-                EdgeInsetsDirectional.only(end: Dimensions.dStartPadding.w),
-            child: BlocBuilder<HomeCubit, HomeCubitState>(
+            SizedBox(height: 12.h),
+            //! brands List
+            BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerBrandsHomeList();
+                } else {
+                  return const BrandsHomeList();
+                }
+              },
+            ),
+            SizedBox(height: 46.h),
+            // ! New Arrivals List
+            BlocBuilder<HomeCubit, HomeCubitState>(
               builder: (context, state) {
                 if (state is HomeCubitLoading) {
                   return const ShimmerHomeTitle(title: "");
@@ -237,23 +236,23 @@ class HomePgeBody extends StatelessWidget {
                 }
               },
             ),
-          ),
-          SizedBox(height: 19.h),
+            SizedBox(height: 19.h),
 
-          BlocBuilder<HomeCubit, HomeCubitState>(
-            builder: (context, state) {
-              if (state is HomeCubitLoading) {
-                return const ShimmerProductsList();
-              } else {
-                return ProductsList(
-                  productList:
-                      homeCubit.homeApiResponse.item?.newstProducts ?? [],
-                );
-              }
-            },
-          ),
-          SizedBox(height: 18.h),
-        ],
+            BlocBuilder<HomeCubit, HomeCubitState>(
+              builder: (context, state) {
+                if (state is HomeCubitLoading) {
+                  return const ShimmerProductsList();
+                } else {
+                  return ProductsList(
+                    productList:
+                        homeCubit.homeApiResponse.item?.newstProducts ?? [],
+                  );
+                }
+              },
+            ),
+            SizedBox(height: 18.h),
+          ],
+        ),
       ),
     );
   }

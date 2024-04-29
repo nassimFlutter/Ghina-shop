@@ -29,7 +29,7 @@ class ProductGridView extends StatelessWidget {
           companyName: productItem.companyName ?? "company Name",
           price: productItem.price ?? 0.000,
           offerPrice: productItem.discountPrice ?? 0.000,
-          title: productItem.title ?? "No title",
+          title: productItem.name ?? "No title",
           offerPercentage: productItem.calculateOfferPercentage() ?? 0,
         );
       },

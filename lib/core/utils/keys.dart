@@ -31,4 +31,6 @@ class UrlKeys {
   static const logoutEndPoint = 'logout';
   //! order
   static const getOrdersEndPoint = 'getMyOrders';
+  //! search
+  static const searchEndPoint = 'searchProduct?name='; //? here write name of product
 }
