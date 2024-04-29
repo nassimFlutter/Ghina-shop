@@ -32,8 +32,11 @@ class NewArriversViewBody extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const AppBarRow(
-                      iconPath: IconsPath.arrowLeftIcon, title: "New Arrivals"),
+                  const Expanded(
+                    child: AppBarRow(
+                        iconPath: IconsPath.arrowLeftIcon,
+                        title: "New Arrivals"),
+                  ),
                   AppBarBottom(
                     iconPath: IconsPath.flitterIcon,
                     onTap: () {

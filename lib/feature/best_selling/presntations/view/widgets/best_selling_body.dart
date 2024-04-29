@@ -30,8 +30,10 @@ class BestSellingBody extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const AppBarRow(
-                    iconPath: IconsPath.arrowLeftIcon, title: "Best Selling"),
+                const Expanded(
+                  child: AppBarRow(
+                      iconPath: IconsPath.arrowLeftIcon, title: "Best Selling"),
+                ),
                 AppBarBottom(
                   iconPath: IconsPath.flitterIcon,
                   onTap: () {

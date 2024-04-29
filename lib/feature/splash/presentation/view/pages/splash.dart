@@ -16,9 +16,11 @@ class SplashView extends StatelessWidget {
       body: BlocConsumer<ConnectivityCubit, ConnectivityState>(
         listener: (context, state) {
           if (state is Connected) {
-            HelperFunctions.navigateToScreen(context, const OnBoardingView());
+            HelperFunctions.navigateToScreenAndRemove(
+                context, const OnBoardingView());
           } else {
-            HelperFunctions.navigateToScreen(context, const OnBoardingView());
+            HelperFunctions.navigateToScreenAndRemove(
+                context, const OnBoardingView());
           }
         },
         builder: (context, state) {

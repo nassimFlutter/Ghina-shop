@@ -31,9 +31,15 @@ class FeaturedProductViewBody extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const AppBarRow(
+                Expanded(
+                  child: AppBarRow(
                     iconPath: IconsPath.arrowLeftIcon,
-                    title: "Featured Products"),
+                    title: "Featured Products",
+                    onFirstIconTap: () {
+                      HelperFunctions.navigateToBack(context);
+                    },
+                  ),
+                ),
                 AppBarBottom(
                   iconPath: IconsPath.flitterIcon,
                   onTap: () {
