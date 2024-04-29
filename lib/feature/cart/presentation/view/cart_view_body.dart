@@ -2,6 +2,7 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
+import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,12 @@ class CartViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MyCartCubit myCartCubit = MyCartCubit.get(context);
+    ChangeQuantityCubit changeQuantityCubit = ChangeQuantityCubit.get(context);
+    changeQuantityCubit
+        .initializeTextEditingControllers(myCartCubit.myCart.myCart ?? []);
     return RefreshIndicator(
       onRefresh: () async {
-        await myCartCubit.getMyCart();
+        await myCartCubit.getMyCart(context);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -55,6 +59,7 @@ class CartViewBody extends StatelessWidget {
                         height: 20.h,
                       ),
                       itemBuilder: (context, index) => CartItem(
+                        id: myCartCubit.myCart.myCart?[index].id ?? -1,
                         quantity:
                             myCartCubit.myCart.myCart?[index].quantity ?? 0,
                         cartProduct:

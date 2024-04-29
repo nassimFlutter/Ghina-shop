@@ -29,6 +29,7 @@ import 'package:best_price/feature/brands/data/repo/brand_repo.dart';
 import 'package:best_price/feature/brands/data/repo/brand_repo_impl.dart';
 import 'package:best_price/feature/cart/data/repos/cart_repo/cart_repo.dart';
 import 'package:best_price/feature/cart/data/repos/cart_repo/cart_repo_impl.dart';
+import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
 import 'package:best_price/feature/category/data/repo/category_repo.dart';
 import 'package:best_price/feature/category/data/repo/category_repo_impl.dart';
 import 'package:best_price/feature/featured_products/data/featured_producte_repo/featured_producte_repo.dart';
@@ -83,4 +84,5 @@ void setupServiceLocator() {
   getIt.registerSingleton<LogoutRepo>(LogoutRepoImpl());
   getIt.registerSingleton<ProductDetailsRepo>(ProductDetailsRepoImpl());
   getIt.registerSingleton<OrderRepo>(OrderRepoImpl());
+  getIt.registerSingleton<ChangeQuantityCubit>(ChangeQuantityCubit());
 }

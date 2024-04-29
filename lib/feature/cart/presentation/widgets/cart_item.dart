@@ -2,6 +2,7 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/presentation/widgets/custom_edit_quantity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -16,9 +17,11 @@ class CartItem extends StatelessWidget {
     super.key,
     required this.cartProduct,
     required this.quantity,
+    required this.id,
   });
   final Product cartProduct;
   final num quantity;
+  final int id;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -124,7 +127,9 @@ class CartItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CustomEditQuantity(),
+                    CustomEditQuantity(
+                      id: id.toString(),
+                    ),
                     IconButton(
                       onPressed: () {
                         HelperFunctions.showCustomDialog(

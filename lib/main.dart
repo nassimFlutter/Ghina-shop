@@ -149,7 +149,7 @@ class MyApp extends StatelessWidget {
           create: (context) => AddressCubit()..getMyAddress(),
         ),
         BlocProvider(
-          create: (context) => MyCartCubit()..getMyCart(),
+          create: (context) => MyCartCubit()..getMyCart(context),
         ),
         BlocProvider(
           create: (context) => ProductDetailsCubit(0),

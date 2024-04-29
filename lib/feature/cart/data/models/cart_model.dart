@@ -6,6 +6,7 @@ class CartModel {
     String? message;
     int? totalFinally;
     List<MyCart>? myCart;
+    
 
     CartModel({
         this.status,
