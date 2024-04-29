@@ -138,6 +138,11 @@ class HomePgeBody extends StatelessWidget {
               if (state is HomeCubitLoading) {
                 return const ShimmerProductsList();
               } else {
+                // HelperFunctions.navigateToScreen(
+                //                   context,
+                //                   ProductDetailsPage(
+                //                     id: productItem.id ?? 0,
+                //                   ));
                 return ProductsList(
                   productList:
                       homeCubit.homeApiResponse.item?.featuredProducts ?? [],

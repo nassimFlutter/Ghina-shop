@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:best_price/core/cache/cache_helper.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:flutter/material.dart';
 
 class HelperFunctions {
@@ -63,5 +65,14 @@ class HelperFunctions {
     double visibleHeight = screenHeight - paddingBottom;
 
     return visibleHeight;
+  }
+
+  static Future<void> clearUserData() async {
+    await Future.wait([
+      CacheHelper.deleteData(key: Keys.kUserName),
+      CacheHelper.deleteData(key: Keys.kUserEmail),
+      CacheHelper.deleteData(key: Keys.kUserMobile),
+      CacheHelper.deleteData(key: Keys.kUserToken),
+    ]);
   }
 }

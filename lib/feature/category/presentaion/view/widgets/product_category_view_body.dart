@@ -61,7 +61,7 @@ class ProductCategoryViewBody extends StatelessWidget {
                   return SliverToBoxAdapter(child: Text(state.errMessage));
                 } else {
                   return const SliverToBoxAdapter(
-                    child: Text("data"),
+                    child: Text(""),
                   );
                 }
               },

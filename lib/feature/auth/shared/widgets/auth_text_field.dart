@@ -33,6 +33,9 @@ class AuthTextField extends StatelessWidget {
           border: Border.all(width: 2, color: AppColor.failedBorderColor),
         ),
         child: TextFormField(
+          onTapOutside: (event) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           minLines: minLine,
           maxLines: maxLine,
           inputFormatters: inputFormatters,

@@ -43,6 +43,9 @@ import 'package:best_price/feature/wish/data/repo/wish_repo_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../feature/product_details/data/repo/product_details_repo.dart';
+import '../../feature/product_details/data/repo/product_details_repo_impl.dart';
+
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
@@ -79,6 +82,7 @@ void setupServiceLocator() {
   getIt.registerSingleton<WishRepo>(WishRepoImpl());
   getIt.registerSingleton<ChangePasswordRepo>(ChangePasswordRepoImpl());
   getIt.registerSingleton<LogoutRepo>(LogoutRepoImpl());
+  getIt.registerSingleton<ProductDetailsRepo>(ProductDetailsRepoImpl());
   getIt.registerSingleton<OrderRepo>(OrderRepoImpl());
   getIt.registerSingleton<ChangeQuantityCubit>(ChangeQuantityCubit());
 }
