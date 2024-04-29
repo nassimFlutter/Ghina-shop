@@ -19,14 +19,12 @@ class SmallContainer extends StatelessWidget {
         HelperFunctions.showSnackBar(
             context,
             SnackBar(
-              content: const CustomSnackBar(),
-              backgroundColor: AppColor.corn,
-              behavior: SnackBarBehavior.floating,
-              dismissDirection: DismissDirection.up,
-              margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height - 80,
-              ),
-            ));
+                content: const CustomSnackBar(),
+                backgroundColor: AppColor.corn,
+                behavior: SnackBarBehavior.floating,
+                margin: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).size.height - 60,
+                )));
       },
       child: Container(
         width: 36,
