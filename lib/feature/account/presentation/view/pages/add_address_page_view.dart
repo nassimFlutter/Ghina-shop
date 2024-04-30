@@ -4,6 +4,7 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/change_address_page/change_address_page_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -60,10 +61,11 @@ class AddAddressView extends StatelessWidget {
           Padding(
             padding: EdgeInsetsDirectional.only(end: 16.w),
             child: AppBottom(
-                onTap: () async {
-                  await addAddressCubit.addAddress();
-                },
-                title: "Add Address"),
+              onTap: () async {
+                await addAddressCubit.addAddress();
+              },
+              title: S.of(context).add_address, //"Add Address",
+            ),
           ),
           SizedBox(
             height: 26.h,

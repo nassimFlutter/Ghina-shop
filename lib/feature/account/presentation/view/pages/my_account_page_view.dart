@@ -9,6 +9,7 @@ import 'package:best_price/feature/account/presentation/view/widgets/options_lis
 import 'package:best_price/feature/account/presentation/view/widgets/settings_list_options.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/support_list_options.dart';
 import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,7 @@ import '../widgets/my_account_options.dart';
 
 class MyAccountViewBody extends StatelessWidget {
   const MyAccountViewBody({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     LogoutCubit logoutCubit = LogoutCubit.get(context);
@@ -42,7 +43,10 @@ class MyAccountViewBody extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsetsDirectional.only(top: 14.h),
-                  child: Text('My Account', style: AppStyles.textStyle20w700),
+                  child: Text(
+                    S.of(context).my_account,
+                    style: AppStyles.textStyle20w700,
+                  ),
                 ),
                 SizedBox(
                   height: 25.h,
@@ -54,8 +58,8 @@ class MyAccountViewBody extends StatelessWidget {
                 SizedBox(
                   height: 30.h,
                 ),
-                const OptionsListTitle(
-                  title: "My Account",
+                OptionsListTitle(
+                  title: S.of(context).my_account,
                 ),
                 SizedBox(
                   height: 14.h,
@@ -67,8 +71,8 @@ class MyAccountViewBody extends StatelessWidget {
                 SizedBox(
                   height: 25.h,
                 ),
-                const OptionsListTitle(
-                  title: "Settings",
+                OptionsListTitle(
+                  title: S.of(context).settings, //"Settings",
                 ),
                 SizedBox(
                   height: 14.h,
@@ -80,8 +84,8 @@ class MyAccountViewBody extends StatelessWidget {
                 SizedBox(
                   height: 25.h,
                 ),
-                const OptionsListTitle(
-                  title: "Support",
+                OptionsListTitle(
+                  title: S.of(context).support, //"Support",
                 ),
                 SizedBox(
                   height: 14.h,

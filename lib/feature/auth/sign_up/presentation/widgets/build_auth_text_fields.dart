@@ -5,7 +5,7 @@ import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sig
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-List<Widget> buildAuthTextFields(SignUpCubit signUpCubit) {
+List<Widget> buildAuthTextFields(context, SignUpCubit signUpCubit) {
   List<Widget> fields = [];
 
   List<Map<String, dynamic>> fieldsData = [
@@ -37,7 +37,7 @@ List<Widget> buildAuthTextFields(SignUpCubit signUpCubit) {
       "title": "Confirm Password*",
       "textEditingController": signUpCubit.confirmPasswordController,
       "validator": (value) => Validate.validateConfirmPassword(
-          value, signUpCubit.passwordController.text),
+          context, value, signUpCubit.passwordController.text),
       "keyboardType": TextInputType.visiblePassword,
     },
   ];

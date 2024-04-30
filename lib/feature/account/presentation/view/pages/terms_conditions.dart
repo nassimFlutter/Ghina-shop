@@ -3,13 +3,14 @@ import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/manager/static_page_cubit/static_page_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TermsConditions extends StatelessWidget {
   const TermsConditions({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     StaticPageCubit staticPageCubit = StaticPageCubit.get(context);
@@ -21,8 +22,10 @@ class TermsConditions extends StatelessWidget {
           SizedBox(
             height: 14.h,
           ),
-          const AppBarRow(
-              iconPath: IconsPath.arrowLeftIcon, title: "Terms & Conditions"),
+          AppBarRow(
+            iconPath: IconsPath.arrowLeftIcon,
+            title: S.of(context).terms_conditions, //"Terms & Conditions",
+          ),
           SizedBox(
             height: 24.h,
           ),

@@ -1,6 +1,7 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,7 +34,7 @@ class SearchField extends StatelessWidget {
         controller: controller,
         onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
-            hintText: "Search",
+            hintText: S.of(context).search, // "Search",
             hintStyle:
                 AppStyles.textStyle14.copyWith(color: AppColor.greyOpacity),
             prefixIcon: Padding(

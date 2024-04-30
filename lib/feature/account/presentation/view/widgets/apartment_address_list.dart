@@ -10,6 +10,7 @@ import 'package:best_price/feature/account/presentation/manager/area_cubit/area_
 import 'package:best_price/feature/account/presentation/view/widgets/drop_down.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,55 +20,69 @@ class ApartmentAddressList extends StatelessWidget {
   const ApartmentAddressList({
     super.key,
   });
+// todo : finish translate
 
   @override
   Widget build(BuildContext context) {
     AddAddressCubit addAddressCubit = AddAddressCubit.get(context);
     AreaCubit areaCubit = AreaCubit.get(context);
-
     return Form(
       key: addAddressCubit.formKey,
       child: ListView(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          const AuthFieldText(title: "Address Title*"),
+          AuthFieldText(
+            title: S.of(context).address_title_, //"Address Title*",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.addressTitleController,
             keyboardType: TextInputType.text,
-            validator: Validate.validateFailed,
+            validator: (p0) {
+              return Validate.validateFailed(context, p0);
+            },
           ),
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Mobile No*"),
+          AuthFieldText(
+            title: S.of(context).mobile_no_, //"Mobile No*",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.mobileNumberController,
             keyboardType: TextInputType.text,
-            validator: Validate.validatePhoneNumber,
+            validator: (p0) {
+              return Validate.validatePhoneNumber(context, p0);
+            },
           ),
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Full Name*"),
+          AuthFieldText(
+            title: S.of(context).full_name_, //"Full Name*",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.fullNameController,
             keyboardType: TextInputType.text,
-            validator: Validate.validateFailed,
+            validator: (p0) {
+              return Validate.validateFailed(context, p0);
+            },
           ),
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Select Area**"),
+          AuthFieldText(
+            title: S.of(context).select_area_, //"Select Area*",
+          ),
           SizedBox(
             height: 6.h,
           ),
@@ -80,74 +95,98 @@ class ApartmentAddressList extends StatelessWidget {
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Block No*"),
+          AuthFieldText(
+            title: S.of(context).block_no_, //"Block No*",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.blockNoController,
             keyboardType: TextInputType.text,
-            validator: Validate.validateFailed,
+            validator: (p0) {
+              return Validate.validateFailed(context, p0);
+            },
           ),
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Street*"),
+          AuthFieldText(
+            title: S.of(context).street_, //"Street*",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.streetController,
             keyboardType: TextInputType.text,
-            validator: Validate.validateFailed,
+            validator: (p0) {
+              return Validate.validateFailed(context, p0);
+            },
           ),
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Avenue"),
+          AuthFieldText(
+            title: S.of(context).avenue, //"Avenue",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.avenueController,
             keyboardType: TextInputType.text,
-            validator: Validate.validateFailed,
+            validator: (p0) {
+              return Validate.validateFailed(context, p0);
+            },
           ),
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Floor No*"),
+          AuthFieldText(
+            title: S.of(context).floor_no_, //"Floor No*",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.floorNoController,
             keyboardType: TextInputType.text,
-            validator: Validate.validateFailed,
+            validator: (p0) {
+              return Validate.validateFailed(context, p0);
+            },
           ),
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Flat No*"),
+          AuthFieldText(
+            title: S.of(context).flat_no_, //"Flat No*",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.flatNoController,
             keyboardType: TextInputType.text,
-            validator: Validate.validateFailed,
+            validator: (p0) {
+              return Validate.validateFailed(context, p0);
+            },
           ),
           SizedBox(
             height: 25.h,
           ),
-          const AuthFieldText(title: "Extra Directions*"),
+          AuthFieldText(
+            title: S.of(context).extra_directions_, // "Extra Directions*",
+          ),
           SizedBox(
             height: 6.h,
           ),
           AuthTextField(
             textEditingController: addAddressCubit.extraDirectionsController,
             keyboardType: TextInputType.text,
-            validator: Validate.validateFailed,
+            validator: (p0) {
+              return Validate.validateFailed(context, p0);
+            },
             minLine: 4,
             maxLine: 4,
           ),
@@ -165,7 +204,7 @@ class SelectedAreaDropDown extends StatelessWidget {
     super.key,
     required this.areaCubit,
   });
-
+// todo : finish translate
   final AreaCubit areaCubit;
 
   @override
@@ -198,7 +237,9 @@ class SelectedAreaDropDown extends StatelessWidget {
         },
         validator: (value) {
           if (value == null) {
-            return 'Please select an area'; // Validation error message
+            return S
+                .of(context)
+                .please_select_an_area; //'Please select an area'; // Validation error message
           }
           return null; // No validation error
         },
@@ -207,7 +248,7 @@ class SelectedAreaDropDown extends StatelessWidget {
         ),
         decoration: InputDecoration(
           errorStyle: AppStyles.textStyle14.copyWith(color: Colors.red[400]),
-          hintText: "enter here",
+          hintText: S.of(context).enter_here, //"enter here",
           hintStyle: AppStyles.textStyle14.copyWith(color: AppColor.silver),
           contentPadding: EdgeInsets.symmetric(
             vertical: 0,
