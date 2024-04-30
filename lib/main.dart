@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
           create: (context) => NavBarCubit(),
         ),
         BlocProvider(
-          create: (context) => HomeCubit(),
+          create: (context) => HomeCubit()..getHomePage(),
         ),
         BlocProvider(
           create: (context) => FlitterCubit(),
