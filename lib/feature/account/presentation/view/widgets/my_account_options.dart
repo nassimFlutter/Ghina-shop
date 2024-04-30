@@ -9,6 +9,7 @@ import 'package:best_price/feature/account/presentation/view/pages/my_address_pa
 import 'package:best_price/feature/account/presentation/view/widgets/my_orders_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
 import 'package:best_price/feature/wish/presentation/view/view/my_wish_view.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,79 +18,79 @@ class MyAccountOptions extends StatelessWidget {
   const MyAccountOptions({
     super.key,
   });
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     LogoutCubit logoutCubit = LogoutCubit.get(context);
-     
-        return Container(
-          decoration: AppStyles.accountContainerDecoration(),
-          padding: EdgeInsets.zero,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 15.h,
-              ),
-              OptionItem(
-                  onTap: () {
-                    HelperFunctions.navigateToScreen(
-                        context, const EditAccountView());
-                  },
-                  trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
-                  title: "Edit Account",
-                  iconPath: IconsPath.editAccountIcon),
-              OptionItem(
-                  onTap: () {
-                    HelperFunctions.navigateToScreen(context, const MyOrders());
-                  },
-                  trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
-                  title: "My Orders",
-                  iconPath: IconsPath.policiesIcon),
-              OptionItem(
-                  onTap: () {
-                    HelperFunctions.navigateToScreen(
-                        context, const MyAddressView());
-                  },
-                  trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
-                  title: "My Addresses",
-                  iconPath: IconsPath.addressesIcon),
-              OptionItem(
-                  onTap: () {
-                    HelperFunctions.navigateToScreen(
-                        context, const MyWishView());
-                  },
-                  trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
-                  title: "Wish list",
-                  iconPath: IconsPath.wishIcon),
-              OptionItem(
-                  onTap: () {
-                    HelperFunctions.navigateToScreen(
-                        context, const ForgetPasswordView());
-                  },
-                  trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
-                  title: "Change Password",
-                  iconPath: IconsPath.changeIcon),
-              OptionItem(
-                  onTap: () async {
-                    HelperFunctions.showCustomDialog(
-                        context,
-                        QuestionDialog(
-                          title: "Logout",
-                          contain: "Are you sure you want to logout?",
-                          onTapYes: () async {
-                            await logoutCubit.logout();
-                          },
-                        ));
-                  },
-                  trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
-                  title: "Logout",
-                  iconPath: IconsPath.logoutIcon),
-              SizedBox(
-                height: 25.h,
-              )
-            ],
+
+    return Container(
+      decoration: AppStyles.accountContainerDecoration(),
+      padding: EdgeInsets.zero,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 15.h,
           ),
-        );
-      }
-    
+          OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context, const EditAccountView());
+              },
+              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              title: S.of(context).edit_account, //"Edit Account",
+              iconPath: IconsPath.editAccountIcon),
+          OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(context, const MyOrders());
+              },
+              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              title: S.of(context).my_orders, // "My Orders",
+              iconPath: IconsPath.policiesIcon),
+          OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context, const MyAddressView());
+              },
+              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              title: S.of(context).my_addresses, //"My Addresses",
+              iconPath: IconsPath.addressesIcon),
+          OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(context, const MyWishView());
+              },
+              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              title: S.of(context).wish_list, //"Wish list",
+              iconPath: IconsPath.wishIcon),
+          OptionItem(
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context, const ForgetPasswordView());
+              },
+              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              title: S.of(context).change_password, // "Change Password",
+              iconPath: IconsPath.changeIcon),
+          OptionItem(
+              onTap: () async {
+                HelperFunctions.showCustomDialog(
+                    context,
+                    QuestionDialog(
+                      title: S.of(context).logout, //"Logout",
+                      contain: S
+                          .of(context)
+                          .are_you_sure_you_want_to_logout, //"Are you sure you want to logout?",
+                      onTapYes: () async {
+                        await logoutCubit.logout();
+                      },
+                    ));
+              },
+              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              title: S.of(context).logout, //"Logout",
+              iconPath: IconsPath.logoutIcon),
+          SizedBox(
+            height: 25.h,
+          )
+        ],
+      ),
+    );
   }
+}

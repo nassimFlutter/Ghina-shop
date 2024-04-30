@@ -78,7 +78,9 @@ class ForgetPasswordView extends StatelessWidget {
                     Form(
                       key: forgetPasswordCubit.forgetPasswordFormKey,
                       child: AuthTextField(
-                          validator: Validate.validateEmail,
+                          validator: (p0) {
+                            return Validate.validateEmail(context, p0);
+                          },
                           textEditingController:
                               forgetPasswordCubit.emailController,
                           keyboardType: TextInputType.emailAddress,

@@ -4,13 +4,14 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/data/models/order_model/order_model.dart';
 import 'package:best_price/feature/account/presentation/manager/order_cubit/order_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyOrders extends StatelessWidget {
   const MyOrders({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     OrderCubit orderCubit = OrderCubit.get(context);
@@ -28,7 +29,9 @@ class MyOrders extends StatelessWidget {
               SizedBox(
                 height: 4.h,
               ),
-              const AppBarRow(title: "My Orders"),
+              AppBarRow(
+                title: S.of(context).my_orders, //"My Orders",
+              ),
               SizedBox(
                 height: 35.h,
               ),
@@ -75,6 +78,7 @@ class OrderItem extends StatelessWidget {
     required this.amount,
     required this.statue,
   });
+  // todo : finish translate
   final String orderId, date, amount, statue;
   @override
   Widget build(BuildContext context) {
@@ -102,12 +106,12 @@ class OrderItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   InfoWidgetLeft(
-                    title: 'Order ID',
+                    title: S.of(context).order_ID, //'Order ID',
                     value: orderId,
                   ),
                   const Spacer(),
                   InfoWidgetRight(
-                    title: "Date",
+                    title: S.of(context).date, //"Date",
                     value: date.substring(0, 10),
                   ),
                 ],
@@ -123,7 +127,7 @@ class OrderItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   InfoWidgetLeft(
-                    title: 'Amount',
+                    title: S.of(context).amount, //'Amount',
                     value: amount,
                   ),
                   const Spacer(),

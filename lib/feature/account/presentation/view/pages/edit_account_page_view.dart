@@ -5,6 +5,7 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/manager/edit_account_cubit/edit_account_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/pages/terminate_account_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/susses_account_dialog.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +15,7 @@ import '../widgets/terminate_account_bottom.dart';
 
 class EditAccountView extends StatelessWidget {
   const EditAccountView({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     EditAccountCubit editAccountCubit = EditAccountCubit.get(context);
@@ -27,9 +28,9 @@ class EditAccountView extends StatelessWidget {
             SizedBox(
               height: 14.h,
             ),
-            const AppBarRow(
+            AppBarRow(
               iconPath: IconsPath.arrowLeftIcon,
-              title: "edit Account",
+              title: S.of(context).edit_account, //"edit Account",
             ),
             SizedBox(
               height: 42.h,
@@ -44,10 +45,12 @@ class EditAccountView extends StatelessWidget {
                   if (editAccountCubit.editAccountResponse.status) {
                     HelperFunctions.showCustomDialog(
                         context,
-                        const UpdateAccountDialog(
-                          contain:
-                              "Your Account Has been\nsuccessfully updated",
-                          title: "Update Account",
+                        UpdateAccountDialog(
+                          contain: S
+                              .of(context)
+                              .success_update_message, // "Your Account Has been\nsuccessfully updated",
+                          title:
+                              S.of(context).update_account, //"Update Account",
                         ));
                   } else {
                     HelperFunctions.showCustomDialog(
@@ -55,16 +58,22 @@ class EditAccountView extends StatelessWidget {
                         UpdateAccountDialog(
                           contain:
                               "${editAccountCubit.editAccountResponse.message}",
-                          title: "Update Account Error",
+                          title: S
+                              .of(context)
+                              .update_account_error, //"Update Account Error",
                         ));
                   }
                 } else if (state is EditAccountFailure) {
                   editAccountCubit.initTextController();
                   HelperFunctions.showCustomDialog(
                       context,
-                      const UpdateAccountDialog(
-                        contain: "Your Account Has not \nsuccessfully updated",
-                        title: "Update Account Error",
+                      UpdateAccountDialog(
+                        contain: S
+                            .of(context)
+                            .failure_update_message, //"Your Account Has not \nsuccessfully updated",
+                        title: S
+                            .of(context)
+                            .update_account_error, // "Update Account Error",
                       ));
                 }
               },
@@ -77,7 +86,7 @@ class EditAccountView extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsetsDirectional.only(end: 16.w),
                     child: AppBottom(
-                      title: "update",
+                      title: S.of(context).update, //"update",
                       onTap: () async {
                         await editAccountCubit.updateUserAccount();
                       },
