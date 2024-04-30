@@ -9,8 +9,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 class SearchField extends StatelessWidget {
   const SearchField({
     super.key,
+    this.controller,
+    this.onFieldSubmitted,
   });
-// todo : finish translate
+
+  final TextEditingController? controller;
+  final void Function(String)? onFieldSubmitted;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,6 +28,11 @@ class SearchField extends StatelessWidget {
         ),
       ),
       child: TextFormField(
+        onTapOutside: (event) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        controller: controller,
+        onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
             hintText: S.of(context).search, // "Search",
             hintStyle:

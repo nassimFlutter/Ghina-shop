@@ -75,7 +75,7 @@ class LoginView extends StatelessWidget {
                   // Todo :
                   if (state.status) {
                     CacheHelper.setData(key: Keys.kIsFirstTime, value: true);
-                    HelperFunctions.navigateToScreen(
+                    HelperFunctions.navigateToScreenAndRemove(
                         context, const HomePageView());
                   } else {
                     HelperFunctions.showCustomDialog(

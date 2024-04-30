@@ -9,10 +9,11 @@ class BrandsItem extends StatelessWidget {
   const BrandsItem({
     super.key,
     required this.imageUrl,
-    required this.brandId,
+    required this.brandId, required this.title,
   });
-  final String imageUrl;
+  final String imageUrl,title;
   final int brandId;
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -22,6 +23,8 @@ class BrandsItem extends StatelessWidget {
             context,
             BrandProductsView(
               brandsId: brandId,
+              title: title,
+              
             ));
       },
       child: Container(

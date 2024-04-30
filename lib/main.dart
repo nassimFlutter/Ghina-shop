@@ -30,6 +30,7 @@ import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_b
 import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
 import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boarding_cubit.dart';
 import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
+import 'package:best_price/feature/serach/presntation/manager/cubit/search_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
 import 'package:best_price/feature/splash/presentation/view/pages/splash.dart';
 import 'package:best_price/feature/wish/presentation/manager/cubit/my_wish_cubit.dart';
@@ -88,7 +89,7 @@ class MyApp extends StatelessWidget {
           create: (context) => NavBarCubit(),
         ),
         BlocProvider(
-          create: (context) => HomeCubit(),
+          create: (context) => HomeCubit()..getHomePage(),
         ),
         BlocProvider(
           create: (context) => FlitterCubit(),
@@ -137,6 +138,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LogoutCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SearchCubit(),
         ),
         BlocProvider(
           create: (context) => OrderCubit()..getAllMyOrder(),

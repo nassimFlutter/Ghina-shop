@@ -38,3 +38,28 @@ class NotFoundWidget extends StatelessWidget {
     );
   }
 }
+
+class NoResult extends StatelessWidget {
+  const NoResult({super.key, required this.title});
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SvgPicture.asset(
+          IconsPath.notFound,
+          fit: BoxFit.cover,
+        ),
+        SizedBox(
+          height: 18.h,
+        ),
+        Text(
+          title,
+          style: AppStyles.textStyle16w400.copyWith(color: Colors.black),
+        ),
+      ],
+    );
+  }
+}
