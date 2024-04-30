@@ -3,13 +3,14 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bottom2.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TerminateAccountView extends StatelessWidget {
   const TerminateAccountView({super.key});
-
+// todo : finish translates
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +33,7 @@ class TerminateAccountView extends StatelessWidget {
                     width: 10.w,
                   ),
                   Text(
-                    "Terminate Account",
+                    S.of(context).terminate_account, //"Terminate Account",
                     style: AppStyles.textStyle20w700,
                   )
                 ],
@@ -47,22 +48,30 @@ class TerminateAccountView extends StatelessWidget {
               SizedBox(
                 height: 34.h,
               ),
-              Text('Do you want to terminate your\naccount?',
-                  style: AppStyles.textStyle18w700),
+              Text(
+                S
+                    .of(context)
+                    .terminate_message, //'Do you want to terminate your\naccount?',
+                style: AppStyles.textStyle18w700,
+              ),
               SizedBox(
                 height: 22.h,
               ),
               Text(
-                  'By terminating account, You will not be able to recover your account.',
+                  S
+                      .of(context)
+                      .terminate_note_message, //'By terminating account, You will not be able to recover your account.',
                   style:
                       AppStyles.textStyle16w400.copyWith(color: Colors.black)),
               SizedBox(
                 height: 309.h,
               ),
-              const AppBottom2(
+              AppBottom2(
                 width: 361,
                 color: AppColor.redOpacity,
-                title: "Terminate my Accounts",
+                title: S
+                    .of(context)
+                    .terminate_my_accounts, // "Terminate my Accounts",
               ),
               SizedBox(
                 height: 88.h,
