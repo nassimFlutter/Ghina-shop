@@ -2,39 +2,40 @@ import 'package:best_price/core/utils/validate.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sign_up_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 List<Widget> buildAuthTextFields(context, SignUpCubit signUpCubit) {
   List<Widget> fields = [];
-
+// todo : finish translate
   List<Map<String, dynamic>> fieldsData = [
     {
-      "title": "Full Name*",
+      "title": S.of(context).full_name_, //"Full Name*",
       "textEditingController": signUpCubit.fullNameController,
       "validator": Validate.validateFullName,
       "keyboardType": TextInputType.name,
     },
     {
-      "title": "Email*",
+      "title": S.of(context).email_, //"Email*",
       "textEditingController": signUpCubit.emailController,
       "validator": Validate.validateEmail,
       "keyboardType": TextInputType.emailAddress,
     },
     {
-      "title": "Phone Number*",
+      "title": S.of(context).phone_number_, //"Phone Number*",
       "textEditingController": signUpCubit.phoneController,
       "validator": Validate.validatePhoneNumber,
       "keyboardType": TextInputType.phone,
     },
     {
-      "title": "Password*",
+      "title": S.of(context).password_, //"Password*",
       "textEditingController": signUpCubit.passwordController,
       "validator": Validate.validatePassword,
       "keyboardType": TextInputType.visiblePassword,
     },
     {
-      "title": "Confirm Password*",
+      "title": S.of(context).confirm_password_, //"Confirm Password*",
       "textEditingController": signUpCubit.confirmPasswordController,
       "validator": (value) => Validate.validateConfirmPassword(
           context, value, signUpCubit.passwordController.text),

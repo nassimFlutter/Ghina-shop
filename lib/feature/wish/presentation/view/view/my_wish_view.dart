@@ -35,8 +35,10 @@ class MyWishView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const AppBarRow(
-                      iconPath: IconsPath.arrowLeftIcon, title: "Wish list"),
+                  const Expanded(
+                    child: AppBarRow(
+                        iconPath: IconsPath.arrowLeftIcon, title: "Wish list"),
+                  ),
                   AppBarBottom(
                     iconPath: IconsPath.flitterIcon,
                     onTap: () {

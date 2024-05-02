@@ -16,7 +16,7 @@ class HomeAddressList extends StatelessWidget {
 
     return ListView(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         AuthFieldText(
           title: S.of(context).address_title_, //"Address Title*",

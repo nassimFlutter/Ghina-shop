@@ -5,6 +5,7 @@ import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ import '../widgets/intermittent_divider.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     MyCartCubit myCartCubit = MyCartCubit.get(context);
@@ -36,7 +37,7 @@ class CartViewBody extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsetsDirectional.only(top: 14.h),
                   child: Text(
-                    'My Cart',
+                    S.of(context).my_cart, //'My Cart',
                     style: AppStyles.textStyle20w700,
                   ),
                 ),
@@ -51,58 +52,61 @@ class CartViewBody extends StatelessWidget {
                       child: CustomCircularProgressIndicator(),
                     );
                   } else {
-                    return ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: myCartCubit.myCart.myCart?.length ?? 0,
-                      separatorBuilder: (context, index) => SizedBox(
-                        height: 20.h,
-                      ),
-                      itemBuilder: (context, index) => CartItem(
-                        id: myCartCubit.myCart.myCart?[index].id ?? -1,
-                        quantity:
-                            myCartCubit.myCart.myCart?[index].quantity ?? 0,
-                        cartProduct:
-                            myCartCubit.myCart.myCart?[index].product ??
-                                Product(),
-                      ),
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: myCartCubit.myCart.myCart?.length ?? 0,
+                          separatorBuilder: (context, index) => SizedBox(
+                            height: 20.h,
+                          ),
+                          itemBuilder: (context, index) => CartItem(
+                            id: myCartCubit.myCart.myCart?[index].id ?? -1,
+                            quantity:
+                                myCartCubit.myCart.myCart?[index].quantity ?? 0,
+                            cartProduct:
+                                myCartCubit.myCart.myCart?[index].product ??
+                                    Product(),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 43.h,
+                        ),
+                        CustomRowText(
+                          text1: S.of(context).sub_total,
+                          textStyle1: AppStyles.textStyle18w400,
+                          text2: '1019.800 KD',
+                          textStyle2: AppStyles.textStyle18w700,
+                        ),
+                        const SizedBox(height: 10),
+                        const IntermittentDivider(
+                          dashWidth: 3,
+                        ),
+                        const SizedBox(height: 5),
+                        CustomRowText(
+                          text1: S.of(context).total,
+                          textStyle1: AppStyles.textStyle18w400,
+                          text2: myCartCubit.myCart.totalFinally.toString(),
+                          textStyle2: AppStyles.textStyle18w700,
+                        ),
+                        AppBottom(
+                          title: S.of(context).proceed_to_checkout,
+                          onTap: () {
+                            HelperFunctions.navigateToScreen(
+                              context,
+                              const CheckoutView(),
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                      ],
                     );
                   }
                 },
-              ),
-              SizedBox(
-                height: 43.h,
-              ),
-              CustomRowText(
-                text1: 'Sub Total',
-                textStyle1: AppStyles.textStyle18w400,
-                text2: '1019.800 KD',
-                textStyle2: AppStyles.textStyle18w700,
-              ),
-              const SizedBox(height: 10),
-              const IntermittentDivider(
-                dashWidth: 3,
-              ),
-              const SizedBox(height: 5),
-              BlocBuilder<MyCartCubit, MyCartState>(
-                builder: (context, state) {
-                  return CustomRowText(
-                    text1: 'Total',
-                    textStyle1: AppStyles.textStyle18w400,
-                    text2: myCartCubit.myCart.totalFinally.toString(),
-                    textStyle2: AppStyles.textStyle18w700,
-                  );
-                },
-              ),
-              AppBottom(
-                title: "Proceed to Checkout",
-                onTap: () {
-                  HelperFunctions.navigateToScreen(
-                      context, const CheckoutView());
-                },
-              ),
-              SizedBox(
-                height: 24.h,
               ),
             ],
           ),

@@ -5,13 +5,14 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/custom_divider.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/details_text.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/title_check_page.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CheckOutSuccess extends StatelessWidget {
   const CheckOutSuccess({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +20,10 @@ class CheckOutSuccess extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsetsDirectional.only(top: 14.h, start: 16.w),
-            child: const AppBarRow(
-                iconPath: IconsPath.arrowLeftIcon, title: "Checkout"),
+            child: AppBarRow(
+              iconPath: IconsPath.arrowLeftIcon,
+              title: S.of(context).checkout, // "Checkout",
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +37,9 @@ class CheckOutSuccess extends StatelessWidget {
                 height: 30.h,
               ),
               Text(
-                'Thank You For Your Purchase',
+                S
+                    .of(context)
+                    .thank_you_for_your_purchase, //'Thank You For Your Purchase',
                 style: AppStyles.textStyle20w700,
               ),
               SizedBox(
@@ -44,7 +49,7 @@ class CheckOutSuccess extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Your Purchase was \n',
+                      text: '${S.of(context).your_purchase_was} \n',
                       style: TextStyle(
                         color: AppColor.black,
                         fontSize: 24.sp,
@@ -53,7 +58,7 @@ class CheckOutSuccess extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: 'Successful',
+                      text: S.of(context).successful, //'Successful',
                       style: TextStyle(
                         color: AppColor.green,
                         fontSize: 24.sp,
@@ -72,26 +77,26 @@ class CheckOutSuccess extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsetsDirectional.only(start: 16.w),
-            child: const TitleCheckPage(
-              title: "Order Details",
+            child: TitleCheckPage(
+              title: S.of(context).order_details, //"Order Details",
             ),
           ),
           Container(
             decoration: checkoutContainerdecoration(),
             child: Column(
               children: [
-                const DetailsText(
-                  title: "Order ID",
+                DetailsText(
+                  title: S.of(context).order_ID, //"Order ID",
                   value: 'BP09211',
                 ),
                 const CustomDivider(),
-                const DetailsText(
-                  title: "Order status",
+                DetailsText(
+                  title: S.of(context).order_status, //"Order status",
                   value: 'Placed',
                 ),
                 const CustomDivider(),
-                const DetailsText(
-                  title: "Date & Time",
+                DetailsText(
+                  title: S.of(context).date_and_time, //"Date & Time",
                   value: '23/03/2023 | 10:30am',
                 ),
                 SizedBox(
@@ -105,8 +110,8 @@ class CheckOutSuccess extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsetsDirectional.only(start: 16.w),
-            child: const TitleCheckPage(
-              title: "Delivery Details",
+            child: TitleCheckPage(
+              title: S.of(context).delivery_details, //"Delivery Details",
             ),
           ),
           SizedBox(
@@ -120,7 +125,9 @@ class CheckOutSuccess extends StatelessWidget {
                 SizedBox(
                   height: 16.h,
                 ),
-                const ContainerTextCheckout(text: "Home"),
+                ContainerTextCheckout(
+                  text: S.of(context).home, //"Home",
+                ),
                 SizedBox(
                   height: 24.h,
                 ),
@@ -142,8 +149,8 @@ class CheckOutSuccess extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsetsDirectional.only(start: 16.w),
-            child: const TitleCheckPage(
-              title: "Products ",
+            child: TitleCheckPage(
+              title: S.of(context).products, //"Products ",
             ),
           ),
           Container(
@@ -155,7 +162,7 @@ class CheckOutSuccess extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          "Item Name",
+                          S.of(context).item_name, // "Item Name",
                           style: AppStyles.textStyle16w400
                               .copyWith(color: AppColor.greyText),
                         ),

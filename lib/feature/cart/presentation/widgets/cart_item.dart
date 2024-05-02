@@ -5,6 +5,7 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/presentation/widgets/custom_edit_quantity.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -79,12 +80,12 @@ class CartItem extends StatelessWidget {
                 SizedBox(height: 10.h),
                 RichText(
                   text: TextSpan(
-                    text: "Size",
+                    text: S.of(context).size, //"Size",
                     style: AppStyles.textStyle16w400
                         .copyWith(color: AppColor.greyOpacity),
                     children: [
                       TextSpan(
-                        text: ": Large",
+                        text: ": ${S.of(context).large}",
                         style: AppStyles.textStyle16w400
                             .copyWith(color: AppColor.black2),
                       ),
@@ -135,9 +136,12 @@ class CartItem extends StatelessWidget {
                         HelperFunctions.showCustomDialog(
                             context,
                             QuestionDialog(
-                              title: "Delete Product",
-                              contain:
-                                  "Are Your Sure You \nWant to delete Item from Cart",
+                              title: S
+                                  .of(context)
+                                  .delete_product, //"Delete Product",
+                              contain: S
+                                  .of(context)
+                                  .delete_product_contain_message, // "Are Your Sure You \nWant to delete Item from Cart",
                               onTapYes: () {},
                             ));
                       },

@@ -1,5 +1,6 @@
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/feature/auth/forget_password/presentation/widgets/forget_password_dialog_bottom.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,6 +11,7 @@ class ForgetPasswordDialog extends StatelessWidget {
     required this.contain,
     required this.email,
   });
+  // todo : finish translate
   final String title, contain, email;
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class ForgetPasswordDialog extends StatelessWidget {
               height: 18.h,
             ),
             Text(
-              "Happy Shopping!!",
+              S.of(context).happy_shopping__, // "Happy Shopping!!",
               style: AppStyles.textStyle17w700.copyWith(color: Colors.black),
             ),
             SizedBox(
