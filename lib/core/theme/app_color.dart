@@ -28,4 +28,6 @@ class AppColor {
   static const Color black = Colors.black;
   static const Color containerBackColor = Color(0xFFF9F9F9);
   static const Color secondGreyColor = Color(0xFFF4F4F4);
+  static const Color backColorSize = Color(0xFFFAFAFA);
+
 }
