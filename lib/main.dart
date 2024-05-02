@@ -23,6 +23,7 @@ import 'package:best_price/feature/cart/presentation/manager/change_quantity_cub
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_cubit/category_cubit.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_product_cubit/category_product_cubit.dart';
+import 'package:best_price/feature/cheack_out/presntation/manager/selected_address_cubit/selected_address_cubit.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/manager/flitter_cubit/flitter_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
@@ -139,6 +140,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SearchCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SelectedAddressCubit(),
         ),
         BlocProvider(
           create: (context) => OrderCubit()..getAllMyOrder(),

@@ -1,3 +1,4 @@
+import 'package:best_price/core/theme/app_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,6 +30,7 @@ class OptionItem extends StatelessWidget {
         ),
         title: Text(
           title,
+          style: AppStyles.textStyle16w400.copyWith(color: Colors.black),
         ),
         trailing: trailing);
   }

@@ -51,58 +51,61 @@ class CartViewBody extends StatelessWidget {
                       child: CustomCircularProgressIndicator(),
                     );
                   } else {
-                    return ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: myCartCubit.myCart.myCart?.length ?? 0,
-                      separatorBuilder: (context, index) => SizedBox(
-                        height: 20.h,
-                      ),
-                      itemBuilder: (context, index) => CartItem(
-                        id: myCartCubit.myCart.myCart?[index].id ?? -1,
-                        quantity:
-                            myCartCubit.myCart.myCart?[index].quantity ?? 0,
-                        cartProduct:
-                            myCartCubit.myCart.myCart?[index].product ??
-                                Product(),
-                      ),
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: myCartCubit.myCart.myCart?.length ?? 0,
+                          separatorBuilder: (context, index) => SizedBox(
+                            height: 20.h,
+                          ),
+                          itemBuilder: (context, index) => CartItem(
+                            id: myCartCubit.myCart.myCart?[index].id ?? -1,
+                            quantity:
+                                myCartCubit.myCart.myCart?[index].quantity ?? 0,
+                            cartProduct:
+                                myCartCubit.myCart.myCart?[index].product ??
+                                    Product(),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 43.h,
+                        ),
+                        CustomRowText(
+                          text1: 'Sub Total',
+                          textStyle1: AppStyles.textStyle18w400,
+                          text2: '1019.800 KD',
+                          textStyle2: AppStyles.textStyle18w700,
+                        ),
+                        const SizedBox(height: 10),
+                        const IntermittentDivider(
+                          dashWidth: 3,
+                        ),
+                        const SizedBox(height: 5),
+                        CustomRowText(
+                          text1: 'Total',
+                          textStyle1: AppStyles.textStyle18w400,
+                          text2: myCartCubit.myCart.totalFinally.toString(),
+                          textStyle2: AppStyles.textStyle18w700,
+                        ),
+                        AppBottom(
+                          title: "Proceed to Checkout",
+                          onTap: () {
+                            HelperFunctions.navigateToScreen(
+                              context,
+                              const CheckoutView(),
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                      ],
                     );
                   }
                 },
-              ),
-              SizedBox(
-                height: 43.h,
-              ),
-              CustomRowText(
-                text1: 'Sub Total',
-                textStyle1: AppStyles.textStyle18w400,
-                text2: '1019.800 KD',
-                textStyle2: AppStyles.textStyle18w700,
-              ),
-              const SizedBox(height: 10),
-              const IntermittentDivider(
-                dashWidth: 3,
-              ),
-              const SizedBox(height: 5),
-              BlocBuilder<MyCartCubit, MyCartState>(
-                builder: (context, state) {
-                  return CustomRowText(
-                    text1: 'Total',
-                    textStyle1: AppStyles.textStyle18w400,
-                    text2: myCartCubit.myCart.totalFinally.toString(),
-                    textStyle2: AppStyles.textStyle18w700,
-                  );
-                },
-              ),
-              AppBottom(
-                title: "Proceed to Checkout",
-                onTap: () {
-                  HelperFunctions.navigateToScreen(
-                      context, const CheckoutView());
-                },
-              ),
-              SizedBox(
-                height: 24.h,
               ),
             ],
           ),

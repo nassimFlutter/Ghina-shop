@@ -8,6 +8,7 @@ class ImagePath {
   //! ------- OnBoarding Images -----------
   static const String onBoardingPath = "$_basePath/onBoarding";
   static const adImage = "$onBoardingPath/adImage.png";
+  static const disconnectedImage = "$onBoardingPath/disconnected.png";
   //! ----------- homePage Images ---------------
   static const String homePath = "$_basePath/home";
   static const headphonesImage = "$homePath/headphones.png";
@@ -36,6 +37,10 @@ class IconsPath {
   static const String notFound = "$_basePath/not_found.svg";
   static const String removeIcon = "$_basePath/remove.svg";
   static const String flitterIcon = "$_basePath/flitter.svg";
+  static const String errorIcon = "$_basePath/error.svg";
+  static const String reloadIcon = "$_basePath/reload.svg";
+  static const String disconnectedIcon = "$_basePath/disconnected.svg";
+
   //! -------- accounts --------
   static const String aboutIcon = "$_basePath/about.svg";
   static const String contactIcon = "$_basePath/Contact.svg";
