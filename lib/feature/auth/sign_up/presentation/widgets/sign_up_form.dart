@@ -15,7 +15,7 @@ class SignUpForm extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: buildAuthTextFields(signUpCubit),
+        children: buildAuthTextFields(context, signUpCubit),
       ),
     );
   }

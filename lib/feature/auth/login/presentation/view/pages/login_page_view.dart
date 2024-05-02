@@ -8,6 +8,7 @@ import 'package:best_price/feature/account/presentation/view/widgets/susses_acco
 import 'package:best_price/feature/auth/login/presentation/manager/cubit/login_cubit.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/view/sign_up_view.dart';
 import 'package:best_price/feature/home/presentation/view/pages/home_page_view.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,7 @@ import '../widgets/login_form.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     LoginCubit loginCubit = LoginCubit.get(context);
@@ -43,8 +44,9 @@ class LoginView extends StatelessWidget {
               height: height * 0.03, //27.h,
             ),
             Center(
-              child: Text('Login',
-                  textAlign: TextAlign.center, style: AppStyles.textStyle24),
+              child: Text(S.of(context).login, //'Login',
+                  textAlign: TextAlign.center,
+                  style: AppStyles.textStyle24),
             ),
             SizedBox(
               height: 10.h,
@@ -52,7 +54,9 @@ class LoginView extends StatelessWidget {
             Padding(
               padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
               child: Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+                  S
+                      .of(context)
+                      .lorem_small, //'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
                   textAlign: TextAlign.center,
                   style: AppStyles.textStyle14),
             ),
@@ -81,7 +85,7 @@ class LoginView extends StatelessWidget {
                     HelperFunctions.showCustomDialog(
                         context,
                         UpdateAccountDialog(
-                          title: "Sign up error",
+                          title: S.of(context).sign_up_error, //"Sign up error",
                           contain: state.message,
                         ));
                   }
@@ -94,7 +98,7 @@ class LoginView extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: AppBottom(
-                      title: "LogIn",
+                      title: S.of(context).login, // "LogIn",
                       onTap: () async {
                         loginCubit.logIn();
                       },
@@ -110,7 +114,10 @@ class LoginView extends StatelessWidget {
               onTap: () {
                 HelperFunctions.navigateToScreen(context, const SignUpView());
               },
-              child: Text('Don’t have an account? Register',
+              child: Text(
+                  S
+                      .of(context)
+                      .dont_have_an_account_Register, //'Don’t have an account? Register',
                   textAlign: TextAlign.center,
                   style: AppStyles.textStyle16w400),
             ),

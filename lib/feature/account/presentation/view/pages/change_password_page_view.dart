@@ -8,13 +8,14 @@ import 'package:best_price/feature/account/presentation/manager/forget_password/
 import 'package:best_price/feature/account/presentation/view/widgets/susses_account_dialog.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     ForgetPasswordCubit forgetPasswordCubit = ForgetPasswordCubit.get(context);
@@ -34,7 +35,7 @@ class ForgetPasswordView extends StatelessWidget {
               ),
               AppBarRow(
                 iconPath: IconsPath.arrowLeftIcon,
-                title: 'Change Password',
+                title: S.of(context).change_password, //"Change Password",
                 onFirstIconTap: () {
                   HelperFunctions.navigateToBack(context);
                   forgetPasswordCubit.clearControllers();
@@ -43,38 +44,48 @@ class ForgetPasswordView extends StatelessWidget {
               SizedBox(
                 height: 41.h,
               ),
-              const AuthFieldText(title: "Old Password*"),
+              AuthFieldText(
+                title: S.of(context).old_password_, //"Old Password*",
+              ),
               SizedBox(
                 height: 8.h,
               ),
               AuthTextField(
-                  validator: Validate.validatePassword,
+                  validator: (p0) {
+                    return Validate.validatePassword(context, p0);
+                  },
                   textEditingController:
                       forgetPasswordCubit.oldPasswordController,
                   keyboardType: TextInputType.visiblePassword),
               SizedBox(
                 height: 25.h,
               ),
-              const AuthFieldText(title: "new Password*"),
+              AuthFieldText(
+                title: S.of(context).new_password_, //"new Password*",
+              ),
               SizedBox(
                 height: 8.h,
               ),
               AuthTextField(
-                  validator: Validate.validatePassword,
+                  validator: (p0) {
+                    return Validate.validatePassword(context, p0);
+                  },
                   textEditingController:
                       forgetPasswordCubit.newPasswordController,
                   keyboardType: TextInputType.streetAddress),
               SizedBox(
                 height: 25.h,
               ),
-              const AuthFieldText(title: "Confirm Password*"),
+              AuthFieldText(
+                title: S.of(context).confirm_password_, //"Confirm Password*",
+              ),
               SizedBox(
                 height: 8.h,
               ),
               AuthTextField(
                   validator: (p0) {
-                    return Validate.validateConfirmPassword(
-                        p0, forgetPasswordCubit.newPasswordController.text);
+                    return Validate.validateConfirmPassword(context, p0,
+                        forgetPasswordCubit.newPasswordController.text);
                   },
                   textEditingController:
                       forgetPasswordCubit.confirmPasswordController,
@@ -88,10 +99,13 @@ class ForgetPasswordView extends StatelessWidget {
                     if (forgetPasswordCubit.changePasswordResponse.status) {
                       HelperFunctions.showCustomDialog(
                           context,
-                          const UpdateAccountDialog(
-                            contain:
-                                "You have successfully\nChanged Your Password",
-                            title: 'Change Password',
+                          UpdateAccountDialog(
+                            contain: S
+                                .of(context)
+                                .changed_password_dialog, //"You have successfully\nChanged Your Password",
+                            title: S
+                                .of(context)
+                                .change_password, //"Change Password",
                           ));
                     } else {
                       HelperFunctions.showCustomDialog(
@@ -100,7 +114,7 @@ class ForgetPasswordView extends StatelessWidget {
                             contain: forgetPasswordCubit
                                     .changePasswordResponse.message ??
                                 "",
-                            title: 'Change Password',
+                            title: S.of(context).change_password,
                           ));
                     }
                     //! if state is ForgetPasswordFailures
@@ -109,7 +123,9 @@ class ForgetPasswordView extends StatelessWidget {
                         context,
                         UpdateAccountDialog(
                           contain: state.errMessage,
-                          title: 'Change Password Error',
+                          title: S
+                              .of(context)
+                              .change_password_error, //'Change Password Error',
                         ));
                   }
                 },
@@ -123,10 +139,11 @@ class ForgetPasswordView extends StatelessWidget {
                       padding:
                           EdgeInsetsDirectional.only(end: 16.0.w, bottom: 64.h),
                       child: AppBottom(
-                          onTap: () async {
-                            await forgetPasswordCubit.changePassword();
-                          },
-                          title: 'Change'),
+                        onTap: () async {
+                          await forgetPasswordCubit.changePassword();
+                        },
+                        title: S.of(context).change, //'Change',
+                      ),
                     );
                   }
                 },

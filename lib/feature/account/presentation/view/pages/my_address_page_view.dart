@@ -9,6 +9,7 @@ import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/feature/account/data/models/address_model/address_model.dart';
 import 'package:best_price/feature/account/presentation/manager/address_cubit/address_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class MyAddressView extends StatelessWidget {
   const MyAddressView({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     AddressCubit addressCubit = AddressCubit.get(context);
@@ -30,8 +31,10 @@ class MyAddressView extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsetsDirectional.only(start: 16.w),
-            child: const AppBarRow(
-                iconPath: IconsPath.arrowLeftIcon, title: ' My Addresses'),
+            child: AppBarRow(
+              iconPath: IconsPath.arrowLeftIcon,
+              title: S.of(context).my_addresses, //' My Addresses',
+            ),
           ),
           SizedBox(
             height: 44.h,
@@ -39,7 +42,7 @@ class MyAddressView extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: AppBottom(
-              title: "Add New Address",
+              title: S.of(context).add_new_address, //"Add New Address",
               onTap: () {
                 HelperFunctions.navigateToScreen(
                     context, const AddAddressView());
@@ -125,8 +128,8 @@ class AddressItem extends StatelessWidget {
               fontFamily: 'Josefin Sans',
               fontWeight: FontWeight.w400,
             ),
-            expandText: 'show more',
-            collapseText: 'show less',
+            expandText: S.of(context).show_more, //'show more',
+            collapseText: S.of(context).show_less, //'show less',
             maxLines: 4,
             linkColor: AppColor.silver, // optional
           ),

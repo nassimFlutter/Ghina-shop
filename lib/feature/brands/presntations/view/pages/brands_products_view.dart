@@ -5,6 +5,7 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/core/widgets/product_grid_view.dart';
 import 'package:best_price/feature/brands/presntations/manager/product_brands_cubit/product_brands_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,7 @@ class BrandProductsView extends StatefulWidget {
   @override
   State<BrandProductsView> createState() => _BrandProductsViewState();
 }
-
+// todo : finish translate
 class _BrandProductsViewState extends State<BrandProductsView> {
   @override
   void initState() {
@@ -64,9 +65,14 @@ class _BrandProductsViewState extends State<BrandProductsView> {
                       productList: products,
                     );
                   } else {
-                    return const SliverFillRemaining(
+                    return SliverFillRemaining(
                       child: Center(
-                          child: NoResult(title: "No products available")),
+                        child: NoResult(
+                          title: S
+                              .of(context)
+                              .no_products_available, // "No products available",
+                        ),
+                      ),
                     );
                   }
                 }

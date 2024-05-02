@@ -10,7 +10,7 @@ class ApiService {
 
   Future<dynamic> get(
       {required String endPoint, CancelToken? cancelToken}) async {
-    dio.options.headers['Accept-Language'] = 'en';
+    dio.options.headers['Accept-Language'] = 'ar';
     String token = await CacheHelper.getData(key: Keys.kUserToken);
     LoggerHelper.info(token);
     dio.options.headers["Authorization"] = "Bearer $token";
