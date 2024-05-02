@@ -15,6 +15,12 @@ class AppStyles {
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w400,
   );
+  static TextStyle textStyle16 = const TextStyle(
+    color: Colors.black,
+    fontSize: 16,
+    fontFamily: 'Josefin Sans',
+    fontWeight: FontWeight.w400,
+  );
   static TextStyle textStyle17w700 = TextStyle(
     color: Colors.white,
     fontSize: 17.sp,

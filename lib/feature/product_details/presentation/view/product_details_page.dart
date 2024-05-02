@@ -27,6 +27,7 @@ class ProductDetailsPage extends StatelessWidget {
           builder: (BuildContext context, ProductDetailsState state) {
             ProductDetailsCubit cubit = ProductDetailsCubit.get(context);
             return Scaffold(
+              backgroundColor: Colors.white,
               body: state is ProductDetailsCubitLoading
                   ? Container(
                       // padding: EdgeInsets.only(top: 100),
@@ -59,20 +60,19 @@ class ProductDetailsPage extends StatelessWidget {
                           Padding(
                             padding: EdgeInsetsDirectional.symmetric(
                                 horizontal: 16.w),
-                            child: AspectRatio(
-                              aspectRatio: 1,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: AppColor.containerBackColor,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(15),
-                                    child: CustomNetworkImageWidget(
-                                      urlImage:
-                                          "${cubit.productDetailsModel.items?.image}",
-                                    ),
+                            child: Container(
+
+                              decoration: BoxDecoration(
+                                color: AppColor.containerBackColor,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: CustomNetworkImageWidget(
+
+                                    urlImage:
+                                        "${cubit.productDetailsModel.items?.image}",
                                   ),
                                 ),
                               ),
@@ -144,10 +144,122 @@ class ProductDetailsPage extends StatelessWidget {
                                     color: AppColor.black2,
                                   ),
                                 ),
+
                               ],
                             ),
                           ),
+                          SizedBox(
+                            height: 16.h,
+                          ),
                           //? ------------------------
+                          Padding(
+                            padding:  EdgeInsets.symmetric(horizontal: 16.w),
+                            child: Text(
+                              "Size",
+                              style: AppStyles.textStyle18w700,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
+                            child: SizedBox(
+                              height: 50.h,
+                              child: ListView.builder(
+                                itemCount: cubit.productDetailsModel.items?.variants?.length,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  bool isPress = cubit.productDetailsModel.items?.variants?[index].size?.id == cubit.sizeId;
+
+                                  return GestureDetector(
+                                    onTap: ()
+                                    {
+                                      if(cubit.colorId==0){
+                                        cubit.setSize(cubit.productDetailsModel.items?.variants?[index].size?.id??0);
+                                      }else{
+                                        if(cubit.checkIfSizeAndColorExist(cubit.sizeId,cubit.colorId,cubit.productDetailsModel.items?.variants)){
+                                          cubit.setSize(cubit.productDetailsModel.items?.variants?[index].size?.id??0);
+
+                                        }else{
+
+                                        }
+                                      }
+
+                                    }
+                                    ,
+                                    child: Container(
+                                      decoration:  BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        color: cubit.checkIfSizeAndColorExist(cubit.sizeId,cubit.colorId,cubit.productDetailsModel.items?.variants) ?(isPress ?AppColor.yalow:AppColor.backColorSize) :AppColor.gray ,
+                                      ),
+                                      width: 100.w,
+                                      height: 50.h,
+                                      child: Center(
+                                        child: Text(
+                                          "${cubit.productDetailsModel.items?.variants?[index].size?.name}",
+                                          style: AppStyles.textStyle14,
+
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 16.h,
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.symmetric(horizontal: 16.w),
+                            child: Text(
+                              "Color",
+                              style: AppStyles.textStyle18w700,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
+                            child: SizedBox(
+                              height: 50.h,
+                              child: ListView.builder(
+                                itemCount: cubit.productDetailsModel.items?.variants?.length,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  print(cubit.productDetailsModel.items?.variants?[index].quantity);
+                                  bool isPress = cubit.productDetailsModel.items?.variants?[index].color?.id == cubit.colorId;
+                                  return GestureDetector(
+                                    onTap: (){
+                                      if(cubit.sizeId==0){
+                                        cubit.setColor(cubit.productDetailsModel.items?.variants?[index].color?.id??0);
+                                      }else{
+                                        if(cubit.checkIfSizeAndColorExist(cubit.sizeId,cubit.colorId,cubit.productDetailsModel.items?.variants)){
+                                          cubit.setColor(cubit.productDetailsModel.items?.variants?[index].color?.id??0);
+
+                                        }else{
+
+                                        }
+                                      }
+                                    },
+                                    child: Container(
+                                      decoration:  BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(10),
+                                          ),
+                                          color: cubit.checkIfSizeAndColorExist(cubit.sizeId,cubit.colorId,cubit.productDetailsModel.items?.variants) ?(isPress ?AppColor.yalow:AppColor.backColorSize) :AppColor.gray ,
+                                      ),
+                                      width: 100.w,
+                                      height: 50.h,
+                                      child: Center(
+                                        child: Text(
+                                          "${cubit.productDetailsModel.items?.variants?[index].color?.name}",
+                                          style: AppStyles.textStyle16,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+
                           SizedBox(
                             height: 16.h,
                           ),
@@ -171,7 +283,7 @@ class ProductDetailsPage extends StatelessWidget {
                             ),
                           ),
                           //? ------------------------
-                          SizedBox(
+                          const SizedBox(
                             height: 32,
                           ),
                           Container(
@@ -218,18 +330,59 @@ class ProductDetailsPage extends StatelessWidget {
                                       ),
                                       Row(
                                         children: [
-                                          Container(
-                                            height: 34,
-                                            width: 34,
-                                            color: Colors.amber,
+                                          GestureDetector(
+                                            onTap: (){
+                                              if(cubit.quantityData>cubit.quantity){
+                                                cubit.plusQuantity();
+
+                                              }
+                                            },
+                                            child: Container(
+                                              height: 34,
+                                              width: 34,
+                                              color: Colors.amber,
+                                              child: Center(
+                                                  child:Icon(
+                                                    size: 17,
+
+                                                    Icons.add,
+                                                    color: Colors.black,
+                                                  )
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(width: 10.w,),
+                                          Text(
+                                            cubit.quantity.toString(),
+                                            style: AppStyles.textStyle18w700,
+                                          ),
+                                          SizedBox(width: 10.w,),
+
+                                          GestureDetector(
+                                            onTap: (){
+                                              cubit.minQuantity();
+
+                                            },
+                                            child: Container(
+                                              height: 34,
+                                              width: 34,
+                                              color: AppColor.greyText,
+                                              child: Center(
+                                                child:Text(
+                                                  '-',
+                                                  style: AppStyles.textStyle24
+                                                )
+                                              ),
+
+                                            ),
                                           )
                                         ],
                                       ),
                                     ],
                                   ),
                                 ),
-                                AppBottom(
-                                  title: "title",
+                                const AppBottom(
+                                  title: "Add to Cart",
                                 ),
                               ],
                             ),
