@@ -1,6 +1,7 @@
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +9,7 @@ class OfficeAddressList extends StatelessWidget {
   const OfficeAddressList({
     super.key,
   });
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     AddAddressCubit addAddressCubit = AddAddressCubit.get(context);
@@ -17,7 +18,9 @@ class OfficeAddressList extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        AuthFieldText(title: "Address Title*"),
+        AuthFieldText(
+          title: S.of(context).address_title_, //"Address Title*",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -28,7 +31,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "Mobile No*"),
+        AuthFieldText(
+          title: S.of(context).mobile_no_, //"Mobile No*",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -39,7 +44,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "Full Name*"),
+        AuthFieldText(
+          title: S.of(context).full_name_, //"Full Name*",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -50,7 +57,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "Select Area**"),
+        AuthFieldText(
+          title: S.of(context).select_area_, //"Select Area**",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -61,7 +70,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "Block No*"),
+        AuthFieldText(
+          title: S.of(context).block_no_, //"Block No*",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -72,7 +83,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "Street*"),
+        AuthFieldText(
+          title: S.of(context).street_, //"Street*",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -83,7 +96,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "Avenue"),
+        AuthFieldText(
+          title: S.of(context).avenue, //"Avenue",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -94,7 +109,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "Floor No*"),
+        AuthFieldText(
+          title: S.of(context).floor_no_, //"Floor No*",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -105,7 +122,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "officeNo"),
+        AuthFieldText(
+          title: S.of(context).office_no, //"officeNo",
+        ),
         SizedBox(
           height: 6.h,
         ),
@@ -116,7 +135,9 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(title: "Extra Directions*"),
+        AuthFieldText(
+          title: S.of(context).extra_directions_, //"Extra Directions*",
+        ),
         SizedBox(
           height: 6.h,
         ),

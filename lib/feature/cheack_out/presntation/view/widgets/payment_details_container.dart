@@ -1,4 +1,5 @@
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/details_text.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'custom_divider.dart';
@@ -7,7 +8,7 @@ class PaymentDetailsContainer extends StatelessWidget {
   const PaymentDetailsContainer({
     super.key,
   });
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,23 +23,23 @@ class PaymentDetailsContainer extends StatelessWidget {
           SizedBox(
             height: 20.h,
           ),
-          const DetailsText(
-            title: "Sub Total",
+          DetailsText(
+            title: S.of(context).sub_total, //"Sub Total",
             value: 1019.800,
           ),
           const CustomDivider(),
-          const DetailsText(
-            title: "Discount",
+          DetailsText(
+            title: S.of(context).discount, //"Discount",
             value: 0.000,
           ),
           const CustomDivider(),
-          const DetailsText(
-            title: 'Delivery',
+          DetailsText(
+            title: S.of(context).delivery, //'Delivery',
             value: 0.000,
           ),
           const CustomDivider(),
-          const DetailsText(
-            title: "Total",
+          DetailsText(
+            title: S.of(context).total, //"Total",
             value: 1019.800,
           ),
           SizedBox(

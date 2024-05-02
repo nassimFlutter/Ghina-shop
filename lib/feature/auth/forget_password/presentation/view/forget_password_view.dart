@@ -9,13 +9,14 @@ import 'package:best_price/feature/auth/forget_password/presentation/manager/cub
 import 'package:best_price/feature/auth/forget_password/presentation/widgets/forget_password_dialog.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     SendForgetPasswordCubit forgetPasswordCubit =
@@ -46,8 +47,11 @@ class ForgetPasswordView extends StatelessWidget {
                 height: 60.h,
               ),
               Center(
-                child: Text('Forgot Password',
-                    textAlign: TextAlign.center, style: AppStyles.textStyle24),
+                child: Text(
+                  S.of(context).forgot_password, // 'Forgot Password',
+                  textAlign: TextAlign.center,
+                  style: AppStyles.textStyle24,
+                ),
               ),
               SizedBox(
                 height: 27.h,
@@ -56,7 +60,9 @@ class ForgetPasswordView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: Center(
                   child: Text(
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+                      S
+                          .of(context)
+                          .lorem_small, // 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                       textAlign: TextAlign.center,
                       style: AppStyles.textStyle14),
                 ),
@@ -71,20 +77,25 @@ class ForgetPasswordView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AuthFieldText(title: "E-mail"),
+                    AuthFieldText(
+                      title: S.of(context).e_mail, //"E-mail",
+                    ),
                     SizedBox(
                       height: 6.h,
                     ),
                     Form(
                       key: forgetPasswordCubit.forgetPasswordFormKey,
                       child: AuthTextField(
-                          validator: (p0) {
-                            return Validate.validateEmail(context, p0);
-                          },
-                          textEditingController:
-                              forgetPasswordCubit.emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          hintText: "Enter your email"),
+                        validator: (p0) {
+                          return Validate.validateEmail(context, p0);
+                        },
+                        textEditingController:
+                            forgetPasswordCubit.emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        hintText: S
+                            .of(context)
+                            .enter_your_email, //"Enter your email",
+                      ),
                     ),
                     SizedBox(
                       height: 190.h,
@@ -99,16 +110,21 @@ class ForgetPasswordView extends StatelessWidget {
                       HelperFunctions.showCustomDialog(
                           context,
                           ForgetPasswordDialog(
-                            title: "Forgot Password",
+                            title: S
+                                .of(context)
+                                .forgot_password, //"Forgot Password",
                             email: forgetPasswordCubit.emailController.text,
-                            contain:
-                                "A password reset link has \nbeen sent to your email",
+                            contain: S
+                                .of(context)
+                                .password_reset_link, //"A password reset link has \nbeen sent to your email",
                           ));
                     } else {
                       HelperFunctions.showCustomDialog(
                           context,
                           ForgetPasswordDialog(
-                            title: "Forgot Password",
+                            title: S
+                                .of(context)
+                                .forgot_password, //"Forgot Password",
                             email: forgetPasswordCubit.emailController.text,
                             contain: state.message,
                           ));
@@ -123,11 +139,12 @@ class ForgetPasswordView extends StatelessWidget {
                       padding:
                           EdgeInsetsDirectional.symmetric(horizontal: 16.w),
                       child: AppBottom(
-                          onTap: () {
-                            forgetPasswordCubit.forgetPassword(
-                                forgetPasswordCubit.emailController.text);
-                          },
-                          title: "send"),
+                        onTap: () {
+                          forgetPasswordCubit.forgetPassword(
+                              forgetPasswordCubit.emailController.text);
+                        },
+                        title: S.of(context).send, //"send",
+                      ),
                     );
                   }
                 },

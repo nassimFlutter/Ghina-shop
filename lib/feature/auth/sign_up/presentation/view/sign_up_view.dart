@@ -9,6 +9,7 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/susses_account_dialog.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sign_up_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/pages/home_page_view.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,6 +20,7 @@ import '../widgets/term_ok.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
+  // todo : finish translate
 //! note : the padding for list in zero each element  has a custom padding
   @override
   Widget build(BuildContext context) {
@@ -43,8 +45,9 @@ class SignUpView extends StatelessWidget {
               height: 27.h,
             ),
             Center(
-              child: Text('Sign Up',
-                  textAlign: TextAlign.center, style: AppStyles.textStyle24),
+              child: Text(S.of(context).sign_up, //'Sign Up',
+                  textAlign: TextAlign.center,
+                  style: AppStyles.textStyle24),
             ),
             SizedBox(
               height: 10.h,
@@ -52,7 +55,9 @@ class SignUpView extends StatelessWidget {
             Padding(
               padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
               child: Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+                  S
+                      .of(context)
+                      .lorem_small, //  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
                   textAlign: TextAlign.center,
                   style: AppStyles.textStyle14),
             ),
@@ -77,10 +82,11 @@ class SignUpView extends StatelessWidget {
                     CacheHelper.setData(key: Keys.kIsFirstTime, value: true);
                     HelperFunctions.showCustomDialog(
                         context,
-                        const UpdateAccountDialog(
-                          title: "Sign up",
-                          contain:
-                              "You have successfully\nRegistered with Best Price",
+                        UpdateAccountDialog(
+                          title: S.of(context).sign_up, // "Sign up",
+                          contain: S
+                              .of(context)
+                              .success_register_message, // "You have successfully\nRegistered with Best Price",
                         ));
                     Future.delayed(const Duration(seconds: 3), () {
                       HelperFunctions.navigateToScreen(
@@ -92,7 +98,7 @@ class SignUpView extends StatelessWidget {
                     HelperFunctions.showCustomDialog(
                         context,
                         UpdateAccountDialog(
-                          title: "Sign up Error",
+                          title: S.of(context).sign_up_error, //"Sign up Error",
                           contain: state.message,
                         ));
                   }
@@ -105,7 +111,7 @@ class SignUpView extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: AppBottom(
-                      title: "Sign Up",
+                      title: S.of(context).sign_up, //"Sign Up",
                       onTap: () async {
                         await signUpCubit.signUp();
                       },

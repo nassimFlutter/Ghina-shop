@@ -1,5 +1,6 @@
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/feature/auth/forget_password/presentation/widgets/forget_password_dialog_bottom.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,7 +8,7 @@ class SignUpDialog extends StatelessWidget {
   const SignUpDialog({
     super.key,
   });
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -26,7 +27,7 @@ class SignUpDialog extends StatelessWidget {
               height: 30.h,
             ),
             Text(
-              "Sign up",
+              S.of(context).sign_up, // "Sign up",
               style: AppStyles.textStyle24,
             ),
             SizedBox(
@@ -37,7 +38,9 @@ class SignUpDialog extends StatelessWidget {
               height: 12.h,
             ),
             Text(
-              "You have successfully\nRegistered with Best Price",
+              S
+                  .of(context)
+                  .success_register_message, // "You have successfully\nRegistered with Best Price",
               textAlign: TextAlign.center,
               style: AppStyles.textStyle17w700
                   .copyWith(fontWeight: FontWeight.w400, color: Colors.black),
@@ -46,7 +49,7 @@ class SignUpDialog extends StatelessWidget {
               height: 18.h,
             ),
             Text(
-              "Happy Shopping!!",
+              S.of(context).happy_shopping__, // "Happy Shopping!!",
               style: AppStyles.textStyle17w700.copyWith(color: Colors.black),
             ),
             SizedBox(

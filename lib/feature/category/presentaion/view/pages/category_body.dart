@@ -5,14 +5,17 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_cubit/category_cubit.dart';
 import 'package:best_price/feature/category/presentaion/view/pages/product_category_view.dart';
 import 'package:best_price/feature/category/presentaion/view/widgets/shimmer_category_card.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/category_card.dart';
 
 class CategoryViewBody extends StatelessWidget {
-  const CategoryViewBody({super.key,});
-
+  const CategoryViewBody({
+    super.key,
+  });
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     CategoryCubit categoryCubit = CategoryCubit.get(context);
@@ -28,7 +31,10 @@ class CategoryViewBody extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(
                   top: Dimensions.dTopPadding, start: Dimensions.dStartPadding),
               sliver: SliverToBoxAdapter(
-                child: Text('Categories', style: AppStyles.textStyle20w700),
+                child: Text(
+                  S.of(context).categories, // 'Categories',
+                  style: AppStyles.textStyle20w700,
+                ),
               ),
             ),
             SliverPadding(

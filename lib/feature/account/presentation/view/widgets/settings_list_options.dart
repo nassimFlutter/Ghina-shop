@@ -1,6 +1,7 @@
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +11,7 @@ class SettingsListOptions extends StatelessWidget {
   const SettingsListOptions({
     super.key,
   });
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +24,7 @@ class SettingsListOptions extends StatelessWidget {
             height: 14.h,
           ),
           OptionItem(
-            title: "Notification",
+            title: S.of(context).notification, //"Notification",
             iconPath: IconsPath.notificationIcon,
             trailing: SizedBox(
               height: 27.h,
@@ -35,7 +36,7 @@ class SettingsListOptions extends StatelessWidget {
             ),
           ),
           OptionItem(
-              title: "Language",
+              title: S.of(context).language, //"Language",
               onTap: () {
                 showLanguageBottomSheet(context);
               },
