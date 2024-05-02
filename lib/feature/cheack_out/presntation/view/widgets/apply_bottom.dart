@@ -1,4 +1,5 @@
 import 'package:best_price/core/theme/app_style.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,14 +7,13 @@ class ApplyBottom extends StatelessWidget {
   const ApplyBottom({
     super.key,
   });
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 101.w,
       height: 60.h,
-      padding:
-          const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       clipBehavior: Clip.antiAlias,
       decoration: const ShapeDecoration(
         color: Color(0xFFC58E03),
@@ -26,9 +26,9 @@ class ApplyBottom extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          "Apply",
-          style: AppStyles.textStyle14.copyWith(
-              fontWeight: FontWeight.w700, color: Colors.white),
+          S.of(context).apply, // "Apply",
+          style: AppStyles.textStyle14
+              .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
         ),
       ),
     );

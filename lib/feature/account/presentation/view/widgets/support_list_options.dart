@@ -6,6 +6,7 @@ import 'package:best_price/feature/account/presentation/view/pages/contact_us.da
 import 'package:best_price/feature/account/presentation/view/pages/our_policy_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/terms_conditions.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,7 +15,7 @@ class SupportListOptions extends StatelessWidget {
   const SupportListOptions({
     super.key,
   });
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +33,7 @@ class SupportListOptions extends StatelessWidget {
               trailing: SvgPicture.asset(
                 IconsPath.rightArrowIcon,
               ),
-              title: "About Best price",
+              title: S.of(context).about_best_price, //"About Best price",
               iconPath: IconsPath.aboutIcon),
           OptionItem(
               onTap: () {
@@ -42,7 +43,7 @@ class SupportListOptions extends StatelessWidget {
               trailing: SvgPicture.asset(
                 IconsPath.rightArrowIcon,
               ),
-              title: "Our Policies",
+              title: S.of(context).our_policies, //"Our Policies",
               iconPath: IconsPath.policiesIcon),
           OptionItem(
               onTap: () {
@@ -52,7 +53,7 @@ class SupportListOptions extends StatelessWidget {
               trailing: SvgPicture.asset(
                 IconsPath.rightArrowIcon,
               ),
-              title: "Terms & Conditions",
+              title: S.of(context).terms_conditions, // "Terms & Conditions",
               iconPath: IconsPath.policiesIcon),
           OptionItem(
               onTap: () {
@@ -61,7 +62,7 @@ class SupportListOptions extends StatelessWidget {
               trailing: SvgPicture.asset(
                 IconsPath.rightArrowIcon,
               ),
-              title: "Contact Us",
+              title: S.of(context).contact_us, //"Contact Us",
               iconPath: IconsPath.contactIcon),
           SizedBox(
             height: 14.h,

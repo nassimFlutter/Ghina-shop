@@ -4,6 +4,7 @@ import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/feature/brands/presntations/manager/brands_cubit/brands_cubit.dart';
 import 'package:best_price/feature/brands/presntations/view/widgets/shimmer_brand_grid_view.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +12,7 @@ import '../widgets/brand_grid_view.dart';
 
 class BrandsView extends StatelessWidget {
   const BrandsView({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     BrandsCubit brandsCubit = BrandsCubit.get(context);
@@ -28,8 +29,10 @@ class BrandsView extends StatelessWidget {
                 padding: EdgeInsetsDirectional.only(
                     top: Dimensions.dTopPadding.h,
                     start: Dimensions.dStartPadding.w),
-                child: const AppBarRow(
-                    iconPath: IconsPath.arrowLeftIcon, title: "Brands"),
+                child: AppBarRow(
+                  iconPath: IconsPath.arrowLeftIcon,
+                  title: S.of(context).brands, //"Brands",
+                ),
               ),
               SizedBox(height: 40.h),
               BlocBuilder<BrandsCubit, BrandsState>(

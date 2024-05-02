@@ -7,6 +7,7 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/view/flitter_sort_view.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +16,7 @@ import '../../../../home/data/models/home_model.dart';
 
 class FeaturedProductViewBody extends StatelessWidget {
   const FeaturedProductViewBody({super.key});
+  // todo : finish translate
   @override
   Widget build(BuildContext context) {
     FeaturedProductsCubit featuredProductsCubit =
@@ -34,7 +36,8 @@ class FeaturedProductViewBody extends StatelessWidget {
                 Expanded(
                   child: AppBarRow(
                     iconPath: IconsPath.arrowLeftIcon,
-                    title: "Featured Products",
+                    title:
+                        S.of(context).featured_products, // "Featured Products",
                     onFirstIconTap: () {
                       HelperFunctions.navigateToBack(context);
                     },

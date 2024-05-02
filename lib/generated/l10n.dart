@@ -839,6 +839,506 @@ class S {
       args: [],
     );
   }
+
+  /// `Our Policies`
+  String get our_policies {
+    return Intl.message(
+      'Our Policies',
+      name: 'our_policies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Happy Shopping!!`
+  String get happy_shopping__ {
+    return Intl.message(
+      'Happy Shopping!!',
+      name: 'happy_shopping__',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get sign_up {
+    return Intl.message(
+      'Sign Up',
+      name: 'sign_up',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In`
+  String get sign_in {
+    return Intl.message(
+      'Sign In',
+      name: 'sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password`
+  String get forgot_password {
+    return Intl.message(
+      'Forgot Password',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+  String get lorem_small {
+    return Intl.message(
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      name: 'lorem_small',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail`
+  String get e_mail {
+    return Intl.message(
+      'E-mail',
+      name: 'e_mail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A password reset link has \nbeen sent to your email`
+  String get password_reset_link {
+    return Intl.message(
+      'A password reset link has \nbeen sent to your email',
+      name: 'password_reset_link',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `send`
+  String get send {
+    return Intl.message(
+      'send',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up error`
+  String get sign_up_error {
+    return Intl.message(
+      'Sign up error',
+      name: 'sign_up_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don’t have an account? Register`
+  String get dont_have_an_account_Register {
+    return Intl.message(
+      'Don’t have an account? Register',
+      name: 'dont_have_an_account_Register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your password`
+  String get enter_your_password {
+    return Intl.message(
+      'Enter your password',
+      name: 'enter_your_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have successfully\nRegistered with Best Price`
+  String get success_register_message {
+    return Intl.message(
+      'You have successfully\nRegistered with Best Price',
+      name: 'success_register_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number*`
+  String get phone_number_ {
+    return Intl.message(
+      'Phone Number*',
+      name: 'phone_number_',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password*`
+  String get password_ {
+    return Intl.message(
+      'Password*',
+      name: 'password_',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No products available`
+  String get no_products_available {
+    return Intl.message(
+      'No products available',
+      name: 'no_products_available',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Brands`
+  String get brands {
+    return Intl.message(
+      'Brands',
+      name: 'brands',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Cart`
+  String get my_cart {
+    return Intl.message(
+      'My Cart',
+      name: 'my_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sub Total`
+  String get sub_total {
+    return Intl.message(
+      'Sub Total',
+      name: 'sub_total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proceed to Checkout`
+  String get proceed_to_checkout {
+    return Intl.message(
+      'Proceed to Checkout',
+      name: 'proceed_to_checkout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Size`
+  String get size {
+    return Intl.message(
+      'Size',
+      name: 'size',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Large`
+  String get large {
+    return Intl.message(
+      'Large',
+      name: 'large',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Categories`
+  String get categories {
+    return Intl.message(
+      'Categories',
+      name: 'categories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coupon Code`
+  String get coupon_code {
+    return Intl.message(
+      'Coupon Code',
+      name: 'coupon_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Details`
+  String get payment_details {
+    return Intl.message(
+      'Payment Details',
+      name: 'payment_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proceed to Pay`
+  String get proceed_to_pay {
+    return Intl.message(
+      'Proceed to Pay',
+      name: 'proceed_to_pay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Checkout`
+  String get checkout {
+    return Intl.message(
+      'Checkout',
+      name: 'checkout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank You For Your Purchase`
+  String get thank_you_for_your_purchase {
+    return Intl.message(
+      'Thank You For Your Purchase',
+      name: 'thank_you_for_your_purchase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Purchase was`
+  String get your_purchase_was {
+    return Intl.message(
+      'Your Purchase was',
+      name: 'your_purchase_was',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successful`
+  String get successful {
+    return Intl.message(
+      'Successful',
+      name: 'successful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Details`
+  String get order_details {
+    return Intl.message(
+      'Order Details',
+      name: 'order_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order status`
+  String get order_status {
+    return Intl.message(
+      'Order status',
+      name: 'order_status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date & Time`
+  String get date_and_time {
+    return Intl.message(
+      'Date & Time',
+      name: 'date_and_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery Details`
+  String get delivery_details {
+    return Intl.message(
+      'Delivery Details',
+      name: 'delivery_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products`
+  String get products {
+    return Intl.message(
+      'Products',
+      name: 'products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Item Name`
+  String get item_name {
+    return Intl.message(
+      'Item Name',
+      name: 'item_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Office No`
+  String get office_no {
+    return Intl.message(
+      'Office No',
+      name: 'office_no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification`
+  String get notification {
+    return Intl.message(
+      'Notification',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Product`
+  String get delete_product {
+    return Intl.message(
+      'Delete Product',
+      name: 'delete_product',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are Your Sure You \nWant to delete Item from Cart`
+  String get delete_product_contain_message {
+    return Intl.message(
+      'Are Your Sure You \nWant to delete Item from Cart',
+      name: 'delete_product_contain_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discount`
+  String get discount {
+    return Intl.message(
+      'Discount',
+      name: 'discount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery`
+  String get delivery {
+    return Intl.message(
+      'Delivery',
+      name: 'delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Featured Products`
+  String get featured_products {
+    return Intl.message(
+      'Featured Products',
+      name: 'featured_products',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

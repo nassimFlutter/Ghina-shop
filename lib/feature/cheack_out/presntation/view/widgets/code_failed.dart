@@ -1,6 +1,7 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/apply_bottom.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +9,7 @@ class CodeFailed extends StatelessWidget {
   const CodeFailed({
     super.key,
   });
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -18,7 +19,7 @@ class CodeFailed extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding:
               const EdgeInsetsDirectional.only(bottom: 2, start: 16),
-          labelText: "Enter Here",
+          labelText: S.of(context).enter_here, //"Enter Here",
           labelStyle: AppStyles.textStyle14.copyWith(color: AppColor.silver),
           suffixIcon: const ApplyBottom(),
           focusedBorder: OutlineInputBorder(
