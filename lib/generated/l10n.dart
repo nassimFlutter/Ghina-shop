@@ -1339,6 +1339,216 @@ class S {
       args: [],
     );
   }
+
+  /// `Error try again`
+  String get error_try_again {
+    return Intl.message(
+      'Error try again',
+      name: 'error_try_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Best Selling`
+  String get best_selling {
+    return Intl.message(
+      'Best Selling',
+      name: 'best_selling',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Method`
+  String get payment_method {
+    return Intl.message(
+      'Payment Method',
+      name: 'payment_method',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Address`
+  String get edit_address {
+    return Intl.message(
+      'Edit Address',
+      name: 'edit_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Address`
+  String get select_address {
+    return Intl.message(
+      'Select Address',
+      name: 'select_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset`
+  String get reset {
+    return Intl.message(
+      'Reset',
+      name: 'reset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sort By`
+  String get sort_by {
+    return Intl.message(
+      'Sort By',
+      name: 'sort_by',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category`
+  String get category {
+    return Intl.message(
+      'Category',
+      name: 'category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `cart`
+  String get cart {
+    return Intl.message(
+      'cart',
+      name: 'cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `account`
+  String get account {
+    return Intl.message(
+      'account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Arrivals`
+  String get new_arrivals {
+    return Intl.message(
+      'New Arrivals',
+      name: 'new_arrivals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See All`
+  String get see_all {
+    return Intl.message(
+      'See All',
+      name: 'see_all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let’s start shopping!`
+  String get Lets_start_shopping {
+    return Intl.message(
+      'Let’s start shopping!',
+      name: 'Lets_start_shopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Language`
+  String get choose_language {
+    return Intl.message(
+      'Choose Language',
+      name: 'choose_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `by`
+  String get by {
+    return Intl.message(
+      'by',
+      name: 'by',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Color`
+  String get color {
+    return Intl.message(
+      'Color',
+      name: 'color',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to Cart`
+  String get add_to_cart {
+    return Intl.message(
+      'Add to Cart',
+      name: 'add_to_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NO CONNECTION`
+  String get NO_CONNECTION {
+    return Intl.message(
+      'NO CONNECTION',
+      name: 'NO_CONNECTION',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection not found, make sure you are\nconnected to internet`
+  String get connection_not_found {
+    return Intl.message(
+      'Connection not found, make sure you are\nconnected to internet',
+      name: 'connection_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,5 +1,6 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class HomeTitle extends StatelessWidget {
@@ -8,6 +9,7 @@ class HomeTitle extends StatelessWidget {
     required this.title,
     this.onTap,
   });
+  // todo : finish translate
   final String title;
   final void Function()? onTap;
   @override
@@ -22,7 +24,7 @@ class HomeTitle extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Text(
-            "See All",
+            S.of(context).see_all, //"See All",
             style:
                 AppStyles.textStyle14.copyWith(color: AppColor.titleTextColor),
           ),

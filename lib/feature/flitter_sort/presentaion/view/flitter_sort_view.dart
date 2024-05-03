@@ -4,13 +4,14 @@ import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/manager/flitter_cubit/flitter_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlitterSortView extends StatelessWidget {
   const FlitterSortView({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     FlitterCubit flitterCubit = FlitterCubit.get(context);
@@ -25,7 +26,7 @@ class FlitterSortView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsetsDirectional.only(end: 18.0.w),
                   child: Text(
-                    'Reset',
+                    S.of(context).reset, //'Reset',
                     style: AppStyles.textStyle17w700.copyWith(
                         color: Colors.black, fontWeight: FontWeight.w400),
                   ),
@@ -39,8 +40,10 @@ class FlitterSortView extends StatelessWidget {
           Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: const AppBarRowReverse(
-                iconPath: IconsPath.cancelIcon, title: "Sort By"),
+            child: AppBarRowReverse(
+              iconPath: IconsPath.cancelIcon,
+              title: S.of(context).sort_by, //"Sort By",
+            ),
           ),
           SizedBox(
             height: 28.h,
@@ -79,7 +82,7 @@ class FlitterSortView extends StatelessWidget {
                 child: ExpansionTile(
                   collapsedIconColor: Colors.black,
                   title: Text(
-                    "Brands",
+                    S.of(context).brands, // "Brands",
                     style: AppStyles.textStyle18w700,
                   ),
                   children: [
@@ -126,7 +129,7 @@ class FlitterSortView extends StatelessWidget {
                 child: ExpansionTile(
                   collapsedIconColor: Colors.black,
                   title: Text(
-                    "Category",
+                    S.of(context).category, // "Category",
                     style: AppStyles.textStyle18w700,
                   ),
                   children: [

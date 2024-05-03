@@ -10,6 +10,7 @@ import 'package:best_price/feature/account/presentation/manager/address_cubit/ad
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
 import 'package:best_price/feature/cheack_out/presntation/manager/selected_address_cubit/selected_address_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/pages/checkout_success.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +36,7 @@ class CheckoutView extends StatelessWidget {
 
 class CheckoutBody extends StatelessWidget {
   const CheckoutBody({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     AddressCubit addressCubit = AddressCubit.get(context);
@@ -51,7 +52,7 @@ class CheckoutBody extends StatelessWidget {
         ),
         AppBarRow(
           iconPath: IconsPath.arrowLeftIcon,
-          title: "Checkout",
+          title: S.of(context).checkout, //"Checkout",
           onFirstIconTap: () {
             HelperFunctions.navigateToBack(context);
             selectedAddressCubit.initSelected();
@@ -60,7 +61,9 @@ class CheckoutBody extends StatelessWidget {
         SizedBox(
           height: 32.h,
         ),
-        const TitleCheckPage(title: "Address"),
+        TitleCheckPage(
+          title: S.of(context).address, //"Address",
+        ),
         SizedBox(
           height: 14.h,
         ),
@@ -109,7 +112,7 @@ class CheckoutBody extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    "Add address",
+                    S.of(context).add_address, //"Add address",
                     style: AppStyles.textStyle16w700.copyWith(
                         fontWeight: FontWeight.w400,
                         color: AppColor.black,
@@ -123,8 +126,8 @@ class CheckoutBody extends StatelessWidget {
         SizedBox(
           height: 32.h,
         ),
-        const TitleCheckPage(
-          title: "Coupon Code",
+        TitleCheckPage(
+          title: S.of(context).coupon_code, //"Coupon Code",
         ),
         SizedBox(
           height: 14.h,
@@ -133,8 +136,8 @@ class CheckoutBody extends StatelessWidget {
         SizedBox(
           height: 45.h,
         ),
-        const TitleCheckPage(
-          title: "Payment Methode",
+        TitleCheckPage(
+          title: S.of(context).payment_method, //"Payment Method",
         ),
         SizedBox(
           height: 14.h,
@@ -155,8 +158,8 @@ class CheckoutBody extends StatelessWidget {
         SizedBox(
           height: 30.h,
         ),
-        const TitleCheckPage(
-          title: "Payment Details",
+        TitleCheckPage(
+          title: S.of(context).payment_details, //"Payment Details",
         ),
         SizedBox(
           height: 14.h,
@@ -166,7 +169,7 @@ class CheckoutBody extends StatelessWidget {
           height: 40.h,
         ),
         AppBottom(
-          title: "Proceed to Pay",
+          title: S.of(context).proceed_to_pay, //"Proceed to Pay",
           onTap: () {
             HelperFunctions.navigateToScreen(context, const CheckOutSuccess());
           },
@@ -185,7 +188,7 @@ class AddressItem extends StatelessWidget {
     required this.addressCubit,
     required this.addressItem,
   });
-
+// todo : finish translate
   final AddressCubit addressCubit;
   final Item addressItem;
 
@@ -221,8 +224,8 @@ class AddressItem extends StatelessWidget {
               fontFamily: 'Josefin Sans',
               fontWeight: FontWeight.w400,
             ),
-            expandText: 'show more',
-            collapseText: 'show less',
+            expandText: S.of(context).show_more, //'show more',
+            collapseText: S.of(context).show_less, //'show less',
             maxLines: 4,
             linkColor: AppColor.silver, // optional
           ),
@@ -273,7 +276,7 @@ class AddressItem extends StatelessWidget {
                     width: 5.w,
                   ),
                   Text(
-                    "Edit Address",
+                    S.of(context).edit_address, // "Edit Address",
                     style: AppStyles.textStyle14w400
                         .copyWith(color: AppColor.black),
                   ),
@@ -295,6 +298,7 @@ class AddressBottomSheet extends StatelessWidget {
     super.key,
     required this.addressModel,
   });
+  // todo : finish translate
   final AddressModel addressModel;
   @override
   Widget build(BuildContext context) {
@@ -319,7 +323,7 @@ class AddressBottomSheet extends StatelessWidget {
                 height: 45.h,
               ),
               Text(
-                "Select Address",
+                S.of(context).select_address, // "Select Address",
                 style: AppStyles.textStyle18w700
                     .copyWith(color: AppColor.greyText),
               ),
@@ -368,8 +372,10 @@ class AddressBottomSheet extends StatelessWidget {
                                     fontFamily: 'Josefin Sans',
                                     fontWeight: FontWeight.w400,
                                   ),
-                                  expandText: 'show more',
-                                  collapseText: 'show less',
+                                  expandText:
+                                      S.of(context).show_more, //'show more',
+                                  collapseText:
+                                      S.of(context).show_less, //'show less',
                                   maxLines: 4,
                                   linkColor: AppColor.silver,
                                 ),
@@ -416,7 +422,7 @@ class AddressBottomSheet extends StatelessWidget {
                 height: 17.h,
               ),
               AppBottom(
-                title: "Add New Address",
+                title: S.of(context).add_new_address, //"Add New Address",
                 onTap: () {
                   HelperFunctions.navigateToScreen(
                       context, const AddAddressView());

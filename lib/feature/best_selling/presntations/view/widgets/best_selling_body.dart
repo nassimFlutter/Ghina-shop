@@ -8,6 +8,7 @@ import 'package:best_price/feature/best_selling/presntations/manager/best_sellin
 import 'package:best_price/feature/flitter_sort/presentaion/view/flitter_sort_view.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,9 +31,11 @@ class BestSellingBody extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Expanded(
+                Expanded(
                   child: AppBarRow(
-                      iconPath: IconsPath.arrowLeftIcon, title: "Best Selling"),
+                    iconPath: IconsPath.arrowLeftIcon,
+                    title: S.of(context).best_selling, //"Best Selling",
+                  ),
                 ),
                 AppBarBottom(
                   iconPath: IconsPath.flitterIcon,
