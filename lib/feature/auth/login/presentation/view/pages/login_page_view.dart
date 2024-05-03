@@ -30,16 +30,16 @@ class LoginView extends StatelessWidget {
         child: Column(
           // padding: EdgeInsets.zero,
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.only(start: 16.w, top: 4.h),
-              child: const Row(
-                children: [
-                  AppBarBottom(
-                    iconPath: IconsPath.cancelIcon,
-                  ),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsetsDirectional.only(start: 16.w, top: 4.h),
+            //   child: const Row(
+            //     children: [
+            //       AppBarBottom(
+            //         iconPath: IconsPath.cancelIcon,
+            //       ),
+            //     ],
+            //   ),
+            // ),
             SizedBox(
               height: height * 0.03, //27.h,
             ),
