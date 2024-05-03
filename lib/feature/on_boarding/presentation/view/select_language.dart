@@ -6,6 +6,7 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:best_price/feature/home/presentation/view/pages/home_page_view.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +14,7 @@ import '../widgets/selected_language.dart';
 
 class SelectLanguage extends StatelessWidget {
   const SelectLanguage({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +24,14 @@ class SelectLanguage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 76.h),
-              Text('Choose Language',
-                  textAlign: TextAlign.center, style: AppStyles.textStyle24),
+              Text(S.of(context).choose_language, //'Choose Language',
+                  textAlign: TextAlign.center,
+                  style: AppStyles.textStyle24),
               SizedBox(height: 30.h),
               Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+                  S
+                      .of(context)
+                      .lorem_small, // "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
                   textAlign: TextAlign.center,
                   style: AppStyles.textStyle14),
               SizedBox(

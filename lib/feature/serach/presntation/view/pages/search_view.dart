@@ -8,6 +8,7 @@ import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/core/widgets/product_grid_view.dart';
 import 'package:best_price/core/widgets/search_field.dart';
 import 'package:best_price/feature/serach/presntation/manager/cubit/search_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +48,7 @@ class SearchViewBody extends StatelessWidget {
             SliverToBoxAdapter(
                 child: AppBarRow(
               iconPath: IconsPath.arrowLeftIcon,
-              title: "Search",
+              title: S.of(context).search, //"Search",
               onFirstIconTap: () async {
                 await searchCubit.initSearch();
                 if (context.mounted) {

@@ -8,13 +8,14 @@ import 'package:best_price/feature/flitter_sort/presentaion/view/flitter_sort_vi
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewArriversViewBody extends StatelessWidget {
   const NewArriversViewBody({super.key});
-
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     NewArrivalsCubit newArrivalsCubit = NewArrivalsCubit.get(context);
@@ -32,10 +33,11 @@ class NewArriversViewBody extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: AppBarRow(
-                        iconPath: IconsPath.arrowLeftIcon,
-                        title: "New Arrivals"),
+                      iconPath: IconsPath.arrowLeftIcon,
+                      title: S.of(context).new_arrivals, //"New Arrivals",
+                    ),
                   ),
                   AppBarBottom(
                     iconPath: IconsPath.flitterIcon,

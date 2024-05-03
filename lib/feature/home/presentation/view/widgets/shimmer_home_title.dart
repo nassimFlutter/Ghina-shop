@@ -1,5 +1,6 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -9,7 +10,7 @@ class ShimmerHomeTitle extends StatelessWidget {
     required this.title,
     this.onTap,
   }) : super(key: key);
-
+// todo : finish translate
   final String title;
   final void Function()? onTap;
 
@@ -28,7 +29,7 @@ class ShimmerHomeTitle extends StatelessWidget {
           GestureDetector(
             onTap: onTap,
             child: Text(
-              "See All",
+              S.of(context).see_all, // "See All",
               style: AppStyles.textStyle14.copyWith(
                 color: AppColor.titleTextColor,
               ),
