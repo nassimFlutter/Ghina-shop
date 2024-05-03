@@ -1,3 +1,5 @@
+import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,10 +9,10 @@ class CacheHelper {
     LoggerHelper.info('init cash helper');
     sharedPreferences = await SharedPreferences.getInstance();
 
-    // var lang = getData(key: Constant.kLang);
-    // if (lang == null) {
-    //   setData(key: Constant.kLang, value: 'en');
-    // }
+    var lang = getData(key: Keys.kLang);
+    if (lang == null) {
+      setData(key: Keys.kLang, value: 'ar');
+    }
   }
 
   static Future<bool> setData(

@@ -1,4 +1,6 @@
 class Keys {
+  static const String kLang = "lang";
+
   static const String kUserName = 'user_name';
   static const String kUserEmail = 'user_email';
   static const String kUserMobile = 'user_mobile';
@@ -32,5 +34,6 @@ class UrlKeys {
   //! order
   static const getOrdersEndPoint = 'getMyOrders';
   //! search
-  static const searchEndPoint = 'searchProduct?name='; //? here write name of product
+  static const searchEndPoint =
+      'searchProduct?name='; //? here write name of product
 }

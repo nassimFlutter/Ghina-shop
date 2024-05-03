@@ -22,7 +22,8 @@ class SkipBottom extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           if (CacheHelper.getData(key: Keys.kIsFirstTime) == null) {
-            HelperFunctions.navigateToScreen(context, const SelectLanguage());
+            HelperFunctions.navigateToScreenAndRemove(
+                context, const SelectLanguage());
           } else {
             if (CacheHelper.getData(key: Keys.kIsLogin) == true) {
               HelperFunctions.navigateToScreenAndRemove(

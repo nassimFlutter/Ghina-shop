@@ -13,25 +13,25 @@ List<Widget> buildAuthTextFields(context, SignUpCubit signUpCubit) {
     {
       "title": S.of(context).full_name_, //"Full Name*",
       "textEditingController": signUpCubit.fullNameController,
-      "validator": Validate.validateFullName,
+      "validator": (value) => Validate.validateFullName(context, value),
       "keyboardType": TextInputType.name,
     },
     {
       "title": S.of(context).email_, //"Email*",
       "textEditingController": signUpCubit.emailController,
-      "validator": Validate.validateEmail,
+      "validator": (value) => Validate.validateEmail(context, value),
       "keyboardType": TextInputType.emailAddress,
     },
     {
       "title": S.of(context).phone_number_, //"Phone Number*",
       "textEditingController": signUpCubit.phoneController,
-      "validator": Validate.validatePhoneNumber,
+      "validator": (value) => Validate.validatePhoneNumber(context, value),
       "keyboardType": TextInputType.phone,
     },
     {
       "title": S.of(context).password_, //"Password*",
       "textEditingController": signUpCubit.passwordController,
-      "validator": Validate.validatePassword,
+      "validator": (value) => Validate.validatePassword(context, value),
       "keyboardType": TextInputType.visiblePassword,
     },
     {
