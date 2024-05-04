@@ -39,7 +39,7 @@ class CacheHelper {
     return await sharedPreferences.remove(key);
   }
 
-  static Future<void> clearCashe() async {
+  static Future<void> clearCache() async {
     await sharedPreferences.clear();
   }
 }
