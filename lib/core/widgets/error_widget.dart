@@ -1,5 +1,6 @@
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,6 +10,7 @@ class CustomErrorWidget extends StatelessWidget {
     super.key,
     this.onTap,
   });
+  // todo : finish translate
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class CustomErrorWidget extends StatelessWidget {
             height: 10.h,
           ),
           Text(
-            "Error try again",
+            S.of(context).error_try_again, // "Error try again",
             style: AppStyles.textStyle20w700,
           ),
           InkWell(

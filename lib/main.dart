@@ -33,6 +33,7 @@ import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boa
 import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
 import 'package:best_price/feature/serach/presntation/manager/cubit/search_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
+import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/feature/splash/presentation/view/pages/splash.dart';
 import 'package:best_price/feature/wish/presentation/manager/cubit/my_wish_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -59,6 +60,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => LangCubit(),
+        ),
         BlocProvider(
           create: (context) => ConnectivityCubit(),
         ),
@@ -165,28 +169,32 @@ class MyApp extends StatelessWidget {
           create: (context) => ProductDetailsCubit(0),
         ),
       ],
-      child: ScreenUtilInit(
-        designSize: const Size(393, 852),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) => MaterialApp(
-          locale: Locale("ar"),
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          debugShowCheckedModeBanner: false,
-          title: 'Best Price',
-          theme: ThemeData(
-            backgroundColor: Colors.white,
-            useMaterial3: true,
-          ),
-          home: const SplashView(),
-          // home: const ProductDetailsPage(),
-        ),
+      child: BlocBuilder<LangCubit, LangState>(
+        builder: (context, state) {
+          return ScreenUtilInit(
+            designSize: const Size(393, 852),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (context, child) => MaterialApp(
+              locale: Locale(BlocProvider.of<LangCubit>(context).lang),
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              debugShowCheckedModeBanner: false,
+              title: 'Best Price',
+              theme: ThemeData(
+                backgroundColor: Colors.white,
+                useMaterial3: true,
+              ),
+              home: const SplashView(),
+              // home: const ProductDetailsPage(),
+            ),
+          );
+        },
       ),
     );
   }

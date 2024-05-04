@@ -6,6 +6,7 @@ import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/no_internet.dart';
 import 'package:best_price/feature/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,14 +60,16 @@ class NoInternetScreen extends StatelessWidget {
             height: 41.h,
           ),
           Text(
-            "NO CONNECTION",
+            S.of(context).NO_CONNECTION, // "NO CONNECTION",
             style: AppStyles.textStyle16w700.copyWith(color: AppColor.black),
           ),
           SizedBox(
             height: 15.h,
           ),
           Text(
-            "Connection not found, make sure you are\nconnected to internet",
+            S
+                .of(context)
+                .connection_not_found, //  "Connection not found, make sure you are\nconnected to internet",
             style: AppStyles.textStyle16w400,
             textAlign: TextAlign.center,
           ),
@@ -76,7 +79,7 @@ class NoInternetScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
             child: AppBottom(
-              title: "Retry",
+              title: S.of(context).retry, //"Retry",
               onTap: () async {
                 ConnectivityCubit().checkInternetStatus();
               },

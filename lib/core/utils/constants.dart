@@ -28,6 +28,7 @@ class ImagePath {
 class IconsPath {
   IconsPath._();
   static const String _basePath = 'assets/icons';
+
   // ! -------- Selected Lang -------
   static const String kingdom = "$_basePath/kingdom.svg";
   static const String kuwait = "$_basePath/kuwait.svg";
@@ -104,3 +105,4 @@ class IconsPath {
   //! ----------------- address ---------------------
   static const dropDownIcon = "$_basePath/down_arrow.svg";
 }
+

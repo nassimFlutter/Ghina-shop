@@ -4,6 +4,7 @@ import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/product_details/presentation/view/widget/small_photo_option_widget.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +16,9 @@ import '../../../../core/widgets/custom_network_image_widget.dart';
 import '../manager/product_details_cubit/product_details_cubit.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  final int id;
   const ProductDetailsPage({super.key, required this.id});
-
+  final int id;
+// todo : finish translate
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -35,7 +36,8 @@ class ProductDetailsPage extends StatelessWidget {
                       child: const SpinKitFadingCircle(
                         size: 30,
                         color: AppColor.pirateGold,
-                      ))
+                      ),
+                    )
                   : SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +63,6 @@ class ProductDetailsPage extends StatelessWidget {
                             padding: EdgeInsetsDirectional.symmetric(
                                 horizontal: 16.w),
                             child: Container(
-
                               decoration: BoxDecoration(
                                 color: AppColor.containerBackColor,
                                 borderRadius: BorderRadius.circular(20),
@@ -70,7 +71,6 @@ class ProductDetailsPage extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.all(15),
                                   child: CustomNetworkImageWidget(
-
                                     urlImage:
                                         "${cubit.productDetailsModel.items?.image}",
                                   ),
@@ -139,12 +139,11 @@ class ProductDetailsPage extends StatelessWidget {
                                   style: AppStyles.textStyle24w700,
                                 ),
                                 Text(
-                                  "by ${cubit.productDetailsModel.items?.companyName}",
+                                  "${S.of(context).by} ${cubit.productDetailsModel.items?.companyName}",
                                   style: AppStyles.textStyle16w700.copyWith(
                                     color: AppColor.black2,
                                   ),
                                 ),
-
                               ],
                             ),
                           ),
@@ -153,42 +152,65 @@ class ProductDetailsPage extends StatelessWidget {
                           ),
                           //? ------------------------
                           Padding(
-                            padding:  EdgeInsets.symmetric(horizontal: 16.w),
+                            padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Text(
-                              "Size",
+                              S.of(context).size, //  "Size",
                               style: AppStyles.textStyle18w700,
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.w, vertical: 10.h),
                             child: SizedBox(
                               height: 50.h,
                               child: ListView.builder(
-                                itemCount: cubit.productDetailsModel.items?.variants?.length,
+                                itemCount: cubit.productDetailsModel.items
+                                    ?.variants?.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
-                                  bool isPress = cubit.productDetailsModel.items?.variants?[index].size?.id == cubit.sizeId;
+                                  bool isPress = cubit.productDetailsModel.items
+                                          ?.variants?[index].size?.id ==
+                                      cubit.sizeId;
 
                                   return GestureDetector(
-                                    onTap: ()
-                                    {
-                                      if(cubit.colorId==0){
-                                        cubit.setSize(cubit.productDetailsModel.items?.variants?[index].size?.id??0);
-                                      }else{
-                                        if(cubit.checkIfSizeAndColorExist(cubit.sizeId,cubit.colorId,cubit.productDetailsModel.items?.variants)){
-                                          cubit.setSize(cubit.productDetailsModel.items?.variants?[index].size?.id??0);
-
-                                        }else{
-
-                                        }
+                                    onTap: () {
+                                      if (cubit.colorId == 0) {
+                                        cubit.setSize(cubit
+                                                .productDetailsModel
+                                                .items
+                                                ?.variants?[index]
+                                                .size
+                                                ?.id ??
+                                            0);
+                                      } else {
+                                        if (cubit.checkIfSizeAndColorExist(
+                                            cubit.sizeId,
+                                            cubit.colorId,
+                                            cubit.productDetailsModel.items
+                                                ?.variants)) {
+                                          cubit.setSize(cubit
+                                                  .productDetailsModel
+                                                  .items
+                                                  ?.variants?[index]
+                                                  .size
+                                                  ?.id ??
+                                              0);
+                                        } else {}
                                       }
-
-                                    }
-                                    ,
+                                    },
                                     child: Container(
-                                      decoration:  BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                                        color: cubit.checkIfSizeAndColorExist(cubit.sizeId,cubit.colorId,cubit.productDetailsModel.items?.variants) ?(isPress ?AppColor.yalow:AppColor.backColorSize) :AppColor.gray ,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: cubit.checkIfSizeAndColorExist(
+                                                cubit.sizeId,
+                                                cubit.colorId,
+                                                cubit.productDetailsModel.items
+                                                    ?.variants)
+                                            ? (isPress
+                                                ? AppColor.yalow
+                                                : AppColor.backColorSize)
+                                            : AppColor.gray,
                                       ),
                                       width: 100.w,
                                       height: 50.h,
@@ -196,7 +218,6 @@ class ProductDetailsPage extends StatelessWidget {
                                         child: Text(
                                           "${cubit.productDetailsModel.items?.variants?[index].size?.name}",
                                           style: AppStyles.textStyle14,
-
                                         ),
                                       ),
                                     ),
@@ -210,40 +231,67 @@ class ProductDetailsPage extends StatelessWidget {
                             height: 16.h,
                           ),
                           Padding(
-                            padding:  EdgeInsets.symmetric(horizontal: 16.w),
+                            padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Text(
-                              "Color",
+                              S.of(context).color, // "Color",
                               style: AppStyles.textStyle18w700,
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.w, vertical: 10.h),
                             child: SizedBox(
                               height: 50.h,
                               child: ListView.builder(
-                                itemCount: cubit.productDetailsModel.items?.variants?.length,
+                                itemCount: cubit.productDetailsModel.items
+                                    ?.variants?.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
-                                  print(cubit.productDetailsModel.items?.variants?[index].quantity);
-                                  bool isPress = cubit.productDetailsModel.items?.variants?[index].color?.id == cubit.colorId;
+                                  print(cubit.productDetailsModel.items
+                                      ?.variants?[index].quantity);
+                                  bool isPress = cubit.productDetailsModel.items
+                                          ?.variants?[index].color?.id ==
+                                      cubit.colorId;
                                   return GestureDetector(
-                                    onTap: (){
-                                      if(cubit.sizeId==0){
-                                        cubit.setColor(cubit.productDetailsModel.items?.variants?[index].color?.id??0);
-                                      }else{
-                                        if(cubit.checkIfSizeAndColorExist(cubit.sizeId,cubit.colorId,cubit.productDetailsModel.items?.variants)){
-                                          cubit.setColor(cubit.productDetailsModel.items?.variants?[index].color?.id??0);
-
-                                        }else{
-
-                                        }
+                                    onTap: () {
+                                      if (cubit.sizeId == 0) {
+                                        cubit.setColor(cubit
+                                                .productDetailsModel
+                                                .items
+                                                ?.variants?[index]
+                                                .color
+                                                ?.id ??
+                                            0);
+                                      } else {
+                                        if (cubit.checkIfSizeAndColorExist(
+                                            cubit.sizeId,
+                                            cubit.colorId,
+                                            cubit.productDetailsModel.items
+                                                ?.variants)) {
+                                          cubit.setColor(cubit
+                                                  .productDetailsModel
+                                                  .items
+                                                  ?.variants?[index]
+                                                  .color
+                                                  ?.id ??
+                                              0);
+                                        } else {}
                                       }
                                     },
                                     child: Container(
-                                      decoration:  BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(10),
-                                          ),
-                                          color: cubit.checkIfSizeAndColorExist(cubit.sizeId,cubit.colorId,cubit.productDetailsModel.items?.variants) ?(isPress ?AppColor.yalow:AppColor.backColorSize) :AppColor.gray ,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(10),
+                                        ),
+                                        color: cubit.checkIfSizeAndColorExist(
+                                                cubit.sizeId,
+                                                cubit.colorId,
+                                                cubit.productDetailsModel.items
+                                                    ?.variants)
+                                            ? (isPress
+                                                ? AppColor.yalow
+                                                : AppColor.backColorSize)
+                                            : AppColor.gray,
                                       ),
                                       width: 100.w,
                                       height: 50.h,
@@ -270,7 +318,7 @@ class ProductDetailsPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Description",
+                                  S.of(context).description, //   "Description",
                                   style: AppStyles.textStyle18w700,
                                 ),
                                 Text(
@@ -331,49 +379,46 @@ class ProductDetailsPage extends StatelessWidget {
                                       Row(
                                         children: [
                                           GestureDetector(
-                                            onTap: (){
-                                              if(cubit.quantityData>cubit.quantity){
+                                            onTap: () {
+                                              if (cubit.quantityData >
+                                                  cubit.quantity) {
                                                 cubit.plusQuantity();
-
                                               }
                                             },
                                             child: Container(
                                               height: 34,
                                               width: 34,
                                               color: Colors.amber,
-                                              child: Center(
-                                                  child:Icon(
-                                                    size: 17,
-
-                                                    Icons.add,
-                                                    color: Colors.black,
-                                                  )
-                                              ),
+                                              child: const Center(
+                                                  child: Icon(
+                                                size: 17,
+                                                Icons.add,
+                                                color: Colors.black,
+                                              )),
                                             ),
                                           ),
-                                          SizedBox(width: 10.w,),
+                                          SizedBox(
+                                            width: 10.w,
+                                          ),
                                           Text(
                                             cubit.quantity.toString(),
                                             style: AppStyles.textStyle18w700,
                                           ),
-                                          SizedBox(width: 10.w,),
-
+                                          SizedBox(
+                                            width: 10.w,
+                                          ),
                                           GestureDetector(
-                                            onTap: (){
+                                            onTap: () {
                                               cubit.minQuantity();
-
                                             },
                                             child: Container(
                                               height: 34,
                                               width: 34,
                                               color: AppColor.greyText,
                                               child: Center(
-                                                child:Text(
-                                                  '-',
-                                                  style: AppStyles.textStyle24
-                                                )
-                                              ),
-
+                                                  child: Text('-',
+                                                      style: AppStyles
+                                                          .textStyle24)),
                                             ),
                                           )
                                         ],
@@ -381,8 +426,10 @@ class ProductDetailsPage extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                const AppBottom(
-                                  title: "Add to Cart",
+                                AppBottom(
+                                  title: S
+                                      .of(context)
+                                      .add_to_cart, //"Add to Cart",
                                 ),
                               ],
                             ),

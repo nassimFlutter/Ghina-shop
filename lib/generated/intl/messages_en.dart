@@ -22,14 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Lets_start_shopping":
+            MessageLookupByLibrary.simpleMessage("Let’s start shopping!"),
+        "NO_CONNECTION": MessageLookupByLibrary.simpleMessage("NO CONNECTION"),
         "about_best_price":
             MessageLookupByLibrary.simpleMessage("About Best Price"),
+        "account": MessageLookupByLibrary.simpleMessage("account"),
         "add_address": MessageLookupByLibrary.simpleMessage("Add Address"),
         "add_address_for_a_faster_checkout":
             MessageLookupByLibrary.simpleMessage(
                 "Add Address for a Faster Checkout"),
         "add_new_address":
             MessageLookupByLibrary.simpleMessage("Add New Address"),
+        "add_to_cart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
         "added_to_wishlist":
             MessageLookupByLibrary.simpleMessage("Added to Wishlist"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
@@ -40,9 +45,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "are_you_sure_you_want_to_logout": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to logout?"),
         "avenue": MessageLookupByLibrary.simpleMessage("Avenue"),
+        "best_selling": MessageLookupByLibrary.simpleMessage("Best Selling"),
         "block_no_": MessageLookupByLibrary.simpleMessage("Block No*"),
         "brands": MessageLookupByLibrary.simpleMessage("Brands"),
+        "by": MessageLookupByLibrary.simpleMessage("by"),
+        "cart": MessageLookupByLibrary.simpleMessage("cart"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+        "category": MessageLookupByLibrary.simpleMessage("Category"),
         "change": MessageLookupByLibrary.simpleMessage("Change"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
@@ -51,8 +60,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "changed_password_dialog": MessageLookupByLibrary.simpleMessage(
             "You have successfully\nChanged Your Password"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "choose_language":
+            MessageLookupByLibrary.simpleMessage("Choose Language"),
+        "color": MessageLookupByLibrary.simpleMessage("Color"),
         "confirm_password_":
             MessageLookupByLibrary.simpleMessage("Confirm Password*"),
+        "connection_not_found": MessageLookupByLibrary.simpleMessage(
+            "Connection not found, make sure you are\nconnected to internet"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "coupon_code": MessageLookupByLibrary.simpleMessage("Coupon Code"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
@@ -64,11 +78,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "delivery": MessageLookupByLibrary.simpleMessage("Delivery"),
         "delivery_details":
             MessageLookupByLibrary.simpleMessage("Delivery Details"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
         "discount": MessageLookupByLibrary.simpleMessage("Discount"),
         "dont_have_an_account_Register": MessageLookupByLibrary.simpleMessage(
             "Don’t have an account? Register"),
         "e_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "edit_account": MessageLookupByLibrary.simpleMessage("edit Account"),
+        "edit_address": MessageLookupByLibrary.simpleMessage("Edit Address"),
         "email_": MessageLookupByLibrary.simpleMessage("Email*"),
         "email_address_validation": MessageLookupByLibrary.simpleMessage(
             "E-mail must be\n a valid email address"),
@@ -86,6 +102,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_your_phone":
             MessageLookupByLibrary.simpleMessage("Enter your phone"),
         "error": MessageLookupByLibrary.simpleMessage("error"),
+        "error_try_again":
+            MessageLookupByLibrary.simpleMessage("Error try again"),
         "extra_directions_":
             MessageLookupByLibrary.simpleMessage("Extra Directions*"),
         "failure_update_message": MessageLookupByLibrary.simpleMessage(
@@ -118,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_orders": MessageLookupByLibrary.simpleMessage("My Orders"),
         "name_required_validation":
             MessageLookupByLibrary.simpleMessage("Full name is required"),
+        "new_arrivals": MessageLookupByLibrary.simpleMessage("New Arrivals"),
         "new_password_": MessageLookupByLibrary.simpleMessage("new Password*"),
         "no_added_address":
             MessageLookupByLibrary.simpleMessage("No Added Address"),
@@ -147,6 +166,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "payment_details":
             MessageLookupByLibrary.simpleMessage("Payment Details"),
+        "payment_method":
+            MessageLookupByLibrary.simpleMessage("Payment Method"),
         "phone_length_validation": MessageLookupByLibrary.simpleMessage(
             "The Mobile must be between 8\n and 15 digits"),
         "phone_number_": MessageLookupByLibrary.simpleMessage("Phone Number*"),
@@ -163,9 +184,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "products": MessageLookupByLibrary.simpleMessage("Products"),
         "reach_out_to_us":
             MessageLookupByLibrary.simpleMessage("Reach Out to Us"),
+        "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "return_policy_data":
             MessageLookupByLibrary.simpleMessage("Return Policy data ....."),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "see_all": MessageLookupByLibrary.simpleMessage("See All"),
+        "select_address":
+            MessageLookupByLibrary.simpleMessage("Select Address"),
         "select_area_": MessageLookupByLibrary.simpleMessage("Select Area*"),
         "send": MessageLookupByLibrary.simpleMessage("send"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -175,6 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "sign_up_error": MessageLookupByLibrary.simpleMessage("Sign up error"),
         "size": MessageLookupByLibrary.simpleMessage("Size"),
+        "sort_by": MessageLookupByLibrary.simpleMessage("Sort By"),
         "street_": MessageLookupByLibrary.simpleMessage("Street*"),
         "sub_total": MessageLookupByLibrary.simpleMessage("Sub Total"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
