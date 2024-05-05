@@ -15,7 +15,7 @@ class AdItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 315.w,
-      height: 180.h,
+      // height: 180.h,
       margin: EdgeInsetsDirectional.only(end: 10.w),
       decoration: BoxDecoration(
           color: AppColor.corn, borderRadius: BorderRadius.circular(16.r)),
@@ -58,11 +58,12 @@ class AdItem extends StatelessWidget {
           const Spacer(),
           // SizedBox(width: 20.w),
           Padding(
-              padding: EdgeInsetsDirectional.only(top: 20.h, end: 8.w),
+              padding:
+                  EdgeInsetsDirectional.only(top: 9.h, end: 8.5.w, bottom: 9.h),
               child: CachedNetworkImage(
                 width: 126.w,
                 height: 130.17.h,
-                fit: BoxFit.cover,
+                fit: BoxFit.scaleDown,
                 imageUrl: banner?.image ?? "",
               ))
         ],

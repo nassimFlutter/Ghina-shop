@@ -188,7 +188,7 @@ class MyApp extends StatelessWidget {
               title: 'Best Price',
               theme: ThemeData(
                 backgroundColor: Colors.white,
-                useMaterial3: true,
+                useMaterial3: false,
               ),
               home: const SplashView(),
               // home: const ProductDetailsPage(),

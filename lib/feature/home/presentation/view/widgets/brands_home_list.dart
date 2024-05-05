@@ -17,6 +17,7 @@ class BrandsHomeList extends StatelessWidget {
         padding: EdgeInsets.zero,
         itemCount: homeCubit.homeApiResponse.item?.brands?.length ?? 0,
         scrollDirection: Axis.horizontal,
+        clipBehavior: Clip.none,
         itemBuilder: (context, index) {
           return BrandsItem(
               title: homeCubit.homeApiResponse.item?.brands?[index].name ?? "",

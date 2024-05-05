@@ -30,6 +30,7 @@ class _HomePageViewState extends State<HomePageView> {
         return Scaffold(
           backgroundColor: Colors.white,
           bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
             onTap: (value) {
               _selectedIndex = value;
@@ -39,6 +40,7 @@ class _HomePageViewState extends State<HomePageView> {
             selectedLabelStyle: AppStyles.textStyle12w700,
             unselectedLabelStyle: AppStyles.textStyle12w700,
             selectedItemColor: AppColor.corn,
+
             unselectedItemColor: Colors.black,
             // backgroundColor: Colors.white,
             items: [

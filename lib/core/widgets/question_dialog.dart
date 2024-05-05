@@ -32,14 +32,14 @@ class QuestionDialog extends StatelessWidget {
             ),
             Text(
               title,
-              style: AppStyles.textStyle24,
+              style: AppStyles.textStyle20w700,
             ),
             SizedBox(
-              height: 10.h,
+              height: 12.h,
             ),
             const SizedBox(width: double.infinity, child: Divider()),
             SizedBox(
-              height: 16.h,
+              height: 26.h,
             ),
             Text(
               contain,
@@ -48,7 +48,7 @@ class QuestionDialog extends StatelessWidget {
                   .copyWith(fontWeight: FontWeight.w400, color: Colors.black),
             ),
             SizedBox(
-              height: 18.h,
+              height: 26.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -40,7 +40,7 @@ class SelectLanguage extends StatelessWidget {
                   Text(S.of(context).choose_language, //'Choose Language',
                       textAlign: TextAlign.center,
                       style: AppStyles.textStyle24),
-                  SizedBox(height: 30.h),
+                  SizedBox(height: 9.h),
                   Text(
                       S
                           .of(context)
@@ -48,7 +48,7 @@ class SelectLanguage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: AppStyles.textStyle14),
                   SizedBox(
-                    height: 77.h,
+                    height: 45.h,
                   ),
                   SelectedLanguage(
                     onTap: () {

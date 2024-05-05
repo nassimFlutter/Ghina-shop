@@ -91,6 +91,9 @@ class CartViewBody extends StatelessWidget {
                           text2: myCartCubit.myCart.totalFinally.toString(),
                           textStyle2: AppStyles.textStyle18w700,
                         ),
+                        SizedBox(
+                          height: 45.h,
+                        ),
                         AppBottom(
                           title: S.of(context).proceed_to_checkout,
                           onTap: () {

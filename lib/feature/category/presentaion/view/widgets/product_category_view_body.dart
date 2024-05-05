@@ -49,6 +49,11 @@ class ProductCategoryViewBody extends StatelessWidget {
                 ],
               ),
             ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 14.h,
+              ),
+            ),
             BlocBuilder<CategoryProductCubit, CategoryProductState>(
               builder: (context, state) {
                 if (state is CategoryProductSuccess) {

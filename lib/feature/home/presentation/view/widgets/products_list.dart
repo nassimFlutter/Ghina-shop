@@ -18,16 +18,19 @@ class ProductsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 360.h,
-      child: ListView.builder(
+      child: ListView.separated(
         scrollDirection: Axis.horizontal,
+        clipBehavior: Clip.none,
         itemCount: productList.length,
+        separatorBuilder: (context, index) {
+          return SizedBox(
+            width: 12.w,
+          );
+        },
         itemBuilder: (context, index) {
           Product productItem = productList[index];
           return ProductsItem(
             onTap: () {
-              print("[[[[[[[[[[[[[[[[[[[[[");
-              print(productItem.id);
-
               HelperFunctions.navigateToScreen(
                   context,
                   ProductDetailsPage(

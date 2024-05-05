@@ -145,7 +145,7 @@ class CartItem extends StatelessWidget {
                               onTapYes: () {},
                             ));
                       },
-                      icon: SvgPicture.asset(IconsPath.deleteIcon),
+                      icon: SvgPicture.asset(IconsPath.deleteIcon,),
                     ),
                   ],
                 ),
