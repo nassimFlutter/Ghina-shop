@@ -26,7 +26,7 @@ class LoginForm extends StatelessWidget {
                 title: S.of(context).e_mail, // "E-mail",
               ),
               SizedBox(
-                height: 10.h,
+                height: 6.h,
               ),
               AuthTextField(
                 textEditingController: loginCubit.emailController,
@@ -37,13 +37,13 @@ class LoginForm extends StatelessWidget {
                 hintText: S.of(context).enter_your_email, //"Enter your email",
               ),
               SizedBox(
-                height: 15.h,
+                height: 12.h,
               ),
               AuthFieldText(
                 title: S.of(context).password, //"Password",
               ),
               SizedBox(
-                height: 10.h,
+                height: 9.h,
               ),
               AuthTextField(
                 textEditingController: loginCubit.passwordController,

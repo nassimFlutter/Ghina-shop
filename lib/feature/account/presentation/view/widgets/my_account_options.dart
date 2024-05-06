@@ -8,6 +8,7 @@ import 'package:best_price/feature/account/presentation/view/pages/change_passwo
 import 'package:best_price/feature/account/presentation/view/pages/my_address_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/my_orders_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
+import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/feature/wish/presentation/view/view/my_wish_view.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class MyAccountOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LogoutCubit logoutCubit = LogoutCubit.get(context);
+    LangCubit langCubit = LangCubit.get(context);
 
     return Container(
       decoration: AppStyles.accountContainerDecoration(),
@@ -29,21 +31,33 @@ class MyAccountOptions extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 15.h,
+            height: 25.h,
           ),
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(
                     context, const EditAccountView());
               },
-              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),  
               title: S.of(context).edit_account, //"Edit Account",
               iconPath: IconsPath.editAccountIcon),
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(context, const MyOrders());
               },
-              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).my_orders, // "My Orders",
               iconPath: IconsPath.policiesIcon),
           OptionItem(
@@ -51,14 +65,26 @@ class MyAccountOptions extends StatelessWidget {
                 HelperFunctions.navigateToScreen(
                     context, const MyAddressView());
               },
-              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).my_addresses, //"My Addresses",
               iconPath: IconsPath.addressesIcon),
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(context, const MyWishView());
               },
-              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).wish_list, //"Wish list",
               iconPath: IconsPath.wishIcon),
           OptionItem(
@@ -66,7 +92,13 @@ class MyAccountOptions extends StatelessWidget {
                 HelperFunctions.navigateToScreen(
                     context, const ForgetPasswordView());
               },
-              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).change_password, // "Change Password",
               iconPath: IconsPath.changeIcon),
           OptionItem(
@@ -83,11 +115,17 @@ class MyAccountOptions extends StatelessWidget {
                       },
                     ));
               },
-              trailing: SvgPicture.asset(IconsPath.rightArrowIcon),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).logout, //"Logout",
               iconPath: IconsPath.logoutIcon),
           SizedBox(
-            height: 25.h,
+            height: 5.h,
           )
         ],
       ),

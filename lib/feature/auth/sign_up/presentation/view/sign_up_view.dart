@@ -50,7 +50,7 @@ class SignUpView extends StatelessWidget {
                   style: AppStyles.textStyle24),
             ),
             SizedBox(
-              height: 10.h,
+              height: 9.h,
             ),
             Padding(
               padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
@@ -62,7 +62,7 @@ class SignUpView extends StatelessWidget {
                   style: AppStyles.textStyle14),
             ),
             SizedBox(
-              height: 40.h,
+              height: 14.h,
             ),
             Padding(
               padding: EdgeInsetsDirectional.only(start: 16.w),

@@ -19,7 +19,7 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // width: 315.w,
-      height: 50.h,
+      height: 40.h,
       padding: EdgeInsetsDirectional.zero,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -40,9 +40,9 @@ class SearchField extends StatelessWidget {
             prefixIcon: Padding(
                 padding: EdgeInsetsDirectional.only(start: 11.w, end: 12.w),
                 child: SvgPicture.asset(IconsPath.searchIcon,
-                    color: AppColor.greyOpacity)),
+                    width: 24.w, height: 24.h, color: AppColor.greyOpacity)),
             border: InputBorder.none,
-            contentPadding: const EdgeInsetsDirectional.only(top: 5)),
+            contentPadding: const EdgeInsetsDirectional.only(top: 0)),
       ),
     );
   }

@@ -1,13 +1,17 @@
+import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
+import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/manager/flitter_cubit/flitter_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../widgets/flitter_item.dart';
 
 class FlitterSortView extends StatelessWidget {
   const FlitterSortView({super.key});
@@ -17,6 +21,7 @@ class FlitterSortView extends StatelessWidget {
     FlitterCubit flitterCubit = FlitterCubit.get(context);
     return Scaffold(
       body: ListView(
+        padding: EdgeInsets.zero,
         children: [
           Padding(
             padding: EdgeInsetsDirectional.only(top: Dimensions.dTopPadding.h),
@@ -35,7 +40,7 @@ class FlitterSortView extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 28.h,
+            height: 26.h,
           ),
           Padding(
             padding:
@@ -46,13 +51,14 @@ class FlitterSortView extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 28.h,
+            height: 30.h,
           ),
           BlocBuilder<FlitterCubit, FlitterState>(
             builder: (context, state) {
               return ListView.builder(
                 itemCount: flitterCubit.sortByList.length,
                 shrinkWrap: true,
+                padding: EdgeInsetsDirectional.only(start: 16.w),
                 itemBuilder: (context, index) {
                   return FlitterItem(
                       groupValue: flitterCubit.groupValueSort,
@@ -68,7 +74,7 @@ class FlitterSortView extends StatelessWidget {
             },
           ),
           SizedBox(
-            height: 28.h,
+            height: 30.h,
           ),
           BlocBuilder<FlitterCubit, FlitterState>(
             builder: (context, state) {
@@ -93,23 +99,68 @@ class FlitterSortView extends StatelessWidget {
                         String brand = flitterCubit.brandsList[index];
                         bool isChecked =
                             flitterCubit.selectedBrandsList.contains(brand);
-                        return ListTile(
-                          leading: Checkbox(
-                            checkColor: Colors.white,
-                            activeColor: Colors.black,
-                            value: isChecked,
-                            onChanged: (value) {
-                              if (value != null) {
-                                if (value) {
-                                  flitterCubit.selectBrand(brand);
-                                } else {
-                                  flitterCubit.deselectBrand(brand);
-                                }
-                              }
-                            },
+                        return Padding(
+                          padding: EdgeInsetsDirectional.only(start: 16.w),
+                          child: Column(
+                            children: [
+                              // SizedBox(
+                              //   height: 18.h,
+                              // ),
+                              Row(
+                                children: [
+                                  Checkbox(
+                                    checkColor: Colors.white,
+                                    activeColor: Colors.black,
+                                    value: isChecked,
+                                    onChanged: (value) {
+                                      if (value != null) {
+                                        if (value) {
+                                          flitterCubit.selectBrand(brand);
+                                        } else {
+                                          flitterCubit.deselectBrand(brand);
+                                        }
+                                      }
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 16.w,
+                                  ),
+                                  Text(flitterCubit.brandsList[index],
+                                      style: AppStyles.textStyle16w400
+                                          .copyWith(color: Colors.black)),
+                                ],
+                              ),
+                              // SizedBox(
+                              //   height: 18.h,
+                              // ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                child: const Divider(
+                                  color: AppColor.borderColor,
+                                ),
+                              )
+                            ],
                           ),
-                          title: Text(flitterCubit.brandsList[index]),
                         );
+                        // return ListTile(
+                        //   contentPadding:
+                        //       REdgeInsetsDirectional.only(start: 15.w),
+                        //   leading: Checkbox(
+                        //     checkColor: Colors.white,
+                        //     activeColor: Colors.black,
+                        //     value: isChecked,
+                        //     onChanged: (value) {
+                        //       if (value != null) {
+                        //         if (value) {
+                        //           flitterCubit.selectBrand(brand);
+                        //         } else {
+                        //           flitterCubit.deselectBrand(brand);
+                        //         }
+                        //       }
+                        //     },
+                        //   ),
+                        //   title: Text(flitterCubit.brandsList[index]),
+                        // );
                       },
                     ),
                   ],
@@ -140,23 +191,67 @@ class FlitterSortView extends StatelessWidget {
                         String category = flitterCubit.categoryList[index];
                         bool isChecked =
                             flitterCubit.categoryListSleeted.contains(category);
-                        return ListTile(
-                          leading: Checkbox(
-                            checkColor: Colors.white,
-                            activeColor: Colors.black,
-                            value: isChecked,
-                            onChanged: (value) {
-                              if (value != null) {
-                                if (value) {
-                                  flitterCubit.selectCategory(category);
-                                } else {
-                                  flitterCubit.deselectCategory(category);
-                                }
-                              }
-                            },
+
+                        return Padding(
+                          padding: EdgeInsetsDirectional.only(start: 16.w),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 18.h,
+                              ),
+                              Row(
+                                children: [
+                                  Checkbox(
+                                    checkColor: Colors.white,
+                                    activeColor: Colors.black,
+                                    value: isChecked,
+                                    onChanged: (value) {
+                                      if (value != null) {
+                                        if (value) {
+                                          flitterCubit.selectCategory(category);
+                                        } else {
+                                          flitterCubit
+                                              .deselectCategory(category);
+                                        }
+                                      }
+                                    },
+                                  ),
+                                  Text(
+                                    flitterCubit.categoryList[index],
+                                    style: AppStyles.textStyle16w400
+                                        .copyWith(color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 18.h,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                child: const Divider(
+                                  color: AppColor.borderColor,
+                                ),
+                              )
+                            ],
                           ),
-                          title: Text(flitterCubit.categoryList[index]),
                         );
+                        // return ListTile(
+                        //   leading: Checkbox(
+                        //     checkColor: Colors.white,
+                        //     activeColor: Colors.black,
+                        //     value: isChecked,
+                        //     onChanged: (value) {
+                        //       if (value != null) {
+                        //         if (value) {
+                        //           flitterCubit.selectCategory(category);
+                        //         } else {
+                        //           flitterCubit.deselectCategory(category);
+                        //         }
+                        //       }
+                        //     },
+                        //   ),
+                        //   title: Text(flitterCubit.categoryList[index]),
+                        // );
                       },
                     ),
                   ],
@@ -164,46 +259,18 @@ class FlitterSortView extends StatelessWidget {
               );
             },
           ),
+          SizedBox(
+            height: 70.h,
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+            child: AppBottom(title: "Apply"),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
         ],
       ),
-    );
-  }
-}
-
-class FlitterItem extends StatelessWidget {
-  const FlitterItem({
-    super.key,
-    required this.title,
-    required this.groupValue,
-    required this.value,
-    this.onChanged,
-  });
-  final String title;
-  final int groupValue, value;
-  final void Function(int?)? onChanged;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListTile(
-          contentPadding:
-              EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-          leading: Radio(
-            groupValue: groupValue,
-            value: value,
-            onChanged: onChanged,
-            activeColor: Colors.black,
-          ),
-          title: Text(
-            title,
-            style: AppStyles.textStyle16w400.copyWith(color: Colors.black),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: const Divider(),
-        )
-      ],
     );
   }
 }
@@ -222,7 +289,7 @@ class AppBarRowReverse extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppStyles.textStyle20w700,
+          style: AppStyles.textStyle18w700,
         ),
         AppBarBottom(iconPath: iconPath),
       ],

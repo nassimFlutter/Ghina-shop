@@ -19,14 +19,18 @@ class HomeTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppStyles.textStyle20w700,
+          style: AppStyles.textStyle20w700
+              .copyWith(color: AppColor.homeTitleTextColor),
         ),
         GestureDetector(
           onTap: onTap,
-          child: Text(
-            S.of(context).see_all, //"See All",
-            style:
-                AppStyles.textStyle14.copyWith(color: AppColor.titleTextColor),
+          child: Opacity(
+            opacity: 0.5,
+            child: Text(
+              S.of(context).see_all, //"See All",
+              style: AppStyles.textStyle14
+                  .copyWith(color: AppColor.titleTextColor),
+            ),
           ),
         ),
       ],

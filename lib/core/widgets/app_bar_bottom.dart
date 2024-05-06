@@ -25,8 +25,8 @@ class AppBarBottom extends StatelessWidget {
               Navigator.of(context).pop();
             },
         child: Container(
-          width: 36,
-          height: 36,
+          width: 40.w,
+          height: 40.h,
           padding: const EdgeInsets.all(9),
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(

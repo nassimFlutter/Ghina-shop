@@ -14,6 +14,7 @@ class CategoryHomeList extends StatelessWidget {
     return SizedBox(
       height: 50.h,
       child: ListView.builder(
+        clipBehavior: Clip.none,
         itemCount: homeCubit.homeApiResponse.item?.categories?.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
@@ -22,8 +23,8 @@ class CategoryHomeList extends StatelessWidget {
                 homeCubit.homeApiResponse.item?.categories?[index].name ?? "",
             imageUrl:
                 homeCubit.homeApiResponse.item?.categories?[index].image ?? "",
-                categoryId:   homeCubit.homeApiResponse.item?.categories?[index].id??-1,
-               
+            categoryId:
+                homeCubit.homeApiResponse.item?.categories?[index].id ?? -1,
           );
         },
       ),

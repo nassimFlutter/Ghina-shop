@@ -30,16 +30,20 @@ class LoginView extends StatelessWidget {
         child: Column(
           // padding: EdgeInsets.zero,
           children: [
-            // Padding(
-            //   padding: EdgeInsetsDirectional.only(start: 16.w, top: 4.h),
-            //   child: const Row(
-            //     children: [
-            //       AppBarBottom(
-            //         iconPath: IconsPath.cancelIcon,
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            Padding(
+              padding: EdgeInsetsDirectional.only(start: 16.w, top: 4.h),
+              child: Row(
+                children: [
+                  AppBarBottom(
+                    iconPath: IconsPath.cancelIcon,
+                    onTap: () {
+                      HelperFunctions.navigateToScreenAndRemove(
+                          context, const HomePageView());
+                    },
+                  ),
+                ],
+              ),
+            ),
             SizedBox(
               height: height * 0.03, //27.h,
             ),
@@ -49,7 +53,7 @@ class LoginView extends StatelessWidget {
                   style: AppStyles.textStyle24),
             ),
             SizedBox(
-              height: 10.h,
+              height: 9.h,
             ),
             Padding(
               padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
@@ -60,12 +64,10 @@ class LoginView extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: AppStyles.textStyle14),
             ),
-            SizedBox(
-              height: height * 0.06, //50.h,
-            ),
+            SizedBox(height: 11.h),
             const LoginForm(),
             SizedBox(
-              height: 20.h,
+              height: 12.h,
             ),
             const ForgetPasswordText(),
             SizedBox(
@@ -98,7 +100,8 @@ class LoginView extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: AppBottom(
-                      title: S.of(context).login, // "LogIn",
+                      // title: S.of(context).login, // "LogIn",
+                      title: S.of(context).sign_in,
                       onTap: () async {
                         loginCubit.logIn();
                       },

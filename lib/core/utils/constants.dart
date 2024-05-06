@@ -34,13 +34,14 @@ class IconsPath {
   static const String kuwait = "$_basePath/kuwait.svg";
   // !  ------ shared ----------
   static const String cancelIcon = "$_basePath/cancel.svg";
-  static const String arrowLeftIcon = "$_basePath/arrow_left.svg";
+  // static const String arrowLeftIcon = "$_basePath/arrow_left.svg";
   static const String notFound = "$_basePath/not_found.svg";
   static const String removeIcon = "$_basePath/remove.svg";
   static const String flitterIcon = "$_basePath/flitter.svg";
   static const String errorIcon = "$_basePath/error.svg";
   static const String reloadIcon = "$_basePath/reload.svg";
   static const String disconnectedIcon = "$_basePath/disconnected.svg";
+  static const String arrowLeftIcon = "$_basePath/arrow_right.svg";
 
   //! -------- accounts --------
   static const String aboutIcon = "$_basePath/about.svg";
@@ -105,4 +106,3 @@ class IconsPath {
   //! ----------------- address ---------------------
   static const dropDownIcon = "$_basePath/down_arrow.svg";
 }
-

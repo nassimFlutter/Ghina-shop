@@ -38,13 +38,14 @@ class ForgetPasswordView extends StatelessWidget {
                       iconPath: IconsPath.arrowLeftIcon,
                       onTap: () {
                         forgetPasswordCubit.initState();
+                        HelperFunctions.navigateToBack(context);
                       },
                     ),
                   ],
                 ),
               ),
               SizedBox(
-                height: 60.h,
+                height: 9.h,
               ),
               Center(
                 child: Text(
@@ -54,7 +55,7 @@ class ForgetPasswordView extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 27.h,
+                height: 14.h,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),

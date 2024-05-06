@@ -12,8 +12,9 @@ class AdList extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit homeCubit = HomeCubit.get(context);
     return SizedBox(
-      height: 190.h,
+      height: 150.h,
       child: ListView.builder(
+        clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
         itemCount: homeCubit.homeApiResponse.item?.banners?.length,
         itemBuilder: (context, index) {
