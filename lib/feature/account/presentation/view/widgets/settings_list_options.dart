@@ -21,7 +21,7 @@ class SettingsListOptions extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 14.h,
+            height: 27.h,
           ),
           OptionItem(
             title: S.of(context).notification, //"Notification",
@@ -46,7 +46,7 @@ class SettingsListOptions extends StatelessWidget {
                 style: AppStyles.textStyle16w400.copyWith(color: Colors.black),
               )),
           SizedBox(
-            height: 14.h,
+            height: 10.h,
           ),
         ],
       ),

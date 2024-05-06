@@ -69,7 +69,7 @@ class MyAccountViewBody extends StatelessWidget {
                   child: const MyAccountOptions(),
                 ),
                 SizedBox(
-                  height: 25.h,
+                  height: 30.h,
                 ),
                 OptionsListTitle(
                   title: S.of(context).settings, //"Settings",
@@ -82,7 +82,7 @@ class MyAccountViewBody extends StatelessWidget {
                   child: const SettingsListOptions(),
                 ),
                 SizedBox(
-                  height: 25.h,
+                  height: 30.h,
                 ),
                 OptionsListTitle(
                   title: S.of(context).support, //"Support",
@@ -95,7 +95,7 @@ class MyAccountViewBody extends StatelessWidget {
                   child: const SupportListOptions(),
                 ),
                 SizedBox(
-                  height: 23.h,
+                  height: 28.h,
                 ),
                 const CopyRightsWidgets(),
                 SizedBox(

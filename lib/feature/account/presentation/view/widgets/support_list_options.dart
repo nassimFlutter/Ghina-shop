@@ -6,6 +6,7 @@ import 'package:best_price/feature/account/presentation/view/pages/contact_us.da
 import 'package:best_price/feature/account/presentation/view/pages/our_policy_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/terms_conditions.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
+import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,54 +19,80 @@ class SupportListOptions extends StatelessWidget {
 // todo : finish translate
   @override
   Widget build(BuildContext context) {
+    LangCubit langCubit = LangCubit.get(context);
     return Container(
       decoration: AppStyles.accountContainerDecoration(),
       child: Column(
         children: [
           SizedBox(
-            height: 14.h,
+            height: 27.h,
           ),
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(
                     context, const AboutBestPrice());
               },
-              trailing: SvgPicture.asset(
-                IconsPath.rightArrowIcon,
-              ),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).about_best_price, //"About Best price",
               iconPath: IconsPath.aboutIcon),
+          SizedBox(
+            height: 8.h,
+          ),
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(
                     context, const OurPolicyView());
               },
-              trailing: SvgPicture.asset(
-                IconsPath.rightArrowIcon,
-              ),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).our_policies, //"Our Policies",
               iconPath: IconsPath.policiesIcon),
+          SizedBox(
+            height: 8.h,
+          ),
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(
                     context, const TermsConditions());
               },
-              trailing: SvgPicture.asset(
-                IconsPath.rightArrowIcon,
-              ),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).terms_conditions, // "Terms & Conditions",
               iconPath: IconsPath.policiesIcon),
+          SizedBox(
+            height: 8.h,
+          ),
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(context, const ContactUs());
               },
-              trailing: SvgPicture.asset(
-                IconsPath.rightArrowIcon,
-              ),
+              trailing: langCubit.lang == 'en'
+                  ? SvgPicture.asset(
+                      IconsPath.rightArrowIcon,
+                    )
+                  : SvgPicture.asset(
+                      IconsPath.arrowLeftIcon,
+                    ),
               title: S.of(context).contact_us, //"Contact Us",
               iconPath: IconsPath.contactIcon),
           SizedBox(
-            height: 14.h,
+            height: 11.h,
           ),
         ],
       ),
