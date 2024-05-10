@@ -6,6 +6,7 @@ import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/category/data/models/category_mode.dart';
 import 'package:best_price/feature/category/data/models/product_categort_mode.dart';
 import 'package:best_price/feature/category/data/repo/category_repo.dart';
+import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -51,17 +52,21 @@ class CategoryRepoImpl implements CategoryRepo {
       return left(ServerFailure(e.toString(), 500));
     }
   }
-
-  @override
-  Future<Either<Failure, ProductCategoryResponse>> searchProductCategory(
-      String name, String category) async {
-    try {
-      var response = await getIt
-          .get<ApiService>()
-          .get(endPoint: "${UrlKeys.searchEndPoint}$name&category=$category");
-      return right(ProductCategoryResponse.fromJson(response));
-    } catch (e) {
-      return left(ErrorHandler.handleError(e));
+  
+    @override
+    Future<Either<Failure, List<Product>>> searchProductCategory(
+        String name, String category) async {
+      try {
+        List<Product> fetchProduct = [];
+        var response = await getIt
+            .get<ApiService>()
+            .get(endPoint: "${UrlKeys.searchEndPoint}$name&category=$category");
+        for (var element in response) {
+          fetchProduct.add(Product.fromJson(element));
+        }
+        return right(fetchProduct);
+      } catch (e) {
+        return left(ErrorHandler.handleError(e));
+      }
     }
   }
-}
