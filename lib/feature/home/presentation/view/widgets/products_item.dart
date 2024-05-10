@@ -21,12 +21,14 @@ class ProductsItem extends StatelessWidget {
     required this.offerPercentage,
     required this.isFavorite,
     this.onTap,
+    this.onFavoriteTap,
   });
   final String imageUrl, brandName, companyName, title;
   final num price, offerPercentage;
   final num? offerPrice;
   final String isFavorite;
   final void Function()? onTap;
+  final void Function()? onFavoriteTap;
   @override
   Widget build(BuildContext context) {
     LoggerHelper.debug(isFavorite);
@@ -53,6 +55,10 @@ class ProductsItem extends StatelessWidget {
                         ? IconsPath.favoriteRedIcon
                         : IconsPath.heartIcon,
                     color: AppColor.yalow,
+                    onTap: onFavoriteTap,
+                    // () {
+                    //   print("faaaavorait");
+                    // },
                   ),
                 )
               ],

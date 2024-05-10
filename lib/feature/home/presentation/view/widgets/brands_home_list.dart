@@ -15,15 +15,14 @@ class BrandsHomeList extends StatelessWidget {
       height: 62.h,
       child: ListView.builder(
         padding: EdgeInsets.zero,
-        itemCount: homeCubit.homeApiResponse.item?.brands?.length ?? 0,
+        itemCount: homeCubit.brandsList.length ?? 0,
         scrollDirection: Axis.horizontal,
         clipBehavior: Clip.none,
         itemBuilder: (context, index) {
           return BrandsItem(
-              title: homeCubit.homeApiResponse.item?.brands?[index].name ?? "",
-              brandId: homeCubit.homeApiResponse.item?.brands?[index].id ?? -1,
-              imageUrl:
-                  homeCubit.homeApiResponse.item?.brands?[index].image ?? "");
+              title: homeCubit.brandsList[index].name ?? "",
+              brandId: homeCubit.brandsList[index].id ?? -1,
+              imageUrl: homeCubit.brandsList[index].image ?? "");
         },
       ),
     );

@@ -15,16 +15,13 @@ class CategoryHomeList extends StatelessWidget {
       height: 50.h,
       child: ListView.builder(
         clipBehavior: Clip.none,
-        itemCount: homeCubit.homeApiResponse.item?.categories?.length,
+        itemCount: homeCubit.categoriesList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return CategoryHomeItem(
-            categoryTitle:
-                homeCubit.homeApiResponse.item?.categories?[index].name ?? "",
-            imageUrl:
-                homeCubit.homeApiResponse.item?.categories?[index].image ?? "",
-            categoryId:
-                homeCubit.homeApiResponse.item?.categories?[index].id ?? -1,
+            categoryTitle: homeCubit.categoriesList[index].name ?? "",
+            imageUrl: homeCubit.categoriesList[index].image ?? "",
+            categoryId: homeCubit.categoriesList[index].id ?? -1,
           );
         },
       ),

@@ -16,7 +16,15 @@ class HomeCubit extends Cubit<HomeCubitState> {
     IconsPath.headphonesIcon,
   ];
   List<String> categoryTitleList = ["Computer", "Phone", "Accessories"];
-  HomeApiResponse homeApiResponse = HomeApiResponse();
+  List<Product> featuredProductsList = [];
+  List<Product> bestSellerProductsList = [];
+  List<Product> newstProductsList = [];
+  List<HomeBanner> bannersList = [];
+  List<Category> categoriesList = [];
+  List<Brand> brandsList = [];
+
+  // HomeApiResponse homeApiResponse = HomeApiResponse();
+
   Future<void> getHomePage() async {
     emit(HomeCubitLoading());
     var result = await getIt.get<HomeRepo>().getHomePage();
@@ -24,7 +32,14 @@ class HomeCubit extends Cubit<HomeCubitState> {
       LoggerHelper.error(error.errMassage, error.statusCode);
       emit(HomeCubitFailure(errMessage: error.errMassage));
     }, (getHomePageSuccess) {
-      homeApiResponse = getHomePageSuccess;
+      // homeApiResponse = getHomePageSuccess;
+      featuredProductsList = getHomePageSuccess.item?.featuredProducts ?? [];
+      bestSellerProductsList =
+          getHomePageSuccess.item?.bestSellerProducts ?? [];
+      newstProductsList = getHomePageSuccess.item?.newstProducts ?? [];
+      bannersList = getHomePageSuccess.item?.banners ?? [];
+      categoriesList = getHomePageSuccess.item?.categories ?? [];
+      brandsList = getHomePageSuccess.item?.brands ?? [];
       emit(HomeCubitSuccess());
     });
   }

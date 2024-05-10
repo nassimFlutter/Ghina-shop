@@ -24,11 +24,12 @@ class AddAndRemoveFromFavoriteCubit
     });
   }
 
-  void toggleFavorite(Product product, List<Product> productList) {
-    final index = productList.indexWhere((p) => p.id == product.id);
-    if (index != -1) {
-      productList[index] = product.copyWith(isFavorite: '0');
-      // Notify listeners or update UI accordingly
-    }
-  }
+  // void toggleFavorite(Product product, List<Product> productList) {
+  //   final index = productList.indexWhere((p) => p.id == product.id);
+  //   if (index != -1) {
+  //     productList[index] = product.copyWith(isFavorite: '0');
+  //     // Notify listeners or update UI accordingly
+  //   }
+  // }
+
 }
