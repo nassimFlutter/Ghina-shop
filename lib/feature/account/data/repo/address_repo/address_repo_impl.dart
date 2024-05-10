@@ -22,4 +22,16 @@ class AddressRepoImpl implements AddressRepo {
       return left(ErrorHandler.handleError(e));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> addAddress(Map<String, dynamic> data) async {
+    try {
+      await getIt
+          .get<ApiService>()
+          .post(endPoint: "addAddress", data: data);
+      return right("added");
+    } catch (e) {
+      return left(ErrorHandler.handleError(e));
+    }
+  }
 }

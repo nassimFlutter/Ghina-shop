@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class AddressRepo {
   Future<Either<Failure, AddressModel>> getAllAddress();
+  Future<Either<Failure, String>> addAddress(Map<String,dynamic>data);
 }

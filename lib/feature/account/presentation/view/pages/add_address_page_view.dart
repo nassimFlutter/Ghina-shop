@@ -2,6 +2,7 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
+import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/change_address_page/change_address_page_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -58,14 +59,25 @@ class AddAddressView extends StatelessWidget {
               }
             },
           ),
-          Padding(
-            padding: EdgeInsetsDirectional.only(end: 16.w),
-            child: AppBottom(
-              onTap: () async {
-                await addAddressCubit.addAddress();
-              },
-              title: S.of(context).add_address, //"Add Address",
-            ),
+          BlocConsumer<AddAddressCubit, AddAddressState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is AddAddressLoading) {
+                return const Center(
+                  child: CustomCircularProgressIndicator(),
+                );
+              } else {
+                return Padding(
+                  padding: EdgeInsetsDirectional.only(end: 16.w),
+                  child: AppBottom(
+                    onTap: () async {
+                      await addAddressCubit.addAddress(context);
+                    },
+                    title: S.of(context).add_address, //"Add Address",
+                  ),
+                );
+              }
+            },
           ),
           SizedBox(
             height: 26.h,

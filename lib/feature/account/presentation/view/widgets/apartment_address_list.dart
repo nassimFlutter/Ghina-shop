@@ -209,53 +209,45 @@ class SelectedAreaDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 385.w,
-      margin: EdgeInsetsDirectional.only(end: 16.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.sp),
-        border: Border.all(width: 2, color: AppColor.failedBorderColor),
+    return DropdownButtonFormField<Item>(
+      value: areaCubit.selectAreaDropDown,
+      borderRadius: BorderRadius.circular(
+        5,
       ),
-      child: DropdownButtonFormField<Item>(
-        value: areaCubit.selectAreaDropDown,
-        borderRadius: BorderRadius.circular(
-          5,
+      style: AppStyles.textStyle16w400,
+      items: areaCubit.allAreas
+          .map(
+            (e) => DropdownMenuItem<Item>(
+              value: e,
+              child: Text(e.name ?? ""),
+            ),
+          )
+          //! very important put this toSet
+          .toSet()
+          .toList(),
+      onChanged: (value) {
+        areaCubit.selectedAreaId = value?.id;
+      },
+      validator: (value) {
+        if (value == null) {
+          return S
+              .of(context)
+              .please_select_an_area; //'Please select an area'; // Validation error message
+        }
+        return null; // No validation error
+      },
+      icon: SvgPicture.asset(
+        IconsPath.dropDownIcon,
+      ),
+      decoration: InputDecoration(
+        errorStyle: AppStyles.textStyle14.copyWith(color: Colors.red[400]),
+        hintText: S.of(context).enter_here, //"enter here",
+        hintStyle: AppStyles.textStyle14.copyWith(color: AppColor.silver),
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 0,
+          horizontal: 20.w,
         ),
-        style: AppStyles.textStyle16w400,
-        items: areaCubit.allAreas
-            .map(
-              (e) => DropdownMenuItem<Item>(
-                value: e,
-                child: Text(e.name ?? ""),
-              ),
-            )
-            //! very important put this toSet
-            .toSet()
-            .toList(),
-        onChanged: (value) {
-          areaCubit.selectedAreaId = value?.id;
-        },
-        validator: (value) {
-          if (value == null) {
-            return S
-                .of(context)
-                .please_select_an_area; //'Please select an area'; // Validation error message
-          }
-          return null; // No validation error
-        },
-        icon: SvgPicture.asset(
-          IconsPath.dropDownIcon,
-        ),
-        decoration: InputDecoration(
-          errorStyle: AppStyles.textStyle14.copyWith(color: Colors.red[400]),
-          hintText: S.of(context).enter_here, //"enter here",
-          hintStyle: AppStyles.textStyle14.copyWith(color: AppColor.silver),
-          contentPadding: EdgeInsets.symmetric(
-            vertical: 0,
-            horizontal: 20.w,
-          ),
-          border: const OutlineInputBorder(borderSide: BorderSide.none),
-        ),
+        border: const OutlineInputBorder(borderSide: BorderSide.none),
       ),
     );
   }
