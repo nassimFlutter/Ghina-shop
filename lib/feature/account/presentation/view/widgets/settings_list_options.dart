@@ -53,9 +53,9 @@ class SettingsListOptions extends StatelessWidget {
     );
   }
 
-  PersistentBottomSheetController<dynamic> showLanguageBottomSheet(
-      BuildContext context) {
-    return showBottomSheet(
+  Future showLanguageBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      useRootNavigator: true,
       context: context,
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(

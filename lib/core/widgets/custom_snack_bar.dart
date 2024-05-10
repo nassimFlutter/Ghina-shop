@@ -7,8 +7,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomSnackBarWidget extends StatelessWidget {
   const CustomSnackBarWidget({
     super.key,
+    required this.title,
   });
 // todo : finish translates
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,10 +18,9 @@ class CustomSnackBarWidget extends StatelessWidget {
       child: SizedBox(
         height: 80.h,
         width: double.infinity,
-        child: Padding(
-          padding: EdgeInsetsDirectional.only(start: 110.w, top: 20.h),
+        child: Center(
           child: Text(
-            S.of(context).added_to_wishlist, // "Added to Wishlist",
+            title, // "Added to Wishlist",
             style: AppStyles.textStyle17w700,
           ),
         ),

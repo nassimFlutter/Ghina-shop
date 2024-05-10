@@ -7,4 +7,6 @@ abstract class CategoryRepo {
   Future<Either<Failure, CategoryResponse>> fetchAllCategory();
   Future<Either<Failure, ProductCategoryResponse>> getProductByCategoryId(
       int categoryId);
+  Future<Either<Failure, ProductCategoryResponse>> searchProductCategory(
+      String name, String category);
 }
