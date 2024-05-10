@@ -157,9 +157,6 @@ class MyApp extends StatelessWidget {
           create: (context) => OrderCubit()..getAllMyOrder(),
         ),
         BlocProvider(
-          create: (context) => MyWishCubit()..getMyWish(),
-        ),
-        BlocProvider(
           create: (context) => AreaCubit()..getAllArea(),
         ),
         BlocProvider(

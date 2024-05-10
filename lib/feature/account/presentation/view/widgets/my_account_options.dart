@@ -44,7 +44,7 @@ class MyAccountOptions extends StatelessWidget {
                     )
                   : SvgPicture.asset(
                       IconsPath.arrowLeftIcon,
-                    ),  
+                    ),
               title: S.of(context).edit_account, //"Edit Account",
               iconPath: IconsPath.editAccountIcon),
           OptionItem(
@@ -76,7 +76,10 @@ class MyAccountOptions extends StatelessWidget {
               iconPath: IconsPath.addressesIcon),
           OptionItem(
               onTap: () {
-                HelperFunctions.navigateToScreen(context, const MyWishView());
+                HelperFunctions.navigateToScreen(
+                  context,
+                  const MyWishView(),
+                );
               },
               trailing: langCubit.lang == 'en'
                   ? SvgPicture.asset(
