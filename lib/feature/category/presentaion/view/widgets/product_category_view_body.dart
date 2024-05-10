@@ -3,6 +3,7 @@ import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/flitter_bottom.dart';
+import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/core/widgets/product_grid_view.dart';
 import 'package:best_price/core/widgets/search_field.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_product_cubit/category_product_cubit.dart';
@@ -39,16 +40,30 @@ class ProductCategoryViewBody extends StatelessWidget {
                 height: 21.h,
               ),
             ),
-            SliverToBoxAdapter(
-              child: Row(
-                children: [
-                  const Expanded(child: SearchField()),
-                  SizedBox(
-                    width: 6.w,
+            BlocConsumer<CategoryProductCubit, CategoryProductState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return SliverToBoxAdapter(
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: SearchField(
+                        controller: categoryProductCubit.searchController,
+                        onChanged: (p0) {
+                          categoryProductCubit.searchProductByName(p0);
+                          print(categoryProductCubit
+                              .productCategoryResponse.items?.first.products);
+                          print(p0);
+                        },
+                      )),
+                      SizedBox(
+                        width: 6.w,
+                      ),
+                      const FlitterBottom()
+                    ],
                   ),
-                  const FlitterBottom()
-                ],
-              ),
+                );
+              },
             ),
             SliverToBoxAdapter(
               child: SizedBox(
@@ -66,11 +81,13 @@ class ProductCategoryViewBody extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return ProductGridView(
-                    productList: categoryProductCubit
-                            .productCategoryResponse.items?.first.products ??
-                        [],
-                  );
+                  if (categoryProductCubit.searchResult.isEmpty) {
+                    return const SliverFillRemaining(
+                        child: Center(child: NoResult(title: 'no product')));
+                  } else {
+                    return ProductGridView(
+                        productList: categoryProductCubit.searchResult);
+                  }
                 }
               },
             )

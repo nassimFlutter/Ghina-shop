@@ -8,7 +8,7 @@ class Category {
   final String status;
   final String createdAt;
   final String name;
-  final List<Product>? products; 
+   List<Product>? products; 
 
   Category({
     required this.id,
