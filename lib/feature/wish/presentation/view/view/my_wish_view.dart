@@ -8,7 +8,7 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/view/flitter_sort_view.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
-import 'package:best_price/feature/wish/presentation/manager/cubit/my_wish_cubit.dart';
+import 'package:best_price/feature/wish/presentation/manager/my_wish_cubit/my_wish_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

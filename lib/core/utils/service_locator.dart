@@ -40,6 +40,8 @@ import 'package:best_price/feature/new_arrivals/data/repo/new_arrivals_repo/new_
 import 'package:best_price/feature/new_arrivals/data/repo/new_arrivals_repo/new_arrivals_repo_imple.dart';
 import 'package:best_price/feature/serach/data/repo/search_repo_impl.dart';
 import 'package:best_price/feature/serach/data/repo/serach_repo.dart';
+import 'package:best_price/feature/wish/data/repo/add_remove_repo.dart';
+import 'package:best_price/feature/wish/data/repo/add_remove_repo_impl.dart';
 import 'package:best_price/feature/wish/data/repo/wish_repo.dart';
 import 'package:best_price/feature/wish/data/repo/wish_repo_impl.dart';
 import 'package:dio/dio.dart';
@@ -88,4 +90,6 @@ void setupServiceLocator() {
   getIt.registerSingleton<OrderRepo>(OrderRepoImpl());
   getIt.registerSingleton<ChangeQuantityCubit>(ChangeQuantityCubit());
   getIt.registerSingleton<SearchRepo>(SearchRepoImpl());
+  getIt.registerSingleton<AddRemoveFromFavoriteRepo>(
+      AddRemoveFromFavoriteRepoImpl());
 }

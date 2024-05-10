@@ -11,30 +11,15 @@ class SmallContainer extends StatelessWidget {
     super.key,
     required this.imagePath,
     required this.color,
+    this.onTap,
   });
   final String imagePath;
   final Color color;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // HelperFunctions.showSnackBar(
-        //   context,
-        //   SnackBar(
-        //     content: const CustomSnackBarWidget(),
-        //     backgroundColor: AppColor.corn,
-        //     behavior: SnackBarBehavior.floating,
-        //     margin: EdgeInsets.only(
-        //       bottom: MediaQuery.of(context).size.height - 200,
-        //     ),
-        //   ),
-        // );
-        showTopSnackBar(
-          Overlay.of(context),
-          padding: EdgeInsets.zero,
-          const CustomSnackBarWidget(),
-        );
-      },
+      onTap: onTap,
       child: Container(
         width: 36,
         height: 36,

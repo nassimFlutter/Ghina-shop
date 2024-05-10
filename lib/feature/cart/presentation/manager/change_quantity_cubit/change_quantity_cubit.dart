@@ -38,7 +38,7 @@ class ChangeQuantityCubit extends Cubit<ChangeQuantityState> {
     final controller = textEditingControllers[itemId];
     if (controller != null) {
       int currentValue = int.tryParse(controller.text) ?? 0;
-      if (currentValue > 0) {
+      if (currentValue > 1) {
         controller.text = (currentValue - 1).toString().padLeft(2, '0');
         emit(DecrementQuantitySuccess());
       }

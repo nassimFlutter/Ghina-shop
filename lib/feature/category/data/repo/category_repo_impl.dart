@@ -51,4 +51,17 @@ class CategoryRepoImpl implements CategoryRepo {
       return left(ServerFailure(e.toString(), 500));
     }
   }
+
+  @override
+  Future<Either<Failure, ProductCategoryResponse>> searchProductCategory(
+      String name, String category) async {
+    try {
+      var response = await getIt
+          .get<ApiService>()
+          .get(endPoint: "${UrlKeys.searchEndPoint}$name&category=$category");
+      return right(ProductCategoryResponse.fromJson(response));
+    } catch (e) {
+      return left(ErrorHandler.handleError(e));
+    }
+  }
 }

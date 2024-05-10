@@ -35,15 +35,14 @@ import 'package:best_price/feature/serach/presntation/manager/cubit/search_cubit
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/feature/splash/presentation/view/pages/splash.dart';
-import 'package:best_price/feature/wish/presentation/manager/cubit/my_wish_cubit.dart';
+import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
+import 'package:best_price/feature/wish/presentation/manager/my_wish_cubit/my_wish_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'feature/product_details/presentation/manager/product_details_cubit/product_details_cubit.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
@@ -53,7 +52,6 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -149,6 +147,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SelectedAddressCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AddAndRemoveFromFavoriteCubit(),
         ),
         BlocProvider(
           create: (context) => OrderCubit()..getAllMyOrder(),

@@ -179,6 +179,9 @@ class InfoWidgetLeft extends StatelessWidget {
           title,
           style: AppStyles.textStyle18w700.copyWith(color: AppColor.silver),
         ),
+        SizedBox(
+          height: 7.h,
+        ),
         Text(value, style: AppStyles.textStyle16w400),
       ],
     );
@@ -197,6 +200,9 @@ class InfoWidgetRight extends StatelessWidget {
         Text(
           title,
           style: AppStyles.textStyle18w700.copyWith(color: AppColor.silver),
+        ),
+        SizedBox(
+          height: 7.h,
         ),
         Text(value, style: AppStyles.textStyle16w400)
       ],
