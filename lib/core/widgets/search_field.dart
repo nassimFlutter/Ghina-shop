@@ -10,11 +10,12 @@ class SearchField extends StatelessWidget {
   const SearchField({
     super.key,
     this.controller,
-    this.onFieldSubmitted,
+    this.onFieldSubmitted, this.onChanged,
   });
 
   final TextEditingController? controller;
   final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,6 +33,7 @@ class SearchField extends StatelessWidget {
           FocusManager.instance.primaryFocus?.unfocus();
         },
         controller: controller,
+        onChanged: onChanged,
         onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
             hintText: S.of(context).search, // "Search",

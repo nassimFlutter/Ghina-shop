@@ -14,7 +14,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> fetchAllCategory() async {
     emit(CategoryLoading());
     var result = await getIt.get<CategoryRepo>().fetchAllCategory();
-    result.fold((error) {
+    result.fold((error) { 
       emit(CategoryFailure(errMessage: error.errMassage));
     }, (categoryFetched) {
       categoryResponse = categoryFetched;
