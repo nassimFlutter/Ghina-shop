@@ -16,10 +16,10 @@ class AdList extends StatelessWidget {
       child: ListView.builder(
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
-        itemCount: homeCubit.homeApiResponse.item?.banners?.length,
+        itemCount: homeCubit.bannersList.length,
         itemBuilder: (context, index) {
           return AdItem(
-            banner: homeCubit.homeApiResponse.item?.banners?[index],
+            banner: homeCubit.bannersList[index],
           );
         },
       ),

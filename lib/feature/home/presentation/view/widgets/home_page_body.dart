@@ -199,9 +199,7 @@ class HomePgeBody extends StatelessWidget {
                               //                     id: productItem.id ?? 0,
                               //                   ));
                               return ProductsList(
-                                productList: homeCubit.homeApiResponse.item
-                                        ?.featuredProducts ??
-                                    [],
+                                productList: homeCubit.featuredProductsList,
                               );
                             }
                           },
@@ -233,9 +231,7 @@ class HomePgeBody extends StatelessWidget {
                               return const ShimmerProductsList();
                             } else {
                               return ProductsList(
-                                productList: homeCubit.homeApiResponse.item
-                                        ?.bestSellerProducts ??
-                                    [],
+                                productList: homeCubit.bestSellerProductsList,
                               );
                             }
                           },
@@ -295,9 +291,7 @@ class HomePgeBody extends StatelessWidget {
                               return const ShimmerProductsList();
                             } else {
                               return ProductsList(
-                                productList: homeCubit
-                                        .homeApiResponse.item?.newstProducts ??
-                                    [],
+                                productList: homeCubit.newstProductsList,
                               );
                             }
                           },

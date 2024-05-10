@@ -1,3 +1,5 @@
+import 'package:best_price/core/cache/cache_helper.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,6 +39,7 @@ class ProductsList extends StatelessWidget {
                     id: productItem.id ?? 0,
                   ));
             },
+            onFavoriteTap: () async {},
             title: productItem.name ?? "",
             isFavorite: productItem.isFavorite ?? "0",
             offerPrice: productItem.discountPrice,
