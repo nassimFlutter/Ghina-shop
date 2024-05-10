@@ -17,6 +17,7 @@ import 'package:best_price/feature/home/presentation/view/widgets/shimmer_let_st
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_products_list.dart';
 import 'package:best_price/feature/new_arrivals/presentations/view/pages/new_arrivers_view.dart';
 import 'package:best_price/feature/serach/presntation/view/pages/search_view.dart';
+import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -198,8 +199,13 @@ class HomePgeBody extends StatelessWidget {
                               //                   ProductDetailsPage(
                               //                     id: productItem.id ?? 0,
                               //                   ));
-                              return ProductsList(
-                                productList: homeCubit.featuredProductsList,
+                              return BlocBuilder<AddAndRemoveFromFavoriteCubit,
+                                  AddAndRemoveFromFavoriteState>(
+                                builder: (context, state) {
+                                  return ProductsList(
+                                    productList: homeCubit.featuredProductsList,
+                                  );
+                                },
                               );
                             }
                           },
@@ -217,7 +223,9 @@ class HomePgeBody extends StatelessWidget {
                                     .best_selling, //'Best Selling',
                                 onTap: () {
                                   HelperFunctions.navigateToScreen(
-                                      context, const BestSellingView());
+                                    context,
+                                    const BestSellingView(),
+                                  );
                                 },
                               );
                             }
@@ -230,8 +238,14 @@ class HomePgeBody extends StatelessWidget {
                             if (state is HomeCubitLoading) {
                               return const ShimmerProductsList();
                             } else {
-                              return ProductsList(
-                                productList: homeCubit.bestSellerProductsList,
+                              return BlocBuilder<AddAndRemoveFromFavoriteCubit,
+                                  AddAndRemoveFromFavoriteState>(
+                                builder: (context, state) {
+                                  return ProductsList(
+                                    productList:
+                                        homeCubit.bestSellerProductsList,
+                                  );
+                                },
                               );
                             }
                           },
@@ -290,8 +304,13 @@ class HomePgeBody extends StatelessWidget {
                             if (state is HomeCubitLoading) {
                               return const ShimmerProductsList();
                             } else {
-                              return ProductsList(
-                                productList: homeCubit.newstProductsList,
+                              return BlocBuilder<AddAndRemoveFromFavoriteCubit,
+                                  AddAndRemoveFromFavoriteState>(
+                                builder: (context, state) {
+                                  return ProductsList(
+                                    productList: homeCubit.newstProductsList,
+                                  );
+                                },
                               );
                             }
                           },
