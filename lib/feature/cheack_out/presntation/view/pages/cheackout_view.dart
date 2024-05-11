@@ -10,6 +10,7 @@ import 'package:best_price/feature/account/presentation/manager/address_cubit/ad
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
 import 'package:best_price/feature/cheack_out/presntation/manager/selected_address_cubit/selected_address_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/pages/checkout_success.dart';
+import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,8 @@ class CheckoutBody extends StatelessWidget {
 // todo : finish translate
   @override
   Widget build(BuildContext context) {
+    LangCubit langCubit = LangCubit.get(context);
+
     AddressCubit addressCubit = AddressCubit.get(context);
     SelectedAddressCubit selectedAddressCubit =
         SelectedAddressCubit.get(context);
@@ -48,10 +51,12 @@ class CheckoutBody extends StatelessWidget {
           horizontal: Dimensions.dStartPadding.w),
       children: [
         SizedBox(
-          height: 15.h,
+          height: 14.h,
         ),
         AppBarRow(
-          iconPath: IconsPath.arrowLeftIcon,
+          iconPath: langCubit.lang == "en"
+              ? IconsPath.arrowLeftIcon
+              : IconsPath.rightArrowIcon,
           title: S.of(context).checkout, //"Checkout",
           onFirstIconTap: () {
             HelperFunctions.navigateToBack(context);
