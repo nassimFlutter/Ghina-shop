@@ -2,6 +2,8 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
+import 'package:best_price/core/widgets/app_bottom.dart';
+import 'package:best_price/core/widgets/app_bottom2.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/custom_divider.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/details_text.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/widgets/title_check_page.dart';
@@ -25,6 +27,9 @@ class CheckOutSuccess extends StatelessWidget {
               title: S.of(context).checkout, // "Checkout",
             ),
           ),
+          SizedBox(
+            height: 74.h,
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +39,7 @@ class CheckOutSuccess extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               SizedBox(
-                height: 30.h,
+                height: 37.h,
               ),
               Text(
                 S
@@ -49,7 +54,7 @@ class CheckOutSuccess extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: '${S.of(context).your_purchase_was} \n',
+                      text: '${S.of(context).your_purchase_was} \n ',
                       style: TextStyle(
                         color: AppColor.black,
                         fontSize: 24.sp,
@@ -81,26 +86,45 @@ class CheckOutSuccess extends StatelessWidget {
               title: S.of(context).order_details, //"Order Details",
             ),
           ),
+          SizedBox(
+            height: 14.h,
+          ),
           Container(
             decoration: checkoutContainerdecoration(),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
             child: Column(
               children: [
+                SizedBox(
+                  height: 25.h,
+                ),
                 DetailsText(
                   title: S.of(context).order_ID, //"Order ID",
                   value: 'BP09211',
                 ),
+                SizedBox(
+                  height: 17.h,
+                ),
                 const CustomDivider(),
+                SizedBox(
+                  height: 13.h,
+                ),
                 DetailsText(
                   title: S.of(context).order_status, //"Order status",
                   value: 'Placed',
                 ),
+                SizedBox(
+                  height: 17.h,
+                ),
                 const CustomDivider(),
+                SizedBox(
+                  height: 13.h,
+                ),
                 DetailsText(
                   title: S.of(context).date_and_time, //"Date & Time",
                   value: '23/03/2023 | 10:30am',
                 ),
                 SizedBox(
-                  height: 26.h,
+                  height: 25.h,
                 )
               ],
             ),
@@ -115,10 +139,11 @@ class CheckOutSuccess extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 17.h,
+            height: 14.h,
           ),
           Container(
             decoration: checkoutContainerdecoration(),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -153,41 +178,91 @@ class CheckOutSuccess extends StatelessWidget {
               title: S.of(context).products, //"Products ",
             ),
           ),
+          SizedBox(
+            height: 14.h,
+          ),
           Container(
             decoration: checkoutContainerdecoration(),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
             child: Column(
               children: [
-                Row(
+                SizedBox(
+                  height: 21.h,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
+                    ProductsTileText(text: "Item Name"),
+                    ProductsTileText(text: "qty"),
+                    ProductsTileText(text: "Price"),
+                  ],
+                ),
+                SizedBox(height: 23.h),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Column(
                       children: [
-                        Text(
-                          S.of(context).item_name, // "Item Name",
-                          style: AppStyles.textStyle16w400
-                              .copyWith(color: AppColor.greyText),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Sony WH-1000XM4",
+                              style: AppStyles.textStyle16w400
+                                  .copyWith(color: AppColor.black),
+                            ),
+                            Text(
+                              "1",
+                              style: AppStyles.textStyle16w400
+                                  .copyWith(color: AppColor.black),
+                            ),
+                            Text(
+                              "100kd",
+                              style: AppStyles.textStyle16w400
+                                  .copyWith(color: AppColor.black),
+                            ),
+                          ],
                         ),
                         SizedBox(
-                          height: 24.h,
+                          height: 21.h,
                         ),
-                        Text(
-                          "Sony WH-1000XM4",
-                          style: AppStyles.textStyle16w400
-                              .copyWith(color: AppColor.black),
-                        ),
+                        Divider(),
                         SizedBox(
-                          height: 24.h,
-                        ),
-                        Text(
-                          "Apple MacBook\nAir M2 ",
-                          style: AppStyles.textStyle16w400
-                              .copyWith(color: AppColor.black),
+                          height: 21.h,
                         ),
                       ],
-                    )
-                  ],
+                    );
+                  },
                 )
               ],
             ),
+          ),
+          SizedBox(
+            height: 60.h,
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.only(start: 16.w),
+            child: TitleCheckPage(title: "Payment Details"),
+          ),
+          SizedBox(
+            height: 14.h,
+          ),
+          Row(
+            children: [
+              AppBottom2(
+                title: "Home",
+              ),
+              SizedBox(
+                width: 19.h,
+              ),
+              SizedBox(
+                width: 171.w,
+                child: AppBottom(
+                  title: "My Orders",
+                ),
+              )
+            ],
           )
         ],
       ),
@@ -204,6 +279,21 @@ class CheckOutSuccess extends StatelessWidget {
   RoundedRectangleBorder checkoutContainerShape() {
     return RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(15),
+    );
+  }
+}
+
+class ProductsTileText extends StatelessWidget {
+  const ProductsTileText({
+    super.key,
+    required this.text,
+  });
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text, // "Item Name",
+      style: AppStyles.textStyle16w400.copyWith(color: AppColor.greyText),
     );
   }
 }

@@ -24,6 +24,8 @@ class UrlKeys {
   static const getAreaEndPoint = 'getAreas';
   //! Address
   static const getMyAddressEndPoint = 'getMyAddresses';
+  static const deleteMyAddressEndPoint = 'deleteMyAddress';
+  static const addMyAddressEndPoint = 'addAddress';
   //! MyWish
   static const getMyWishEndPoint = 'getMyFavorites';
   static const addRemoveFromFavEndPoint = 'addAndRemoveFromFavorite'; //! this need Id  ex:{{mainURL}}addAndRemoveFromFavorite/4 -> (4 is product id you want add it or remove it from the wish)

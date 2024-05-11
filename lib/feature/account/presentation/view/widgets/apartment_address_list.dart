@@ -209,13 +209,8 @@ class SelectedAreaDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 385.w,
-      margin: EdgeInsetsDirectional.only(end: 16.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.sp),
-        border: Border.all(width: 2, color: AppColor.failedBorderColor),
-      ),
+    return Padding(
+      padding: EdgeInsetsDirectional.only(end: 16.w),
       child: DropdownButtonFormField<Item>(
         value: areaCubit.selectAreaDropDown,
         borderRadius: BorderRadius.circular(
@@ -247,14 +242,25 @@ class SelectedAreaDropDown extends StatelessWidget {
           IconsPath.dropDownIcon,
         ),
         decoration: InputDecoration(
+          hintText: S.of(context).enter_here,
           errorStyle: AppStyles.textStyle14.copyWith(color: Colors.red[400]),
-          hintText: S.of(context).enter_here, //"enter here",
-          hintStyle: AppStyles.textStyle14.copyWith(color: AppColor.silver),
-          contentPadding: EdgeInsets.symmetric(
-            vertical: 0,
-            horizontal: 20.w,
+          // contentPadding: EdgeInsetsDirectional.only(start: 16.w, top: 6.h),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.sp),
+            borderSide:
+                const BorderSide(width: 2, color: AppColor.failedBorderColor),
           ),
-          border: const OutlineInputBorder(borderSide: BorderSide.none),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.sp),
+            borderSide:
+                const BorderSide(width: 2, color: AppColor.failedBorderColor),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.sp),
+            borderSide:
+                const BorderSide(width: 2, color: AppColor.failedBorderColor),
+          ),
+          hintStyle: AppStyles.textStyle14.copyWith(color: AppColor.silver),
         ),
       ),
     );

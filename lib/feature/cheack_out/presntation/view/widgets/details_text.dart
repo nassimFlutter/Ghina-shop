@@ -13,23 +13,25 @@ class DetailsText extends StatelessWidget {
   final value;
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      title: Padding(
-        padding: EdgeInsetsDirectional.only(start: 10.w),
-        child: Text(
-          title,
-          style: AppStyles.textStyle16w700
-              .copyWith(fontWeight: FontWeight.w400, color: AppColor.black3),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: EdgeInsetsDirectional.only(start: 10.w),
+          child: Text(
+            title,
+            style: AppStyles.textStyle16w700
+                .copyWith(fontWeight: FontWeight.w400, color: AppColor.black3),
+          ),
         ),
-      ),
-      trailing: Padding(
-        padding: EdgeInsetsDirectional.only(end: 10.w),
-        child: Text(
-          "$value KD",
-          style: AppStyles.textStyle16w700.copyWith(color: AppColor.black3),
+        Padding(
+          padding: EdgeInsetsDirectional.only(end: 10.w),
+          child: Text(
+            "$value KD",
+            style: AppStyles.textStyle16w700.copyWith(color: AppColor.black3),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

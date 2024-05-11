@@ -18,6 +18,7 @@ class BrandProductsView extends StatefulWidget {
   @override
   State<BrandProductsView> createState() => _BrandProductsViewState();
 }
+
 // todo : finish translate
 class _BrandProductsViewState extends State<BrandProductsView> {
   @override
@@ -47,9 +48,7 @@ class _BrandProductsViewState extends State<BrandProductsView> {
                   iconPath: IconsPath.arrowLeftIcon, title: widget.title),
             )),
             BlocConsumer<ProductBrandsCubit, ProductBrandsState>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
+              listener: (context, state) {},
               builder: (context, state) {
                 if (state is ProductBrandsLoading) {
                   return const SliverFillRemaining(
@@ -61,8 +60,11 @@ class _BrandProductsViewState extends State<BrandProductsView> {
                   final products = productBrandsCubit
                       .productBrandsResponse.items?.first.products;
                   if (products != null && products.isNotEmpty) {
-                    return ProductGridView(
-                      productList: products,
+                    return SliverPadding(
+                      padding: EdgeInsetsDirectional.only(top: 23.h),
+                      sliver: ProductGridView(
+                        productList: products,
+                      ),
                     );
                   } else {
                     return SliverFillRemaining(

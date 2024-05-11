@@ -1,3 +1,4 @@
+import 'package:best_price/core/api/api_response_model.dart';
 import 'package:best_price/core/api/api_service.dart';
 import 'package:best_price/core/errors/failures.dart';
 import 'package:best_price/core/utils/keys.dart';
@@ -18,6 +19,29 @@ class AddressRepoImpl implements AddressRepo {
       } else {
         return left(ErrorHandler.handleError("No Data 404"));
       }
+    } catch (e) {
+      return left(ErrorHandler.handleError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> addAddress(Map<String, dynamic> data) async {
+    try {
+      await getIt
+          .get<ApiService>()
+          .post(endPoint: UrlKeys.addMyAddressEndPoint, data: data);
+      return right("added");
+    } catch (e) {
+      return left(ErrorHandler.handleError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Response>> deleteAddress(int addressId) async {
+    try {
+      var response = await getIt.get<ApiService>().delete(
+          endPoint: "${UrlKeys.deleteMyAddressEndPoint}/", id: addressId);
+      return right(Response.fromJson(response));
     } catch (e) {
       return left(ErrorHandler.handleError(e));
     }

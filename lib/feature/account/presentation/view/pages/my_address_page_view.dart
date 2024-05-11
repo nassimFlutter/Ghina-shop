@@ -6,8 +6,10 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/not_found_widget.dart';
+import 'package:best_price/core/widgets/question_dialog.dart';
 import 'package:best_price/feature/account/data/models/address_model/address_model.dart';
 import 'package:best_price/feature/account/presentation/manager/address_cubit/address_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:expandable_text/expandable_text.dart';
@@ -22,68 +24,74 @@ class MyAddressView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddressCubit addressCubit = AddressCubit.get(context);
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 14.h,
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.only(start: 16.w),
-            child: AppBarRow(
-              iconPath: IconsPath.arrowLeftIcon,
-              title: S.of(context).my_addresses, //' My Addresses',
-            ),
-          ),
-          SizedBox(
-            height: 44.h,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: AppBottom(
-              title: S.of(context).add_new_address, //"Add New Address",
-              onTap: () {
-                HelperFunctions.navigateToScreen(
-                    context, const AddAddressView());
-              },
-            ),
-          ),
-          SizedBox(
-            height: 104.h,
-          ),
-          BlocConsumer<AddressCubit, AddressState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              if (state is AddressLoading) {
-                return const Center(
-                  child: CustomCircularProgressIndicator(),
-                );
-              }
-              //! if state is not Loading or Failures
-              else {
-                //! if myAddress.item !=null
-                if (addressCubit.myAddress.items != null) {
-                  if (addressCubit.myAddress.items!.isEmpty) {
-                    return const NotFoundWidget();
-                  } else {
-                    return Expanded(
-                      child: ListView.builder(
-                          itemCount: addressCubit.myAddress.items?.length ?? 0,
-                          itemBuilder: (context, index) => AddressItem(
-                                address: addressCubit.myAddress.items?[index] ??
-                                    Item(),
-                              )),
+    return BlocBuilder<DeleteAddressCubit, DeleteAddressState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 14.h,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.only(start: 16.w),
+                child: AppBarRow(
+                  iconPath: IconsPath.arrowLeftIcon,
+                  title: S.of(context).my_addresses, //' My Addresses',
+                ),
+              ),
+              SizedBox(
+                height: 44.h,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: AppBottom(
+                  title: S.of(context).add_new_address, //"Add New Address",
+                  onTap: () {
+                    HelperFunctions.navigateToScreen(
+                        context, const AddAddressView());
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 104.h,
+              ),
+              BlocConsumer<AddressCubit, AddressState>(
+                listener: (context, state) {},
+                builder: (context, state) {
+                  if (state is AddressLoading) {
+                    return const Center(
+                      child: CustomCircularProgressIndicator(),
                     );
                   }
-                } else {
-                  return const SizedBox();
-                }
-              }
-            },
-          )
-        ],
-      ),
+                  //! if state is not Loading or Failures
+                  else {
+                    //! if myAddress.item !=null
+                    if (addressCubit.myAddress.items != null) {
+                      if (addressCubit.myAddress.items!.isEmpty) {
+                        return const NotFoundWidget();
+                      } else {
+                        return Expanded(
+                          child: ListView.builder(
+                              itemCount:
+                                  addressCubit.myAddress.items?.length ?? 0,
+                              itemBuilder: (context, index) => AddressItem(
+                                    address:
+                                        addressCubit.myAddress.items?[index] ??
+                                            Item(),
+                                  )),
+                        );
+                      }
+                    } else {
+                      return const SizedBox();
+                    }
+                  }
+                },
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -97,7 +105,7 @@ class AddressItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddressCubit addressCubit = AddressCubit.get(context);
-
+    DeleteAddressCubit deleteAddressCubit = DeleteAddressCubit.get(context);
     return Container(
       width: 361.w,
       margin: EdgeInsetsDirectional.only(bottom: 20.h, start: 16.w, end: 16.w),
@@ -105,7 +113,7 @@ class AddressItem extends StatelessWidget {
       decoration: ShapeDecoration(
         color: AppColor.containerBackColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(15.sp),
         ),
       ),
       child: Column(
@@ -136,18 +144,44 @@ class AddressItem extends StatelessWidget {
           SizedBox(
             height: 12.h,
           ),
-          Padding(
-            padding: EdgeInsetsDirectional.only(end: 8.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SvgPicture.asset(IconsPath.deleteIcon),
-                SizedBox(
-                  width: 25.w,
-                ),
-                SvgPicture.asset(IconsPath.editAccountIcon),
-              ],
-            ),
+          BlocBuilder<DeleteAddressCubit, DeleteAddressState>(
+            builder: (context, state) {
+              if (state is DeleteAddressLoading) {
+                return const Center(
+                  child: CustomCircularProgressIndicator(),
+                );
+              } else {
+                return Padding(
+                  padding: EdgeInsetsDirectional.only(end: 8.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                          onTap: () {
+                            HelperFunctions.showCustomDialog(
+                              context,
+                              QuestionDialog(
+                                title: "Delete Your Address",
+                                contain:
+                                    "Are you sure you want to delete your address?",
+                                onTapYes: () async {
+                                  deleteAddressCubit
+                                      .deleteAddress(address.id ?? -100);
+                                  HelperFunctions.navigateToBack(context);
+                                },
+                              ),
+                            );
+                          },
+                          child: SvgPicture.asset(IconsPath.deleteIcon)),
+                      SizedBox(
+                        width: 25.w,
+                      ),
+                      SvgPicture.asset(IconsPath.editAccountIcon),
+                    ],
+                  ),
+                );
+              }
+            },
           ),
           SizedBox(
             height: 14.h,
