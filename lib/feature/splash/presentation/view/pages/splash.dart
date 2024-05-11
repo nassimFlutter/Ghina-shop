@@ -46,46 +46,56 @@ class NoInternetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        // crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: SvgPicture.asset(
-              IconsPath.disconnectedIcon,
-              fit: BoxFit.cover,
+      body: BlocListener<ConnectivityCubit, ConnectivityState>(
+        listener: (context, state) {
+          // TODO: implement listener
+          if (state is Connected) {
+            HelperFunctions.navigateToScreenAndRemove(
+                context, const OnBoardingView());
+          }
+        },
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: SvgPicture.asset(
+                IconsPath.disconnectedIcon,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 41.h,
-          ),
-          Text(
-            S.of(context).NO_CONNECTION, // "NO CONNECTION",
-            style: AppStyles.textStyle16w700.copyWith(color: AppColor.black),
-          ),
-          SizedBox(
-            height: 15.h,
-          ),
-          Text(
-            S
-                .of(context)
-                .connection_not_found, //  "Connection not found, make sure you are\nconnected to internet",
-            style: AppStyles.textStyle16w400,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(
-            height: 163.h,
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
-            child: AppBottom(
-              title: S.of(context).retry, //"Retry",
-              onTap: () async {
-                ConnectivityCubit().checkInternetStatus();
-              },
+            SizedBox(
+              height: 41.h,
             ),
-          )
-        ],
+            Text(
+              S.of(context).NO_CONNECTION, // "NO CONNECTION",
+              style: AppStyles.textStyle16w700.copyWith(color: AppColor.black),
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            Text(
+              S
+                  .of(context)
+                  .connection_not_found, //  "Connection not found, make sure you are\nconnected to internet",
+              style: AppStyles.textStyle16w400,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 163.h,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+              child: AppBottom(
+                title: S.of(context).retry, //"Retry",
+                onTap: () async {
+                  BlocProvider.of<ConnectivityCubit>(context)
+                      .checkInternetStatus(); 
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

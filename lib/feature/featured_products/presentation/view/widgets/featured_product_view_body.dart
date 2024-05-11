@@ -21,15 +21,15 @@ class FeaturedProductViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     FeaturedProductsCubit featuredProductsCubit =
         FeaturedProductsCubit.get(context);
-    featuredProductsCubit.getFeaturedProducts();
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsetsDirectional.only(
-                top: Dimensions.dTopPadding.h,
-                end: Dimensions.dStartPadding,
-                start: Dimensions.dStartPadding),
+              top: Dimensions.dTopPadding.h,
+              end: Dimensions.dStartPadding,
+              start: Dimensions.dStartPadding,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

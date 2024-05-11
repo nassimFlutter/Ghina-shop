@@ -28,7 +28,7 @@ class SmallContainer extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
               side: const BorderSide(color: AppColor.borderColor)),
-        ),
+        ),      
         child: Center(
             child: SvgPicture.asset(
           imagePath,
