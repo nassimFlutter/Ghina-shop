@@ -6,6 +6,7 @@ import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/feature/best_selling/presntations/view/pages/best_selling_view.dart';
 import 'package:best_price/feature/brands/presntations/view/pages/brands_view.dart';
 import 'package:best_price/feature/category/presentaion/view/pages/category_body.dart';
+import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
 import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
@@ -180,6 +181,10 @@ class HomePgeBody extends StatelessWidget {
                                     .of(context)
                                     .featured_products, //'Featured products',
                                 onTap: () {
+                                  BlocProvider.of<FeaturedProductsCubit>(
+                                          context)
+                                      .getFeaturedProducts();
+
                                   HelperFunctions.navigateToScreen(
                                       context, const FeaturedProductView());
                                 },

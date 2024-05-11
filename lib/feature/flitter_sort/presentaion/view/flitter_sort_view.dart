@@ -23,20 +23,23 @@ class FlitterSortView extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.zero,
         children: [
-          Padding(
-            padding: EdgeInsetsDirectional.only(top: Dimensions.dTopPadding.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.only(end: 18.0.w),
-                  child: Text(
-                    S.of(context).reset, //'Reset',
-                    style: AppStyles.textStyle17w700.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w400),
-                  ),
-                )
-              ],
+          SafeArea(
+            child: Padding(
+              padding:
+                  EdgeInsetsDirectional.only(top: Dimensions.dTopPadding.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.only(end: 18.0.w),
+                    child: Text(
+                      S.of(context).reset, //'Reset',
+                      style: AppStyles.textStyle17w700.copyWith(
+                          color: Colors.black, fontWeight: FontWeight.w400),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           SizedBox(
@@ -58,7 +61,7 @@ class FlitterSortView extends StatelessWidget {
               return ListView.builder(
                 itemCount: flitterCubit.sortByList.length,
                 shrinkWrap: true,
-                padding: EdgeInsetsDirectional.only(start: 16.w),
+                // padding: EdgeInsetsDirectional.only(start: 16.w),
                 itemBuilder: (context, index) {
                   return FlitterItem(
                       groupValue: flitterCubit.groupValueSort,
@@ -95,6 +98,7 @@ class FlitterSortView extends StatelessWidget {
                     ListView.builder(
                       itemCount: flitterCubit.brandsList.length,
                       shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         String brand = flitterCubit.brandsList[index];
                         bool isChecked =
@@ -187,6 +191,7 @@ class FlitterSortView extends StatelessWidget {
                     ListView.builder(
                       itemCount: flitterCubit.categoryList.length,
                       shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         String category = flitterCubit.categoryList[index];
                         bool isChecked =
