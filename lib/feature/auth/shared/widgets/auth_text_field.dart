@@ -43,7 +43,7 @@ class AuthTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText ?? S.of(context).enter_here,
           errorStyle: AppStyles.textStyle14.copyWith(color: Colors.red[400]),
-          contentPadding: EdgeInsetsDirectional.only(start: 16.w, top: 5.h),
+          // contentPadding: EdgeInsetsDirectional.only(start: 16.w, top: 6.h),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.sp),
             borderSide:
