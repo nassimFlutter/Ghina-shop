@@ -209,45 +209,59 @@ class SelectedAreaDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField<Item>(
-      value: areaCubit.selectAreaDropDown,
-      borderRadius: BorderRadius.circular(
-        5,
-      ),
-      style: AppStyles.textStyle16w400,
-      items: areaCubit.allAreas
-          .map(
-            (e) => DropdownMenuItem<Item>(
-              value: e,
-              child: Text(e.name ?? ""),
-            ),
-          )
-          //! very important put this toSet
-          .toSet()
-          .toList(),
-      onChanged: (value) {
-        areaCubit.selectedAreaId = value?.id;
-      },
-      validator: (value) {
-        if (value == null) {
-          return S
-              .of(context)
-              .please_select_an_area; //'Please select an area'; // Validation error message
-        }
-        return null; // No validation error
-      },
-      icon: SvgPicture.asset(
-        IconsPath.dropDownIcon,
-      ),
-      decoration: InputDecoration(
-        errorStyle: AppStyles.textStyle14.copyWith(color: Colors.red[400]),
-        hintText: S.of(context).enter_here, //"enter here",
-        hintStyle: AppStyles.textStyle14.copyWith(color: AppColor.silver),
-        contentPadding: EdgeInsets.symmetric(
-          vertical: 0,
-          horizontal: 20.w,
+    return Padding(
+      padding: EdgeInsetsDirectional.only(end: 16.w),
+      child: DropdownButtonFormField<Item>(
+        value: areaCubit.selectAreaDropDown,
+        borderRadius: BorderRadius.circular(
+          5,
         ),
-        border: const OutlineInputBorder(borderSide: BorderSide.none),
+        style: AppStyles.textStyle16w400,
+        items: areaCubit.allAreas
+            .map(
+              (e) => DropdownMenuItem<Item>(
+                value: e,
+                child: Text(e.name ?? ""),
+              ),
+            )
+            //! very important put this toSet
+            .toSet()
+            .toList(),
+        onChanged: (value) {
+          areaCubit.selectedAreaId = value?.id;
+        },
+        validator: (value) {
+          if (value == null) {
+            return S
+                .of(context)
+                .please_select_an_area; //'Please select an area'; // Validation error message
+          }
+          return null; // No validation error
+        },
+        icon: SvgPicture.asset(
+          IconsPath.dropDownIcon,
+        ),
+        decoration: InputDecoration(
+          hintText: S.of(context).enter_here,
+          errorStyle: AppStyles.textStyle14.copyWith(color: Colors.red[400]),
+          // contentPadding: EdgeInsetsDirectional.only(start: 16.w, top: 6.h),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.sp),
+            borderSide:
+                const BorderSide(width: 2, color: AppColor.failedBorderColor),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.sp),
+            borderSide:
+                const BorderSide(width: 2, color: AppColor.failedBorderColor),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.sp),
+            borderSide:
+                const BorderSide(width: 2, color: AppColor.failedBorderColor),
+          ),
+          hintStyle: AppStyles.textStyle14.copyWith(color: AppColor.silver),
+        ),
       ),
     );
   }
