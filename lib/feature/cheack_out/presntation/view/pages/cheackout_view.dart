@@ -114,7 +114,7 @@ class CheckoutBody extends StatelessWidget {
                           },
                         );
                       },
-                    );
+                     );
                   },
                   child: Text(
                     S.of(context).add_address, //"Add address",

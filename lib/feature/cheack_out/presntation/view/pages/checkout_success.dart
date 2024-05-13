@@ -248,9 +248,46 @@ class CheckOutSuccess extends StatelessWidget {
           SizedBox(
             height: 14.h,
           ),
+          Container(
+            decoration: checkoutContainerdecoration(),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+            child: Column(
+              children: [
+                DetailsText(
+                  title: S.of(context).sub_total, //"Sub Total",
+                  value: 1019.800,
+                ),
+                DetailsText(
+                  title: S.of(context).sub_total, //"Sub Total",
+                  value: 1019.800,
+                ),
+                DetailsText(
+                  title: S.of(context).sub_total, //"Sub Total",
+                  value: 1019.800,
+                ),
+                DetailsText(
+                  title: S.of(context).sub_total, //"Sub Total",
+                  value: 1019.800,
+                ),
+                DetailsText(
+                  title: S.of(context).sub_total, //"Sub Total",
+                  value: 1019.800,
+                ),
+                DetailsText(
+                  title: S.of(context).sub_total, //"Sub Total",
+                  value: 1019.800,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 41.h,
+          ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppBottom2(
+              const AppBottom2(
                 title: "Home",
               ),
               SizedBox(
@@ -258,12 +295,15 @@ class CheckOutSuccess extends StatelessWidget {
               ),
               SizedBox(
                 width: 171.w,
-                child: AppBottom(
+                child: const AppBottom(
                   title: "My Orders",
                 ),
               )
             ],
-          )
+          ),
+          SizedBox(
+            height: 46.h,
+          ),
         ],
       ),
     );

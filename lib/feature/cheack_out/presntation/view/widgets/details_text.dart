@@ -11,6 +11,7 @@ class DetailsText extends StatelessWidget {
   });
   final String title;
   final value;
+  
   @override
   Widget build(BuildContext context) {
     return Row(
