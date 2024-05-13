@@ -6,276 +6,349 @@ import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/manager/flitter_cubit/flitter_cubit.dart';
+import 'package:best_price/feature/flitter_sort/presentaion/widgets/custom_slider.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../widgets/flitter_item.dart';
 
 class FlitterSortView extends StatelessWidget {
-  const FlitterSortView({super.key});
+  const FlitterSortView({super.key, required this.endValue});
 // todo : finish translate
+  final double endValue;
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => FlitterCubit(),
+      child: Scaffold(
+        body: FillterPageBody(
+          endValue: endValue,
+        ),
+      ),
+    );
+  }
+}
+
+class FillterPageBody extends StatelessWidget {
+  const FillterPageBody({
+    super.key,
+    required this.endValue,
+  });
+  final double endValue;
+
   @override
   Widget build(BuildContext context) {
     FlitterCubit flitterCubit = FlitterCubit.get(context);
-    return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          SafeArea(
-            child: Padding(
-              padding:
-                  EdgeInsetsDirectional.only(top: Dimensions.dTopPadding.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(end: 18.0.w),
+    return ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        SafeArea(
+          child: Padding(
+            padding: EdgeInsetsDirectional.only(top: Dimensions.dTopPadding.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.only(
+                    end: 0.0.w,
+                  ),
+                  child: TextButton(
                     child: Text(
                       S.of(context).reset, //'Reset',
                       style: AppStyles.textStyle17w700.copyWith(
                           color: Colors.black, fontWeight: FontWeight.w400),
                     ),
-                  )
+                    onPressed: () {},
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 26.h,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
+          child: AppBarRowReverse(
+            iconPath: IconsPath.cancelIcon,
+            title: S.of(context).sort_by, //"Sort By",
+          ),
+        ),
+        SizedBox(
+          height: 30.h,
+        ),
+        BlocBuilder<FlitterCubit, FlitterState>(
+          builder: (context, state) {
+            return ListView.builder(
+              itemCount: flitterCubit.sortByList.length,
+              shrinkWrap: true,
+              padding:
+                  EdgeInsets.zero, //EdgeInsetsDirectional.only(start: 16.w),
+              itemBuilder: (context, index) {
+                return FlitterItem(
+                    groupValue: flitterCubit.groupValueSort,
+                    title: flitterCubit.sortByList[index],
+                    value: index,
+                    onChanged: (value) {
+                      print(value);
+                      print("clikc");
+                      flitterCubit.changeGroupValueSort(value ?? -1);
+                    });
+              },
+            );
+          },
+        ),
+        SizedBox(
+          height: 30.h,
+        ),
+        BlocBuilder<FlitterCubit, FlitterState>(
+          builder: (context, state) {
+            return Theme(
+              data: Theme.of(context).copyWith(
+                dividerColor: Colors.transparent,
+                colorScheme: const ColorScheme.light(
+                  primary: Colors.black,
+                ),
+              ),
+              child: ExpansionTile(
+                collapsedIconColor: Colors.black,
+                trailing: flitterCubit.brandsIsOpen
+                    ? SvgPicture.asset(IconsPath.toTopArrow)
+                    : SvgPicture.asset(IconsPath.toDownArrow),
+                onExpansionChanged: (value) {
+                  flitterCubit.changeOpenBrandsOrCategory(
+                    isBrand: true,
+                    isOpen: value,
+                  );
+
+                  debugPrint('value: ${value}');
+                },
+                title: Text(
+                  S.of(context).brands, // "Brands",
+                  style: AppStyles.textStyle18w700,
+                ),
+                children: [
+                  ListView.builder(
+                    itemCount: flitterCubit.brandsList.length,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      String brand = flitterCubit.brandsList[index];
+                      bool isChecked =
+                          flitterCubit.selectedBrandsList.contains(brand);
+                      return Padding(
+                        padding: EdgeInsetsDirectional.only(start: 16.w),
+                        child: Column(
+                          children: [
+                            // SizedBox(
+                            //   height: 18.h,
+                            // ),
+                            Row(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.white,
+                                  activeColor: Colors.black,
+                                  value: isChecked,
+                                  onChanged: (value) {
+                                    if (value != null) {
+                                      if (value) {
+                                        flitterCubit.selectBrand(brand);
+                                      } else {
+                                        flitterCubit.deselectBrand(brand);
+                                      }
+                                    }
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 16.w,
+                                ),
+                                Text(flitterCubit.brandsList[index],
+                                    style: AppStyles.textStyle16w400
+                                        .copyWith(color: Colors.black)),
+                              ],
+                            ),
+                            // SizedBox(
+                            //   height: 18.h,
+                            // ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.w),
+                              child: const Divider(
+                                color: AppColor.borderColor,
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                      // return ListTile(
+                      //   contentPadding:
+                      //       REdgeInsetsDirectional.only(start: 15.w),
+                      //   leading: Checkbox(
+                      //     checkColor: Colors.white,
+                      //     activeColor: Colors.black,
+                      //     value: isChecked,
+                      //     onChanged: (value) {
+                      //       if (value != null) {
+                      //         if (value) {
+                      //           flitterCubit.selectBrand(brand);
+                      //         } else {
+                      //           flitterCubit.deselectBrand(brand);
+                      //         }
+                      //       }
+                      //     },
+                      //   ),
+                      //   title: Text(flitterCubit.brandsList[index]),
+                      // );
+                    },
+                  ),
                 ],
               ),
-            ),
-          ),
-          SizedBox(
-            height: 26.h,
-          ),
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
-            child: AppBarRowReverse(
-              iconPath: IconsPath.cancelIcon,
-              title: S.of(context).sort_by, //"Sort By",
-            ),
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          BlocBuilder<FlitterCubit, FlitterState>(
-            builder: (context, state) {
-              return ListView.builder(
-                itemCount: flitterCubit.sortByList.length,
-                shrinkWrap: true,
-                // padding: EdgeInsetsDirectional.only(start: 16.w),
-                itemBuilder: (context, index) {
-                  return FlitterItem(
-                      groupValue: flitterCubit.groupValueSort,
-                      title: flitterCubit.sortByList[index],
-                      value: index,
-                      onChanged: (value) {
-                        print(value);
-                        print("clikc");
-                        flitterCubit.changeGroupValueSort(value ?? -1);
-                      });
-                },
-              );
-            },
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          BlocBuilder<FlitterCubit, FlitterState>(
-            builder: (context, state) {
-              return Theme(
-                data: Theme.of(context).copyWith(
-                  dividerColor: Colors.transparent,
-                  colorScheme: const ColorScheme.light(
-                    primary: Colors.black,
-                  ),
+            );
+          },
+        ),
+        BlocBuilder<FlitterCubit, FlitterState>(
+          builder: (context, state) {
+            return Theme(
+              data: Theme.of(context).copyWith(
+                dividerColor: Colors.transparent,
+                colorScheme: const ColorScheme.light(
+                  primary: Colors.black,
                 ),
-                child: ExpansionTile(
-                  collapsedIconColor: Colors.black,
-                  title: Text(
-                    S.of(context).brands, // "Brands",
-                    style: AppStyles.textStyle18w700,
-                  ),
-                  children: [
-                    ListView.builder(
-                      itemCount: flitterCubit.brandsList.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        String brand = flitterCubit.brandsList[index];
-                        bool isChecked =
-                            flitterCubit.selectedBrandsList.contains(brand);
-                        return Padding(
-                          padding: EdgeInsetsDirectional.only(start: 16.w),
-                          child: Column(
-                            children: [
-                              // SizedBox(
-                              //   height: 18.h,
-                              // ),
-                              Row(
-                                children: [
-                                  Checkbox(
-                                    checkColor: Colors.white,
-                                    activeColor: Colors.black,
-                                    value: isChecked,
-                                    onChanged: (value) {
-                                      if (value != null) {
-                                        if (value) {
-                                          flitterCubit.selectBrand(brand);
-                                        } else {
-                                          flitterCubit.deselectBrand(brand);
-                                        }
-                                      }
-                                    },
-                                  ),
-                                  SizedBox(
-                                    width: 16.w,
-                                  ),
-                                  Text(flitterCubit.brandsList[index],
-                                      style: AppStyles.textStyle16w400
-                                          .copyWith(color: Colors.black)),
-                                ],
-                              ),
-                              // SizedBox(
-                              //   height: 18.h,
-                              // ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                child: const Divider(
-                                  color: AppColor.borderColor,
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                        // return ListTile(
-                        //   contentPadding:
-                        //       REdgeInsetsDirectional.only(start: 15.w),
-                        //   leading: Checkbox(
-                        //     checkColor: Colors.white,
-                        //     activeColor: Colors.black,
-                        //     value: isChecked,
-                        //     onChanged: (value) {
-                        //       if (value != null) {
-                        //         if (value) {
-                        //           flitterCubit.selectBrand(brand);
-                        //         } else {
-                        //           flitterCubit.deselectBrand(brand);
-                        //         }
-                        //       }
-                        //     },
-                        //   ),
-                        //   title: Text(flitterCubit.brandsList[index]),
-                        // );
-                      },
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          BlocBuilder<FlitterCubit, FlitterState>(
-            builder: (context, state) {
-              return Theme(
-                data: Theme.of(context).copyWith(
-                  dividerColor: Colors.transparent,
-                  colorScheme: const ColorScheme.light(
-                    primary: Colors.black,
-                  ),
-                ),
-                child: ExpansionTile(
-                  collapsedIconColor: Colors.black,
-                  title: Text(
-                    S.of(context).category, // "Category",
-                    style: AppStyles.textStyle18w700,
-                  ),
-                  children: [
-                    ListView.builder(
-                      itemCount: flitterCubit.categoryList.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        String category = flitterCubit.categoryList[index];
-                        bool isChecked =
-                            flitterCubit.categoryListSleeted.contains(category);
+              ),
+              child: ExpansionTile(
+                collapsedIconColor: Colors.black,
+                trailing: flitterCubit.categoryIsOpen
+                    ? SvgPicture.asset(IconsPath.toTopArrow)
+                    : SvgPicture.asset(IconsPath.toDownArrow),
+                onExpansionChanged: (value) {
+                  flitterCubit.changeOpenBrandsOrCategory(
+                    isBrand: false,
+                    isOpen: value,
+                  );
 
-                        return Padding(
-                          padding: EdgeInsetsDirectional.only(start: 16.w),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 18.h,
-                              ),
-                              Row(
-                                children: [
-                                  Checkbox(
-                                    checkColor: Colors.white,
-                                    activeColor: Colors.black,
-                                    value: isChecked,
-                                    onChanged: (value) {
-                                      if (value != null) {
-                                        if (value) {
-                                          flitterCubit.selectCategory(category);
-                                        } else {
-                                          flitterCubit
-                                              .deselectCategory(category);
-                                        }
-                                      }
-                                    },
-                                  ),
-                                  Text(
-                                    flitterCubit.categoryList[index],
-                                    style: AppStyles.textStyle16w400
-                                        .copyWith(color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 18.h,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                child: const Divider(
-                                  color: AppColor.borderColor,
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                        // return ListTile(
-                        //   leading: Checkbox(
-                        //     checkColor: Colors.white,
-                        //     activeColor: Colors.black,
-                        //     value: isChecked,
-                        //     onChanged: (value) {
-                        //       if (value != null) {
-                        //         if (value) {
-                        //           flitterCubit.selectCategory(category);
-                        //         } else {
-                        //           flitterCubit.deselectCategory(category);
-                        //         }
-                        //       }
-                        //     },
-                        //   ),
-                        //   title: Text(flitterCubit.categoryList[index]),
-                        // );
-                      },
-                    ),
-                  ],
+                  debugPrint('value: ${value}');
+                },
+                title: Text(
+                  S.of(context).category, // "Category",
+                  style: AppStyles.textStyle18w700,
                 ),
-              );
-            },
+                children: [
+                  ListView.builder(
+                    itemCount: flitterCubit.categoryList.length,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      String category = flitterCubit.categoryList[index];
+                      bool isChecked =
+                          flitterCubit.categoryListSleeted.contains(category);
+
+                      return Padding(
+                        padding: EdgeInsetsDirectional.only(start: 16.w),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.white,
+                                  activeColor: Colors.black,
+                                  value: isChecked,
+                                  onChanged: (value) {
+                                    if (value != null) {
+                                      if (value) {
+                                        flitterCubit.selectCategory(category);
+                                      } else {
+                                        flitterCubit.deselectCategory(category);
+                                      }
+                                    }
+                                  },
+                                ),
+                                Text(
+                                  flitterCubit.categoryList[index],
+                                  style: AppStyles.textStyle16w400
+                                      .copyWith(color: Colors.black),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.w),
+                              child: const Divider(
+                                color: AppColor.borderColor,
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                      // return ListTile(
+                      //   leading: Checkbox(
+                      //     checkColor: Colors.white,
+                      //     activeColor: Colors.black,
+                      //     value: isChecked,
+                      //     onChanged: (value) {
+                      //       if (value != null) {
+                      //         if (value) {
+                      //           flitterCubit.selectCategory(category);
+                      //         } else {
+                      //           flitterCubit.deselectCategory(category);
+                      //         }
+                      //       }
+                      //     },
+                      //   ),
+                      //   title: Text(flitterCubit.categoryList[index]),
+                      // );
+                    },
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+        SizedBox(
+          height: 44.h,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: Dimensions.dStartPadding.w),
+          child: Text(
+            S.of(context).price,
+            style: AppStyles.textStyle18w700,
           ),
-          SizedBox(
-            height: 70.h,
+        ),
+        CustomSlider(
+          division: endValue.toInt(),
+          max: endValue,
+          min: 0,
+          onChange: (values) {
+            print(values.start);
+            print(values.end);
+            // filterCubit.minPrice = values.start.round();
+            // filterCubit.maxPrice = values.end.round();
+          },
+          rangeValues: RangeValues(0, endValue),
+
+          // onChange: (startValue, endValue) {
+          //   print(startValue);
+          // },
+          // endValue: 1000, //endValue ?? 0,
+          // values: RangeValues(0, 1000),
+        ),
+        SizedBox(
+          height: 70.h,
+        ),
+        Padding(
+          padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+          child: AppBottom(
+            title: S.of(context).apply, //"Apply",
+            onTap: () {},
           ),
-          Padding(
-            padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
-            child: AppBottom(title: "Apply"),
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 10.h,
+        ),
+      ],
     );
   }
 }

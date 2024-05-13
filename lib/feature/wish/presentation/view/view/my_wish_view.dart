@@ -84,7 +84,9 @@ class MyWishViewBody extends StatelessWidget {
                       onTap: () {
                         HelperFunctions.navigateToScreen(
                           context,
-                          const FlitterSortView(),
+                          FlitterSortView(
+                            endValue: 100,
+                          ),
                         );
                       },
                     )

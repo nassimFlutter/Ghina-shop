@@ -14,7 +14,11 @@ class FlitterBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        HelperFunctions.navigateToScreen(context, const FlitterSortView());
+        HelperFunctions.navigateToScreen(
+            context,
+            FlitterSortView(
+              endValue: 100,
+            ));
       },
       child: Container(
         width: 40.h,

@@ -47,7 +47,10 @@ class FeaturedProductViewBody extends StatelessWidget {
                   iconPath: IconsPath.flitterIcon,
                   onTap: () {
                     HelperFunctions.navigateToScreen(
-                        context, const FlitterSortView());
+                        context,
+                        FlitterSortView(
+                          endValue: 100,
+                        ));
                   },
                 )
               ],
