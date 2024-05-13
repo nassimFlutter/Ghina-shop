@@ -90,8 +90,10 @@ class SearchViewBody extends StatelessWidget {
                   );
                 } else if (state is SearchSuccess) {
                   if (searchCubit.productSearchResult.isEmpty) {
-                    return const SliverFillRemaining(
-                      child: Center(child: NoResult(title: "no ")),
+                    return SliverFillRemaining(
+                      child: Center(
+                          child:
+                              NoResult(title: S.of(context).no_result_found)),
                     );
                   } else {
                     return ProductGridView(

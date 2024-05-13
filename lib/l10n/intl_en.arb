@@ -148,5 +148,9 @@
     "add_to_cart": "Add to Cart",
     "NO_CONNECTION": "NO CONNECTION",
     "connection_not_found": "Connection not found, make sure you are\nconnected to internet",
-    "retry": "Retry"
+    "retry": "Retry",
+    "delete_your_address": "Delete Your Address",
+    "delete_address_contain_message": "Are you sure you want to delete your address?",
+    "no_result_found": "No Result Found",
+    "price": "Price"
 }

@@ -71,10 +71,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "coupon_code": MessageLookupByLibrary.simpleMessage("Coupon Code"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "date_and_time": MessageLookupByLibrary.simpleMessage("Date & Time"),
+        "delete_address_contain_message": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete your address?"),
         "delete_product":
             MessageLookupByLibrary.simpleMessage("Delete Product"),
         "delete_product_contain_message": MessageLookupByLibrary.simpleMessage(
             "Are Your Sure You \nWant to delete Item from Cart"),
+        "delete_your_address":
+            MessageLookupByLibrary.simpleMessage("Delete Your Address"),
         "delivery": MessageLookupByLibrary.simpleMessage("Delivery"),
         "delivery_details":
             MessageLookupByLibrary.simpleMessage("Delivery Details"),
@@ -143,6 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_internet": MessageLookupByLibrary.simpleMessage("No internet"),
         "no_products_available":
             MessageLookupByLibrary.simpleMessage("No products available"),
+        "no_result_found":
+            MessageLookupByLibrary.simpleMessage("No Result Found"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "office_no": MessageLookupByLibrary.simpleMessage("Office No"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
@@ -175,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("phone is required"),
         "please_select_an_area":
             MessageLookupByLibrary.simpleMessage("Please select an area"),
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "proceed_to_checkout":

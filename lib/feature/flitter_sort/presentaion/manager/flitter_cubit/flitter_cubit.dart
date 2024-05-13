@@ -8,6 +8,8 @@ class FlitterCubit extends Cubit<FlitterState> {
   FlitterCubit() : super(FlitterInitial());
   static FlitterCubit get(context) => BlocProvider.of(context);
   int groupValueSort = -1;
+  bool brandsIsOpen = false;
+  bool categoryIsOpen = false;
   List<String> sortByList = [
     'A-Z',
     'Z-A',
@@ -32,6 +34,16 @@ class FlitterCubit extends Cubit<FlitterState> {
     "Printers"
   ];
   List<String> categoryListSleeted = [];
+  void changeOpenBrandsOrCategory(
+      {required bool isOpen, required bool isBrand}) {
+    if (isBrand) {
+      brandsIsOpen = isOpen;
+    } else {
+      categoryIsOpen = isOpen;
+    }
+    emit(BrandsChange());
+  }
+
   void changeGroupValueSort(int value) {
     groupValueSort = value;
     emit(RadioSortChange());

@@ -69,9 +69,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "coupon_code": MessageLookupByLibrary.simpleMessage("كود الكوبون"),
         "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "date_and_time": MessageLookupByLibrary.simpleMessage("التاريخ والوقت"),
+        "delete_address_contain_message":
+            MessageLookupByLibrary.simpleMessage("هل أنت متأكد من حذف عنوانك؟"),
         "delete_product": MessageLookupByLibrary.simpleMessage("حذف المنتج"),
         "delete_product_contain_message": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد أنك تريد حذف العنصر من السلة؟"),
+        "delete_your_address":
+            MessageLookupByLibrary.simpleMessage("حذف عنوانك"),
         "delivery": MessageLookupByLibrary.simpleMessage("التوصيل"),
         "delivery_details":
             MessageLookupByLibrary.simpleMessage("تفاصيل التسليم"),
@@ -139,6 +143,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا يوجد اتصال بالإنترنت"),
         "no_products_available":
             MessageLookupByLibrary.simpleMessage("لا تتوفر منتجات"),
+        "no_result_found":
+            MessageLookupByLibrary.simpleMessage("لا يوجد نتائج"),
         "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "office_no": MessageLookupByLibrary.simpleMessage("رقم المكتب"),
         "ok": MessageLookupByLibrary.simpleMessage("حسنًا"),
@@ -170,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الهاتف مطلوب"),
         "please_select_an_area":
             MessageLookupByLibrary.simpleMessage("يرجى اختيار منطقة"),
+        "price": MessageLookupByLibrary.simpleMessage("السعر"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "proceed_to_checkout":

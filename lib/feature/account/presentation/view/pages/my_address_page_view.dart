@@ -161,9 +161,12 @@ class AddressItem extends StatelessWidget {
                             HelperFunctions.showCustomDialog(
                               context,
                               QuestionDialog(
-                                title: "Delete Your Address",
-                                contain:
-                                    "Are you sure you want to delete your address?",
+                                title: S
+                                    .of(context)
+                                    .delete_your_address, //"Delete Your Address",
+                                contain: S
+                                    .of(context)
+                                    .delete_address_contain_message, // "Are you sure you want to delete your address?",
                                 onTapYes: () async {
                                   deleteAddressCubit
                                       .deleteAddress(address.id ?? -100);

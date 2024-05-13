@@ -43,7 +43,11 @@ class NewArriversViewBody extends StatelessWidget {
                     iconPath: IconsPath.flitterIcon,
                     onTap: () {
                       HelperFunctions.navigateToScreen(
-                          context, const FlitterSortView());
+                        context,
+                        const FlitterSortView(
+                          endValue: 100,
+                        ),
+                      );
                     },
                   )
                 ],
