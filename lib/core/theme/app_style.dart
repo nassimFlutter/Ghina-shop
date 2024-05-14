@@ -91,4 +91,17 @@ class AppStyles {
       ),
     );
   }
+
+  static ShapeDecoration checkoutContainerdecoration() {
+    return ShapeDecoration(
+      color: AppColor.containerBackColor,
+      shape: checkoutContainerShape(),
+    );
+  }
+
+  static RoundedRectangleBorder checkoutContainerShape() {
+    return RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15),
+    );
+  }
 }

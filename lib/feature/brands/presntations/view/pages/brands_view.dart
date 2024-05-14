@@ -2,6 +2,7 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
+import 'package:best_price/core/widgets/error_widget.dart';
 import 'package:best_price/feature/brands/presntations/manager/brands_cubit/brands_cubit.dart';
 import 'package:best_price/feature/brands/presntations/view/widgets/shimmer_brand_grid_view.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -46,6 +47,12 @@ class BrandsView extends StatelessWidget {
                         child: const ShimmerBrandGridView(),
                       ),
                     );
+                  } else if (state is BrandsFailure) {
+                    return Expanded(child: CustomErrorWidget(
+                      onTap: () {
+                        brandsCubit.fetchAllBrands();
+                      },
+                    ));
                   } else {
                     return Expanded(
                       child: Padding(

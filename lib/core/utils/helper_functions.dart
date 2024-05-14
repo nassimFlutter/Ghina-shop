@@ -4,6 +4,7 @@ import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/widgets/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+
 class HelperFunctions {
   static void navigateToScreen(BuildContext context, Widget screen) {
     Navigator.push(
@@ -75,6 +76,11 @@ class HelperFunctions {
     double visibleHeight = screenHeight - paddingBottom;
 
     return visibleHeight;
+  }
+
+  static bool isGuest() {
+    final value = CacheHelper.getData(key: Keys.kIsGuest);
+    return value ?? false;
   }
 
   static Future<void> clearUserData() async {

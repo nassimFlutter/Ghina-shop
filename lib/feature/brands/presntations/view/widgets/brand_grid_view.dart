@@ -1,4 +1,6 @@
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/brands/presntations/manager/brands_cubit/brands_cubit.dart';
+import 'package:best_price/feature/brands/presntations/view/pages/brands_products_view.dart';
 import 'package:best_price/feature/brands/presntations/view/widgets/brand_item.dart';
 import 'package:best_price/feature/brands/presntations/view/widgets/shimmer_brand_item.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +25,21 @@ class BrandGridView extends StatelessWidget {
               mainAxisSpacing: 31.h,
               crossAxisSpacing: 17.w),
           itemBuilder: (context, index) {
-            return BrandItem(
-              imageUrl:
-                  brandsCubit.brandResponse.items?[index].image ?? "No Name",
+            return InkWell(
+              onTap: () {
+                HelperFunctions.navigateToScreen(
+                    context,
+                    BrandProductsView(
+                      brandsId:
+                          brandsCubit.brandResponse.items?[index].id ?? -100,
+                      title: brandsCubit.brandResponse.items?[index].name ??
+                          "No name",
+                    ));
+              },
+              child: BrandItem(
+                imageUrl:
+                    brandsCubit.brandResponse.items?[index].image ?? "No Name",
+              ),
             );
           },
         );

@@ -9,6 +9,7 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/manager/address_cubit/address_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
 import 'package:best_price/feature/cheack_out/presntation/manager/selected_address_cubit/selected_address_cubit.dart';
+import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_unsuccessfull.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/pages/checkout_success.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -114,7 +115,7 @@ class CheckoutBody extends StatelessWidget {
                           },
                         );
                       },
-                    );
+                     );
                   },
                   child: Text(
                     S.of(context).add_address, //"Add address",
@@ -176,7 +177,7 @@ class CheckoutBody extends StatelessWidget {
         AppBottom(
           title: S.of(context).proceed_to_pay, //"Proceed to Pay",
           onTap: () {
-            HelperFunctions.navigateToScreen(context, const CheckOutSuccess());
+            HelperFunctions.navigateToScreen(context, const CheckOutUnSuccess());
           },
         ),
         SizedBox(

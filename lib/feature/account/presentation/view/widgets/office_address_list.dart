@@ -1,8 +1,11 @@
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/area_cubit/area_cubit.dart';
+import 'package:best_price/feature/account/presentation/view/widgets/selected_area_drop_down.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OfficeAddressList extends StatelessWidget {
@@ -13,6 +16,7 @@ class OfficeAddressList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddAddressCubit addAddressCubit = AddAddressCubit.get(context);
+    AreaCubit areaCubit = AreaCubit.get(context);
 
     return ListView(
       shrinkWrap: true,
@@ -57,8 +61,10 @@ class OfficeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        AuthFieldText(
-          title: S.of(context).select_area_, //"Select Area**",
+        BlocBuilder<AreaCubit, AreaState>(
+          builder: (context, state) {
+            return SelectedAreaDropDown(areaCubit: areaCubit);
+          },
         ),
         SizedBox(
           height: 6.h,

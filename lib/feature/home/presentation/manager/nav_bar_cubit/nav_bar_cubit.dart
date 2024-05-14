@@ -1,3 +1,5 @@
+import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/account/presentation/view/pages/guest_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/my_account_page_view.dart';
 import 'package:best_price/feature/cart/presentation/view/cart_view_body.dart';
 import 'package:best_price/feature/category/presentaion/view/pages/category_body.dart';
@@ -11,14 +13,19 @@ part 'nav_bar_state.dart';
 
 class NavBarCubit extends Cubit<NavBarState> {
   NavBarCubit() : super(NavBarInitial());
+
   static NavBarCubit get(context) => BlocProvider.of(context);
-  List<Widget> screens = [
-    const HomePgeBody(),
-    const CategoryViewBody(),
-    const CartViewBody(),
-    const MyAccountViewBody()
-  ];
-  
+
+  List<Widget> get screens {
+    bool isGuest = HelperFunctions.isGuest();
+    return [
+      const HomePgeBody(),
+      const CategoryViewBody(),
+      const CartViewBody(),
+      if (isGuest) const GuestPageView() else const MyAccountViewBody(),
+    ];
+  }
+
   void changeTab(int index) {
     emit(ChangeTab(index: index));
   }

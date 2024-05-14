@@ -12,6 +12,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../widgets/container_text_checkout.dart';
+import '../widgets/products_tile_text.dart';
+import '../widgets/text_in_payment_details_container.dart';
+
 class CheckOutSuccess extends StatelessWidget {
   const CheckOutSuccess({super.key});
 // todo : finish translate
@@ -90,7 +94,7 @@ class CheckOutSuccess extends StatelessWidget {
             height: 14.h,
           ),
           Container(
-            decoration: checkoutContainerdecoration(),
+            decoration: AppStyles.checkoutContainerdecoration(),
             margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
             child: Column(
               children: [
@@ -142,7 +146,7 @@ class CheckOutSuccess extends StatelessWidget {
             height: 14.h,
           ),
           Container(
-            decoration: checkoutContainerdecoration(),
+            decoration: AppStyles.checkoutContainerdecoration(),
             margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +186,7 @@ class CheckOutSuccess extends StatelessWidget {
             height: 14.h,
           ),
           Container(
-            decoration: checkoutContainerdecoration(),
+            decoration: AppStyles.checkoutContainerdecoration(),
             margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
             child: Column(
               children: [
@@ -227,7 +231,7 @@ class CheckOutSuccess extends StatelessWidget {
                         SizedBox(
                           height: 21.h,
                         ),
-                        Divider(),
+                        const Divider(),
                         SizedBox(
                           height: 21.h,
                         ),
@@ -243,14 +247,41 @@ class CheckOutSuccess extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsetsDirectional.only(start: 16.w),
-            child: TitleCheckPage(title: "Payment Details"),
+            child: const TitleCheckPage(title: "Payment Details"),
           ),
           SizedBox(
             height: 14.h,
           ),
+          Container(
+            decoration: AppStyles.  checkoutContainerdecoration(),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 25.h,
+                ),
+                const TextInPaymentDetailsContainer(
+                  title: "Payment Method",
+                  value: "Knet",
+                ),
+                SizedBox(
+                  height: 17.h,
+                ),
+                const Divider(),
+                SizedBox(
+                  height: 13.h,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 41.h,
+          ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppBottom2(
+              const AppBottom2(
                 title: "Home",
               ),
               SizedBox(
@@ -258,62 +289,16 @@ class CheckOutSuccess extends StatelessWidget {
               ),
               SizedBox(
                 width: 171.w,
-                child: AppBottom(
+                child: const AppBottom(
                   title: "My Orders",
                 ),
               )
             ],
-          )
+          ),
+          SizedBox(
+            height: 46.h,
+          ),
         ],
-      ),
-    );
-  }
-
-  ShapeDecoration checkoutContainerdecoration() {
-    return ShapeDecoration(
-      color: AppColor.containerBackColor,
-      shape: checkoutContainerShape(),
-    );
-  }
-
-  RoundedRectangleBorder checkoutContainerShape() {
-    return RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15),
-    );
-  }
-}
-
-class ProductsTileText extends StatelessWidget {
-  const ProductsTileText({
-    super.key,
-    required this.text,
-  });
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text, // "Item Name",
-      style: AppStyles.textStyle16w400.copyWith(color: AppColor.greyText),
-    );
-  }
-}
-
-class ContainerTextCheckout extends StatelessWidget {
-  const ContainerTextCheckout({
-    super.key,
-    required this.text,
-  });
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.only(start: 15.w),
-      child: Text(
-        text,
-        textAlign: TextAlign.start,
-        style: AppStyles.textStyle16w400.copyWith(
-          color: AppColor.black,
-        ),
       ),
     );
   }
