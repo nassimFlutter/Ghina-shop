@@ -99,10 +99,14 @@ class IconsPath {
   static const deleteIcon = "$_basePath/delete.svg";
   //! ------------ checkOut --------------
   static const succescheckOut = "$_basePath/success.svg";
+  static const unSuccescheckOut = "$_basePath/unsuccess.svg";
   //! ------------ product details icon --------------
   static const buyIcon = "$_basePath/buy_svg_icon.svg";
   static const favoriteIcon = "$_basePath/favorite_svg_icon.svg";
   static const favoriteRedIcon = "$_basePath/redHeart.svg";
   //! ----------------- address ---------------------
   static const dropDownIcon = "$_basePath/down_arrow.svg";
+  //! ----------------- filter page  ---------------------
+  static const toTopArrow = "$_basePath/toTopArrow.svg";
+  static const toDownArrow = "$_basePath/toDownArrow.svg";
 }

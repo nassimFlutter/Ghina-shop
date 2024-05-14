@@ -20,156 +20,228 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function> {
-    "Lets_start_shopping" : MessageLookupByLibrary.simpleMessage("Let’s start shopping!"),
-    "NO_CONNECTION" : MessageLookupByLibrary.simpleMessage("NO CONNECTION"),
-    "about_best_price" : MessageLookupByLibrary.simpleMessage("About Best Price"),
-    "account" : MessageLookupByLibrary.simpleMessage("account"),
-    "add_address" : MessageLookupByLibrary.simpleMessage("Add Address"),
-    "add_address_for_a_faster_checkout" : MessageLookupByLibrary.simpleMessage("Add Address for a Faster Checkout"),
-    "add_new_address" : MessageLookupByLibrary.simpleMessage("Add New Address"),
-    "add_to_cart" : MessageLookupByLibrary.simpleMessage("Add to Cart"),
-    "added_to_wishlist" : MessageLookupByLibrary.simpleMessage("Added to Wishlist"),
-    "address" : MessageLookupByLibrary.simpleMessage("Address"),
-    "address_title_" : MessageLookupByLibrary.simpleMessage("Address Title*"),
-    "amount" : MessageLookupByLibrary.simpleMessage("Amount"),
-    "apply" : MessageLookupByLibrary.simpleMessage("Apply"),
-    "are_you_sure_you_want_to_logout" : MessageLookupByLibrary.simpleMessage("Are you sure you want to logout?"),
-    "avenue" : MessageLookupByLibrary.simpleMessage("Avenue"),
-    "best_selling" : MessageLookupByLibrary.simpleMessage("Best Selling"),
-    "block_no_" : MessageLookupByLibrary.simpleMessage("Block No*"),
-    "brands" : MessageLookupByLibrary.simpleMessage("Brands"),
-    "by" : MessageLookupByLibrary.simpleMessage("by"),
-    "cart" : MessageLookupByLibrary.simpleMessage("cart"),
-    "categories" : MessageLookupByLibrary.simpleMessage("Categories"),
-    "category" : MessageLookupByLibrary.simpleMessage("Category"),
-    "change" : MessageLookupByLibrary.simpleMessage("Change"),
-    "change_password" : MessageLookupByLibrary.simpleMessage("Change Password"),
-    "change_password_error" : MessageLookupByLibrary.simpleMessage("Change Password Error"),
-    "changed_password_dialog" : MessageLookupByLibrary.simpleMessage("You have successfully\nChanged Your Password"),
-    "checkout" : MessageLookupByLibrary.simpleMessage("Checkout"),
-    "choose_language" : MessageLookupByLibrary.simpleMessage("Choose Language"),
-    "color" : MessageLookupByLibrary.simpleMessage("Color"),
-    "confirm_password_" : MessageLookupByLibrary.simpleMessage("Confirm Password*"),
-    "connection_not_found" : MessageLookupByLibrary.simpleMessage("Connection not found, make sure you are\nconnected to internet"),
-    "contact_us" : MessageLookupByLibrary.simpleMessage("Contact Us"),
-    "coupon_code" : MessageLookupByLibrary.simpleMessage("Coupon Code"),
-    "date" : MessageLookupByLibrary.simpleMessage("Date"),
-    "date_and_time" : MessageLookupByLibrary.simpleMessage("Date & Time"),
-    "delete_product" : MessageLookupByLibrary.simpleMessage("Delete Product"),
-    "delete_product_contain_message" : MessageLookupByLibrary.simpleMessage("Are Your Sure You \nWant to delete Item from Cart"),
-    "delivery" : MessageLookupByLibrary.simpleMessage("Delivery"),
-    "delivery_details" : MessageLookupByLibrary.simpleMessage("Delivery Details"),
-    "description" : MessageLookupByLibrary.simpleMessage("Description"),
-    "discount" : MessageLookupByLibrary.simpleMessage("Discount"),
-    "dont_have_an_account_Register" : MessageLookupByLibrary.simpleMessage("Don’t have an account? Register"),
-    "e_mail" : MessageLookupByLibrary.simpleMessage("E-mail"),
-    "edit_account" : MessageLookupByLibrary.simpleMessage("edit Account"),
-    "edit_address" : MessageLookupByLibrary.simpleMessage("Edit Address"),
-    "email_" : MessageLookupByLibrary.simpleMessage("Email*"),
-    "email_address_validation" : MessageLookupByLibrary.simpleMessage("E-mail must be\n a valid email address"),
-    "email_contain_validation" : MessageLookupByLibrary.simpleMessage("E-mail must contains @"),
-    "email_required_validation" : MessageLookupByLibrary.simpleMessage("E-mail is required"),
-    "enter_here" : MessageLookupByLibrary.simpleMessage("enter here"),
-    "enter_your_email" : MessageLookupByLibrary.simpleMessage("Enter your E-mail"),
-    "enter_your_name" : MessageLookupByLibrary.simpleMessage("Enter your name"),
-    "enter_your_password" : MessageLookupByLibrary.simpleMessage("Enter your password"),
-    "enter_your_phone" : MessageLookupByLibrary.simpleMessage("Enter your phone"),
-    "error" : MessageLookupByLibrary.simpleMessage("error"),
-    "error_try_again" : MessageLookupByLibrary.simpleMessage("Error try again"),
-    "extra_directions_" : MessageLookupByLibrary.simpleMessage("Extra Directions*"),
-    "failure_update_message" : MessageLookupByLibrary.simpleMessage("Your Account Has not \nsuccessfully updated"),
-    "featured_products" : MessageLookupByLibrary.simpleMessage("Featured Products"),
-    "flat_no_" : MessageLookupByLibrary.simpleMessage("Flat No*"),
-    "floor_no_" : MessageLookupByLibrary.simpleMessage("Floor No*"),
-    "forgot_password" : MessageLookupByLibrary.simpleMessage("Forgot Password"),
-    "full_name_" : MessageLookupByLibrary.simpleMessage("Full Name*"),
-    "happy_shopping__" : MessageLookupByLibrary.simpleMessage("Happy Shopping!!"),
-    "home" : MessageLookupByLibrary.simpleMessage("Home"),
-    "house_no" : MessageLookupByLibrary.simpleMessage("house no"),
-    "item_name" : MessageLookupByLibrary.simpleMessage("Item Name"),
-    "language" : MessageLookupByLibrary.simpleMessage("Language"),
-    "large" : MessageLookupByLibrary.simpleMessage("Large"),
-    "login" : MessageLookupByLibrary.simpleMessage("Login"),
-    "logout" : MessageLookupByLibrary.simpleMessage("Logout"),
-    "lorem_small" : MessageLookupByLibrary.simpleMessage("Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-    "message_" : MessageLookupByLibrary.simpleMessage("Message*"),
-    "mobile_no_" : MessageLookupByLibrary.simpleMessage("Mobile No*"),
-    "mobile_number_" : MessageLookupByLibrary.simpleMessage("Mobile Number*"),
-    "my_account" : MessageLookupByLibrary.simpleMessage("My Account"),
-    "my_addresses" : MessageLookupByLibrary.simpleMessage("My Addresses"),
-    "my_cart" : MessageLookupByLibrary.simpleMessage("My Cart"),
-    "my_orders" : MessageLookupByLibrary.simpleMessage("My Orders"),
-    "name_required_validation" : MessageLookupByLibrary.simpleMessage("Full name is required"),
-    "new_arrivals" : MessageLookupByLibrary.simpleMessage("New Arrivals"),
-    "new_password_" : MessageLookupByLibrary.simpleMessage("new Password*"),
-    "no_added_address" : MessageLookupByLibrary.simpleMessage("No Added Address"),
-    "no_internet" : MessageLookupByLibrary.simpleMessage("No internet"),
-    "no_products_available" : MessageLookupByLibrary.simpleMessage("No products available"),
-    "notification" : MessageLookupByLibrary.simpleMessage("Notification"),
-    "office_no" : MessageLookupByLibrary.simpleMessage("Office No"),
-    "ok" : MessageLookupByLibrary.simpleMessage("Ok"),
-    "old_password_" : MessageLookupByLibrary.simpleMessage("Old Password*"),
-    "order_ID" : MessageLookupByLibrary.simpleMessage("Order ID"),
-    "order_details" : MessageLookupByLibrary.simpleMessage("Order Details"),
-    "order_status" : MessageLookupByLibrary.simpleMessage("Order status"),
-    "our_policies" : MessageLookupByLibrary.simpleMessage("Our Policies"),
-    "our_policy" : MessageLookupByLibrary.simpleMessage("Our Policy"),
-    "password" : MessageLookupByLibrary.simpleMessage("Password"),
-    "password_" : MessageLookupByLibrary.simpleMessage("Password*"),
-    "password_confirm_validation" : MessageLookupByLibrary.simpleMessage("Confirm password is required"),
-    "password_length_validation" : MessageLookupByLibrary.simpleMessage("The Password must be\n at least 6 characters."),
-    "password_required_validation" : MessageLookupByLibrary.simpleMessage("Password is required"),
-    "password_reset_link" : MessageLookupByLibrary.simpleMessage("A password reset link has \nbeen sent to your email"),
-    "passwords_do_not_match" : MessageLookupByLibrary.simpleMessage("Passwords do not match"),
-    "payment_details" : MessageLookupByLibrary.simpleMessage("Payment Details"),
-    "payment_method" : MessageLookupByLibrary.simpleMessage("Payment Method"),
-    "phone_length_validation" : MessageLookupByLibrary.simpleMessage("The Mobile must be between 8\n and 15 digits"),
-    "phone_number_" : MessageLookupByLibrary.simpleMessage("Phone Number*"),
-    "phone_required_validation" : MessageLookupByLibrary.simpleMessage("phone is required"),
-    "please_select_an_area" : MessageLookupByLibrary.simpleMessage("Please select an area"),
-    "privacy_policy" : MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-    "proceed_to_checkout" : MessageLookupByLibrary.simpleMessage("Proceed to Checkout"),
-    "proceed_to_pay" : MessageLookupByLibrary.simpleMessage("Proceed to Pay"),
-    "products" : MessageLookupByLibrary.simpleMessage("Products"),
-    "reach_out_to_us" : MessageLookupByLibrary.simpleMessage("Reach Out to Us"),
-    "reset" : MessageLookupByLibrary.simpleMessage("Reset"),
-    "retry" : MessageLookupByLibrary.simpleMessage("Retry"),
-    "return_policy_data" : MessageLookupByLibrary.simpleMessage("Return Policy data ....."),
-    "search" : MessageLookupByLibrary.simpleMessage("Search"),
-    "see_all" : MessageLookupByLibrary.simpleMessage("See All"),
-    "select_address" : MessageLookupByLibrary.simpleMessage("Select Address"),
-    "select_area_" : MessageLookupByLibrary.simpleMessage("Select Area*"),
-    "send" : MessageLookupByLibrary.simpleMessage("Send"),
-    "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
-    "show_less" : MessageLookupByLibrary.simpleMessage("show less"),
-    "show_more" : MessageLookupByLibrary.simpleMessage("show more"),
-    "sign_in" : MessageLookupByLibrary.simpleMessage("Sign In"),
-    "sign_up" : MessageLookupByLibrary.simpleMessage("Sign Up"),
-    "sign_up_error" : MessageLookupByLibrary.simpleMessage("Sign up error"),
-    "size" : MessageLookupByLibrary.simpleMessage("Size"),
-    "sort_by" : MessageLookupByLibrary.simpleMessage("Sort By"),
-    "street_" : MessageLookupByLibrary.simpleMessage("Street*"),
-    "sub_total" : MessageLookupByLibrary.simpleMessage("Sub Total"),
-    "submit" : MessageLookupByLibrary.simpleMessage("Submit"),
-    "success" : MessageLookupByLibrary.simpleMessage("Success"),
-    "success_register_message" : MessageLookupByLibrary.simpleMessage("You have successfully\nRegistered with Best Price"),
-    "success_update_message" : MessageLookupByLibrary.simpleMessage("Your Account Has been\nsuccessfully updated"),
-    "successful" : MessageLookupByLibrary.simpleMessage("Successful"),
-    "support" : MessageLookupByLibrary.simpleMessage("Support"),
-    "terminate_account" : MessageLookupByLibrary.simpleMessage("Terminate Account"),
-    "terminate_message" : MessageLookupByLibrary.simpleMessage("Do you want to terminate your\naccount?"),
-    "terminate_my_accounts" : MessageLookupByLibrary.simpleMessage("Terminate my Accounts"),
-    "terminate_note_message" : MessageLookupByLibrary.simpleMessage("By terminating account, You will not be able to recover your account."),
-    "terms_conditions" : MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
-    "thank_you_for_your_purchase" : MessageLookupByLibrary.simpleMessage("Thank You For Your Purchase"),
-    "this_required_validations" : MessageLookupByLibrary.simpleMessage("this is required"),
-    "total" : MessageLookupByLibrary.simpleMessage("Total"),
-    "update" : MessageLookupByLibrary.simpleMessage("update"),
-    "update_account" : MessageLookupByLibrary.simpleMessage("Update Account"),
-    "update_account_error" : MessageLookupByLibrary.simpleMessage("Update Account Error"),
-    "welcome_policy_message" : MessageLookupByLibrary.simpleMessage("Welcome to Best Price We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system."),
-    "wish_list" : MessageLookupByLibrary.simpleMessage("Wish list"),
-    "your_purchase_was" : MessageLookupByLibrary.simpleMessage("Your Purchase was")
-  };
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Lets_start_shopping":
+            MessageLookupByLibrary.simpleMessage("Let’s start shopping!"),
+        "NO_CONNECTION": MessageLookupByLibrary.simpleMessage("NO CONNECTION"),
+        "about_best_price":
+            MessageLookupByLibrary.simpleMessage("About Best Price"),
+        "account": MessageLookupByLibrary.simpleMessage("account"),
+        "add_address": MessageLookupByLibrary.simpleMessage("Add Address"),
+        "add_address_for_a_faster_checkout":
+            MessageLookupByLibrary.simpleMessage(
+                "Add Address for a Faster Checkout"),
+        "add_new_address":
+            MessageLookupByLibrary.simpleMessage("Add New Address"),
+        "add_to_cart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
+        "added_to_wishlist":
+            MessageLookupByLibrary.simpleMessage("Added to Wishlist"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "address_title_":
+            MessageLookupByLibrary.simpleMessage("Address Title*"),
+        "amount": MessageLookupByLibrary.simpleMessage("Amount"),
+        "apply": MessageLookupByLibrary.simpleMessage("Apply"),
+        "are_you_sure_you_want_to_logout": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to logout?"),
+        "avenue": MessageLookupByLibrary.simpleMessage("Avenue"),
+        "best_selling": MessageLookupByLibrary.simpleMessage("Best Selling"),
+        "block_no_": MessageLookupByLibrary.simpleMessage("Block No*"),
+        "brands": MessageLookupByLibrary.simpleMessage("Brands"),
+        "by": MessageLookupByLibrary.simpleMessage("by"),
+        "cart": MessageLookupByLibrary.simpleMessage("cart"),
+        "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+        "category": MessageLookupByLibrary.simpleMessage("Category"),
+        "change": MessageLookupByLibrary.simpleMessage("Change"),
+        "change_password":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
+        "change_password_error":
+            MessageLookupByLibrary.simpleMessage("Change Password Error"),
+        "changed_password_dialog": MessageLookupByLibrary.simpleMessage(
+            "You have successfully\nChanged Your Password"),
+        "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "choose_language":
+            MessageLookupByLibrary.simpleMessage("Choose Language"),
+        "color": MessageLookupByLibrary.simpleMessage("Color"),
+        "confirm_password_":
+            MessageLookupByLibrary.simpleMessage("Confirm Password*"),
+        "connection_not_found": MessageLookupByLibrary.simpleMessage(
+            "Connection not found, make sure you are\nconnected to internet"),
+        "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
+        "coupon_code": MessageLookupByLibrary.simpleMessage("Coupon Code"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "date_and_time": MessageLookupByLibrary.simpleMessage("Date & Time"),
+        "delete_address_contain_message": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete your address?"),
+        "delete_product":
+            MessageLookupByLibrary.simpleMessage("Delete Product"),
+        "delete_product_contain_message": MessageLookupByLibrary.simpleMessage(
+            "Are Your Sure You \nWant to delete Item from Cart"),
+        "delete_your_address":
+            MessageLookupByLibrary.simpleMessage("Delete Your Address"),
+        "delivery": MessageLookupByLibrary.simpleMessage("Delivery"),
+        "delivery_details":
+            MessageLookupByLibrary.simpleMessage("Delivery Details"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "discount": MessageLookupByLibrary.simpleMessage("Discount"),
+        "dont_have_an_account_Register": MessageLookupByLibrary.simpleMessage(
+            "Don’t have an account? Register"),
+        "e_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "edit_account": MessageLookupByLibrary.simpleMessage("edit Account"),
+        "edit_address": MessageLookupByLibrary.simpleMessage("Edit Address"),
+        "email_": MessageLookupByLibrary.simpleMessage("Email*"),
+        "email_address_validation": MessageLookupByLibrary.simpleMessage(
+            "E-mail must be\n a valid email address"),
+        "email_contain_validation":
+            MessageLookupByLibrary.simpleMessage("E-mail must contains @"),
+        "email_required_validation":
+            MessageLookupByLibrary.simpleMessage("E-mail is required"),
+        "enter_here": MessageLookupByLibrary.simpleMessage("enter here"),
+        "enter_your_email":
+            MessageLookupByLibrary.simpleMessage("Enter your E-mail"),
+        "enter_your_name":
+            MessageLookupByLibrary.simpleMessage("Enter your name"),
+        "enter_your_password":
+            MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "enter_your_phone":
+            MessageLookupByLibrary.simpleMessage("Enter your phone"),
+        "error": MessageLookupByLibrary.simpleMessage("error"),
+        "error_try_again":
+            MessageLookupByLibrary.simpleMessage("Error try again"),
+        "extra_directions_":
+            MessageLookupByLibrary.simpleMessage("Extra Directions*"),
+        "failure_update_message": MessageLookupByLibrary.simpleMessage(
+            "Your Account Has not \nsuccessfully updated"),
+        "featured_products":
+            MessageLookupByLibrary.simpleMessage("Featured Products"),
+        "flat_no_": MessageLookupByLibrary.simpleMessage("Flat No*"),
+        "floor_no_": MessageLookupByLibrary.simpleMessage("Floor No*"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "full_name_": MessageLookupByLibrary.simpleMessage("Full Name*"),
+        "happy_shopping__":
+            MessageLookupByLibrary.simpleMessage("Happy Shopping!!"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "house_no": MessageLookupByLibrary.simpleMessage("house no"),
+        "item_name": MessageLookupByLibrary.simpleMessage("Item Name"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "large": MessageLookupByLibrary.simpleMessage("Large"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "lorem_small": MessageLookupByLibrary.simpleMessage(
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+        "message_": MessageLookupByLibrary.simpleMessage("Message*"),
+        "mobile_no_": MessageLookupByLibrary.simpleMessage("Mobile No*"),
+        "mobile_number_":
+            MessageLookupByLibrary.simpleMessage("Mobile Number*"),
+        "my_account": MessageLookupByLibrary.simpleMessage("My Account"),
+        "my_addresses": MessageLookupByLibrary.simpleMessage("My Addresses"),
+        "my_cart": MessageLookupByLibrary.simpleMessage("My Cart"),
+        "my_orders": MessageLookupByLibrary.simpleMessage("My Orders"),
+        "name_required_validation":
+            MessageLookupByLibrary.simpleMessage("Full name is required"),
+        "new_arrivals": MessageLookupByLibrary.simpleMessage("New Arrivals"),
+        "new_password_": MessageLookupByLibrary.simpleMessage("new Password*"),
+        "no_added_address":
+            MessageLookupByLibrary.simpleMessage("No Added Address"),
+        "no_internet": MessageLookupByLibrary.simpleMessage("No internet"),
+        "no_products_available":
+            MessageLookupByLibrary.simpleMessage("No products available"),
+        "no_result_found":
+            MessageLookupByLibrary.simpleMessage("No Result Found"),
+        "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+        "office_no": MessageLookupByLibrary.simpleMessage("Office No"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "old_password_": MessageLookupByLibrary.simpleMessage("Old Password*"),
+        "order_ID": MessageLookupByLibrary.simpleMessage("Order ID"),
+        "order_details": MessageLookupByLibrary.simpleMessage("Order Details"),
+        "order_status": MessageLookupByLibrary.simpleMessage("Order status"),
+        "our_policies": MessageLookupByLibrary.simpleMessage("Our Policies"),
+        "our_policy": MessageLookupByLibrary.simpleMessage("Our Policy"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "password_": MessageLookupByLibrary.simpleMessage("Password*"),
+        "password_confirm_validation": MessageLookupByLibrary.simpleMessage(
+            "Confirm password is required"),
+        "password_length_validation": MessageLookupByLibrary.simpleMessage(
+            "The Password must be\n at least 6 characters."),
+        "password_required_validation":
+            MessageLookupByLibrary.simpleMessage("Password is required"),
+        "password_reset_link": MessageLookupByLibrary.simpleMessage(
+            "A password reset link has \nbeen sent to your email"),
+        "passwords_do_not_match":
+            MessageLookupByLibrary.simpleMessage("Passwords do not match"),
+        "payment_details":
+            MessageLookupByLibrary.simpleMessage("Payment Details"),
+        "payment_method":
+            MessageLookupByLibrary.simpleMessage("Payment Method"),
+        "phone_length_validation": MessageLookupByLibrary.simpleMessage(
+            "The Mobile must be between 8\n and 15 digits"),
+        "phone_number_": MessageLookupByLibrary.simpleMessage("Phone Number*"),
+        "phone_required_validation":
+            MessageLookupByLibrary.simpleMessage("phone is required"),
+        "please_select_an_area":
+            MessageLookupByLibrary.simpleMessage("Please select an area"),
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "proceed_to_checkout":
+            MessageLookupByLibrary.simpleMessage("Proceed to Checkout"),
+        "proceed_to_pay":
+            MessageLookupByLibrary.simpleMessage("Proceed to Pay"),
+        "products": MessageLookupByLibrary.simpleMessage("Products"),
+        "reach_out_to_us":
+            MessageLookupByLibrary.simpleMessage("Reach Out to Us"),
+        "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "return_policy_data":
+            MessageLookupByLibrary.simpleMessage("Return Policy data ....."),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "see_all": MessageLookupByLibrary.simpleMessage("See All"),
+        "select_address":
+            MessageLookupByLibrary.simpleMessage("Select Address"),
+        "select_area_": MessageLookupByLibrary.simpleMessage("Select Area*"),
+        "send": MessageLookupByLibrary.simpleMessage("Send"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "show_less": MessageLookupByLibrary.simpleMessage("show less"),
+        "show_more": MessageLookupByLibrary.simpleMessage("show more"),
+        "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "sign_up_error": MessageLookupByLibrary.simpleMessage("Sign up error"),
+        "size": MessageLookupByLibrary.simpleMessage("Size"),
+        "sort_by": MessageLookupByLibrary.simpleMessage("Sort By"),
+        "street_": MessageLookupByLibrary.simpleMessage("Street*"),
+        "sub_total": MessageLookupByLibrary.simpleMessage("Sub Total"),
+        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "success_register_message": MessageLookupByLibrary.simpleMessage(
+            "You have successfully\nRegistered with Best Price"),
+        "success_update_message": MessageLookupByLibrary.simpleMessage(
+            "Your Account Has been\nsuccessfully updated"),
+        "successful": MessageLookupByLibrary.simpleMessage("Successful"),
+        "support": MessageLookupByLibrary.simpleMessage("Support"),
+        "terminate_account":
+            MessageLookupByLibrary.simpleMessage("Terminate Account"),
+        "terminate_message": MessageLookupByLibrary.simpleMessage(
+            "Do you want to terminate your\naccount?"),
+        "terminate_my_accounts":
+            MessageLookupByLibrary.simpleMessage("Terminate my Accounts"),
+        "terminate_note_message": MessageLookupByLibrary.simpleMessage(
+            "By terminating account, You will not be able to recover your account."),
+        "terms_conditions":
+            MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
+        "thank_you_for_your_purchase":
+            MessageLookupByLibrary.simpleMessage("Thank You For Your Purchase"),
+        "this_required_validations":
+            MessageLookupByLibrary.simpleMessage("this is required"),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
+        "update": MessageLookupByLibrary.simpleMessage("update"),
+        "update_account":
+            MessageLookupByLibrary.simpleMessage("Update Account"),
+        "update_account_error":
+            MessageLookupByLibrary.simpleMessage("Update Account Error"),
+        "welcome_policy_message": MessageLookupByLibrary.simpleMessage(
+            "Welcome to Best Price We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system."),
+        "wish_list": MessageLookupByLibrary.simpleMessage("Wish list"),
+        "your_purchase_was":
+            MessageLookupByLibrary.simpleMessage("Your Purchase was")
+      };
 }

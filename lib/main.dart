@@ -27,6 +27,7 @@ import 'package:best_price/feature/category/presentaion/manager/category_product
 import 'package:best_price/feature/cheack_out/presntation/manager/selected_address_cubit/selected_address_cubit.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/manager/flitter_cubit/flitter_cubit.dart';
+import 'package:best_price/feature/flitter_sort/presentaion/view/flitter_sort_view.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
@@ -97,9 +98,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeCubit()..getHomePage(),
         ),
-        BlocProvider(
-          create: (context) => FlitterCubit(),
-        ),
+        // BlocProvider(
+        //   create: (context) => FlitterCubit(),
+        // ),
         BlocProvider(
           create: (context) => SendForgetPasswordCubit(),
         ),
@@ -192,7 +193,10 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.white,
                 useMaterial3: false,
               ),
-              home: const SplashView(),
+              // home: const SplashView(),
+              home: FlitterSortView(
+                endValue: 100,
+              ),
               // home: const ProductDetailsPage(),
             ),
           );

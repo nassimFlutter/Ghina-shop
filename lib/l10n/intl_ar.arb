@@ -148,5 +148,9 @@
     "add_to_cart": "أضف إلى السلة",
     "NO_CONNECTION": "لا يوجد اتصال",
     "connection_not_found": "لم يتم العثور على اتصال، تحقق من اتصالك بالإنترنت",
-    "retry": "إعادة المحاولة"
+    "retry": "إعادة المحاولة",
+    "delete_your_address": "حذف عنوانك",
+    "delete_address_contain_message": "هل أنت متأكد من حذف عنوانك؟",
+    "no_result_found": "لا يوجد نتائج",
+    "price": "السعر"
 }

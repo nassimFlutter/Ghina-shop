@@ -1546,6 +1546,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete Your Address`
+  String get delete_your_address {
+    return Intl.message(
+      'Delete Your Address',
+      name: 'delete_your_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete your address?`
+  String get delete_address_contain_message {
+    return Intl.message(
+      'Are you sure you want to delete your address?',
+      name: 'delete_address_contain_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Result Found`
+  String get no_result_found {
+    return Intl.message(
+      'No Result Found',
+      name: 'no_result_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
