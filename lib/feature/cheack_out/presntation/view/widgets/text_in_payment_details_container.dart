@@ -3,14 +3,14 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DetailsText extends StatelessWidget {
-  const DetailsText({
+class TextInPaymentDetailsContainer extends StatelessWidget {
+  const TextInPaymentDetailsContainer({
     super.key,
     required this.title,
     required this.value,
   });
   final String title;
-  final value;
+  final String value;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,8 +27,8 @@ class DetailsText extends StatelessWidget {
         Padding(
           padding: EdgeInsetsDirectional.only(end: 10.w),
           child: Text(
-            "$value KD",
-            style: AppStyles.textStyle16w700.copyWith(color: AppColor.black3),
+            value,
+            style: AppStyles.textStyle16w400.copyWith(color: AppColor.black3),
           ),
         ),
       ],

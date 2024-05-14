@@ -37,6 +37,7 @@ class LoginView extends StatelessWidget {
                   AppBarBottom(
                     iconPath: IconsPath.cancelIcon,
                     onTap: () {
+                      CacheHelper.setData(key: Keys.kIsGuest, value: true);
                       HelperFunctions.navigateToScreenAndRemove(
                           context, const HomePageView());
                     },

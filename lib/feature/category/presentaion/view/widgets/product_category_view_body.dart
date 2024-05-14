@@ -2,6 +2,7 @@ import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
+import 'package:best_price/core/widgets/error_widget.dart';
 import 'package:best_price/core/widgets/flitter_bottom.dart';
 import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/core/widgets/product_grid_view.dart';
@@ -73,7 +74,11 @@ class ProductCategoryViewBody extends StatelessWidget {
             BlocBuilder<CategoryProductCubit, CategoryProductState>(
               builder: (context, state) {
                 if (state is CategoryProductFailure) {
-                  return SliverToBoxAdapter(child: Text(state.errMessage));
+                  return SliverFillRemaining(child: CustomErrorWidget(
+                    onTap: () {
+                      categoryProductCubit.fetchProductByCategoryId(id);
+                    },
+                  ));
                 } else if (state is CategoryProductLoading) {
                   return const SliverFillRemaining(
                     child: Center(
