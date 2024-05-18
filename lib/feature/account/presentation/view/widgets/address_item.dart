@@ -7,6 +7,7 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/data/models/address_model/address_model.dart';
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/address_cubit/address_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/area_cubit/area_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/change_address_page/change_address_page_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
@@ -32,6 +33,7 @@ class AddressItem extends StatelessWidget {
     ChangeAddressPageCubit changeAddressPageCubit =
         ChangeAddressPageCubit.get(context);
     AddAddressCubit addAddressCubit = AddAddressCubit.get(context);
+    AreaCubit areaCubit = AreaCubit.get(context);
     return Container(
       width: 361.w,
       margin: EdgeInsetsDirectional.only(bottom: 20.h, start: 16.w, end: 16.w),
@@ -91,7 +93,6 @@ class AddressItem extends StatelessWidget {
                   ),
                   InkWell(
                       onTap: () {
-                        LoggerHelper.error(address.type.toString());
                         if (address.type == 0) {
                           changeAddressPageCubit.selectedIndex = 0;
                         } else if (address.type == 1) {
@@ -99,20 +100,24 @@ class AddressItem extends StatelessWidget {
                         } else if (address.type == 2) {
                           changeAddressPageCubit.selectedIndex = 2;
                         }
-                        // addAddressCubit.addressTitleController.text =
-                        //     address.addressName ?? "";
-                        // addAddressCubit.blockNoController.text =
-                        //     address.block ?? "";
-                        // addAddressCubit.streetController.text =
-                        //     address.street ?? "";
-                        // addAddressCubit.avenueController.text =
-                        //     address.avenue ?? "";
-                        // addAddressCubit.floorNoController.text =
-                        //     address.floorNumber ?? "";
-                        // addAddressCubit.flatNoController.text =
-                        //     address.floorNumber;
-                        // addAddressCubit.extraDirectionsController.text =
-                        //     address.notes ?? "";
+                        addAddressCubit.addressTitleController.text =
+                            address.addressName ?? "";
+                        addAddressCubit.blockNoController.text =
+                            address.block ?? "";
+                        addAddressCubit.streetController.text =
+                            address.street ?? "";
+                        addAddressCubit.avenueController.text =
+                            address.avenue ?? "";
+                        addAddressCubit.floorNoController.text =
+                            address.floorNumber ?? "";
+                        addAddressCubit.flatNoController.text =
+                            address.floorNumber;
+                        addAddressCubit.extraDirectionsController.text =
+                            address.notes ?? "";
+                        addAddressCubit.houseNoController.text =
+                            address.houseNumber;
+                        addAddressCubit.extraDirectionsController.text =
+                            address.notes;
                         HelperFunctions.navigateToScreen(
                             context, const AddAddressView());
                       },

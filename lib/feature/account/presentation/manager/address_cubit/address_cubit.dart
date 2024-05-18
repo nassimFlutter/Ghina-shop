@@ -11,7 +11,7 @@ class AddressCubit extends Cubit<AddressState> {
   AddressCubit() : super(AddressInitial());
   AddressModel myAddress = AddressModel();
   static AddressCubit get(context) => BlocProvider.of(context);
-  List<String> typeUi = ["Appartment", 'Home', 'Office'];
+  List<String> typeUi = ["Appartment", 'Home', 'Office', "aaa", "aaaa"];
   Future<void> getMyAddress() async {
     emit(AddressLoading());
     var result = await getIt.get<AddressRepo>().getAllAddress();

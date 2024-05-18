@@ -30,7 +30,6 @@ class ChangeQuantityCubit extends Cubit<ChangeQuantityState> {
       controller.text = (currentValue + 1).toString().padLeft(2, '0');
       emit(IncrementQuantitySuccess());
     } else {
-      LoggerHelper.error('TextEditingController for item $itemId not found.');
     }
   }
 

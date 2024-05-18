@@ -67,7 +67,6 @@ class AddAddressCubit extends Cubit<AddAddressState> {
         notes: extraDirectionsController.text);
     var result =
         await getIt.get<AddressRepo>().addAddress(addMyAddress.toJson());
-    LoggerHelper.info(addMyAddress.toJson().toString());
     result.fold((error) {
       AddAddressFailures(errMessage: error.errMassage);
     }, (added) {

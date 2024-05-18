@@ -61,17 +61,16 @@ class HomeAddressList extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        BlocBuilder<AreaCubit, AreaState>(
-          builder: (context, state) {
-            return SelectedAreaDropDown(areaCubit: areaCubit);
-          },
+        AuthFieldText(
+          title: S.of(context).select_area_, //"select area*",
         ),
         SizedBox(
           height: 6.h,
         ),
-        AuthTextField(
-          textEditingController: addAddressCubit.addressTitleController,
-          keyboardType: TextInputType.streetAddress,
+        BlocBuilder<AreaCubit, AreaState>(
+          builder: (context, state) {
+            return SelectedAreaDropDown(areaCubit: areaCubit);
+          },
         ),
         SizedBox(
           height: 25.h,

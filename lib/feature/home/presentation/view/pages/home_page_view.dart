@@ -34,7 +34,7 @@ class _HomePageViewState extends State<HomePageView> {
             currentIndex: _selectedIndex,
             onTap: (value) {
               _selectedIndex = value;
-              navBarCubit.changeTab(value);
+              navBarCubit.changeTab(value,context);
             },
             showUnselectedLabels: true,
             selectedLabelStyle: AppStyles.textStyle12w700,

@@ -1,4 +1,6 @@
+import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/errors/failures.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/auth/login/data/login_repo/login_repo.dart';
 import 'package:best_price/feature/auth/sign_up/data/model/user_model.dart';
@@ -31,7 +33,7 @@ class LoginCubit extends Cubit<LoginState> {
     result.fold((error) {
       emit(LoginFailure(errMessage: error.errMassage));
     }, (login) {
-    
+      CacheHelper.setData(key: Keys.kIsGuest, value: false);
       emit(LoginSuccess(status: login.value1, message: login.value2));
     });
   }

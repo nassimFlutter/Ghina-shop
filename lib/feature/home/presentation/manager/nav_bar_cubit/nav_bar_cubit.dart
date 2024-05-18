@@ -1,6 +1,7 @@
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/account/presentation/view/pages/guest_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/my_account_page_view.dart';
+import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:best_price/feature/cart/presentation/view/cart_view_body.dart';
 import 'package:best_price/feature/category/presentaion/view/pages/category_body.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/home_page_body.dart';
@@ -26,7 +27,11 @@ class NavBarCubit extends Cubit<NavBarState> {
     ];
   }
 
-  void changeTab(int index) {
+  void changeTab(int index,BuildContext context) {
+    bool isGuest = HelperFunctions.isGuest();
+    if (index == 2 && isGuest) {
+      HelperFunctions.navigateToScreen(context, LoginView());
+    }
     emit(ChangeTab(index: index));
   }
 }

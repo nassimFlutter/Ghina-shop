@@ -6,7 +6,6 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/feature/account/data/models/address_model/address_model.dart';
 import 'package:best_price/feature/account/presentation/manager/address_cubit/address_cubit.dart';
-import 'package:best_price/feature/account/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -69,11 +68,14 @@ class MyAddressView extends StatelessWidget {
                   } else {
                     return Expanded(
                       child: ListView.builder(
-                          itemCount: addressCubit.myAddress.items?.length ?? 0,
-                          itemBuilder: (context, index) => AddressItem(
-                                address: addressCubit.myAddress.items?[index] ??
-                                    Item(),
-                              )),
+                        itemCount: addressCubit.myAddress.items?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return AddressItem(
+                            address: addressCubit.myAddress.items?[index] ??
+                                Item(type: 1),
+                          );
+                        },
+                      ),
                     );
                   }
                 } else {
