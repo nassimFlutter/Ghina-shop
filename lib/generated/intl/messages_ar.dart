@@ -168,6 +168,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "terms_conditions" : MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
     "thank_you_for_your_purchase" : MessageLookupByLibrary.simpleMessage("شكرًا لشرائك"),
     "this_required_validations" : MessageLookupByLibrary.simpleMessage("هذا مطلوب"),
+    "title" : MessageLookupByLibrary.simpleMessage("أفضل سعر"),
     "total" : MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "update" : MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_account" : MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
