@@ -179,26 +179,24 @@ class MyApp extends StatelessWidget {
             minTextAdapt: true,
             splitScreenMode: true,
             builder: (context, child) => MaterialApp(
-              locale: Locale(BlocProvider.of<LangCubit>(context).lang),
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              debugShowCheckedModeBanner: false,
-              title: 'Best Price',
-              theme: ThemeData(
-                backgroundColor: Colors.white,
-                useMaterial3: false,
-              ),
-              // home: const SplashView(),
-              home: FlitterSortView(
-                endValue: 100,
-              ),
-              // home: const ProductDetailsPage(),
-            ),
+                locale: Locale(BlocProvider.of<LangCubit>(context).lang),
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                debugShowCheckedModeBanner: false,
+                title: 'Best Price',
+                theme: ThemeData(
+                  backgroundColor: Colors.white,
+                  useMaterial3: false,
+                ),
+                // home: const SplashView(),
+                home: SplashView()
+                // home: const ProductDetailsPage(),
+                ),
           );
         },
       ),

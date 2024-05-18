@@ -1586,6 +1586,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Best Price`
+  String get title {
+    return Intl.message(
+      'Best Price',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

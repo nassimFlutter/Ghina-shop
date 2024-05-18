@@ -1,4 +1,4 @@
-
+import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,13 +43,17 @@ class ProductsList extends StatelessWidget {
                   ));
             },
             onFavoriteTap: () {
-              if (BlocProvider.of<AddAndRemoveFromFavoriteCubit>(context).state
-                  is AddAndRemoveFromFavoriteLoading) {
-                print("can't fav");
+              if (HelperFunctions.isGuest()) {
+                HelperFunctions.navigateToScreen(context, const LoginView());
               } else {
-                BlocProvider.of<AddAndRemoveFromFavoriteCubit>(context)
-                    .addAndRemoveFromFavorite(context,
-                        productId: productItem.id ?? -1);
+                if (BlocProvider.of<AddAndRemoveFromFavoriteCubit>(context)
+                    .state is AddAndRemoveFromFavoriteLoading) {
+                  print("can't fav");
+                } else {
+                  BlocProvider.of<AddAndRemoveFromFavoriteCubit>(context)
+                      .addAndRemoveFromFavorite(context,
+                          productId: productItem.id ?? -1);
+                }
               }
             },
             title: productItem.name ?? "",

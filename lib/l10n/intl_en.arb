@@ -152,5 +152,6 @@
     "delete_your_address": "Delete Your Address",
     "delete_address_contain_message": "Are you sure you want to delete your address?",
     "no_result_found": "No Result Found",
-    "price": "Price"
+    "price": "Price",
+    "title": "Best Price"
 }

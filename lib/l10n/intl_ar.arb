@@ -152,5 +152,6 @@
     "delete_your_address": "حذف عنوانك",
     "delete_address_contain_message": "هل أنت متأكد من حذف عنوانك؟",
     "no_result_found": "لا يوجد نتائج",
-    "price": "السعر"
+    "price": "السعر",
+    "title": "أفضل سعر"
 }

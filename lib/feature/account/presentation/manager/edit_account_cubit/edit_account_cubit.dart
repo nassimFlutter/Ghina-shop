@@ -44,7 +44,6 @@ class EditAccountCubit extends Cubit<EditAccountState> {
         email: emailController.text,
         mobile: phoneController.text);
     Map<String, dynamic> data = updateUser.toJson();
-    LoggerHelper.info(data.toString());
     var result = await getIt.get<EditAccountRepo>().editAccount(data);
     result.fold((error) {
       emit(EditAccountFailure(errMessage: error.errMassage));

@@ -13,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../widgets/container_text_checkout.dart';
+import '../widgets/order_details_container.dart';
 import '../widgets/products_tile_text.dart';
 import '../widgets/text_in_payment_details_container.dart';
 
@@ -93,45 +94,10 @@ class CheckOutSuccess extends StatelessWidget {
           SizedBox(
             height: 14.h,
           ),
-          Container(
-            decoration: AppStyles.checkoutContainerdecoration(),
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 25.h,
-                ),
-                DetailsText(
-                  title: S.of(context).order_ID, //"Order ID",
-                  value: 'BP09211',
-                ),
-                SizedBox(
-                  height: 17.h,
-                ),
-                const CustomDivider(),
-                SizedBox(
-                  height: 13.h,
-                ),
-                DetailsText(
-                  title: S.of(context).order_status, //"Order status",
-                  value: 'Placed',
-                ),
-                SizedBox(
-                  height: 17.h,
-                ),
-                const CustomDivider(),
-                SizedBox(
-                  height: 13.h,
-                ),
-                DetailsText(
-                  title: S.of(context).date_and_time, //"Date & Time",
-                  value: '23/03/2023 | 10:30am',
-                ),
-                SizedBox(
-                  height: 25.h,
-                )
-              ],
-            ),
+          OrderDetailsContainer(
+            orderId: "BP09211",
+            orderStatue: "placed",
+            orderDate: "22-10-2024 | 10.00",
           ),
           SizedBox(
             height: 30.h,
@@ -253,7 +219,7 @@ class CheckOutSuccess extends StatelessWidget {
             height: 14.h,
           ),
           Container(
-            decoration: AppStyles.  checkoutContainerdecoration(),
+            decoration: AppStyles.checkoutContainerdecoration(),
             margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
             child: Column(
               children: [

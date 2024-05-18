@@ -23,7 +23,6 @@ class AddAddressView extends StatelessWidget {
     ChangeAddressPageCubit changeAddressPageCubit =
         ChangeAddressPageCubit.get(context);
     AddAddressCubit addAddressCubit = AddAddressCubit.get(context);
-    LoggerHelper.debug(changeAddressPageCubit.selectedIndex.toString());
     return Scaffold(
       body: Form(
         key: addAddressCubit.formKey,

@@ -31,7 +31,6 @@ class ProductsItem extends StatelessWidget {
   final void Function()? onFavoriteTap;
   @override
   Widget build(BuildContext context) {
-    LoggerHelper.debug(isFavorite);
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(

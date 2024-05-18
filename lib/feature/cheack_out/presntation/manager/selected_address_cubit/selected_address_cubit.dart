@@ -18,7 +18,6 @@ class SelectedAddressCubit extends Cubit<SelectedAddressState> {
 
   void selectAddress(int index) {
     selectedIndex = index;
-    LoggerHelper.debug(selectedIndex.toString());
     emit(SelectedAddressSuccess(index: index));
   }
 }

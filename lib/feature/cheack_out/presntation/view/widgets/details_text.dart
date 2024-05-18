@@ -27,7 +27,7 @@ class DetailsText extends StatelessWidget {
         Padding(
           padding: EdgeInsetsDirectional.only(end: 10.w),
           child: Text(
-            "$value KD",
+            "$value",
             style: AppStyles.textStyle16w700.copyWith(color: AppColor.black3),
           ),
         ),

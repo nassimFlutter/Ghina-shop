@@ -151,7 +151,7 @@ class HomePgeBody extends StatelessWidget {
                               return HomeTitle(
                                 title: S.of(context).categories, //'Categories',
                                 onTap: () {
-                                  navBarCubit.changeTab(1);
+                                  navBarCubit.changeTab(1, context);
                                 },
                               );
                             }
