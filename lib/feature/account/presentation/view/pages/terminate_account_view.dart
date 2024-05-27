@@ -67,6 +67,7 @@ class TerminateAccountView extends StatelessWidget {
                 height: 309.h,
               ),
               AppBottom2(
+                onTap: () {},
                 width: 361,
                 color: AppColor.redOpacity,
                 title: S

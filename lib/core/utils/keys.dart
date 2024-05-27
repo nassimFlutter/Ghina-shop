@@ -29,7 +29,8 @@ class UrlKeys {
   static const addMyAddressEndPoint = 'addAddress';
   //! MyWish
   static const getMyWishEndPoint = 'getMyFavorites';
-  static const addRemoveFromFavEndPoint = 'addAndRemoveFromFavorite'; //! this need Id  ex:{{mainURL}}addAndRemoveFromFavorite/4 -> (4 is product id you want add it or remove it from the wish)
+  static const addRemoveFromFavEndPoint =
+      'addAndRemoveFromFavorite'; //! this need Id  ex:{{mainURL}}addAndRemoveFromFavorite/4 -> (4 is product id you want add it or remove it from the wish)
   //!  change password
   static const changePassEndPoint = 'changePassword';
   //! UserAccounts
@@ -37,8 +38,11 @@ class UrlKeys {
   static const logoutEndPoint = 'logout';
   //! order
   static const getOrdersEndPoint = 'getMyOrders';
+  static const getOrdersByIdEndPoint =
+      'getMyOrderById'; //! need id ex:endpoint/id
   //! search
   static const searchEndPoint =
       'searchProduct?name='; //? here write name of product
-  
+  //!account
+  static const terminateEndPoint = 'terminate'; //! this is to termite account
 }

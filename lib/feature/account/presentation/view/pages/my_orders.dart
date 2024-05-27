@@ -55,7 +55,12 @@ class MyOrders extends StatelessWidget {
                           return InkWell(
                             onTap: () {
                               HelperFunctions.navigateToScreen(
-                                  context, const OrderDetails());
+                                  context,
+                                  OrderDetails(
+                                    orderId: orderCubit
+                                            .orderModel.allOrders?[index].id ??
+                                        -100,
+                                  ));
                             },
                             child: OrderItem(
                               amount: order?.totalCommissionAmount.toString() ??

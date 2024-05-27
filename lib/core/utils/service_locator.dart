@@ -11,12 +11,15 @@ import 'package:best_price/feature/account/data/repo/edit_account_repo/edit_acco
 import 'package:best_price/feature/account/data/repo/edit_account_repo/edit_account_repo_imple.dart';
 import 'package:best_price/feature/account/data/repo/logout_repo/logout_repo.dart';
 import 'package:best_price/feature/account/data/repo/logout_repo/logout_repo_impl.dart';
+import 'package:best_price/feature/account/data/repo/order_details_repo/order_details_repo.dart';
+import 'package:best_price/feature/account/data/repo/order_details_repo/order_details_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/order_repo/order_repo.dart';
 import 'package:best_price/feature/account/data/repo/order_repo/order_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo.dart';
 import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo_impl.dart';
+import 'package:best_price/feature/account/presentation/view/pages/order_details.dart';
 import 'package:best_price/feature/auth/forget_password/data/forget_password_repo/forget_password_repo.dart';
 import 'package:best_price/feature/auth/forget_password/data/forget_password_repo/forget_password_repo_impl.dart';
 import 'package:best_price/feature/auth/login/data/login_repo/login_repo.dart';
@@ -92,4 +95,5 @@ void setupServiceLocator() {
   getIt.registerSingleton<SearchRepo>(SearchRepoImpl());
   getIt.registerSingleton<AddRemoveFromFavoriteRepo>(
       AddRemoveFromFavoriteRepoImpl());
+  getIt.registerSingleton<OrderDetailsRepo>(OrderDetailsRepoImpl());
 }

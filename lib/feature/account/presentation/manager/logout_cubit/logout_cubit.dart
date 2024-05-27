@@ -18,7 +18,7 @@ class LogoutCubit extends Cubit<LogoutState> {
     result.fold((error) {
       emit(LogoutFailures(errMessage: error.errMassage));
     }, (logout) async {
-      logoutResponse = logout;
+      logoutResponse = logout;    
       await HelperFunctions.clearUserData();
       emit(LogoutSuccess());
     });
