@@ -99,14 +99,16 @@ class Category {
   String? status;
   String? createdAt;
   String? name;
+  bool isSelected = false;
 
-  Category(
-      {this.id,
-      this.image,
-      this.featured,
-      this.status,
-      this.createdAt,
-      this.name});
+  Category({
+    this.id,
+    this.image,
+    this.featured,
+    this.status,
+    this.createdAt,
+    this.name,
+  });
 
   Category.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -125,14 +127,16 @@ class Brand {
   String? status;
   String? createdAt;
   String? name;
+  bool isSelected = false;
 
-  Brand(
-      {this.id,
-      this.image,
-      this.featured,
-      this.status,
-      this.createdAt,
-      this.name});
+  Brand({
+    this.id,
+    this.image,
+    this.featured,
+    this.status,
+    this.createdAt,
+    this.name,
+  });
 
   Brand.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -7,7 +7,8 @@ import 'package:dartz/dartz.dart';
 
 class FeaturedProductsRepoImpl implements FeaturedProductRepo {
   @override
-  Future<Either<Failure, List<Product>>> getFeaturedProducts() async {
+  Future<Either<Failure, Tuple2<List<Product>, num>>>
+      getFeaturedProducts() async {
     try {
       var response =
           await getIt.get<ApiService>().get(endPoint: "getFeaturedProducts");
@@ -15,7 +16,14 @@ class FeaturedProductsRepoImpl implements FeaturedProductRepo {
       for (var element in response) {
         productsList.add(Product.fromJson(element));
       }
-      return right(productsList);
+      //? find the max price of list
+      num maxPrice = 0;
+      for (var element in productsList) {
+        if (element.discountPrice > maxPrice) {
+          maxPrice = element.discountPrice;
+        }
+      }
+      return right(Tuple2(productsList, maxPrice));
     } catch (e) {
       return left(ErrorHandler.handleError(e));
     }

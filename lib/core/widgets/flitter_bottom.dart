@@ -1,6 +1,6 @@
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
-import 'package:best_price/feature/flitter_sort/presentaion/view/flitter_sort_view.dart';
+import 'package:best_price/feature/flitter_sort/presentaion/view/pages/flitter_sort_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
