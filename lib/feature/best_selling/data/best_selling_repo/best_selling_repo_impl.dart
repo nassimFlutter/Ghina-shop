@@ -7,7 +7,7 @@ import 'package:dartz/dartz.dart';
 
 class BestSellingRepoImpl implements BestSellingRepo {
   @override
-  Future<Either<Failure, List<Product>>> getBestSelling() async {
+  Future<Either<Failure, Tuple2<List<Product>, num>>> getBestSelling() async {
     try {
       var response =
           await getIt.get<ApiService>().get(endPoint: "getBestSellerProducts");
@@ -15,7 +15,13 @@ class BestSellingRepoImpl implements BestSellingRepo {
       for (var element in response) {
         productsList.add(Product.fromJson(element));
       }
-      return right(productsList);
+      num maxPrice = 0;
+      for (var element in productsList) {
+        if (element.discountPrice > maxPrice) {
+          maxPrice = element.discountPrice;
+        }
+      }
+      return right(Tuple2(productsList, maxPrice));
     } catch (e) {
       return left(ErrorHandler.handleError(e));
     }

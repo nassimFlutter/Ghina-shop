@@ -22,14 +22,17 @@ class HomeTitle extends StatelessWidget {
           style: AppStyles.textStyle20w700
               .copyWith(color: AppColor.homeTitleTextColor),
         ),
-        GestureDetector(
+        InkWell(
           onTap: onTap,
-          child: Opacity(
-            opacity: 0.5,
-            child: Text(
-              S.of(context).see_all, //"See All",
-              style: AppStyles.textStyle14
-                  .copyWith(color: AppColor.titleTextColor),
+          child: Padding(
+            padding: const EdgeInsetsDirectional.symmetric(vertical: 10),
+            child: Opacity(
+              opacity: 0.5,
+              child: Text(
+                S.of(context).see_all, //"See All",
+                style: AppStyles.textStyle14
+                    .copyWith(color: AppColor.titleTextColor),
+              ),
             ),
           ),
         ),

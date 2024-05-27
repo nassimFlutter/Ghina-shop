@@ -3,6 +3,7 @@ import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/logger.dart';
+import 'package:best_price/feature/best_selling/presntations/manager/best_selling_cubit/best_selling_cubit.dart';
 import 'package:best_price/feature/best_selling/presntations/view/pages/best_selling_view.dart';
 import 'package:best_price/feature/brands/presntations/view/pages/brands_view.dart';
 import 'package:best_price/feature/category/presentaion/view/pages/category_body.dart';
@@ -16,6 +17,7 @@ import 'package:best_price/feature/home/presentation/view/widgets/shimmer_catego
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_home_title.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_let_start_text.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_products_list.dart';
+import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
 import 'package:best_price/feature/new_arrivals/presentations/view/pages/new_arrivers_view.dart';
 import 'package:best_price/feature/serach/presntation/view/pages/search_view.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
@@ -227,6 +229,9 @@ class HomePgeBody extends StatelessWidget {
                                     .of(context)
                                     .best_selling, //'Best Selling',
                                 onTap: () {
+                                  BlocProvider.of<BestSellingCubit>(context)
+                                      .getBestSellingProducts();
+
                                   HelperFunctions.navigateToScreen(
                                     context,
                                     const BestSellingView(),
@@ -291,10 +296,12 @@ class HomePgeBody extends StatelessWidget {
                               return const ShimmerHomeTitle(title: "");
                             } else {
                               return HomeTitle(
-                                title: S
-                                    .of(context)
-                                    .new_arrivals, //'New Arrivals',
+                                title: S.of(context).new_arrivals,
+                                //'New Arrivals',
                                 onTap: () {
+                                  BlocProvider.of<NewArrivalsCubit>(context)
+                                      .getAllNewArrivalsProducts();
+
                                   HelperFunctions.navigateToScreen(
                                       context, const NewArriversView());
                                 },

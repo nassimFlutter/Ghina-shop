@@ -37,6 +37,8 @@ import 'package:best_price/feature/category/data/repo/category_repo.dart';
 import 'package:best_price/feature/category/data/repo/category_repo_impl.dart';
 import 'package:best_price/feature/featured_products/data/featured_producte_repo/featured_producte_repo.dart';
 import 'package:best_price/feature/featured_products/data/featured_producte_repo/featured_producte_repo_impl.dart';
+import 'package:best_price/feature/flitter_sort/data/repo/filter_repo.dart';
+import 'package:best_price/feature/flitter_sort/data/repo/filter_repo_impl.dart';
 import 'package:best_price/feature/home/data/home_repo/home_repo.dart';
 import 'package:best_price/feature/home/data/home_repo/home_repo_impl.dart';
 import 'package:best_price/feature/new_arrivals/data/repo/new_arrivals_repo/new_arrivals_repo.dart';
@@ -96,4 +98,5 @@ void setupServiceLocator() {
   getIt.registerSingleton<AddRemoveFromFavoriteRepo>(
       AddRemoveFromFavoriteRepoImpl());
   getIt.registerSingleton<OrderDetailsRepo>(OrderDetailsRepoImpl());
+  getIt.registerSingleton<FilterRepo>(FilterRepoImpl());
 }

@@ -6,11 +6,9 @@ class BestSellingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: BestSellingBody(),
-      ),
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(child: BestSellingBody()),
     );
   }
 }

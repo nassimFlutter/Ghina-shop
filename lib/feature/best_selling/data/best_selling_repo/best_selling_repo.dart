@@ -3,5 +3,5 @@ import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class BestSellingRepo {
-  Future<Either<Failure,  List<Product>>> getBestSelling();
+  Future<Either<Failure,  Tuple2<List<Product>, num>>> getBestSelling();
 }

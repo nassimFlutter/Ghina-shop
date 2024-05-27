@@ -8,10 +8,11 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 class HelperFunctions {
   static void navigateToScreen(BuildContext context, Widget screen) {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => screen,
-        ));
+      context,
+      MaterialPageRoute(
+        builder: (context) => screen,
+      ),
+    );
   }
 
   static void navigateToScreenAndRemove(BuildContext context, Widget screen) {

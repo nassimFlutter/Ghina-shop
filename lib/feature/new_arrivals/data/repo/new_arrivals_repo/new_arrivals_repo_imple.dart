@@ -7,7 +7,8 @@ import 'package:dartz/dartz.dart';
 
 class NewArrivalsProductsRepoImpl implements NewArrivalsProductsRepo {
   @override
-  Future<Either<Failure, List<Product>>> getNewArrivalsProducts() async {
+  Future<Either<Failure, Tuple2<List<Product>, num>>>
+      getNewArrivalsProducts() async {
     try {
       var response =
           await getIt.get<ApiService>().get(endPoint: "getNewestProducts");
@@ -15,9 +16,15 @@ class NewArrivalsProductsRepoImpl implements NewArrivalsProductsRepo {
       for (var element in response) {
         productsList.add(Product.fromJson(element));
       }
-      return right(productsList);
+      num maxPrice = 0;
+      for (var element in productsList) {
+        if (element.discountPrice > maxPrice) {
+          maxPrice = element.discountPrice;
+        }
+      }
+      return right(Tuple2(productsList, maxPrice));
     } catch (e) {
-    return left(ErrorHandler.handleError(e));
+      return left(ErrorHandler.handleError(e));
     }
   }
 }

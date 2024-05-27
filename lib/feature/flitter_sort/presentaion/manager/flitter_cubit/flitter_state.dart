@@ -10,3 +10,6 @@ final class RadioSortChange extends FlitterState {}
 final class BrandsChange extends FlitterState {}
 
 final class CategoryChange extends FlitterState {}
+
+final class SliderChange extends FlitterState {}
+final class ResetChange extends FlitterState {}

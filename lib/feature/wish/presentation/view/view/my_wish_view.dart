@@ -6,7 +6,7 @@ import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/custom_no_internet_page.dart';
-import 'package:best_price/feature/flitter_sort/presentaion/view/flitter_sort_view.dart';
+import 'package:best_price/feature/flitter_sort/presentaion/view/pages/flitter_sort_view.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';

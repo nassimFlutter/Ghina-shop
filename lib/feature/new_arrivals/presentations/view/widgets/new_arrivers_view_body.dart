@@ -4,7 +4,8 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
-import 'package:best_price/feature/flitter_sort/presentaion/view/flitter_sort_view.dart';
+import 'package:best_price/core/widgets/not_found_widget.dart';
+import 'package:best_price/feature/flitter_sort/presentaion/view/pages/flitter_sort_view.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
@@ -19,7 +20,6 @@ class NewArriversViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NewArrivalsCubit newArrivalsCubit = NewArrivalsCubit.get(context);
-    newArrivalsCubit.getAllNewArrivalsProducts();
     return Padding(
       padding: EdgeInsetsDirectional.only(
         start: Dimensions.dStartPadding,
@@ -42,12 +42,28 @@ class NewArriversViewBody extends StatelessWidget {
                   AppBarBottom(
                     iconPath: IconsPath.flitterIcon,
                     onTap: () {
-                      HelperFunctions.navigateToScreen(
+                      // HelperFunctions.navigateToScreen(
+                      //   context,
+                      //   const FlitterSortView(
+                      //     endValue: 100,
+                      //   ),
+                      // );
+                      Navigator.push(
                         context,
-                        const FlitterSortView(
-                          endValue: 100,
+                        MaterialPageRoute(
+                          builder: (context) => FlitterSortView(
+                            endValue:
+                                newArrivalsCubit.maxProductPrice.toDouble(),
+                            page: "newst",
+                          ),
                         ),
-                      );
+                      ).then((value) {
+                        if (value != null) {
+                          //? here will call filter api
+                          // print(value);
+                          newArrivalsCubit.getNewArrivalsAfterFilter(value);
+                        }
+                      });
                     },
                   )
                 ],
@@ -69,29 +85,37 @@ class NewArriversViewBody extends StatelessWidget {
                   ),
                 );
               } else {
-                return SliverGrid.builder(
-                  itemCount: newArrivalsCubit.allNewArrivalsProducts.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 50.w,
-                      // mainAxisSpacing: 150.h,
-                      crossAxisCount: 2,
-                      mainAxisExtent: 355.h),
-                  itemBuilder: (context, index) {
-                    Product productItem =
-                        newArrivalsCubit.allNewArrivalsProducts[index];
-                    return ProductsItem(
-                      imageUrl: productItem.image ?? "",
-                      brandName: productItem.brandName ?? "Brand name",
-                      companyName: productItem.companyName ?? "",
-                      price: productItem.price ?? 0.000,
-                      offerPrice: productItem.discountPrice ?? 0.000,
-                      title: productItem.name ?? "No title",
-                      isFavorite: productItem.isFavorite ?? "0",
-                      offerPercentage:
-                          productItem.calculateOfferPercentage() ?? 0,
-                    );
-                  },
-                );
+                if (newArrivalsCubit.allNewArrivalsProducts.isEmpty) {
+                  return SliverFillRemaining(
+                    child: NoResult(
+                      title: S.of(context).no_result_found,
+                    ),
+                  );
+                } else {
+                  return SliverGrid.builder(
+                    itemCount: newArrivalsCubit.allNewArrivalsProducts.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisSpacing: 50.w,
+                        // mainAxisSpacing: 150.h,
+                        crossAxisCount: 2,
+                        mainAxisExtent: 355.h),
+                    itemBuilder: (context, index) {
+                      Product productItem =
+                          newArrivalsCubit.allNewArrivalsProducts[index];
+                      return ProductsItem(
+                        imageUrl: productItem.image ?? "",
+                        brandName: productItem.brandName ?? "Brand name",
+                        companyName: productItem.companyName ?? "",
+                        price: productItem.price ?? 0.000,
+                        offerPrice: productItem.discountPrice ?? 0.000,
+                        title: productItem.name ?? "No title",
+                        isFavorite: productItem.isFavorite ?? "0",
+                        offerPercentage:
+                            productItem.calculateOfferPercentage() ?? 0,
+                      );
+                    },
+                  );
+                }
               }
             },
           )

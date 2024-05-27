@@ -1,6 +1,6 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/feature/flitter_sort/presentaion/manager/slider_cubit/slider_cubit.dart';
-import 'package:best_price/feature/flitter_sort/presentaion/widgets/custom_range_thumb_shape.dart';
+import 'package:best_price/feature/flitter_sort/presentaion/view/widgets/custom_range_thumb_shape.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,21 +21,12 @@ class CustomSlider extends StatelessWidget {
   final void Function(RangeValues values) onChange;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SliderCubit()
-        ..setImportantAttribute(
-          max: max,
-          min: min,
-          rangeValues: rangeValues,
-          division: division,
-        ),
-      child: BlocBuilder<SliderCubit, SliderState>(
-        builder: (context, state) {
-          return SubCustomSlider(
-            onChange: onChange,
-          );
-        },
-      ),
+    return BlocBuilder<SliderCubit, SliderState>(
+      builder: (context, state) {
+        return SubCustomSlider(
+          onChange: onChange,
+        );
+      },
     );
   }
 }
