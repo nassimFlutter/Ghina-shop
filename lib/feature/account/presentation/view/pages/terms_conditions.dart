@@ -37,7 +37,7 @@ class TermsConditions extends StatelessWidget {
                 );
               } else {
                 return Text(
-                  "FuckData.termText,",
+                  S.of(context).terms_conditions,
                   style: AppStyles.textStyle16w400
                       .copyWith(color: Colors.black, height: 2),
                 );

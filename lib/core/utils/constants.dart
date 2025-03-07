@@ -44,7 +44,7 @@ class IconsPath {
   static const String arrowLeftIcon = "$_basePath/arrow_right.svg";
 
   //! -------- accounts --------
-  static const String aboutIcon = "$_basePath/about.svg";
+  static const String aboutIcon = "$_basePath/small-icon.svg";
   static const String contactIcon = "$_basePath/Contact.svg";
   static const String languageIcon = "$_basePath/Language.svg";
   static const String notificationIcon = "$_basePath/notification.svg";

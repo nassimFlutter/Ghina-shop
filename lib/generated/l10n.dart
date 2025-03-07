@@ -290,10 +290,10 @@ class S {
     );
   }
 
-  /// `About Best Price`
+  /// `About Ghina Shop`
   String get about_best_price {
     return Intl.message(
-      'About Best Price',
+      'About Ghina Shop',
       name: 'about_best_price',
       desc: '',
       args: [],
@@ -560,10 +560,10 @@ class S {
     );
   }
 
-  /// `Welcome to Best Price We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system.`
+  /// `Welcome to Ghina Shop We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system.`
   String get welcome_policy_message {
     return Intl.message(
-      'Welcome to Best Price We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system.',
+      'Welcome to Ghina Shop We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system.',
       name: 'welcome_policy_message',
       desc: '',
       args: [],
@@ -1625,6 +1625,26 @@ class S {
     return Intl.message(
       'Already have an account? Login',
       name: 'Already_Have',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `V.1.0`
+  String get version {
+    return Intl.message(
+      'V.1.0',
+      name: 'version',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `© 2025 Ghina Shop. All rights reserved`
+  String get copyrights {
+    return Intl.message(
+      '© 2025 Ghina Shop. All rights reserved',
+      name: 'copyrights',
       desc: '',
       args: [],
     );

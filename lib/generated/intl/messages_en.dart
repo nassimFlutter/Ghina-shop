@@ -31,7 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Let’s start shopping!"),
         "NO_CONNECTION": MessageLookupByLibrary.simpleMessage("NO CONNECTION"),
         "about_best_price":
-            MessageLookupByLibrary.simpleMessage("About Best Price"),
+            MessageLookupByLibrary.simpleMessage("About Ghina Shop"),
         "account": MessageLookupByLibrary.simpleMessage("account"),
         "add_address": MessageLookupByLibrary.simpleMessage("Add Address"),
         "add_address_for_a_faster_checkout":
@@ -73,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "connection_not_found": MessageLookupByLibrary.simpleMessage(
             "Connection not found, make sure you are\nconnected to internet"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
+        "copyrights": MessageLookupByLibrary.simpleMessage(
+            "© 2025 Ghina Shop. All rights reserved"),
         "coupon_code": MessageLookupByLibrary.simpleMessage("Coupon Code"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "date_and_time": MessageLookupByLibrary.simpleMessage("Date & Time"),
@@ -245,8 +247,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Update Account"),
         "update_account_error":
             MessageLookupByLibrary.simpleMessage("Update Account Error"),
+        "version": MessageLookupByLibrary.simpleMessage("V.1.0"),
         "welcome_policy_message": MessageLookupByLibrary.simpleMessage(
-            "Welcome to Best Price We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system."),
+            "Welcome to Ghina Shop We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system."),
         "wish_list": MessageLookupByLibrary.simpleMessage("Wish list"),
         "your_purchase_was":
             MessageLookupByLibrary.simpleMessage("Your Purchase was")

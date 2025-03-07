@@ -23,9 +23,6 @@ class ContactUsCubit extends Cubit<ContactUsState> {
     IconsPath.whatsAppIcon,
     IconsPath.instagramIcon,
     IconsPath.faceBookIcon,
-    IconsPath.xIcon,
-    IconsPath.tikTokIcon,
-    IconsPath.mailIcon
   ];
 
   Future<void> contactUs() async {

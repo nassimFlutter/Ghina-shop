@@ -30,7 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Lets_start_shopping":
             MessageLookupByLibrary.simpleMessage("لنبدأ التسوق!"),
         "NO_CONNECTION": MessageLookupByLibrary.simpleMessage("لا يوجد اتصال"),
-        "about_best_price": MessageLookupByLibrary.simpleMessage("عن أفضل سعر"),
+        "about_best_price": MessageLookupByLibrary.simpleMessage("عن غنا شوب"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "add_address": MessageLookupByLibrary.simpleMessage("إضافة عنوان"),
         "add_address_for_a_faster_checkout":
@@ -71,6 +71,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "connection_not_found": MessageLookupByLibrary.simpleMessage(
             "لم يتم العثور على اتصال، تحقق من اتصالك بالإنترنت"),
         "contact_us": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+        "copyrights": MessageLookupByLibrary.simpleMessage(
+            "© 2025 غنا شوب . جميع الحقوق محفوظة"),
         "coupon_code": MessageLookupByLibrary.simpleMessage("كود الكوبون"),
         "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "date_and_time": MessageLookupByLibrary.simpleMessage("التاريخ والوقت"),
@@ -237,8 +239,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "update_account": MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
         "update_account_error":
             MessageLookupByLibrary.simpleMessage("خطأ في تحديث الحساب"),
+        "version": MessageLookupByLibrary.simpleMessage("الإصدار 1.0"),
         "welcome_policy_message": MessageLookupByLibrary.simpleMessage(
-            "مرحبًا بك في أفضل سعر. نحن نحترم خصوصيتك ونلتزم بحماية معلوماتك الشخصية. تم تصميم سياسة الخصوصية هذه لمساعدتك في فهم كيفية جمعنا واستخدامنا وكشفنا وحفظنا لمعلوماتك الشخصية. من خلال استخدام موقعنا الإلكتروني أو تطبيق الجوال، فإنك توافق على الممارسات الموضحة في سياسة الخصوصية هذه. المعلومات التي نجمعها: المعلومات الشخصية: قد نقوم بجمع المعلومات الشخصية التي تقدمها لنا، مثل اسمك وعنوان بريدك الإلكتروني وعنوانك البريدي ورقم هاتفك ومعلومات مماثلة أخرى. المعلومات المستخدمة: قد نجمع معلومات حول استخدامك لخدماتنا، بما في ذلك على سبيل المثال لا الحصر عنوان IP الخاص بك ومعلومات الجهاز ونوع المتصفح ونظام التشغيل."),
+            "مرحبًا بك في غنا شوب . نحن نحترم خصوصيتك ونلتزم بحماية معلوماتك الشخصية. تم تصميم سياسة الخصوصية هذه لمساعدتك في فهم كيفية جمعنا واستخدامنا وكشفنا وحفظنا لمعلوماتك الشخصية. من خلال استخدام موقعنا الإلكتروني أو تطبيق الجوال، فإنك توافق على الممارسات الموضحة في سياسة الخصوصية هذه. المعلومات التي نجمعها: المعلومات الشخصية: قد نقوم بجمع المعلومات الشخصية التي تقدمها لنا، مثل اسمك وعنوان بريدك الإلكتروني وعنوانك البريدي ورقم هاتفك ومعلومات مماثلة أخرى. المعلومات المستخدمة: قد نجمع معلومات حول استخدامك لخدماتنا، بما في ذلك على سبيل المثال لا الحصر عنوان IP الخاص بك ومعلومات الجهاز ونوع المتصفح ونظام التشغيل."),
         "wish_list": MessageLookupByLibrary.simpleMessage("قائمة الرغبات"),
         "your_purchase_was":
             MessageLookupByLibrary.simpleMessage("كانت عملية شرائك")

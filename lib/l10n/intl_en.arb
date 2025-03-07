@@ -23,7 +23,7 @@
     "changed_password_dialog": "You have successfully\nChanged Your Password",
     "change_password_error": "Change Password Error",
     "change": "Change",
-    "about_best_price": "About Best Price",
+    "about_best_price": "About Ghina Shop",
     "contact_us": "Contact Us",
     "full_name_": "Full Name*",
     "mobile_number_": "Mobile Number*",
@@ -50,7 +50,7 @@
     "our_policy": "Our Policy",
     "privacy_policy": "Privacy Policy",
     "return_policy_data": "Return Policy data .....",
-    "welcome_policy_message": "Welcome to Best Price We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system.",
+    "welcome_policy_message": "Welcome to Ghina Shop We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system.",
     "terminate_account": "Terminate Account",
     "terminate_message": "Do you want to terminate your\naccount?",
     "terminate_note_message": "By terminating account, You will not be able to recover your account.",
@@ -156,5 +156,7 @@
     "title": "Best Price",
     "Forget_Password": "Forget Password?",
     "Enter_Here": "Enter Here",
-    "Already_Have": "Already have an account? Login"
+    "Already_Have": "Already have an account? Login",
+    "version": "V.1.0",
+    "copyrights": "© 2025 Ghina Shop. All rights reserved"
 }
