@@ -153,5 +153,8 @@
     "delete_address_contain_message": "هل أنت متأكد من حذف عنوانك؟",
     "no_result_found": "لا يوجد نتائج",
     "price": "السعر",
-    "title": "أفضل سعر"
+    "title": "أفضل سعر",
+    "Forget_Password": "نسيت كلمة المرور؟",
+    "Enter_Here": "ادخل هنا",
+    "Already_Have": "هل تملك حساب بلفعل ؟ تسجيل دخول"
 }

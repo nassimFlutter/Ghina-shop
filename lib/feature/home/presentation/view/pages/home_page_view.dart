@@ -34,7 +34,7 @@ class _HomePageViewState extends State<HomePageView> {
             currentIndex: _selectedIndex,
             onTap: (value) {
               _selectedIndex = value;
-              navBarCubit.changeTab(value,context);
+              navBarCubit.changeTab(value, context);
             },
             showUnselectedLabels: true,
             selectedLabelStyle: AppStyles.textStyle12w700,
@@ -45,10 +45,10 @@ class _HomePageViewState extends State<HomePageView> {
             // backgroundColor: Colors.white,
             items: [
               BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(
-                  IconsPath.homeSelectedIcon,
-                  fit: BoxFit.cover,
-                ),
+                activeIcon: SvgPicture.asset(IconsPath.homeSelectedIcon,
+                    fit: BoxFit.cover,
+                    colorFilter: const ColorFilter.mode(
+                        AppColor.buddhaGold, BlendMode.srcIn)),
                 icon: SvgPicture.asset(
                   IconsPath.homeIcon,
                   fit: BoxFit.cover,
@@ -56,10 +56,10 @@ class _HomePageViewState extends State<HomePageView> {
                 label: S.of(context).home, //"Home",
               ),
               BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(
-                  IconsPath.categorySelectedIcon,
-                  fit: BoxFit.cover,
-                ),
+                activeIcon: SvgPicture.asset(IconsPath.categorySelectedIcon,
+                    fit: BoxFit.cover,
+                    colorFilter: const ColorFilter.mode(
+                        AppColor.buddhaGold, BlendMode.srcIn)),
                 icon: SvgPicture.asset(
                   IconsPath.categoryIcon,
                   fit: BoxFit.cover,
@@ -70,6 +70,8 @@ class _HomePageViewState extends State<HomePageView> {
                 activeIcon: SvgPicture.asset(
                   IconsPath.cartSelectedIcon,
                   fit: BoxFit.cover,
+                  colorFilter: const ColorFilter.mode(
+                      AppColor.buddhaGold, BlendMode.srcIn),
                 ),
                 icon: SvgPicture.asset(
                   IconsPath.cartIcon,
@@ -78,10 +80,10 @@ class _HomePageViewState extends State<HomePageView> {
                 label: S.of(context).cart, //"cart",
               ),
               BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(
-                  IconsPath.accountSelectedIcon,
-                  fit: BoxFit.cover,
-                ),
+                activeIcon: SvgPicture.asset(IconsPath.accountSelectedIcon,
+                    fit: BoxFit.cover,
+                    colorFilter: const ColorFilter.mode(
+                        AppColor.buddhaGold, BlendMode.srcIn)),
                 icon: SvgPicture.asset(
                   IconsPath.accountIcon,
                   fit: BoxFit.cover,

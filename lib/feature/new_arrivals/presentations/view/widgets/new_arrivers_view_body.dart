@@ -88,7 +88,7 @@ class NewArriversViewBody extends StatelessWidget {
                 if (newArrivalsCubit.allNewArrivalsProducts.isEmpty) {
                   return SliverFillRemaining(
                     child: NoResult(
-                      title: S.of(context).no_result_found,
+                        title: S.of(context).no_result_found,
                     ),
                   );
                 } else {
@@ -96,7 +96,6 @@ class NewArriversViewBody extends StatelessWidget {
                     itemCount: newArrivalsCubit.allNewArrivalsProducts.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisSpacing: 50.w,
-                        // mainAxisSpacing: 150.h,
                         crossAxisCount: 2,
                         mainAxisExtent: 355.h),
                     itemBuilder: (context, index) {

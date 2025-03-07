@@ -8,6 +8,7 @@ import 'package:best_price/feature/account/presentation/view/pages/change_passwo
 import 'package:best_price/feature/account/presentation/view/pages/my_address_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/my_orders_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
+import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/feature/wish/presentation/view/view/my_wish_view.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -62,26 +63,26 @@ class MyAccountOptions extends StatelessWidget {
                     ),
               title: S.of(context).my_orders, // "My Orders",
               iconPath: IconsPath.policiesIcon),
+          // OptionItem(
+          //     onTap: () {
+          //       HelperFunctions.navigateToScreen(
+          //           context, const MyAddressView());
+          //     },
+          //     trailing: langCubit.lang == 'en'
+          //         ? SvgPicture.asset(
+          //             IconsPath.rightArrowIcon,
+          //           )
+          //         : SvgPicture.asset(
+          //             IconsPath.arrowLeftIcon,
+          //           ),
+          //     title: S.of(context).my_addresses, //"My Addresses",
+          //     iconPath: IconsPath.addressesIcon),
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(
-                    context, const MyAddressView());
-              },
-              trailing: langCubit.lang == 'en'
-                  ? SvgPicture.asset(
-                      IconsPath.rightArrowIcon,
-                    )
-                  : SvgPicture.asset(
-                      IconsPath.arrowLeftIcon,
-                    ),
-              title: S.of(context).my_addresses, //"My Addresses",
-              iconPath: IconsPath.addressesIcon),
-          OptionItem(
-              onTap: () {
-                HelperFunctions.navigateToScreen(
-                  context,
-                  const MyWishView(),
-                );
+                    context,
+                    // const MyWishView(),
+                    const LoginView());
               },
               trailing: langCubit.lang == 'en'
                   ? SvgPicture.asset(

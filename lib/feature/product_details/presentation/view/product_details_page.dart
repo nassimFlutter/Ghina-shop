@@ -5,8 +5,6 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/product_details/presentation/view/widget/small_photo_option_widget.dart';
 import 'package:best_price/generated/l10n.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,6 +79,7 @@ class ProductDetailsPage extends StatelessWidget {
                           const SizedBox(
                             height: 6,
                           ),
+                          // ignore: prefer_is_empty
                           if (cubit.productDetailsModel.items?.image?.length !=
                                   0 &&
                               cubit.productDetailsModel.items?.image?.length !=
@@ -200,7 +199,7 @@ class ProductDetailsPage extends StatelessWidget {
                                     },
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(10)),
                                         color: cubit.checkIfSizeAndColorExist(
                                                 cubit.sizeId,
@@ -247,8 +246,8 @@ class ProductDetailsPage extends StatelessWidget {
                                     ?.variants?.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
-                                  print(cubit.productDetailsModel.items
-                                      ?.variants?[index].quantity);
+                                  // print(cubit.productDetailsModel.items
+                                  //     ?.variants?[index].quantity);
                                   bool isPress = cubit.productDetailsModel.items
                                           ?.variants?[index].color?.id ==
                                       cubit.colorId;
@@ -280,7 +279,7 @@ class ProductDetailsPage extends StatelessWidget {
                                     },
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                           Radius.circular(10),
                                         ),
                                         color: cubit.checkIfSizeAndColorExist(

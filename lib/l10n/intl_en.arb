@@ -153,5 +153,8 @@
     "delete_address_contain_message": "Are you sure you want to delete your address?",
     "no_result_found": "No Result Found",
     "price": "Price",
-    "title": "Best Price"
+    "title": "Best Price",
+    "Forget_Password": "Forget Password?",
+    "Enter_Here": "Enter Here",
+    "Already_Have": "Already have an account? Login"
 }

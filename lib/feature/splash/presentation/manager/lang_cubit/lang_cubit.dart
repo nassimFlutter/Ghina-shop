@@ -1,5 +1,4 @@
 import 'package:best_price/core/cache/cache_helper.dart';
-import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

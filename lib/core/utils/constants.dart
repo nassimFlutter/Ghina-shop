@@ -3,7 +3,6 @@ class ImagePath {
   static const String _basePath = "assets/images";
   //! -------- Splash Images ------------
   static const String splashImage = "$_basePath/splash/splashImage.svg";
-  static const String splashLogo = "$_basePath/splash/splashLogo.svg";
 
   //! ------- OnBoarding Images -----------
   static const String onBoardingPath = "$_basePath/onBoarding";
@@ -28,6 +27,7 @@ class ImagePath {
 class IconsPath {
   IconsPath._();
   static const String _basePath = 'assets/icons';
+  static const String splashLogo = "$_basePath/newLogo.png";
 
   // ! -------- Selected Lang -------
   static const String kingdom = "$_basePath/kingdom.svg";

@@ -1,6 +1,5 @@
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TermOk extends StatelessWidget {
   const TermOk({

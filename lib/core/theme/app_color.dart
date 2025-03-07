@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class AppColor {
   AppColor._();
   static const Color pirateGold = Color(0xffB17303);
-  static const Color buddhaGold = Color(0xffC58E03);
-  static const Color yalow = Color(0xffFFDF01);
-  static const Color corn = Color(0xffECC402);
+  static const Color buddhaGold = Color(0xffE88226);
+  static const Color yalow = Color(0xffE88226);
+  static const Color corn = Color(0xffE88226);
   static const Color green = Color(0xff4AA547);
   static const Color red = Color(0xffFF5555);
   static const Color redOpacity = Color(0xffD12E34);

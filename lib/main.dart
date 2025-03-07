@@ -182,7 +182,8 @@ class MyApp extends StatelessWidget {
             minTextAdapt: true,
             splitScreenMode: true,
             builder: (context, child) => MaterialApp(
-                locale: Locale(BlocProvider.of<LangCubit>(context).lang),
+                // locale: Locale(BlocProvider.of<LangCubit>(context).lang),
+                locale: const Locale("ar"),
                 localizationsDelegates: const [
                   S.delegate,
                   GlobalMaterialLocalizations.delegate,

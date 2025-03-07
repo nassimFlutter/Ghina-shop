@@ -30,21 +30,21 @@ class LoginView extends StatelessWidget {
         child: Column(
           // padding: EdgeInsets.zero,
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.only(start: 16.w, top: 4.h),
-              child: Row(
-                children: [
-                  AppBarBottom(
-                    iconPath: IconsPath.cancelIcon,
-                    onTap: () {
-                      CacheHelper.setData(key: Keys.kIsGuest, value: true);
-                      HelperFunctions.navigateToScreenAndRemove(
-                          context, const HomePageView());
-                    },
-                  ),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsetsDirectional.only(start: 16.w, top: 4.h),
+            //   child: Row(
+            //     children: [
+            //       AppBarBottom(
+            //         iconPath: IconsPath.cancelIcon,
+            //         onTap: () {
+            //           CacheHelper.setData(key: Keys.kIsGuest, value: true);
+            //           HelperFunctions.navigateToScreenAndRemove(
+            //               context, const HomePageView());
+            //         },
+            //       ),
+            //     ],
+            //   ),
+            // ),
             SizedBox(
               height: height * 0.03, //27.h,
             ),
@@ -53,18 +53,18 @@ class LoginView extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: AppStyles.textStyle24),
             ),
-            SizedBox(
-              height: 9.h,
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
-              child: Text(
-                  S
-                      .of(context)
-                      .lorem_small, //'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
-                  textAlign: TextAlign.center,
-                  style: AppStyles.textStyle14),
-            ),
+            // SizedBox(
+            //   height: 9.h,
+            // ),
+            // Padding(
+            //   padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+            //   child: Text(
+            //       S
+            //           .of(context)
+            //           .lorem_small, //'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+            //       textAlign: TextAlign.center,
+            //       style: AppStyles.textStyle14),
+            // ),
             SizedBox(height: 11.h),
             const LoginForm(),
             SizedBox(

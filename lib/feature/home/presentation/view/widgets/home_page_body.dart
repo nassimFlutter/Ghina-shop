@@ -1,18 +1,13 @@
-import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
-import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/feature/best_selling/presntations/manager/best_selling_cubit/best_selling_cubit.dart';
 import 'package:best_price/feature/best_selling/presntations/view/pages/best_selling_view.dart';
-import 'package:best_price/feature/brands/presntations/view/pages/brands_view.dart';
-import 'package:best_price/feature/category/presentaion/view/pages/category_body.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
 import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_ad_list.dart';
-import 'package:best_price/feature/home/presentation/view/widgets/shimmer_brands_home_list.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_category_home_list.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_home_title.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_let_start_text.dart';
@@ -28,7 +23,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/widgets/error_widget.dart';
 import 'ad_list.dart';
-import 'brands_home_list.dart';
 import 'category_home_list.dart';
 import 'home_title.dart';
 import 'let_start_text.dart';
@@ -65,7 +59,7 @@ class HomePgeBody extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.only(end: 16.w, bottom: 9.h),
-            child: SvgPicture.asset(IconsPath.homeLogoIcon),
+            child: Image.asset(IconsPath.splashLogo),
           )
         ],
       ),
@@ -218,7 +212,6 @@ class HomePgeBody extends StatelessWidget {
                           },
                         ),
                         SizedBox(height: 10.h),
-
                         BlocBuilder<HomeCubit, HomeCubitState>(
                           builder: (context, state) {
                             if (state is HomeCubitLoading) {
@@ -260,35 +253,35 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
-                        SizedBox(height: 10.h),
-                        //!Brands
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerHomeTitle(title: "");
-                            } else {
-                              return HomeTitle(
-                                title: S.of(context).brands, //'Brands',
-                                onTap: () {
-                                  HelperFunctions.navigateToScreen(
-                                      context, const BrandsView());
-                                },
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: 12.h),
-                        //! brands List
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerBrandsHomeList();
-                            } else {
-                              return const BrandsHomeList();
-                            }
-                          },
-                        ),
-                        SizedBox(height: 46.h),
+                        // SizedBox(height: 10.h),
+                        // //!Brands
+                        // BlocBuilder<HomeCubit, HomeCubitState>(
+                        //   builder: (context, state) {
+                        //     if (state is HomeCubitLoading) {
+                        //       return const ShimmerHomeTitle(title: "");
+                        //     } else {
+                        //       return HomeTitle(
+                        //         title: S.of(context).brands, //'Brands',
+                        //         onTap: () {
+                        //           HelperFunctions.navigateToScreen(
+                        //               context, const BrandsView());
+                        //         },
+                        //       );
+                        //     }
+                        //   },
+                        // ),
+                        // SizedBox(height: 12.h),
+                        // //! brands List
+                        // BlocBuilder<HomeCubit, HomeCubitState>(
+                        //   builder: (context, state) {
+                        //     if (state is HomeCubitLoading) {
+                        //       return const ShimmerBrandsHomeList();
+                        //     } else {
+                        //       return const BrandsHomeList();
+                        //     }
+                        //   },
+                        // ),
+                        // SizedBox(height: 20.h),
                         // ! New Arrivals List
                         BlocBuilder<HomeCubit, HomeCubitState>(
                           builder: (context, state) {

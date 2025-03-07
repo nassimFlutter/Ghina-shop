@@ -52,7 +52,7 @@ List<Widget> buildAuthTextFields(context, SignUpCubit signUpCubit) {
           AuthTextField(
             textEditingController: data['textEditingController'],
             validator: data["validator"],
-            hintText: "Enter Here",
+            hintText: S.of(context).Enter_Here,
             keyboardType: data['keyboardType'],
           ),
           SizedBox(
