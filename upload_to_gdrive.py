@@ -7,17 +7,20 @@ from googleapiclient.http import MediaFileUpload
 
 
 def authenticate_gdrive():
-    base64_creds = os.environ.get('GDRIVE_CREDENTIALS')
-    if not base64_creds:
+    creds_json = os.environ.get('GDRIVE_CREDENTIALS')
+    if not creds_json:
         raise Exception("GDRIVE_CREDENTIALS not found in environment variables")
+    
+    # Check if it's base64 encoded
+    if creds_json.startswith('{'):
+        print("Detected raw JSON credentials.")
+        creds = Credentials.from_service_account_info(json.loads(creds_json))
+    else:
+        print("Decoding base64 credentials.")
+        decoded_json = base64.b64decode(creds_json).decode('utf-8')
+        creds = Credentials.from_service_account_info(json.loads(decoded_json))
 
-    creds_json = base64.b64decode(base64_creds).decode('utf-8')
-    with open('credentials.json', 'w') as f:
-        f.write(creds_json)
-
-    creds = Credentials.from_service_account_file('credentials.json')
     return build('drive', 'v3', credentials=creds)
-
 
 def upload_file(service, file_path, custom_name, drive_folder_id="1DB-Dn1PbH43pYMoSt8yeWK5LKBAln2AM"):
     file_metadata = {
