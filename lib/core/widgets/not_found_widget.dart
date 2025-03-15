@@ -1,3 +1,4 @@
+import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -51,6 +52,8 @@ class NoResult extends StatelessWidget {
         SvgPicture.asset(
           IconsPath.notFound,
           fit: BoxFit.cover,
+          colorFilter:
+              const ColorFilter.mode(AppColor.buddhaGold, BlendMode.srcIn),
         ),
         SizedBox(
           height: 18.h,

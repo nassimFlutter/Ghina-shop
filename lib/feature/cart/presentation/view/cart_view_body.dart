@@ -35,6 +35,7 @@ class CartViewBody extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SafeArea(
                 child: Padding(
@@ -51,9 +52,7 @@ class CartViewBody extends StatelessWidget {
               BlocBuilder<MyCartCubit, MyCartState>(
                 builder: (context, state) {
                   if (state is MyCartLoading) {
-                    return const Center(
-                      child: CustomCircularProgressIndicator(),
-                    );
+                    return const CustomCircularProgressIndicator();
                   } else if (state is MyCartFailures) {
                     return CustomErrorWidget(
                       onTap: () {
