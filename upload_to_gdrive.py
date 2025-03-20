@@ -9,14 +9,9 @@ from googleapiclient.http import MediaFileUpload
 def authenticate_gdrive():
     base64_creds = os.environ.get('GDRIVE_CREDENTIALS')
     if not base64_creds:
-        raise Exception("❌ GDRIVE_CREDENTIALS not found in environment variables")
+        raise Exception("GDRIVE_CREDENTIALS not found in environment variables")
 
-    try:
-        creds_json = base64.b64decode(base64_creds).decode('utf-8')
-        json.loads(creds_json)  # Validate JSON format
-    except Exception as e:
-        raise Exception(f"❌ Invalid Base64-encoded credentials: {e}")
-
+    creds_json = base64.b64decode(base64_creds).decode('utf-8')
     with open('credentials.json', 'w') as f:
         f.write(creds_json)
 
