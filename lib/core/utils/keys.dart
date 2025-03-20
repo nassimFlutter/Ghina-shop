@@ -45,4 +45,10 @@ class UrlKeys {
       'searchProduct?name='; //? here write name of product
   //!account
   static const terminateEndPoint = 'terminate'; //! this is to termite account
+
+  //! OLD URL
+  static const oldUrl = "https://bp.linekw.xyz/api/";
+  // ! URL
+  static const baseUrl = "https://demo1.weisro.com/api/";
+  
 }

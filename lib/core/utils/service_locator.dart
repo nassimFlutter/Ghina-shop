@@ -1,4 +1,5 @@
 import 'package:best_price/core/api/api_service.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/feature/account/data/repo/address_repo/address_repo.dart';
 import 'package:best_price/feature/account/data/repo/address_repo/address_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/area_repo/area_repo.dart';
@@ -61,7 +62,7 @@ void setupServiceLocator() {
   getIt.registerSingleton<Dio>(
     Dio(
       BaseOptions(
-        baseUrl: "https://bp.linekw.xyz/api/",
+        baseUrl: UrlKeys.baseUrl,
       ),
     ),
   );

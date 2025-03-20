@@ -32,6 +32,8 @@ class NoInternetScreen extends StatelessWidget {
               child: SvgPicture.asset(
                 IconsPath.disconnectedIcon,
                 fit: BoxFit.cover,
+                colorFilter: const ColorFilter.mode(
+                    AppColor.buddhaGold, BlendMode.srcIn),
               ),
             ),
             SizedBox(
