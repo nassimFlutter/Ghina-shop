@@ -50,8 +50,14 @@ class ProductDetailsPage extends StatelessWidget {
                             child: AppBarRow(
                               title: "${cubit.productDetailsModel.items?.name}",
                               secondIconPath: IconsPath.buyIcon,
-                              thirdIconPath: IconsPath.favoriteIcon,
-                              onSecondIconTap: () {},
+                              // thirdIconPath: IconsPath.favoriteIcon,
+                              onSecondIconTap: () {
+                                context.read<AddToCartCubit>().addToCart(
+                                    cubit.productDetailsModel.items?.id
+                                            .toString() ??
+                                        "",
+                                    cubit.quantity);
+                              },
                               onThirdIconTap: () {},
                             ),
                           ),
@@ -361,7 +367,7 @@ class ProductDetailsPage extends StatelessWidget {
                                                     .items?.discountPrice !=
                                                 null,
                                             child: Text(
-                                              '${cubit.productDetailsModel.items?.discountPrice} KD',
+                                              '${cubit.productDetailsModel.items?.discountPrice} ل.س',
                                               style: AppStyles.textStyle20w700
                                                   .copyWith(
                                                 color: AppColor.redOpacity,
@@ -369,7 +375,7 @@ class ProductDetailsPage extends StatelessWidget {
                                             ),
                                           ),
                                           Text(
-                                            '${cubit.productDetailsModel.items?.price} KD',
+                                            '${cubit.productDetailsModel.items?.price} ل.س',
                                             style: AppStyles.textStyle14w700
                                                 .copyWith(
                                               decoration: cubit
@@ -444,9 +450,12 @@ class ProductDetailsPage extends StatelessWidget {
                                         Overlay.of(context),
                                         CustomSnackBar.success(
                                           message:
-                                              "Item successfully added to cart!",
-                                          backgroundColor: AppColor
-                                              .green, // Custom color if needed
+                                              "تمت إضافة العنصر إلى سلة التسوق بنجاح!",
+                                          backgroundColor: AppColor.green,
+                                          textStyle: AppStyles.textStyle14.copyWith(
+                                              color: AppColor.whiteColorOpacity,
+                                              fontWeight: FontWeight
+                                                  .w700), // Custom color if needed
                                         ),
                                       );
                                     }

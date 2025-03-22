@@ -71,7 +71,7 @@ class CartItem extends StatelessWidget {
                     children: [
                       const TextSpan(text: "   "),
                       TextSpan(
-                        text: cartProduct.price.toString(),
+                        text: "${cartProduct.price.toString()} ل.س",
                         style: AppStyles.textStyle14w400.copyWith(
                           decoration: cartProduct.discountPrice != null
                               ? TextDecoration.lineThrough
@@ -114,7 +114,7 @@ class CartItem extends StatelessWidget {
                 // SizedBox(height: 10.h),
                 RichText(
                   text: TextSpan(
-                    text: "Quantity",
+                    text: "الكمية",
                     style: AppStyles.textStyle16w400
                         .copyWith(color: AppColor.greyOpacity),
                     children: [

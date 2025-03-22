@@ -10,6 +10,7 @@ import 'package:best_price/feature/account/presentation/view/pages/change_passwo
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
 import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
+import 'package:best_price/feature/wish/presentation/view/view/my_wish_view.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -79,9 +80,10 @@ class MyAccountOptions extends StatelessWidget {
           OptionItem(
               onTap: () {
                 HelperFunctions.navigateToScreen(
-                    context,
-                    // const MyWishView(),
-                    const LoginView());
+                  context,
+                  const MyWishView(),
+                  // const LoginView()
+                );
               },
               trailing: langCubit.lang == 'en'
                   ? SvgPicture.asset(

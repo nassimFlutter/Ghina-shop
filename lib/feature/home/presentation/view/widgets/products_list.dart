@@ -48,7 +48,6 @@ class ProductsList extends StatelessWidget {
               } else {
                 if (BlocProvider.of<AddAndRemoveFromFavoriteCubit>(context)
                     .state is AddAndRemoveFromFavoriteLoading) {
-                  print("can't fav");
                 } else {
                   BlocProvider.of<AddAndRemoveFromFavoriteCubit>(context)
                       .addAndRemoveFromFavorite(context,

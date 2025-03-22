@@ -2,7 +2,6 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
-import 'package:best_price/core/utils/logger.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,6 +30,10 @@ class ProductsItem extends StatelessWidget {
   final void Function()? onFavoriteTap;
   @override
   Widget build(BuildContext context) {
+    num? newofferPrice = offerPrice;
+    if (newofferPrice == null) {
+      newofferPrice = 0;
+    }
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -72,40 +75,45 @@ class ProductsItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    offerPrice != null
-                        ? offerPrice!.toStringAsFixed(3)
-                        : price.toStringAsFixed(3),
-                    maxLines: 1,
-                    style: AppStyles.textStyle16w400.copyWith(
-                        color: AppColor.redOpacity,
-                        fontWeight: FontWeight.w700),
+                  Visibility(
+                    visible: newofferPrice! > 0,
+                    child: Text(
+                      newofferPrice! > 0
+                          ? newofferPrice!.toStringAsFixed(3)
+                          : price.toStringAsFixed(3),
+                      maxLines: 1,
+                      style: AppStyles.textStyle16w400.copyWith(
+                          color: AppColor.redOpacity,
+                          fontWeight: FontWeight.w700),
+                    ),
                   ),
                   SizedBox(height: 5.h),
                   Visibility(
-                    visible: offerPrice != null,
                     child: Text.rich(TextSpan(children: [
                       TextSpan(
                         text: price.toStringAsFixed(3),
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppColor.greyOpacity,
                           fontSize: 10,
                           fontFamily: 'Josefin Sans',
                           fontWeight: FontWeight.w700,
-                          decoration: TextDecoration.lineThrough,
+                          decoration: newofferPrice! > 0
+                              ? TextDecoration.lineThrough
+                              : null,
                           height: 0.24,
                         ),
                       ),
-                      TextSpan(
-                        text: '(${offerPercentage.toStringAsFixed(1)}%)',
-                        style: const TextStyle(
-                          color: AppColor.greyOpacity,
-                          fontSize: 10,
-                          fontFamily: 'Josefin Sans',
-                          fontWeight: FontWeight.w700,
-                          height: 0.24,
-                        ),
-                      )
+
+                      // TextSpan(
+                      //   text: '(${offerPercentage.toStringAsFixed(1)}%)',
+                      //   style: const TextStyle(
+                      //     color: AppColor.greyOpacity,
+                      //     fontSize: 10,
+                      //     fontFamily: 'Josefin Sans',
+                      //     fontWeight: FontWeight.w700,
+                      //     height: 0.24,
+                      //   ),
+                      // )
                     ])),
                   ),
                   SizedBox(height: 5.h),
@@ -115,16 +123,16 @@ class ProductsItem extends StatelessWidget {
                     style: AppStyles.textStyle14
                         .copyWith(color: AppColor.greyOpacity),
                   ),
-                  Text(
-                    brandName,
-                    maxLines: 1,
-                    style: AppStyles.textStyle14,
-                  ),
-                  Text(
-                    companyName,
-                    maxLines: 1,
-                    style: AppStyles.textStyle14,
-                  ),
+                  // Text(
+                  //   brandName,
+                  //   maxLines: 1,
+                  //   style: AppStyles.textStyle14,
+                  // ),
+                  // Text(
+                  //   companyName,
+                  //   maxLines: 1,
+                  //   style: AppStyles.textStyle14,
+                  // ),
                 ],
               ),
             ),

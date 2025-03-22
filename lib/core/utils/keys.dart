@@ -15,7 +15,7 @@ class Keys {
 class UrlKeys {
 //!
   static const categoryEndPoint = "getCategories";
-  static const productCategoryEndPoint = "getBrandById";
+  static const productCategoryEndPoint = "productsFilter?category_id=";
   static const brandsEndPoint = "getBrands";
   //! this is the CartUrls ..
   static const getMyCartEndPoint = "getMyCart";
@@ -51,5 +51,4 @@ class UrlKeys {
   static const oldUrl = "https://bp.linekw.xyz/api/";
   // ! URL
   static const baseUrl = "https://demo1.weisro.com/api/";
-  
 }

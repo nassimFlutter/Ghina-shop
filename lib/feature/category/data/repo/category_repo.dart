@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class CategoryRepo {
   Future<Either<Failure, CategoryResponse>> fetchAllCategory();
-  Future<Either<Failure, ProductCategoryResponse>> getProductByCategoryId(
+  Future<Either<Failure, List<Product>>> getProductByCategoryId(
       int categoryId);
   Future<Either<Failure, List<Product>>> searchProductCategory(
       String name, String category);

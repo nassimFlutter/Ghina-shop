@@ -111,10 +111,10 @@ class CartViewBody extends StatelessWidget {
                           AppBottom(
                             title: S.of(context).proceed_to_checkout,
                             onTap: () {
-                              HelperFunctions.navigateToScreen(
-                                context,
-                                const CheckoutView(),
-                              );
+                              // HelperFunctions.navigateToScreen(
+                              //   context,
+                              //   const CheckoutView(),
+                              // );
                             },
                           ),
                           SizedBox(

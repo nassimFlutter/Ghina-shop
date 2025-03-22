@@ -52,9 +52,8 @@ class ProductCategoryViewBody extends StatelessWidget {
                         controller: categoryProductCubit.searchController,
                         onChanged: (p0) {
                           categoryProductCubit.searchProductByName(p0);
-                          print(categoryProductCubit
-                              .productCategoryResponse.items?.first.products);
-                          print(p0);
+                          // print(categoryProductCubit
+                          //     .productCategoryResponse.items?.first.products);
                         },
                       )),
                       SizedBox(

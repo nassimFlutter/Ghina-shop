@@ -1,4 +1,3 @@
-
 import 'package:best_price/feature/home/data/models/home_model.dart';
 
 class Category {
@@ -8,7 +7,7 @@ class Category {
   final String status;
   final String createdAt;
   final String name;
-   List<Product>? products; 
+  List<Product>? products;
 
   Category({
     required this.id,
@@ -17,7 +16,7 @@ class Category {
     required this.status,
     required this.createdAt,
     required this.name,
-    this.products, 
+    this.products,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) {

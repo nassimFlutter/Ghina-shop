@@ -14,7 +14,7 @@ part 'category_product_state.dart';
 class CategoryProductCubit extends Cubit<CategoryProductState> {
   CategoryProductCubit() : super(CategoryProductInitial());
   static CategoryProductCubit get(context) => BlocProvider.of(context);
-  ProductCategoryResponse productCategoryResponse = ProductCategoryResponse();
+  List<Product> productCategoryResponse = [];
   List<Product> searchResult = [];
   TextEditingController searchController = TextEditingController();
   Future<void> fetchProductByCategoryId(int categoryId) async {
@@ -26,7 +26,8 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
       emit(CategoryProductFailure(errMessage: error.errMassage));
     }, (fetchedProduct) {
       productCategoryResponse = fetchedProduct;
-      searchResult = fetchedProduct.items?.first.products ?? [];
+      // print(fetchedProduct);
+      searchResult = fetchedProduct ?? [];
       emit(CategoryProductSuccess());
     });
   }
@@ -35,16 +36,15 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
     // If the search query is empty, reset the products list to show all products
     if (name.isEmpty) {
       // Reset the products list to the original list
-     searchResult=
-          productCategoryResponse.items?.first.products??[];
+      searchResult = productCategoryResponse;
     } else {
       // Perform search and filter products based on the search query
-     searchResult =
-          productCategoryResponse.items?.first.products?.where((product) {
-        final productName = product.name?.toLowerCase();
-        final searchQuery = name.toLowerCase();
-        return productName!.contains(searchQuery);
-      }).toList()??[];
+      searchResult = productCategoryResponse.where((product) {
+            final productName = product.name?.toLowerCase();
+            final searchQuery = name.toLowerCase();
+            return productName!.contains(searchQuery);
+          }).toList() ??
+          [];
     }
 
     emit(CategoryProductSuccess());
