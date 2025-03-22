@@ -1,10 +1,6 @@
 import 'package:best_price/core/theme/app_color.dart';
-import 'package:best_price/core/utils/helper_functions.dart';
-import 'package:best_price/core/widgets/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class SmallContainer extends StatelessWidget {
   const SmallContainer({

@@ -1,6 +1,7 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
@@ -10,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import '../../../../core/widgets/custom_network_image_widget.dart';
 import '../manager/product_details_cubit/product_details_cubit.dart';
 
@@ -18,6 +20,7 @@ class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key, required this.id});
   final int id;
 // todo : finish translate
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -435,7 +438,19 @@ class ProductDetailsPage extends StatelessWidget {
                                   height: 32,
                                 ),
                                 BlocConsumer<AddToCartCubit, AddToCartState>(
-                                  listener: (context, state) {},
+                                  listener: (context, state) {
+                                    if (state is AddToCartSuccess) {
+                                      showTopSnackBar(
+                                        Overlay.of(context),
+                                        CustomSnackBar.success(
+                                          message:
+                                              "Item successfully added to cart!",
+                                          backgroundColor: AppColor
+                                              .green, // Custom color if needed
+                                        ),
+                                      );
+                                    }
+                                  },
                                   builder: (context, state) {
                                     if (state is AddToCartLoading) {
                                       return const Center(
