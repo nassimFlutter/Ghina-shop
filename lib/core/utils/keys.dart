@@ -19,6 +19,7 @@ class UrlKeys {
   static const brandsEndPoint = "getBrands";
   //! this is the CartUrls ..
   static const getMyCartEndPoint = "getMyCart";
+  static const addMyCartEndPoint = "addProductToCart/";
   static const deleteFromCartEndPoint =
       "getMyCart"; //?  this need id in end ex:{{mainURL}}deleteProductCart/1
   //! global

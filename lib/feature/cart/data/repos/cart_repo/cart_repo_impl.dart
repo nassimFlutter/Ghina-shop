@@ -18,6 +18,7 @@ class CartRepoImpl implements CartRepo {
       return left(ErrorHandler.handleError(e));
     }
   }
+
   @override
   Future<Either<Failure, String>> deleteFromCart(int productId) async {
     try {
@@ -34,5 +35,18 @@ class CartRepoImpl implements CartRepo {
       Map<String, dynamic> data) {
     // TODO: implement changeQuantityFromCart
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, String>> addToMyCart(
+      String productId, Map<String, dynamic> data) async {
+    try {
+      getIt
+          .get<ApiService>()
+          .post(endPoint: "${UrlKeys.addMyCartEndPoint}$productId", data: data);
+      return right("added");
+    } catch (e) {
+      return left(ErrorHandler.handleError(e));
+    }
   }
 }

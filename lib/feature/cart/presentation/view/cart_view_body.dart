@@ -88,13 +88,13 @@ class CartViewBody extends StatelessWidget {
                           SizedBox(
                             height: 43.h,
                           ),
-                          CustomRowText(
-                            text1: S.of(context).sub_total,
-                            textStyle1: AppStyles.textStyle18w400,
-                            text2: '1019.800 KD',
-                            textStyle2: AppStyles.textStyle18w700,
-                          ),
-                          const SizedBox(height: 10),
+                          // CustomRowText(
+                          //   text1: S.of(context).sub_total,
+                          //   textStyle1: AppStyles.textStyle18w400,
+                          //   text2: '1019.800 KD',
+                          //   textStyle2: AppStyles.textStyle18w700,
+                          // ),
+                          // const SizedBox(height: 10),
                           const IntermittentDivider(
                             dashWidth: 3,
                           ),

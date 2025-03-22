@@ -64,50 +64,54 @@ class CartItem extends StatelessWidget {
                 SizedBox(height: 10.h),
                 RichText(
                   text: TextSpan(
-                    text: cartProduct.discountPrice.toString(),
+                    text: cartProduct.discountPrice != null
+                        ? cartProduct.discountPrice.toString()
+                        : "",
                     style: AppStyles.textStyle16w700,
                     children: [
                       const TextSpan(text: "   "),
                       TextSpan(
                         text: cartProduct.price.toString(),
                         style: AppStyles.textStyle14w400.copyWith(
-                          decoration: TextDecoration.lineThrough,
+                          decoration: cartProduct.discountPrice != null
+                              ? TextDecoration.lineThrough
+                              : null,
                         ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 10.h),
-                RichText(
-                  text: TextSpan(
-                    text: S.of(context).size, //"Size",
-                    style: AppStyles.textStyle16w400
-                        .copyWith(color: AppColor.greyOpacity),
-                    children: [
-                      TextSpan(
-                        text: ": ${S.of(context).large}",
-                        style: AppStyles.textStyle16w400
-                            .copyWith(color: AppColor.black2),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10.h),
-                RichText(
-                  text: TextSpan(
-                    text: "Color",
-                    style: AppStyles.textStyle16w400
-                        .copyWith(color: AppColor.greyOpacity),
-                    children: [
-                      TextSpan(
-                        text: ": Black",
-                        style: AppStyles.textStyle16w400
-                            .copyWith(color: AppColor.black2),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10.h),
+                // RichText(
+                //   text: TextSpan(
+                //     text: S.of(context).size, //"Size",
+                //     style: AppStyles.textStyle16w400
+                //         .copyWith(color: AppColor.greyOpacity),
+                //     children: [
+                //       TextSpan(
+                //         text: ": ${S.of(context).large}",
+                //         style: AppStyles.textStyle16w400
+                //             .copyWith(color: AppColor.black2),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // SizedBox(height: 10.h),
+                // RichText(
+                //   text: TextSpan(
+                //     text: "Color",
+                //     style: AppStyles.textStyle16w400
+                //         .copyWith(color: AppColor.greyOpacity),
+                //     children: [
+                //       TextSpan(
+                //         text: ": Black",
+                //         style: AppStyles.textStyle16w400
+                //             .copyWith(color: AppColor.black2),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // SizedBox(height: 10.h),
                 RichText(
                   text: TextSpan(
                     text: "Quantity",
@@ -145,7 +149,9 @@ class CartItem extends StatelessWidget {
                               onTapYes: () {},
                             ));
                       },
-                      icon: SvgPicture.asset(IconsPath.deleteIcon,),
+                      icon: SvgPicture.asset(
+                        IconsPath.deleteIcon,
+                      ),
                     ),
                   ],
                 ),

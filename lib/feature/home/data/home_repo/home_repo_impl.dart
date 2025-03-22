@@ -13,8 +13,6 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var result = await getIt.get<ApiService>().get(endPoint: "getHomePage");
       if (result != null) {
-        print("ssssss ");
-        print(result["item"]["featuredProducts"][0]["is_fevorite"]);
         return right(HomeApiResponse.fromJson(result));
       } else {
         return left(ServerFailure('No data found', 404));

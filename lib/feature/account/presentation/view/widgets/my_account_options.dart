@@ -1,16 +1,15 @@
+import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/widgets/question_dialog.dart';
 import 'package:best_price/feature/account/presentation/manager/logout_cubit/logout_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/pages/edit_account_page_view.dart';
 import 'package:best_price/feature/account/presentation/view/pages/change_password_page_view.dart';
-import 'package:best_price/feature/account/presentation/view/pages/my_address_page_view.dart';
-import 'package:best_price/feature/account/presentation/view/widgets/my_orders_view.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/option_item.dart';
 import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
-import 'package:best_price/feature/wish/presentation/view/view/my_wish_view.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -117,7 +116,11 @@ class MyAccountOptions extends StatelessWidget {
                           .of(context)
                           .are_you_sure_you_want_to_logout, //"Are you sure you want to logout?",
                       onTapYes: () async {
-                        await logoutCubit.logout();
+                        // await logoutCubit.logout();
+                        await HelperFunctions.clearUserData();
+                        HelperFunctions.navigateToScreenAndRemove(
+                            context, const LoginView());
+                        CacheHelper.setData(key: Keys.kIsLogin, value: false);
                       },
                     ));
               },

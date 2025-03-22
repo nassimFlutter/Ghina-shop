@@ -24,23 +24,48 @@ class HomeCubit extends Cubit<HomeCubitState> {
   List<Brand> brandsList = [];
 
   // HomeApiResponse homeApiResponse = HomeApiResponse();
-
   Future<void> getHomePage() async {
     emit(HomeCubitLoading());
+
     var result = await getIt.get<HomeRepo>().getHomePage();
-    result.fold((error) {
-      LoggerHelper.error(error.errMassage, error.statusCode);
-      emit(HomeCubitFailure(errMessage: error.errMassage));
-    }, (getHomePageSuccess) {
-      // homeApiResponse = getHomePageSuccess;
-      featuredProductsList = getHomePageSuccess.item?.featuredProducts ?? [];
-      bestSellerProductsList =
-          getHomePageSuccess.item?.bestSellerProducts ?? [];
-      newstProductsList = getHomePageSuccess.item?.newstProducts ?? [];
-      bannersList = getHomePageSuccess.item?.banners ?? [];
-      categoriesList = getHomePageSuccess.item?.categories ?? [];
-      brandsList = getHomePageSuccess.item?.brands ?? [];
-      emit(HomeCubitSuccess());
-    });
+    result.fold(
+      (error) {
+        print(error.errMassage);
+        LoggerHelper.error(error.errMassage, error.statusCode);
+        emit(HomeCubitFailure(errMessage: error.errMassage));
+      },
+      (getHomePageSuccess) {
+        // Safety checks for null and empty lists
+        featuredProductsList = getHomePageSuccess.item?.featuredProducts ?? [];
+        bestSellerProductsList =
+            getHomePageSuccess.item?.bestSellerProducts ?? [];
+        newstProductsList = getHomePageSuccess.item?.newstProducts ?? [];
+        bannersList = getHomePageSuccess.item?.banners ?? [];
+        categoriesList = getHomePageSuccess.item?.categories ?? [];
+        brandsList = getHomePageSuccess.item?.brands ?? [];
+
+        // If any list is null or empty, you can initialize it here or handle as needed
+        if (featuredProductsList.isEmpty) {
+          LoggerHelper.warning('Featured Products list is empty');
+        }
+        if (bestSellerProductsList.isEmpty) {
+          LoggerHelper.warning('Best Seller Products list is empty');
+        }
+        if (newstProductsList.isEmpty) {
+          LoggerHelper.warning('Newest Products list is empty');
+        }
+        if (bannersList.isEmpty) {
+          LoggerHelper.warning('Banners list is empty');
+        }
+        if (categoriesList.isEmpty) {
+          LoggerHelper.warning('Categories list is empty');
+        }
+        if (brandsList.isEmpty) {
+          LoggerHelper.warning('Brands list is empty');
+        }
+
+        emit(HomeCubitSuccess());
+      },
+    );
   }
 }
