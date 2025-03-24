@@ -31,9 +31,7 @@ class ProductsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     num? newofferPrice = offerPrice;
-    if (newofferPrice == null) {
-      newofferPrice = 0;
-    }
+    newofferPrice ??= 0;
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(

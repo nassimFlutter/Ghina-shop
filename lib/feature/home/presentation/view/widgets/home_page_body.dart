@@ -245,7 +245,7 @@ class HomePgeBody extends StatelessWidget {
                                   AddAndRemoveFromFavoriteState>(
                                 builder: (context, state) {
                                   return ProductsList(
-                                  
+                                    
                                     productList:
                                         homeCubit.bestSellerProductsList,
                                   );

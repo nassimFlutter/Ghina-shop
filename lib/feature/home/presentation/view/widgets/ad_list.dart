@@ -1,5 +1,7 @@
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/ad_item.dart';
+import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,8 +20,18 @@ class AdList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: homeCubit.bannersList.length,
         itemBuilder: (context, index) {
-          return AdItem(
-            banner: homeCubit.bannersList[index],
+          return GestureDetector(
+            onTap: () {
+              if (homeCubit.bannersList[index].itemId != null) {
+                HelperFunctions.navigateToScreen(
+                    context,
+                    ProductDetailsPage(
+                        id: homeCubit.bannersList[index].itemId ?? 0));
+              }
+            },
+            child: AdItem(
+              banner: homeCubit.bannersList[index],
+            ),
           );
         },
       ),

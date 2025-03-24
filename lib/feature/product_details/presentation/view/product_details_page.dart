@@ -144,12 +144,12 @@ class ProductDetailsPage extends StatelessWidget {
                                   "${cubit.productDetailsModel.items?.name}",
                                   style: AppStyles.textStyle24w700,
                                 ),
-                                Text(
-                                  "${S.of(context).by} ${cubit.productDetailsModel.items?.companyName}",
-                                  style: AppStyles.textStyle16w700.copyWith(
-                                    color: AppColor.black2,
-                                  ),
-                                ),
+                                // Text(
+                                //   "${S.of(context).by} ${cubit.productDetailsModel.items?.companyName}",
+                                //   style: AppStyles.textStyle16w700.copyWith(
+                                //     color: AppColor.black2,
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),

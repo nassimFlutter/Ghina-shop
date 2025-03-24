@@ -162,7 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name_required_validation": MessageLookupByLibrary.simpleMessage(
       "الاسم الكامل مطلوب",
     ),
-    "new_arrivals": MessageLookupByLibrary.simpleMessage("الوافدة الجديدة"),
+    "new_arrivals": MessageLookupByLibrary.simpleMessage("المضافة حديثا"),
     "new_password_": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الجديدة*",
     ),
