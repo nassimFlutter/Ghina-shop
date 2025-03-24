@@ -6,6 +6,7 @@ import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({super.key});
@@ -17,6 +18,16 @@ class HomePageView extends StatefulWidget {
 class _HomePageViewState extends State<HomePageView> {
   int _selectedIndex = 0;
 // todo : finish translate
+  Future<void> openWhatsApp() async {
+    const phoneNumber = '+963931451710'; // Replace with your number
+    const url = 'https://wa.me/$phoneNumber';
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    } else {
+      debugPrint('Could not open WhatsApp');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     NavBarCubit navBarCubit = NavBarCubit.get(context);
@@ -29,6 +40,17 @@ class _HomePageViewState extends State<HomePageView> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.white,
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              openWhatsApp();
+            },
+            backgroundColor: AppColor.green,
+            child: SvgPicture.asset(
+              IconsPath.whatsAppIcon, // Add your WhatsApp SVG icon path
+              color: Colors.white,
+              height: 28,
+            ),
+          ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
