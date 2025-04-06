@@ -27,6 +27,7 @@ class LanguageBottomSheet extends StatelessWidget {
               SelectedLanguage(
                 visible: langCubit.lang == "en",
                 title: "english",
+                languageLetter: "EN",
                 imagePath: IconsPath.kingdom,
                 borderSide: BorderSide(
                   width: langCubit.lang == "en" ? 1 : 0,
@@ -42,6 +43,7 @@ class LanguageBottomSheet extends StatelessWidget {
                 height: 15.h,
               ),
               SelectedLanguage(
+                languageLetter: "AR",
                 visible: langCubit.lang == "ar",
                 title: "العربية",
                 imagePath: IconsPath.kuwait,

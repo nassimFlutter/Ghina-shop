@@ -92,6 +92,21 @@ class HomePgeBody extends StatelessWidget {
                   //     ],
                   //   ),
                   // ),
+                  SizedBox(height: 26.h),
+
+                  BlocBuilder<HomeCubit, HomeCubitState>(
+                    builder: (context, state) {
+                      if (state is HomeCubitLoading) {
+                        return const ShimmerCategoryHomeList();
+                      } else {
+                        return Padding(
+                          padding: EdgeInsetsDirectional.symmetric(
+                              horizontal: Dimensions.dStartPadding.w),
+                          child: const CategoryHomeList(),
+                        );
+                      }
+                    },
+                  ),
                   Expanded(
                     child: ListView(
                       padding: EdgeInsetsDirectional.symmetric(
@@ -136,35 +151,27 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
-                        SizedBox(height: 26.h),
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerHomeTitle(
-                                title: "",
-                              );
-                            } else {
-                              return HomeTitle(
-                                title: S.of(context).categories, //'Categories',
-                                onTap: () {
-                                  navBarCubit.changeTab(1, context);
-                                },
-                              );
-                            }
-                          },
-                        ),
+                        // SizedBox(height: 26.h),
+                        // BlocBuilder<HomeCubit, HomeCubitState>(
+                        //   builder: (context, state) {
+                        //     if (state is HomeCubitLoading) {
+                        //       return const ShimmerHomeTitle(
+                        //         title: "",
+                        //       );
+                        //     } else {
+                        //       return HomeTitle(
+                        //         title: S.of(context).categories, //'Categories',
+                        //         onTap: () {
+                        //           navBarCubit.changeTab(1, context);
+                        //         },
+                        //       );
+                        //     }
+                        //   },
+                        // ),
                         SizedBox(height: 24.h),
                         //! in this there ara margin ..
                         //? this category in home page ..
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerCategoryHomeList();
-                            } else {
-                              return const CategoryHomeList();
-                            }
-                          },
-                        ),
+
                         SizedBox(height: 30.h),
                         //! Featured products
                         BlocBuilder<HomeCubit, HomeCubitState>(
@@ -245,7 +252,6 @@ class HomePgeBody extends StatelessWidget {
                                   AddAndRemoveFromFavoriteState>(
                                 builder: (context, state) {
                                   return ProductsList(
-                                    
                                     productList:
                                         homeCubit.bestSellerProductsList,
                                   );

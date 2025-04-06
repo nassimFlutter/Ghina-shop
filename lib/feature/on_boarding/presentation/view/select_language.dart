@@ -51,6 +51,7 @@ class SelectLanguage extends StatelessWidget {
                     height: 45.h,
                   ),
                   SelectedLanguage(
+                    languageLetter: "EN",
                     onTap: () {
                       // HelperFunctions.navigateToScreen(
                       //     context, const LoginView());
@@ -72,6 +73,7 @@ class SelectLanguage extends StatelessWidget {
                     height: 34.h,
                   ),
                   SelectedLanguage(
+                    languageLetter: "AR",
                     onTap: () {
                       // if (CacheHelper.getData(key: Keys.kUserToken) != null) {
                       //   HelperFunctions.navigateToScreen(

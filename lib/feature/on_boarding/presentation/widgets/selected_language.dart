@@ -1,4 +1,4 @@
-import 'package:best_price/core/theme/app_color.dart';
+import 'package:best_price/core/theme/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,8 +11,9 @@ class SelectedLanguage extends StatelessWidget {
     required this.borderSide,
     this.onTap,
     this.visible = false,
+    required this.languageLetter,
   });
-  final String title, imagePath;
+  final String title, imagePath, languageLetter;
   final BorderSide borderSide;
   final void Function()? onTap;
   final bool visible;
@@ -41,7 +42,10 @@ class SelectedLanguage extends StatelessWidget {
         ),
         child: Center(
           child: ListTile(
-            leading: SvgPicture.asset(imagePath),
+            leading: Text(
+              languageLetter,
+              style: AppStyles.textStyle20w700,
+            ),
             title: Text(
               title,
               style: TextStyle(
