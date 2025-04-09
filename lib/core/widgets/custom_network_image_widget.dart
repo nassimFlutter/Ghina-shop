@@ -22,7 +22,7 @@ class CustomNetworkImageWidget extends StatelessWidget {
         errorWidget: (context, url, error) => const Image(
           fit: BoxFit.fill,
           image: AssetImage(
-            ImagePath.bestPriceLogo,
+            IconsPath.splashLogo,
           ),
         ),
       ),

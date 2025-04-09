@@ -25,6 +25,10 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       emit(ProductDetailsCubitFailure(errMessage: error.errMassage));
     }, (getHomePageSuccess) {
       productDetailsModel = getHomePageSuccess;
+      productDetailsModel.items?.images?.add(Image(
+          image:
+              "https://drive.google.com/file/d/10pPaPxrVe4q8oeEOZJVBBD_YtpcInJoe/view?usp=sharing",
+          type: 11));
       emit(ProductDetailsCubitSuccess());
     });
   }
@@ -36,41 +40,45 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     emit(IndexChanges());
   }
 
-  int colorId=0;
-  setColor(int id){
+  int colorId = 0;
+  setColor(int id) {
     colorId = id;
     emit(IndexChanges());
   }
-  int sizeId=0;
-  setSize(int id){
+
+  int sizeId = 0;
+  setSize(int id) {
     sizeId = id;
     emit(IndexChanges());
   }
-  int quantity =01;
+
+  int quantity = 01;
   int quantityData = 1;
 
-  bool checkIfSizeAndColorExist(int sizeId, int colorId, List<Variant>? variants) {
+  bool checkIfSizeAndColorExist(
+      int sizeId, int colorId, List<Variant>? variants) {
     if (colorId == 0 || sizeId == 0) {
       return true;
     }
 
     for (var variant in variants!) {
       if (variant.sizeId == sizeId && variant.colorId == colorId) {
-        quantityData= variant.quantity!;
-          return true;
+        quantityData = variant.quantity!;
+        return true;
       }
     }
 
     return false;
   }
-  plusQuantity(){
+
+  plusQuantity() {
     quantity++;
     emit(IndexChanges());
   }
-  minQuantity(){
-    if(quantity>1){
-      quantity--;
 
+  minQuantity() {
+    if (quantity > 1) {
+      quantity--;
     }
     emit(IndexChanges());
   }
