@@ -38,10 +38,9 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.w),
               child: DropdownButtonHideUnderline(
-                
                 child: DropdownButton<String>(
                   hint: Text(
-                    "المزيد",
+                    "",
                     style: AppStyles.textStyle14,
                   ),
                   value: _selectedCategoryName,

@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     # Paths and custom names
     apk_path = 'build/app/outputs/flutter-apk/app-release.apk'
-    apk_name = sanitize_filename("Ghina shop-APK_1.0.4+5_7-3-2025.apk")
+    apk_name = sanitize_filename("Ghina shop-APK_1.0.3+4_11-4-2025.apk")
 
     aab_path = 'build/app/outputs/bundle/release/app-release.aab'
     aab_name = sanitize_filename("Ghina shop-AAB_1.0.4+5_7-3-2025.aab")
