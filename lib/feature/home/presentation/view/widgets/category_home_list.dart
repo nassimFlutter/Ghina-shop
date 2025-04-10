@@ -36,30 +36,47 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
           } else {
             // This is the dropdown item
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.w),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 4.w), // reduced horizontal padding
               child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  hint: Text(
-                    "",
-                    style: AppStyles.textStyle14,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
+                  height: 36.h, // reduce height
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(8.r),
                   ),
-                  value: _selectedCategoryName,
-                  items: categories
-                      .map((category) => DropdownMenuItem<String>(
-                            value: category.name,
-                            child: Text(category.name ?? ""),
-                          ))
-                      .toList(),
-                  onChanged: (selected) {
-                    setState(() {
-                      _selectedCategoryName = selected;
-                    });
+                  child: DropdownButton<String>(
+                    isDense: true, // compact dropdown
+                    isExpanded: false,
+                    hint: Text(
+                      "",
+                      style: AppStyles.textStyle14
+                          .copyWith(fontSize: 12.sp), // smaller font
+                    ),
+                    value: _selectedCategoryName,
+                    icon: Icon(Icons.arrow_drop_down,
+                        size: 16.sp), // smaller icon
+                    items: categories
+                        .map((category) => DropdownMenuItem<String>(
+                              value: category.name,
+                              child: Text(
+                                category.name ?? "",
+                                style: TextStyle(fontSize: 12.sp),
+                              ),
+                            ))
+                        .toList(),
+                    onChanged: (selected) {
+                      setState(() {
+                        _selectedCategoryName = selected;
+                      });
 
-                    final selectedCategory = categories.firstWhere(
-                      (cat) => cat.name == selected,
-                      orElse: () => categories[0],
-                    );
-                  },
+                      final selectedCategory = categories.firstWhere(
+                        (cat) => cat.name == selected,
+                        orElse: () => categories[0],
+                      );
+                    },
+                  ),
                 ),
               ),
             );

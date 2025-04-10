@@ -114,8 +114,7 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
-                       
-                        SizedBox(height: 24.h),
+
                         //! in this there ara margin ..
                         //? this category in home page ..
 
@@ -165,7 +164,6 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
-                        SizedBox(height: 10.h),
                         BlocBuilder<HomeCubit, HomeCubitState>(
                           builder: (context, state) {
                             if (state is HomeCubitLoading) {
@@ -207,7 +205,7 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
-                      
+
                         // ! New Arrivals List
                         BlocBuilder<HomeCubit, HomeCubitState>(
                           builder: (context, state) {
