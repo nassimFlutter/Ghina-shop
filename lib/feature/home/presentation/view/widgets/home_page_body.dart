@@ -72,28 +72,7 @@ class HomePgeBody extends StatelessWidget {
             } else {
               return Column(
                 children: [
-                  // Padding(
-                  //   padding: const EdgeInsetsDirectional.only(
-                  //     start: 16,
-                  //     end: 16,
-                  //     top: 16,
-                  //   ),
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: [
-                  //       SvgPicture.asset(IconsPath.homeLogoIcon),
-                  //       GestureDetector(
-                  //         onTap: () {
-                  //           HelperFunctions.navigateToScreen(
-                  //               context, const SearchView());
-                  //         },
-                  //         child: SvgPicture.asset(IconsPath.searchIcon),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                   SizedBox(height: 26.h),
-
                   BlocBuilder<HomeCubit, HomeCubitState>(
                     builder: (context, state) {
                       if (state is HomeCubitLoading) {
@@ -112,22 +91,6 @@ class HomePgeBody extends StatelessWidget {
                       padding: EdgeInsetsDirectional.symmetric(
                           horizontal: Dimensions.dStartPadding.w),
                       children: [
-                        // Padding(
-                        //   padding: EdgeInsets.only(top: 14.h),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       SvgPicture.asset(IconsPath.homeLogoIcon),
-                        //       GestureDetector(
-                        //           onTap: () {
-                        //             HelperFunctions.navigateToScreen(
-                        //                 context, const SearchView());
-                        //           },
-                        //           child: SvgPicture.asset(IconsPath.searchIcon)),
-                        //     ],
-                        //   ),
-                        // ),
-
                         SizedBox(height: 26.h),
                         BlocConsumer<HomeCubit, HomeCubitState>(
                           listener: (context, state) {},
@@ -151,23 +114,7 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
-                        // SizedBox(height: 26.h),
-                        // BlocBuilder<HomeCubit, HomeCubitState>(
-                        //   builder: (context, state) {
-                        //     if (state is HomeCubitLoading) {
-                        //       return const ShimmerHomeTitle(
-                        //         title: "",
-                        //       );
-                        //     } else {
-                        //       return HomeTitle(
-                        //         title: S.of(context).categories, //'Categories',
-                        //         onTap: () {
-                        //           navBarCubit.changeTab(1, context);
-                        //         },
-                        //       );
-                        //     }
-                        //   },
-                        // ),
+                       
                         SizedBox(height: 24.h),
                         //! in this there ara margin ..
                         //? this category in home page ..
@@ -260,35 +207,7 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
-                        // SizedBox(height: 10.h),
-                        // //!Brands
-                        // BlocBuilder<HomeCubit, HomeCubitState>(
-                        //   builder: (context, state) {
-                        //     if (state is HomeCubitLoading) {
-                        //       return const ShimmerHomeTitle(title: "");
-                        //     } else {
-                        //       return HomeTitle(
-                        //         title: S.of(context).brands, //'Brands',
-                        //         onTap: () {
-                        //           HelperFunctions.navigateToScreen(
-                        //               context, const BrandsView());
-                        //         },
-                        //       );
-                        //     }
-                        //   },
-                        // ),
-                        // SizedBox(height: 12.h),
-                        // //! brands List
-                        // BlocBuilder<HomeCubit, HomeCubitState>(
-                        //   builder: (context, state) {
-                        //     if (state is HomeCubitLoading) {
-                        //       return const ShimmerBrandsHomeList();
-                        //     } else {
-                        //       return const BrandsHomeList();
-                        //     }
-                        //   },
-                        // ),
-                        // SizedBox(height: 20.h),
+                      
                         // ! New Arrivals List
                         BlocBuilder<HomeCubit, HomeCubitState>(
                           builder: (context, state) {
@@ -340,3 +259,86 @@ class HomePgeBody extends StatelessWidget {
     );
   }
 }
+// Padding(
+                  //   padding: const EdgeInsetsDirectional.only(
+                  //     start: 16,
+                  //     end: 16,
+                  //     top: 16,
+                  //   ),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       SvgPicture.asset(IconsPath.homeLogoIcon),
+                  //       GestureDetector(
+                  //         onTap: () {
+                  //           HelperFunctions.navigateToScreen(
+                  //               context, const SearchView());
+                  //         },
+                  //         child: SvgPicture.asset(IconsPath.searchIcon),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),   
+                  // Padding(
+                        //   padding: EdgeInsets.only(top: 14.h),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //     children: [
+                        //       SvgPicture.asset(IconsPath.homeLogoIcon),
+                        //       GestureDetector(
+                        //           onTap: () {
+                        //             HelperFunctions.navigateToScreen(
+                        //                 context, const SearchView());
+                        //           },
+                        //           child: SvgPicture.asset(IconsPath.searchIcon)),
+                        //     ],
+                        //   ),
+                        // ),
+                        
+                        
+                          // SizedBox(height: 10.h),
+                        // //!Brands
+                        // BlocBuilder<HomeCubit, HomeCubitState>(
+                        //   builder: (context, state) {
+                        //     if (state is HomeCubitLoading) {
+                        //       return const ShimmerHomeTitle(title: "");
+                        //     } else {
+                        //       return HomeTitle(
+                        //         title: S.of(context).brands, //'Brands',
+                        //         onTap: () {
+                        //           HelperFunctions.navigateToScreen(
+                        //               context, const BrandsView());
+                        //         },
+                        //       );
+                        //     }
+                        //   },
+                        // ),
+                        // SizedBox(height: 12.h),
+                        // //! brands List
+                        // BlocBuilder<HomeCubit, HomeCubitState>(
+                        //   builder: (context, state) {
+                        //     if (state is HomeCubitLoading) {
+                        //       return const ShimmerBrandsHomeList();
+                        //     } else {
+                        //       return const BrandsHomeList();
+                        //     }
+                        //   },
+                        // ),
+                        // SizedBox(height: 20.h),
+                         // SizedBox(height: 26.h),
+                        // BlocBuilder<HomeCubit, HomeCubitState>(
+                        //   builder: (context, state) {
+                        //     if (state is HomeCubitLoading) {
+                        //       return const ShimmerHomeTitle(
+                        //         title: "",
+                        //       );
+                        //     } else {
+                        //       return HomeTitle(
+                        //         title: S.of(context).categories, //'Categories',
+                        //         onTap: () {
+                        //           navBarCubit.changeTab(1, context);
+                        //         },
+                        //       );
+                        //     }
+                        //   },
+                        // ),
