@@ -17,10 +17,13 @@ class FeaturedProductsCubit extends Cubit<FeaturedProductsState> {
     emit(FeaturedProductsLoading());
     var result = await getIt.get<FeaturedProductRepo>().getFeaturedProducts();
     result.fold((error) {
+      print(error.errMassage);
       emit(FeaturedProductsFailure(errMessage: error.errMassage));
     }, (getFeaturedProducts) {
       allFeaturedProducts = getFeaturedProducts.value1;
-      maxProductPrice = getFeaturedProducts.value2;
+      maxProductPrice =
+          getFeaturedProducts.value2 ?? 0; // Ensure it's never null
+
       emit(FeaturedProductsSuccess());
     });
   }

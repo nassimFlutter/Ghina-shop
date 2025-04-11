@@ -22,6 +22,7 @@ class BestSellingCubit extends Cubit<BestSellingState> {
     }, (getBestSellingProducts) {
       allBestSellingProducts = getBestSellingProducts.value1;
       maxProductPrice = getBestSellingProducts.value2;
+
       emit(BestSellingSuccess());
     });
   }

@@ -22,110 +22,117 @@ class FeaturedProductViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     FeaturedProductsCubit featuredProductsCubit =
         FeaturedProductsCubit.get(context);
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsetsDirectional.only(
-              top: Dimensions.dTopPadding.h,
-              end: Dimensions.dStartPadding,
-              start: Dimensions.dStartPadding,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: AppBarRow(
-                    iconPath: IconsPath.arrowLeftIcon,
-                    title:
-                        S.of(context).featured_products, // "Featured Products",
-                    onFirstIconTap: () {
-                      HelperFunctions.navigateToBack(context);
-                    },
+    return Padding(
+      padding: EdgeInsetsDirectional.only(
+        start: Dimensions.dStartPadding,
+        end: Dimensions.dStartPadding,
+      ),
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsetsDirectional.only(
+                top: Dimensions.dTopPadding.h,
+                end: Dimensions.dStartPadding,
+                start: Dimensions.dStartPadding,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: AppBarRow(
+                      iconPath: IconsPath.arrowLeftIcon,
+                      title: S
+                          .of(context)
+                          .featured_products, // "Featured Products",
+                      onFirstIconTap: () {
+                        HelperFunctions.navigateToBack(context);
+                      },
+                    ),
                   ),
-                ),
-                AppBarBottom(
-                  iconPath: IconsPath.flitterIcon,
-                  onTap: () {
-                    // HelperFunctions.navigateToScreen(
-                    //     context,
-                    //     FlitterSortView(
-                    //       endValue:
-                    //           featuredProductsCubit.maxProductPrice.toDouble(),
-                    //     ));
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FlitterSortView(
-                          endValue:
-                              featuredProductsCubit.maxProductPrice.toDouble(),
-                          page: "featured",
+                  AppBarBottom(
+                    iconPath: IconsPath.flitterIcon,
+                    onTap: () {
+                      // HelperFunctions.navigateToScreen(
+                      //     context,
+                      //     FlitterSortView(
+                      //       endValue:
+                      //           featuredProductsCubit.maxProductPrice.toDouble(),
+                      //     ));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FlitterSortView(
+                            endValue: featuredProductsCubit.maxProductPrice
+                                .toDouble(),
+                            page: "featured",
+                          ),
                         ),
-                      ),
-                    ).then((value) {
-                      if (value != null) {
-                        //? here will call filter api
-                        // print(value);
-                        featuredProductsCubit
-                            .getFeaturedProductsAfterFilter(value);
-                      }
-                    });
-                  },
-                )
-              ],
+                      ).then((value) {
+                        if (value != null) {
+                          //? here will call filter api
+                          // print(value);
+                          featuredProductsCubit
+                              .getFeaturedProductsAfterFilter(value);
+                        }
+                      });
+                    },
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 17.h,
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 17.h,
+            ),
           ),
-        ),
-        BlocConsumer<FeaturedProductsCubit, FeaturedProductsState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            if (state is FeaturedProductsLoading) {
-              return const SliverFillRemaining(
-                child: Center(
-                  child: CustomCircularProgressIndicator(),
-                ),
-              );
-            } else {
-              if (featuredProductsCubit.allFeaturedProducts.isEmpty) {
-                return SliverFillRemaining(
-                  child: NoResult(
-                    title: S.of(context).no_result_found,
+          BlocConsumer<FeaturedProductsCubit, FeaturedProductsState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is FeaturedProductsLoading) {
+                return const SliverFillRemaining(
+                  child: Center(
+                    child: CustomCircularProgressIndicator(),
                   ),
                 );
               } else {
-                return SliverGrid.builder(
-                  itemCount: featuredProductsCubit.allFeaturedProducts.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 50.w,
-                      // mainAxisSpacing: 150.h,
-                      crossAxisCount: 2,
-                      mainAxisExtent: 355.h),
-                  itemBuilder: (context, index) {
-                    Product productItem =
-                        featuredProductsCubit.allFeaturedProducts[index];
-                    return ProductsItem(
-                      imageUrl: productItem.image ?? "",
-                      brandName: productItem.brandName ?? "Brand name",
-                      companyName: productItem.companyName ?? "",
-                      isFavorite: productItem.isFavorite ?? '0',
-                      price: productItem.price ?? 0.000,
-                      offerPrice: productItem.discountPrice ?? 0.000,
-                      title: productItem.name ?? "No title",
-                      offerPercentage:
-                          productItem.calculateOfferPercentage() ?? 0,
-                    );
-                  },
-                );
+                if (featuredProductsCubit.allFeaturedProducts.isEmpty) {
+                  return SliverFillRemaining(
+                    child: NoResult(
+                      title: S.of(context).no_result_found,
+                    ),
+                  );
+                } else {
+                  return SliverGrid.builder(
+                    itemCount: featuredProductsCubit.allFeaturedProducts.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisSpacing: 50.w,
+                        // mainAxisSpacing: 150.h,
+                        crossAxisCount: 2,
+                        mainAxisExtent: 355.h),
+                    itemBuilder: (context, index) {
+                      Product productItem =
+                          featuredProductsCubit.allFeaturedProducts[index];
+                      return ProductsItem(
+                        imageUrl: productItem.image ?? "",
+                        brandName: productItem.brandName ?? "Brand name",
+                        companyName: productItem.companyName ?? "",
+                        isFavorite: productItem.isFavorite ?? '0',
+                        price: productItem.price ?? 0.000,
+                        offerPrice: productItem.discountPrice ?? 0.000,
+                        title: productItem.name ?? "No title",
+                        offerPercentage:
+                            productItem.calculateOfferPercentage() ?? 0,
+                      );
+                    },
+                  );
+                }
               }
-            }
-          },
-        )
-      ],
+            },
+          )
+        ],
+      ),
     );
   }
 }

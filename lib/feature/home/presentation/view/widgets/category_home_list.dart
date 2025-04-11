@@ -1,4 +1,6 @@
 import 'package:best_price/core/theme/app_style.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/category/presentaion/view/pages/product_category_view.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/category_home_item.dart';
 import 'package:flutter/material.dart';
@@ -75,6 +77,12 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
                         (cat) => cat.name == selected,
                         orElse: () => categories[0],
                       );
+                      HelperFunctions.navigateToScreen(
+                          context,
+                          ProductCategoryView(
+                            title: selectedCategory.name ?? "",
+                            categoryId: selectedCategory.id ?? -1,
+                          ));
                     },
                   ),
                 ),

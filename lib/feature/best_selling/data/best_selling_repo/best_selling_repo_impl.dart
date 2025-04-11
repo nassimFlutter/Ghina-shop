@@ -17,8 +17,10 @@ class BestSellingRepoImpl implements BestSellingRepo {
       }
       num maxPrice = 0;
       for (var element in productsList) {
-        if (element.discountPrice > maxPrice) {
-          maxPrice = element.discountPrice;
+        if (element.discountPrice != null) {
+          if (element.discountPrice > maxPrice) {
+            maxPrice = element.discountPrice;
+          }
         }
       }
       return right(Tuple2(productsList, maxPrice));
