@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/ad_item.dart';
@@ -5,28 +6,66 @@ import 'package:best_price/feature/product_details/presentation/view/product_det
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AdList extends StatelessWidget {
-  const AdList({
-    super.key,
-  });
+class AdList extends StatefulWidget {
+  const AdList({super.key});
+
+  @override
+  State<AdList> createState() => _AdListState();
+}
+
+class _AdListState extends State<AdList> {
+  late final PageController _pageController;
+  Timer? _timer;
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(viewportFraction: 0.93);
+    _startAutoScroll();
+  }
+
+  void _startAutoScroll() {
+    _timer = Timer.periodic(const Duration(seconds: 4), (timer) {
+      final homeCubit = HomeCubit.get(context);
+      if (homeCubit.bannersList.isEmpty) return;
+
+      _currentPage++;
+      if (_currentPage >= homeCubit.bannersList.length) {
+        _currentPage = 0;
+      }
+      _pageController.animateToPage(
+        _currentPage,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    HomeCubit homeCubit = HomeCubit.get(context);
+    final homeCubit = HomeCubit.get(context);
     return SizedBox(
-      height: 150.h,
-      child: ListView.builder(
-        clipBehavior: Clip.none,
-        scrollDirection: Axis.horizontal,
+      height: 165.h,
+      child: PageView.builder(
+        controller: _pageController,
         itemCount: homeCubit.bannersList.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              if (homeCubit.bannersList[index].itemId != null) {
+              final banner = homeCubit.bannersList[index];
+              if (banner.itemId != null) {
                 HelperFunctions.navigateToScreen(
-                    context,
-                    ProductDetailsPage(
-                        id: homeCubit.bannersList[index].itemId ?? 0));
+                  context,
+                  ProductDetailsPage(id: banner.itemId!),
+                );
               }
             },
             child: AdItem(
