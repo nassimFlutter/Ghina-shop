@@ -34,7 +34,6 @@ class HomePgeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeCubit homeCubit = HomeCubit.get(context);
-    NavBarCubit navBarCubit = NavBarCubit.get(context);
     // homeCubit.getHomePage();
     return Scaffold(
       appBar: AppBar(

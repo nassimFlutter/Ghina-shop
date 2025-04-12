@@ -53,7 +53,7 @@ class _AdListState extends State<AdList> {
   Widget build(BuildContext context) {
     final homeCubit = HomeCubit.get(context);
     return SizedBox(
-      height: 165.h,
+      height: 180.h,
       child: PageView.builder(
         controller: _pageController,
         itemCount: homeCubit.bannersList.length,

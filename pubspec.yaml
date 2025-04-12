@@ -38,6 +38,7 @@ dependencies:
   chewie: ^1.10.0
   video_player: ^2.9.5
   meta: ^1.15.0
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_lints: ^2.0.0

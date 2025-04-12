@@ -25,6 +25,7 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
       child: Row(
         children: [
           Expanded(
+            flex: 3,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: categories.length,
@@ -40,32 +41,23 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 4.w),
-            child: DropdownButtonHideUnderline(
-              child: Container(
-                width: 100.w,
-                height: 36.h,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
+            child: SizedBox(
+              width: 100,
+              child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
-                  isDense: true,
-                  isExpanded: true,
-                  hint: Text(
-                    "",
-                    style: AppStyles.textStyle14.copyWith(fontSize: 12.sp),
-                  ),
-                  value: _selectedCategoryName,
                   icon: Icon(Icons.arrow_drop_down, size: 16.sp),
-                  items: categories
-                      .map((category) => DropdownMenuItem<String>(
-                            value: category.name,
-                            child: Text(
-                              category.name ?? "",
-                              style: TextStyle(fontSize: 12.sp),
-                            ),
-                          ))
-                      .toList(),
+                  isExpanded: true,
+                  value: null, // This hides the selected value
+                  hint: const SizedBox.shrink(), // No hint text
+                  items: categories.map((category) {
+                    return DropdownMenuItem<String>(
+                      value: category.name,
+                      child: Text(
+                        category.name ?? "",
+                        style: TextStyle(fontSize: 12.sp),
+                      ),
+                    );
+                  }).toList(),
                   onChanged: (selected) {
                     setState(() {
                       _selectedCategoryName = selected;
@@ -75,6 +67,7 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
                       (cat) => cat.name == selected,
                       orElse: () => categories[0],
                     );
+
                     HelperFunctions.navigateToScreen(
                       context,
                       ProductCategoryView(

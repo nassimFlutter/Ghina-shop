@@ -4,6 +4,7 @@ import 'package:best_price/core/widgets/error_widget.dart';
 import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
+import 'package:best_price/feature/cart/presentation/manager/delete_from_my_cart_cubit/delete_from_my_cart_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -24,123 +25,135 @@ class CartViewBody extends StatelessWidget {
     changeQuantityCubit
         .initializeTextEditingControllers(myCartCubit.myCart.myCart ?? []);
     myCartCubit.getMyCart(context);
-    return RefreshIndicator(
-      onRefresh: () async {
-        await myCartCubit.getMyCart(context);
+    return BlocConsumer<DeleteFromMyCartCubit, DeleteFromMyCartState>(
+      listener: (context, state) async {
+        if (state is DeleteFromMyCartSuccess) {
+          await myCartCubit.getMyCart(context);
+        }
       },
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SafeArea(
-                child: Padding(
-                  padding: EdgeInsetsDirectional.only(top: 14.h),
-                  child: Text(
-                    S.of(context).my_cart, //'My Cart',
-                    style: AppStyles.textStyle20w700,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              BlocBuilder<MyCartCubit, MyCartState>(
-                builder: (context, state) {
-                  if (state is MyCartLoading) {
-                    return SizedBox(
-                      height: MediaQuery.of(context).size.height -
-                          kToolbarHeight -
-                          MediaQuery.of(context).padding.top,
-                      child: const Center(
-                        child: CustomCircularProgressIndicator(),
+      builder: (context, state) {
+        return RefreshIndicator(
+          onRefresh: () async {
+            await myCartCubit.getMyCart(context);
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SafeArea(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.only(top: 14.h),
+                      child: Text(
+                        S.of(context).my_cart, //'My Cart',
+                        style: AppStyles.textStyle20w700,
                       ),
-                    );
-                  } else if (state is MyCartFailures) {
-                    return CustomErrorWidget(
-                      onTap: () {
-                        myCartCubit.getMyCart(context);
-                      },
-                    );
-                  } else {
-                    if (myCartCubit.myCart.myCart!.isEmpty) {
-                      return SizedBox(
-                        height: MediaQuery.of(context).size.height -
-                            kToolbarHeight -
-                            MediaQuery.of(context).padding.top,
-                        child: Center(
-                          child:
-                              NoResult(title: S.of(context).no_Product_In_Cart),
-                        ),
-                      );
-                    } else {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ListView.separated(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: myCartCubit.myCart.myCart?.length ?? 0,
-                            separatorBuilder: (context, index) => SizedBox(
-                              height: 20.h,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+                  BlocBuilder<MyCartCubit, MyCartState>(
+                    builder: (context, state) {
+                      if (state is MyCartLoading) {
+                        return SizedBox(
+                          height: MediaQuery.of(context).size.height -
+                              kToolbarHeight -
+                              MediaQuery.of(context).padding.top,
+                          child: const Center(
+                            child: CustomCircularProgressIndicator(),
+                          ),
+                        );
+                      } else if (state is MyCartFailures) {
+                        return CustomErrorWidget(
+                          onTap: () {
+                            myCartCubit.getMyCart(context);
+                          },
+                        );
+                      } else {
+                        if (myCartCubit.myCart.myCart!.isEmpty) {
+                          return SizedBox(
+                            height: MediaQuery.of(context).size.height -
+                                kToolbarHeight -
+                                MediaQuery.of(context).padding.top,
+                            child: Center(
+                              child: NoResult(
+                                  title: S.of(context).no_Product_In_Cart),
                             ),
-                            itemBuilder: (context, index) => CartItem(
-                              id: myCartCubit.myCart.myCart?[index].id ?? -1,
-                              quantity:
-                                  myCartCubit.myCart.myCart?[index].quantity ??
+                          );
+                        } else {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount:
+                                    myCartCubit.myCart.myCart?.length ?? 0,
+                                separatorBuilder: (context, index) => SizedBox(
+                                  height: 20.h,
+                                ),
+                                itemBuilder: (context, index) => CartItem(
+                                  id: myCartCubit.myCart.myCart?[index].id ??
+                                      -1,
+                                  quantity: myCartCubit
+                                          .myCart.myCart?[index].quantity ??
                                       0,
-                              cartProduct:
-                                  myCartCubit.myCart.myCart?[index].product ??
+                                  cartProduct: myCartCubit
+                                          .myCart.myCart?[index].product ??
                                       Product(),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 43.h,
-                          ),
-                          // CustomRowText(
-                          //   text1: S.of(context).sub_total,
-                          //   textStyle1: AppStyles.textStyle18w400,
-                          //   text2: '1019.800 KD',
-                          //   textStyle2: AppStyles.textStyle18w700,
-                          // ),
-                          // const SizedBox(height: 10),
-                          const IntermittentDivider(
-                            dashWidth: 3,
-                          ),
-                          const SizedBox(height: 5),
-                          CustomRowText(
-                            text1: S.of(context).total,
-                            textStyle1: AppStyles.textStyle18w400,
-                            text2: myCartCubit.myCart.totalFinally.toString(),
-                            textStyle2: AppStyles.textStyle18w700,
-                          ),
-                          SizedBox(
-                            height: 45.h,
-                          ),
-                          AppBottom(
-                            title: S.of(context).proceed_to_checkout,
-                            onTap: () {
-                              // HelperFunctions.navigateToScreen(
-                              //   context,
-                              //   const CheckoutView(),
-                              // );
-                            },
-                          ),
-                          SizedBox(
-                            height: 24.h,
-                          ),
-                        ],
-                      );
-                    }
-                  }
-                },
+                                ),
+                              ),
+                              SizedBox(
+                                height: 43.h,
+                              ),
+                              // CustomRowText(
+                              //   text1: S.of(context).sub_total,
+                              //   textStyle1: AppStyles.textStyle18w400,
+                              //   text2: '1019.800 KD',
+                              //   textStyle2: AppStyles.textStyle18w700,
+                              // ),
+                              // const SizedBox(height: 10),
+                              const IntermittentDivider(
+                                dashWidth: 3,
+                              ),
+                              const SizedBox(height: 5),
+                              CustomRowText(
+                                text1: S.of(context).total,
+                                textStyle1: AppStyles.textStyle18w400,
+                                text2:
+                                    myCartCubit.myCart.totalFinally.toString(),
+                                textStyle2: AppStyles.textStyle18w700,
+                              ),
+                              SizedBox(
+                                height: 45.h,
+                              ),
+                              AppBottom(
+                                title: S.of(context).proceed_to_checkout,
+                                onTap: () {
+                                  // HelperFunctions.navigateToScreen(
+                                  //   context,
+                                  //   const CheckoutView(),
+                                  // );
+                                },
+                              ),
+                              SizedBox(
+                                height: 24.h,
+                              ),
+                            ],
+                          );
+                        }
+                      }
+                    },
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
