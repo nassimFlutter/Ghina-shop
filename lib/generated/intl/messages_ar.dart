@@ -166,6 +166,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_password_": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الجديدة*",
     ),
+    "no_Product_In_Cart": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد منتجات في السلة",
+    ),
     "no_added_address": MessageLookupByLibrary.simpleMessage(
       "لا توجد عناوين مضافة",
     ),

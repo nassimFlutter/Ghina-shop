@@ -3,13 +3,19 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/logger.dart';
+import 'package:best_price/core/widgets/custom_snack_bar.dart';
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
+import 'package:best_price/feature/cart/presentation/manager/delete_from_my_cart_cubit/delete_from_my_cart_cubit.dart';
 import 'package:best_price/feature/cart/presentation/widgets/custom_edit_quantity.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../../core/widgets/question_dialog.dart';
 
@@ -139,14 +145,41 @@ class CartItem extends StatelessWidget {
                       onPressed: () {
                         HelperFunctions.showCustomDialog(
                             context,
-                            QuestionDialog(
-                              title: S
-                                  .of(context)
-                                  .delete_product, //"Delete Product",
-                              contain: S
-                                  .of(context)
-                                  .delete_product_contain_message, // "Are Your Sure You \nWant to delete Item from Cart",
-                              onTapYes: () {},
+                            BlocConsumer<DeleteFromMyCartCubit,
+                                DeleteFromMyCartState>(
+                              listener: (context, state) {
+                                if (state is DeleteFromMyCartFailures) {
+                                  showTopSnackBar(
+                                      Overlay.of(context),
+                                      const CustomSnackBar.error(
+                                          message: "خطا في حذف المنتج"));
+                                } else if (state is DeleteFromMyCartSuccess) {
+                                  showTopSnackBar(
+                                      Overlay.of(context),
+                                      const CustomSnackBar.success(
+                                          message: "تم حذف المنتج"));
+
+                                  HelperFunctions.navigateToBack(context);
+                                }
+                              },
+                              builder: (context, state) {
+                                return ModalProgressHUD(
+                                  
+                                  inAsyncCall: state is DeleteFromMyCartLoading,
+                                  child: QuestionDialog(
+                                    title: S
+                                        .of(context)
+                                        .delete_product, //"Delete Product",
+                                    contain: S
+                                        .of(context)
+                                        .delete_product_contain_message, // "Are Your Sure You \nWant to delete Item from Cart",
+                                    onTapYes: () async {
+                                      await DeleteFromMyCartCubit.get(context)
+                                          .deleteFromCart(cartProduct.id ?? 0);
+                                    },
+                                  ),
+                                );
+                              },
                             ));
                       },
                       icon: SvgPicture.asset(

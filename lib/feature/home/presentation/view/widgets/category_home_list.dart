@@ -15,7 +15,6 @@ class CategoryHomeList extends StatefulWidget {
 
 class _CategoryHomeListState extends State<CategoryHomeList> {
   String? _selectedCategoryName;
-
   @override
   Widget build(BuildContext context) {
     final homeCubit = HomeCubit.get(context);
@@ -23,73 +22,72 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
 
     return SizedBox(
       height: 50.h,
-      child: ListView.builder(
-        clipBehavior: Clip.none,
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length + 1,
-        itemBuilder: (context, index) {
-          if (index < categories.length) {
-            final category = categories[index];
-            return CategoryHomeItem(
-              categoryTitle: category.name ?? "",
-              imageUrl: category.image ?? "",
-              categoryId: category.id ?? -1,
-            );
-          } else {
-            // This is the dropdown item
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 4.w), // reduced horizontal padding
-              child: DropdownButtonHideUnderline(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8.w),
-                  height: 36.h, // reduce height
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(8.r),
+      child: Row(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                final category = categories[index];
+                return CategoryHomeItem(
+                  categoryTitle: category.name ?? "",
+                  imageUrl: category.image ?? "",
+                  categoryId: category.id ?? -1,
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 4.w),
+            child: DropdownButtonHideUnderline(
+              child: Container(
+                width: 100.w,
+                height: 36.h,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+                child: DropdownButton<String>(
+                  isDense: true,
+                  isExpanded: true,
+                  hint: Text(
+                    "",
+                    style: AppStyles.textStyle14.copyWith(fontSize: 12.sp),
                   ),
-                  child: DropdownButton<String>(
-                    isDense: true, // compact dropdown
-                    isExpanded: false,
-                    hint: Text(
-                      "",
-                      style: AppStyles.textStyle14
-                          .copyWith(fontSize: 12.sp), // smaller font
-                    ),
-                    value: _selectedCategoryName,
-                    icon: Icon(Icons.arrow_drop_down,
-                        size: 16.sp), // smaller icon
-                    items: categories
-                        .map((category) => DropdownMenuItem<String>(
-                              value: category.name,
-                              child: Text(
-                                category.name ?? "",
-                                style: TextStyle(fontSize: 12.sp),
-                              ),
-                            ))
-                        .toList(),
-                    onChanged: (selected) {
-                      setState(() {
-                        _selectedCategoryName = selected;
-                      });
+                  value: _selectedCategoryName,
+                  icon: Icon(Icons.arrow_drop_down, size: 16.sp),
+                  items: categories
+                      .map((category) => DropdownMenuItem<String>(
+                            value: category.name,
+                            child: Text(
+                              category.name ?? "",
+                              style: TextStyle(fontSize: 12.sp),
+                            ),
+                          ))
+                      .toList(),
+                  onChanged: (selected) {
+                    setState(() {
+                      _selectedCategoryName = selected;
+                    });
 
-                      final selectedCategory = categories.firstWhere(
-                        (cat) => cat.name == selected,
-                        orElse: () => categories[0],
-                      );
-                      HelperFunctions.navigateToScreen(
-                          context,
-                          ProductCategoryView(
-                            title: selectedCategory.name ?? "",
-                            categoryId: selectedCategory.id ?? -1,
-                          ));
-                    },
-                  ),
+                    final selectedCategory = categories.firstWhere(
+                      (cat) => cat.name == selected,
+                      orElse: () => categories[0],
+                    );
+                    HelperFunctions.navigateToScreen(
+                      context,
+                      ProductCategoryView(
+                        title: selectedCategory.name ?? "",
+                        categoryId: selectedCategory.id ?? -1,
+                      ),
+                    );
+                  },
                 ),
               ),
-            );
-          }
-        },
+            ),
+          ),
+        ],
       ),
     );
   }

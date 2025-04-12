@@ -1284,6 +1284,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No products in cart`
+  String get no_Product_In_Cart {
+    return Intl.message(
+      'No products in cart',
+      name: 'no_Product_In_Cart',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

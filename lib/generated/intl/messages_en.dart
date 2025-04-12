@@ -166,6 +166,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "new_arrivals": MessageLookupByLibrary.simpleMessage("New Arrivals"),
     "new_password_": MessageLookupByLibrary.simpleMessage("new Password*"),
+    "no_Product_In_Cart": MessageLookupByLibrary.simpleMessage(
+      "No products in cart",
+    ),
     "no_added_address": MessageLookupByLibrary.simpleMessage(
       "No Added Address",
     ),

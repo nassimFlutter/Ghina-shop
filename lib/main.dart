@@ -23,6 +23,7 @@ import 'package:best_price/feature/brands/presntations/manager/brands_cubit/bran
 import 'package:best_price/feature/brands/presntations/manager/product_brands_cubit/product_brands_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
+import 'package:best_price/feature/cart/presentation/manager/delete_from_my_cart_cubit/delete_from_my_cart_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_cubit/category_cubit.dart';
 import 'package:best_price/feature/category/presentaion/manager/category_product_cubit/category_product_cubit.dart';
@@ -177,6 +178,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AddToCartCubit(),
+        ),
+        BlocProvider(
+          create: (context) => DeleteFromMyCartCubit(),
         ),
       ],
       child: BlocBuilder<LangCubit, LangState>(

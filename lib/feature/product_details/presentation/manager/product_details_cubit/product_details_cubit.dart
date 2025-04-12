@@ -17,6 +17,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   final int id;
   static ProductDetailsCubit get(context) => BlocProvider.of(context);
   ProductDetailsModel productDetailsModel = ProductDetailsModel();
+  
   Future<void> getProductDetails(int id) async {
     emit(ProductDetailsCubitLoading());
     var result = await getIt.get<ProductDetailsRepo>().getProductDetails(id);

@@ -20,7 +20,7 @@ class CustomNetworkImageWidget extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: urlImage,
         errorWidget: (context, url, error) => const Image(
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
           image: AssetImage(
             IconsPath.splashLogo,
           ),

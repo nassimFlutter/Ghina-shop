@@ -5,7 +5,12 @@ import requests
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-
+from datetime import datetime
+import yaml
+def get_flutter_version(pubspec_path='pubspec.yaml'):
+    with open(pubspec_path, 'r') as f:
+        pubspec = yaml.safe_load(f)
+        return pubspec.get('version', 'unknown')
 # def authenticate_gdrive():
 #     base64_creds = os.environ.get('GDRIVE_CREDENTIALS')
 #     if not base64_creds:
@@ -77,10 +82,11 @@ def sanitize_filename(filename):
 if __name__ == '__main__':
     telegram_token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID')
-
+    current_date = datetime.now().strftime("%-d-%-m-%Y")
+    flutter_version = get_flutter_version()
     # Paths and custom names
     apk_path = 'build/app/outputs/flutter-apk/app-release.apk'
-    apk_name = sanitize_filename("Ghina shop-APK_1.0.3+4_11-4-2025.apk")
+    apk_name = sanitize_filename(f"Ghina shop_APK_{flutter_version}_{current_date}.apk")
 
     aab_path = 'build/app/outputs/bundle/release/app-release.aab'
     aab_name = sanitize_filename("Ghina shop-AAB_1.0.4+5_7-3-2025.aab")
@@ -95,4 +101,4 @@ if __name__ == '__main__':
     # Upload AAB and send notifications
     # aab_drive_link = upload_file(gdrive_service, aab_path, aab_name)
     # send_telegram_message(f"✅ Weisro AAB uploaded successfully!\nGoogle Drive Link: {aab_drive_link}", telegram_token, chat_id)
-    send_telegram_file(aab_path, telegram_token, chat_id, aab_name)
+    # send_telegram_file(aab_path, telegram_token, chat_id, aab_name)

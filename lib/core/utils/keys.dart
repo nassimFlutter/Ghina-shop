@@ -21,7 +21,7 @@ class UrlKeys {
   static const getMyCartEndPoint = "getMyCart";
   static const addMyCartEndPoint = "addProductToCart/";
   static const deleteFromCartEndPoint =
-      "getMyCart"; //?  this need id in end ex:{{mainURL}}deleteProductCart/1
+      "deleteProductCart"; //?  this need id in end ex:{{mainURL}}deleteProductCart/1
   //! global
   static const getAreaEndPoint = 'getAreas';
   //! Address

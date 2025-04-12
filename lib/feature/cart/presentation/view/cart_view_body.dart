@@ -1,4 +1,3 @@
-import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/error_widget.dart';
@@ -6,7 +5,6 @@ import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
-import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,7 +50,14 @@ class CartViewBody extends StatelessWidget {
               BlocBuilder<MyCartCubit, MyCartState>(
                 builder: (context, state) {
                   if (state is MyCartLoading) {
-                    return const CustomCircularProgressIndicator();
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height -
+                          kToolbarHeight -
+                          MediaQuery.of(context).padding.top,
+                      child: const Center(
+                        child: CustomCircularProgressIndicator(),
+                      ),
+                    );
                   } else if (state is MyCartFailures) {
                     return CustomErrorWidget(
                       onTap: () {
@@ -61,8 +66,14 @@ class CartViewBody extends StatelessWidget {
                     );
                   } else {
                     if (myCartCubit.myCart.myCart!.isEmpty) {
-                      return const Center(
-                        child: NoResult(title: "no product in cart"),
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height -
+                            kToolbarHeight -
+                            MediaQuery.of(context).padding.top,
+                        child: Center(
+                          child:
+                              NoResult(title: S.of(context).no_Product_In_Cart),
+                        ),
                       );
                     } else {
                       return Column(

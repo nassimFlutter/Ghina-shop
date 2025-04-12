@@ -1,6 +1,7 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
@@ -16,15 +17,22 @@ import '../manager/product_details_cubit/product_details_cubit.dart';
 import 'widget/small_photo_option_widget_new.dart';
 import 'widget/video_player_widget.dart';
 
-class ProductDetailsPage extends StatelessWidget {
+class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({super.key, required this.id});
   final int id;
+
+  @override
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
+}
+
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
 // todo : finish translate
+  final PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => ProductDetailsCubit(id),
+      create: (BuildContext context) => ProductDetailsCubit(widget.id),
       child: BlocConsumer<ProductDetailsCubit, ProductDetailsState>(
           listener: (BuildContext context, ProductDetailsState state) {},
           builder: (BuildContext context, ProductDetailsState state) {
@@ -68,32 +76,38 @@ class ProductDetailsPage extends StatelessWidget {
                             padding: EdgeInsetsDirectional.symmetric(
                                 horizontal: 16.w),
                             child: Container(
+                              height: 250,
                               decoration: BoxDecoration(
                                 color: AppColor.containerBackColor,
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final selectedMedia = cubit
-                                          .productDetailsModel
-                                          .items
-                                          ?.images?[cubit.indexImagesDetails];
-                                      final isVideo = selectedMedia?.type == 11;
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: PageView.builder(
+                                  controller: pageController,
+                                  itemCount: cubit.productDetailsModel.items
+                                          ?.images?.length ??
+                                      0,
+                                  onPageChanged: (index) {
+                                    cubit.onChangeIndexImages(index);
+                                  },
+                                  itemBuilder: (context, index) {
+                                    final media = cubit.productDetailsModel
+                                        .items?.images?[index];
+                                    final isVideo = media?.type == 11;
 
-                                      if (isVideo) {
-                                        return VideoPlayerWidget(
-                                            videoUrl:
-                                                selectedMedia?.image ?? '');
-                                      } else {
-                                        return CustomNetworkImageWidget(
-                                          urlImage: selectedMedia?.image ?? '',
-                                        );
-                                      }
-                                    },
-                                  ),
+                                    if (isVideo) {
+                                      return VideoPlayerWidget(
+                                        videoUrl: media?.image ?? '',
+                                      );
+                                    } else {
+                                      return CustomNetworkImageWidget(
+                                        height: double.infinity,
+                                        width: double.infinity,
+                                        urlImage: media?.image ?? '',
+                                      );
+                                    }
+                                  },
                                 ),
                               ),
                             ),
@@ -123,6 +137,12 @@ class ProductDetailsPage extends StatelessWidget {
                                           GestureDetector(
                                             onTap: () {
                                               cubit.onChangeIndexImages(i);
+                                              pageController.animateToPage(
+                                                i,
+                                                duration: const Duration(
+                                                    milliseconds: 300),
+                                                curve: Curves.easeInOut,
+                                              );
                                             },
                                             child: SmallPhotoOptionWidget(
                                               borderColor:

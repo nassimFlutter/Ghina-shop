@@ -4,7 +4,7 @@ class CartModel {
   bool? status;
   int? code;
   String? message;
-  int? totalFinally;
+  num? totalFinally;
   List<MyCart>? myCart;
 
   CartModel({
