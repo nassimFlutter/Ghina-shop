@@ -245,7 +245,7 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(height: 40.h),
                       ],
                     ),
                   ),

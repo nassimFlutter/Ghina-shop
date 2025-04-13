@@ -41,43 +41,37 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 4.w),
-            child: SizedBox(
-              width: 100,
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  icon: Icon(Icons.arrow_drop_down, size: 16.sp),
-                  isExpanded: true,
-                  value: null, // This hides the selected value
-                  hint: const SizedBox.shrink(), // No hint text
-                  items: categories.map((category) {
-                    return DropdownMenuItem<String>(
-                      value: category.name,
-                      child: Text(
-                        category.name ?? "",
-                        style: TextStyle(fontSize: 12.sp),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (selected) {
-                    setState(() {
-                      _selectedCategoryName = selected;
-                    });
+            child: PopupMenuButton<String>(
+              icon: Icon(Icons.arrow_drop_down_circle_outlined, size: 24.sp),
+              itemBuilder: (context) {
+                return categories.map((category) {
+                  return PopupMenuItem<String>(
+                    value: category.name,
+                    child: Text(
+                      category.name ?? "",
+                      style: TextStyle(fontSize: 12.sp),
+                    ),
+                  );
+                }).toList();
+              },
+              onSelected: (selected) {
+                setState(() {
+                  _selectedCategoryName = selected;
+                });
 
-                    final selectedCategory = categories.firstWhere(
-                      (cat) => cat.name == selected,
-                      orElse: () => categories[0],
-                    );
+                final selectedCategory = categories.firstWhere(
+                  (cat) => cat.name == selected,
+                  orElse: () => categories[0],
+                );
 
-                    HelperFunctions.navigateToScreen(
-                      context,
-                      ProductCategoryView(
-                        title: selectedCategory.name ?? "",
-                        categoryId: selectedCategory.id ?? -1,
-                      ),
-                    );
-                  },
-                ),
-              ),
+                HelperFunctions.navigateToScreen(
+                  context,
+                  ProductCategoryView(
+                    title: selectedCategory.name ?? "",
+                    categoryId: selectedCategory.id ?? -1,
+                  ),
+                );
+              },
             ),
           ),
         ],
