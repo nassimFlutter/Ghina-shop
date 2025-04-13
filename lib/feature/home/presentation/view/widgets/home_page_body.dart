@@ -6,7 +6,6 @@ import 'package:best_price/feature/best_selling/presntations/view/pages/best_sel
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
 import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
-import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_ad_list.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_category_home_list.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_home_title.dart';
@@ -163,6 +162,8 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
+                        SizedBox(height: 30.h),
+
                         BlocBuilder<HomeCubit, HomeCubitState>(
                           builder: (context, state) {
                             if (state is HomeCubitLoading) {
@@ -204,6 +205,7 @@ class HomePgeBody extends StatelessWidget {
                             }
                           },
                         ),
+                        SizedBox(height: 30.h),
 
                         // ! New Arrivals List
                         BlocBuilder<HomeCubit, HomeCubitState>(
