@@ -30,7 +30,6 @@ class HomeCubit extends Cubit<HomeCubitState> {
     var result = await getIt.get<HomeRepo>().getHomePage();
     result.fold(
       (error) {
-        print(error.errMassage);
         LoggerHelper.error(error.errMassage, error.statusCode);
         emit(HomeCubitFailure(errMessage: error.errMassage));
       },

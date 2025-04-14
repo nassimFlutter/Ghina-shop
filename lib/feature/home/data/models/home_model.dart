@@ -192,7 +192,7 @@ class Product {
   int? featured;
   dynamic offerEndDate;
   int? quantity;
-  String? isHasVariant;
+  int? isHasVariant;
   String? status;
   int? markLabel;
   int? isBestSeller;
@@ -273,7 +273,7 @@ class Product {
     int? featured,
     dynamic offerEndDate,
     int? quantity,
-    String? isHasVariant,
+    int? isHasVariant,
     String? status,
     int? markLabel,
     int? isBestSeller,

@@ -1,3 +1,5 @@
+import 'package:best_price/core/theme/app_color.dart';
+import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
@@ -20,6 +22,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:marquee/marquee.dart';
 import '../../../../../core/widgets/error_widget.dart';
 import 'ad_list.dart';
 import 'category_home_list.dart';
@@ -90,16 +93,39 @@ class HomePgeBody extends StatelessWidget {
                           horizontal: Dimensions.dStartPadding.w),
                       children: [
                         SizedBox(height: 26.h),
-                        BlocConsumer<HomeCubit, HomeCubitState>(
-                          listener: (context, state) {},
+                        BlocBuilder<HomeCubit, HomeCubitState>(
                           builder: (context, state) {
                             if (state is HomeCubitLoading) {
                               return const ShimmerLetStartText();
                             } else {
-                              return const LetStartText();
+                              return Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                child: SizedBox(
+                                  height: 30.h,
+                                  child: Marquee(
+                                    text:
+                                        '🛍️ اكتشف أفضل العروض! 🚀 جديد كل يوم! 💰 تسوق بذكاء، ووفر أكثر!',
+                                    style: AppStyles.textStyle17w700
+                                        .copyWith(color: AppColor.black),
+                                    scrollAxis: Axis.horizontal,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    blankSpace: 40.0,
+                                    velocity: 50.0,
+                                    pauseAfterRound: const Duration(seconds: 1),
+                                    startPadding: 10.0,
+                                    accelerationDuration: const Duration(seconds: 1),
+                                    accelerationCurve: Curves.linear,
+                                    decelerationDuration:
+                                        const Duration(milliseconds: 500),
+                                    decelerationCurve: Curves.easeOut,
+                                  ),
+                                ),
+                              );
                             }
                           },
                         ),
+
                         SizedBox(height: 12.h),
                         //!................ here Ad list .......
                         BlocConsumer<HomeCubit, HomeCubitState>(
