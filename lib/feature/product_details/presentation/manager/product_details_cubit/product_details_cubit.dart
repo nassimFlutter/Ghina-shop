@@ -16,8 +16,8 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
 
   final int id;
   static ProductDetailsCubit get(context) => BlocProvider.of(context);
-  ProductDetailsModel productDetailsModel = ProductDetailsModel();
-  
+  ProductDetailsModel productDetailsModel = const ProductDetailsModel();
+
   Future<void> getProductDetails(int id) async {
     emit(ProductDetailsCubitLoading());
     var result = await getIt.get<ProductDetailsRepo>().getProductDetails(id);
@@ -26,7 +26,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       emit(ProductDetailsCubitFailure(errMessage: error.errMassage));
     }, (getHomePageSuccess) {
       productDetailsModel = getHomePageSuccess;
-      productDetailsModel.items?.images?.add(Image(
+      productDetailsModel.data?.images?.add(const Images(
           image:
               "https://drive.google.com/file/d/10pPaPxrVe4q8oeEOZJVBBD_YtpcInJoe/view?usp=sharing",
           type: 11));
@@ -56,21 +56,21 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   int quantity = 01;
   int quantityData = 1;
 
-  bool checkIfSizeAndColorExist(
-      int sizeId, int colorId, List<Variant>? variants) {
-    if (colorId == 0 || sizeId == 0) {
-      return true;
-    }
+  // bool checkIfSizeAndColorExist(
+  //     int sizeId, int colorId, List<Variant>? variants) {
+  //   if (colorId == 0 || sizeId == 0) {
+  //     return true;
+  //   }
 
-    for (var variant in variants!) {
-      if (variant.sizeId == sizeId && variant.colorId == colorId) {
-        quantityData = variant.quantity!;
-        return true;
-      }
-    }
+  //   for (var variant in variants!) {
+  //     if (variant.sizeId == sizeId && variant.colorId == colorId) {
+  //       quantityData = variant.quantity!;
+  //       return true;
+  //     }
+  //   }
 
-    return false;
-  }
+  //   return false;
+  // }
 
   plusQuantity() {
     quantity++;

@@ -10,10 +10,12 @@ class ApiService {
 
   Future<dynamic> get(
       {required String endPoint, CancelToken? cancelToken}) async {
-    dio.options.headers['Accept-Language'] = 'ar';
+    dio.options.headers['accept-language'] = 'ar';
     String token = await CacheHelper.getData(key: Keys.kUserToken);
     LoggerHelper.info(token);
     dio.options.headers["Authorization"] = "Bearer $token";
+    dio.options.headers["accept-language"] = "ar";
+    dio.options.headers["x-api-key"] = UrlKeys.apiKey;
     var response = await dio.get(endPoint, cancelToken: cancelToken);
     return response.data;
   }
@@ -41,6 +43,8 @@ class ApiService {
       String? token = await CacheHelper.getData(key: Keys.kUserToken);
       LoggerHelper.info(token ?? "cache helper null");
       dio.options.headers["Authorization"] = "Bearer $token";
+      dio.options.headers["accept-language"] = "ar";
+      dio.options.headers["x-api-key"] = UrlKeys.apiKey;
     }
     var response =
         await dio.post(endPoint, data: data, cancelToken: cancelToken);

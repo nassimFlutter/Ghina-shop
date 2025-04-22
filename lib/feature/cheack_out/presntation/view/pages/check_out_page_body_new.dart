@@ -1,0 +1,113 @@
+import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/core/utils/dimensions.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/core/utils/validate.dart';
+import 'package:best_price/core/widgets/app_bar_row.dart';
+import 'package:best_price/core/widgets/app_bottom.dart';
+import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
+import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
+import 'package:best_price/feature/cheack_out/presntation/manager/add_order_cubit/add_order_cubit.dart';
+import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class CheckOutPageBodyNew extends StatelessWidget {
+  const CheckOutPageBodyNew({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    LangCubit langCubit = LangCubit.get(context);
+    AddOrderCubit addOrderCubit = AddOrderCubit.get(context);
+    final _formKey = GlobalKey<FormState>();
+    return Form(
+      key: _formKey,
+      child: ListView(
+          padding: EdgeInsetsDirectional.symmetric(
+              horizontal: Dimensions.dStartPadding.w),
+          children: [
+            SizedBox(
+              height: 14.h,
+            ),
+            AppBarRow(
+              iconPath: langCubit.lang == "en"
+                  ? IconsPath.arrowLeftIcon
+                  : IconsPath.rightArrowIcon,
+              title: S.of(context).checkout, //"Checkout",
+              onFirstIconTap: () {
+                HelperFunctions.navigateToBack(context);
+              },
+            ),
+            SizedBox(
+              height: 32.h,
+            ),
+            AuthFieldText(
+              title: S.of(context).shipping_address,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            AuthTextField(
+              textEditingController: addOrderCubit.shippingAddressController,
+              keyboardType: TextInputType.streetAddress,
+              validator: (p0) => Validate.validateFailed(context, p0),
+            ),
+            SizedBox(
+              height: 32.h,
+            ),
+            AuthFieldText(
+              title: S.of(context).name,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            AuthTextField(
+              textEditingController: addOrderCubit.fullNameController,
+              keyboardType: TextInputType.name,
+              validator: (p0) => Validate.validateFullName(context, p0),
+            ),
+            SizedBox(
+              height: 32.h,
+            ),
+            AuthFieldText(
+              title: S.of(context).phone_number_,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            AuthTextField(
+              textEditingController: addOrderCubit.phoneController,
+              keyboardType: TextInputType.phone,
+              validator: (p0) => Validate.validatePhoneNumber(context, p0),
+            ),
+            SizedBox(
+              height: 32.h,
+            ),
+            AuthFieldText(
+              title: S.of(context).e_mail,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            AuthTextField(
+              textEditingController: addOrderCubit.emailController,
+              keyboardType: TextInputType.emailAddress,
+              validator: (p0) => Validate.validateEmail(context, p0),
+            ),
+            SizedBox(
+              height: 32.h,
+            ),
+            AppBottom(
+              title: S.of(context).confirm,
+              onTap: () async {
+                if (_formKey.currentState!.validate()) {
+                  addOrderCubit.submitOrder(context);
+                }
+              },
+            )
+          ]),
+    );
+  }
+}

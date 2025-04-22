@@ -58,8 +58,9 @@ class CategoryViewBody extends StatelessWidget {
                         });
                   } else {
                     return SliverGrid.builder(
-                        itemCount:
-                            categoryCubit.categoryResponse.items?.length ?? 0,
+                        itemCount: categoryCubit
+                                .categoryResponse.data?.categories?.length ??
+                            0,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisSpacing: 15.w,
                           mainAxisSpacing: 15.h,
@@ -67,21 +68,21 @@ class CategoryViewBody extends StatelessWidget {
                         ),
                         itemBuilder: (context, index) {
                           return CategoryCard(
-                            imageUrl: categoryCubit
-                                    .categoryResponse.items?[index].image ??
+                            imageUrl: categoryCubit.categoryResponse.data
+                                    ?.categories?[index].image ??
                                 "",
-                            title: categoryCubit
-                                    .categoryResponse.items?[index].name ??
+                            title: categoryCubit.categoryResponse.data
+                                    ?.categories?[index].name ??
                                 "",
                             onTap: () {
                               HelperFunctions.navigateToScreen(
                                   context,
                                   ProductCategoryView(
-                                    title: categoryCubit.categoryResponse
-                                            .items?[index].name ??
+                                    title: categoryCubit.categoryResponse.data
+                                            ?.categories?[index].name ??
                                         "",
                                     categoryId: categoryCubit.categoryResponse
-                                            .items?[index].id ??
+                                            .data?.categories?[index].id ??
                                         -1,
                                   ));
                             },

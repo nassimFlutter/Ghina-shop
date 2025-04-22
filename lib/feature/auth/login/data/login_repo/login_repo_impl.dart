@@ -15,20 +15,17 @@ class LoginRepoImpl implements LoginRepo {
     try {
       var response = await getIt
           .get<ApiService>()
-          .post(endPoint: "login", data: user.toJson());
-      String? message;
-      bool status = response['status'];
+          .post(endPoint: "auth/login", data: user.toJson());
 
-      if (response['message'] != null) {
-        message = response['message'];
+      if (response["result"] != null) {
+        await cacheUserInfo(response['result']);
       }
-      if (status) {
-        if (response["user"] != null) {
-          await cacheUserInfo(response['user']);
-        }
+      if (response['token'] != null && response['token'] is String) {
+        await CacheHelper.setData(
+            key: Keys.kUserToken, value: response['token']);
       }
       await CacheHelper.setData(key: Keys.kIsFirstTime, value: true);
-      return right(Tuple2<bool, String>(status, message ?? ""));
+      return right(const Tuple2<bool, String>(true, "تم التسجيل بنجاح"));
     } catch (e) {
       if (e is DioException) {
         LoggerHelper.error(' ########### Dio Exception #################');

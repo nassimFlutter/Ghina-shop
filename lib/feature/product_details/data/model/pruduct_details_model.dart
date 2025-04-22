@@ -1,385 +1,305 @@
-import 'dart:convert';
-
 class ProductDetailsModel {
-  bool? status;
-  int? code;
-  String? message;
-  Items? items;
+  final String? status;
+  final String? message;
+  final Data? data;
+  final dynamic errors;
+  const ProductDetailsModel(
+      {this.status, this.message, this.data, this.errors});
+  ProductDetailsModel copyWith(
+      {String? status, String? message, Data? data, dynamic? errors}) {
+    return ProductDetailsModel(
+        status: status ?? this.status,
+        message: message ?? this.message,
+        data: data ?? this.data,
+        errors: errors ?? this.errors);
+  }
 
-  ProductDetailsModel({
-    this.status,
-    this.code,
-    this.message,
-    this.items,
-  });
+  Map<String, Object?> toJson() {
+    return {
+      'status': status,
+      'message': message,
+      'data': data?.toJson(),
+      'errors': errors
+    };
+  }
 
-  factory ProductDetailsModel.fromRawJson(String str) =>
-      ProductDetailsModel.fromJson(json.decode(str));
+  static ProductDetailsModel fromJson(Map<String, Object?> json) {
+    return ProductDetailsModel(
+        status: json['status'] == null ? null : json['status'] as String,
+        message: json['message'] == null ? null : json['message'] as String,
+        data: json['data'] == null
+            ? null
+            : Data.fromJson(json['data'] as Map<String, Object?>),
+        errors: json['errors'] as dynamic);
+  }
 
-  String toRawJson() => json.encode(toJson());
+  @override
+  String toString() {
+    return '''ProductDetailsModel(
+                status:$status,
+message:$message,
+data:${data.toString()},
+errors:$errors
+    ) ''';
+  }
 
-  factory ProductDetailsModel.fromJson(Map<String, dynamic> json) =>
-      ProductDetailsModel(
-        status: json["status"],
-        code: json["code"],
-        message: json["message"],
-        items: json["items"] == null ? null : Items.fromJson(json["items"]),
-      );
+  @override
+  bool operator ==(Object other) {
+    return other is ProductDetailsModel &&
+        other.runtimeType == runtimeType &&
+        other.status == status &&
+        other.message == message &&
+        other.data == data &&
+        other.errors == errors;
+  }
 
-  Map<String, dynamic> toJson() => {
-        "status": status,
-        "code": code,
-        "message": message,
-        "items": items?.toJson(),
-      };
+  @override
+  int get hashCode {
+    return Object.hash(runtimeType, status, message, data, errors);
+  }
 }
 
-class Items {
-  int? id;
-  int? categoryId;
-  String? image;
-  int? price;
-  int? discountPrice;
-  int? featured;
-  DateTime? offerEndDate;
-  int? quantity;
-  String? isHasVariant;
-  String? status;
-  int? markLabel;
-  int? isBestSeller;
-  DateTime? createdAt;
-  int? brandId;
-  int? isCart;
-  int? isOutStock;
-  String? isFevorite;
-  String? urlLink;
-  String? description;
-  String? name;
-  String? brandName;
-  String? companyName;
-  String? title;
-  List<Variant>? variants;
-  List<Image>? images;
+class Data {
+  final int? id;
+  final String? image;
+  final int? price;
+  final int? discountPrice;
+  final bool? featured;
+  final String? offerEndDate;
+  final int? quantity;
+  final bool? isHasVariant;
+  final String? status;
+  final int? markLabel;
+  final int? isBestSeller;
+  final String? createdAt;
+  final String? name;
+  final String? description;
+  final List<Images>? images;
+  final List<dynamic>? variants;
+  final dynamic rate;
+  const Data(
+      {this.id,
+      this.image,
+      this.price,
+      this.discountPrice,
+      this.featured,
+      this.offerEndDate,
+      this.quantity,
+      this.isHasVariant,
+      this.status,
+      this.markLabel,
+      this.isBestSeller,
+      this.createdAt,
+      this.name,
+      this.description,
+      this.images,
+      this.variants,
+      this.rate});
+  Data copyWith(
+      {int? id,
+      String? image,
+      int? price,
+      int? discountPrice,
+      bool? featured,
+      String? offerEndDate,
+      int? quantity,
+      bool? isHasVariant,
+      String? status,
+      int? markLabel,
+      int? isBestSeller,
+      String? createdAt,
+      String? name,
+      String? description,
+      List<Images>? images,
+      List<dynamic>? variants,
+      dynamic? rate}) {
+    return Data(
+        id: id ?? this.id,
+        image: image ?? this.image,
+        price: price ?? this.price,
+        discountPrice: discountPrice ?? this.discountPrice,
+        featured: featured ?? this.featured,
+        offerEndDate: offerEndDate ?? this.offerEndDate,
+        quantity: quantity ?? this.quantity,
+        isHasVariant: isHasVariant ?? this.isHasVariant,
+        status: status ?? this.status,
+        markLabel: markLabel ?? this.markLabel,
+        isBestSeller: isBestSeller ?? this.isBestSeller,
+        createdAt: createdAt ?? this.createdAt,
+        name: name ?? this.name,
+        description: description ?? this.description,
+        images: images ?? this.images,
+        variants: variants ?? this.variants,
+        rate: rate ?? this.rate);
+  }
 
-  Items({
-    this.id,
-    this.categoryId,
-    this.image,
-    this.price,
-    this.discountPrice,
-    this.featured,
-    this.offerEndDate,
-    this.quantity,
-    this.isHasVariant,
-    this.status,
-    this.markLabel,
-    this.isBestSeller,
-    this.createdAt,
-    this.brandId,
-    this.isCart,
-    this.isOutStock,
-    this.isFevorite,
-    this.urlLink,
-    this.description,
-    this.name,
-    this.brandName,
-    this.companyName,
-    this.title,
-    this.variants,
-    this.images,
-  });
+  Map<String, Object?> toJson() {
+    return {
+      'id': id,
+      'image': image,
+      'price': price,
+      'discount_price': discountPrice,
+      'featured': featured,
+      'offer_end_date': offerEndDate,
+      'quantity': quantity,
+      'is_has_variant': isHasVariant,
+      'status': status,
+      'mark_label': markLabel,
+      'is_best_seller': isBestSeller,
+      'created_at': createdAt,
+      'name': name,
+      'description': description,
+      'images':
+          images?.map<Map<String, dynamic>>((data) => data.toJson()).toList(),
+      'variants': variants,
+      'rate': rate
+    };
+  }
 
-  factory Items.fromRawJson(String str) => Items.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory Items.fromJson(Map<String, dynamic> json) => Items(
-        id: json["id"],
-        categoryId: json["category_id"],
-        image: json["image"],
-        price: json["price"],
-        discountPrice: json["discount_price"],
-        featured: json["featured"],
-        offerEndDate: json["offer_end_date"] == null
+  static Data fromJson(Map<String, Object?> json) {
+    return Data(
+        id: json['id'] == null ? null : json['id'] as int,
+        image: json['image'] == null ? null : json['image'] as String,
+        price: json['price'] == null ? null : json['price'] as int,
+        discountPrice: json['discount_price'] == null
             ? null
-            : DateTime.parse(json["offer_end_date"]),
-        quantity: json["quantity"],
-        isHasVariant: json["is_has_variant"],
-        status: json["status"],
-        markLabel: json["mark_label"],
-        isBestSeller: json["is_best_seller"],
-        createdAt: json["created_at"] == null
+            : json['discount_price'] as int,
+        featured: json['featured'] == null ? null : json['featured'] as bool,
+        offerEndDate: json['offer_end_date'] == null
             ? null
-            : DateTime.parse(json["created_at"]),
-        brandId: json["brand_id"],
-        isCart: json["is_cart"],
-        isOutStock: json["is_out_stock"],
-        isFevorite: json["is_fevorite"],
-        urlLink: json["url_link"],
-        description: json["description"],
-        name: json["name"],
-        brandName: json["brand_name"],
-        companyName: json["company_name"],
-        title: json["title"],
-        variants: json["variants"] == null
-            ? []
-            : List<Variant>.from(
-                json["variants"]!.map((x) => Variant.fromJson(x))),
-        images: json["images"] == null
-            ? []
-            : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),
-      );
+            : json['offer_end_date'] as String,
+        quantity: json['quantity'] == null ? null : json['quantity'] as int,
+        isHasVariant: json['is_has_variant'] == null
+            ? null
+            : json['is_has_variant'] as bool,
+        status: json['status'] == null ? null : json['status'] as String,
+        markLabel:
+            json['mark_label'] == null ? null : json['mark_label'] as int,
+        isBestSeller: json['is_best_seller'] == null
+            ? null
+            : json['is_best_seller'] as int,
+        createdAt:
+            json['created_at'] == null ? null : json['created_at'] as String,
+        name: json['name'] == null ? null : json['name'] as String,
+        description:
+            json['description'] == null ? null : json['description'] as String,
+        images: json['images'] == null
+            ? null
+            : (json['images'] as List)
+                .map<Images>(
+                    (data) => Images.fromJson(data as Map<String, Object?>))
+                .toList(),
+        variants:
+            json['variants'] == null ? null : json['variants'] as List<dynamic>,
+        rate: json['rate'] as dynamic);
+  }
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "category_id": categoryId,
-        "image": image,
-        "price": price,
-        "discount_price": discountPrice,
-        "featured": featured,
-        "offer_end_date":
-            "${offerEndDate!.year.toString().padLeft(4, '0')}-${offerEndDate!.month.toString().padLeft(2, '0')}-${offerEndDate!.day.toString().padLeft(2, '0')}",
-        "quantity": quantity,
-        "is_has_variant": isHasVariant,
-        "status": status,
-        "mark_label": markLabel,
-        "is_best_seller": isBestSeller,
-        "created_at": createdAt?.toIso8601String(),
-        "brand_id": brandId,
-        "is_cart": isCart,
-        "is_out_stock": isOutStock,
-        "is_fevorite": isFevorite,
-        "url_link": urlLink,
-        "description": description,
-        "name": name,
-        "brand_name": brandName,
-        "company_name": companyName,
-        "title": title,
-        "variants": variants == null
-            ? []
-            : List<dynamic>.from(variants!.map((x) => x.toJson())),
-        "images": images == null
-            ? []
-            : List<dynamic>.from(images!.map((x) => x.toJson())),
-      };
+  @override
+  String toString() {
+    return '''Data(
+                id:$id,
+image:$image,
+price:$price,
+discountPrice:$discountPrice,
+featured:$featured,
+offerEndDate:$offerEndDate,
+quantity:$quantity,
+isHasVariant:$isHasVariant,
+status:$status,
+markLabel:$markLabel,
+isBestSeller:$isBestSeller,
+createdAt:$createdAt,
+name:$name,
+description:$description,
+images:${images.toString()},
+variants:$variants,
+rate:$rate
+    ) ''';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is Data &&
+        other.runtimeType == runtimeType &&
+        other.id == id &&
+        other.image == image &&
+        other.price == price &&
+        other.discountPrice == discountPrice &&
+        other.featured == featured &&
+        other.offerEndDate == offerEndDate &&
+        other.quantity == quantity &&
+        other.isHasVariant == isHasVariant &&
+        other.status == status &&
+        other.markLabel == markLabel &&
+        other.isBestSeller == isBestSeller &&
+        other.createdAt == createdAt &&
+        other.name == name &&
+        other.description == description &&
+        other.images == images &&
+        other.variants == variants &&
+        other.rate == rate;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+        runtimeType,
+        id,
+        image,
+        price,
+        discountPrice,
+        featured,
+        offerEndDate,
+        quantity,
+        isHasVariant,
+        status,
+        markLabel,
+        isBestSeller,
+        createdAt,
+        name,
+        description,
+        images,
+        variants,
+        rate);
+  }
 }
 
-class Image {
-  int? id;
-  int? productId;
-  String? image;
-  int? type;
-  DateTime? createdAt;
+class Images {
+  final String? image;
+  final int? type;
+  const Images({this.image, this.type});
+  Images copyWith({String? image, int? type}) {
+    return Images(image: image ?? this.image, type: type ?? this.type);
+  }
 
-  Image({
-    this.id,
-    this.productId,
-    this.image,
-    this.type,
-    this.createdAt,
-  });
+  Map<String, Object?> toJson() {
+    return {'image': image, 'type': type};
+  }
 
-  factory Image.fromRawJson(String str) => Image.fromJson(json.decode(str));
+  static Images fromJson(Map<String, Object?> json) {
+    return Images(
+        image: json['image'] == null ? null : json['image'] as String,
+        type: json['type'] == null ? null : json['type'] as int);
+  }
 
-  String toRawJson() => json.encode(toJson());
+  @override
+  String toString() {
+    return '''Images(
+                image:$image,
+type:$type
+    ) ''';
+  }
 
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
-        id: json["id"],
-        productId: json["product_id"],
-        image: json["image"],
-        type: json["type"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-      );
+  @override
+  bool operator ==(Object other) {
+    return other is Images &&
+        other.runtimeType == runtimeType &&
+        other.image == image &&
+        other.type == type;
+  }
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "product_id": productId,
-        "image": image,
-        "type": type,
-        "created_at": createdAt?.toIso8601String(),
-      };
-}
-
-class Variant {
-  int? id;
-  int? productId;
-  int? sizeId;
-  int? colorId;
-  String? price;
-  int? quantity;
-  dynamic discountPrice;
-  dynamic offerEndDate;
-  String? status;
-  DateTime? deletedAt;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  Color? size;
-  Color? color;
-
-  Variant({
-    this.id,
-    this.productId,
-    this.sizeId,
-    this.colorId,
-    this.price,
-    this.quantity,
-    this.discountPrice,
-    this.offerEndDate,
-    this.status,
-    this.deletedAt,
-    this.createdAt,
-    this.updatedAt,
-    this.size,
-    this.color,
-  });
-
-  factory Variant.fromRawJson(String str) => Variant.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory Variant.fromJson(Map<String, dynamic> json) => Variant(
-        id: json["id"],
-        productId: json["product_id"],
-        sizeId: json["size_id"],
-        colorId: json["color_id"],
-        price: json["price"],
-        quantity: json["quantity"],
-        discountPrice: json["discount_price"],
-        offerEndDate: json["offer_end_date"],
-        status: json["status"],
-        deletedAt: json["deleted_at"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-        size: json["size"] == null ? null : Color.fromJson(json["size"]),
-        color: json["color"] == null ? null : Color.fromJson(json["color"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "product_id": productId,
-        "size_id": sizeId,
-        "color_id": colorId,
-        "price": price,
-        "quantity": quantity,
-        "discount_price": discountPrice,
-        "offer_end_date": offerEndDate,
-        "status": status,
-        "deleted_at": deletedAt,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
-        "size": size?.toJson(),
-        "color": color?.toJson(),
-      };
-}
-
-class Color {
-  int? id;
-  dynamic deletedAt;
-  String? status;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  String? name;
-  List<Translation>? translations;
-
-  Color({
-    this.id,
-    this.deletedAt,
-    this.status,
-    this.createdAt,
-    this.updatedAt,
-    this.name,
-    this.translations,
-  });
-
-  factory Color.fromRawJson(String str) => Color.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory Color.fromJson(Map<String, dynamic> json) => Color(
-        id: json["id"],
-        deletedAt: json["deleted_at"],
-        status: json["status"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-        name: json["name"],
-        translations: json["translations"] == null
-            ? []
-            : List<Translation>.from(
-                json["translations"]!.map((x) => Translation.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "deleted_at": deletedAt,
-        "status": status,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
-        "name": name,
-        "translations": translations == null
-            ? []
-            : List<dynamic>.from(translations!.map((x) => x.toJson())),
-      };
-}
-
-class Translation {
-  int? id;
-  int? colorId;
-  String? name;
-  String? locale;
-  dynamic deletedAt;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  int? sizeId;
-
-  Translation({
-    this.id,
-    this.colorId,
-    this.name,
-    this.locale,
-    this.deletedAt,
-    this.createdAt,
-    this.updatedAt,
-    this.sizeId,
-  });
-
-  factory Translation.fromRawJson(String str) =>
-      Translation.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory Translation.fromJson(Map<String, dynamic> json) => Translation(
-        id: json["id"],
-        colorId: json["color_id"],
-        name: json["name"],
-        locale: json["locale"],
-        deletedAt: json["deleted_at"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
-        sizeId: json["size_id"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "color_id": colorId,
-        "name": name,
-        "locale": locale,
-        "deleted_at": deletedAt,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
-        "size_id": sizeId,
-      };
+  @override
+  int get hashCode {
+    return Object.hash(runtimeType, image, type);
+  }
 }

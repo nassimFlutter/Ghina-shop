@@ -25,7 +25,7 @@ class ProductsItem extends StatelessWidget {
   final String imageUrl, brandName, companyName, title;
   final num price, offerPercentage;
   final num? offerPrice;
-  final String isFavorite;
+  final bool isFavorite;
   final void Function()? onTap;
   final void Function()? onFavoriteTap;
   @override
@@ -51,7 +51,7 @@ class ProductsItem extends StatelessWidget {
                   bottom: 15.h,
                   right: 6.w,
                   child: SmallContainer(
-                    imagePath: isFavorite == '1'
+                    imagePath: isFavorite
                         ? IconsPath.favoriteRedIcon
                         : IconsPath.heartIcon,
                     color: AppColor.yalow,

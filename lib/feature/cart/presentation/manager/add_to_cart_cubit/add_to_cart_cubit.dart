@@ -9,9 +9,8 @@ class AddToCartCubit extends Cubit<AddToCartState> {
   AddToCartCubit() : super(AddToCartInitial());
   Future<void> addToCart(String productId, int quantity) async {
     emit(AddToCartLoading());
-    var result = await getIt
-        .get<CartRepo>()
-        .addToMyCart(productId, {"quantity": quantity});
+    var result = await getIt.get<CartRepo>().addToMyCart(productId, {});
+    // {"quantity": quantity}
     result.fold(
       (l) {
         emit(AddToCartFailures(error: l.errMassage));

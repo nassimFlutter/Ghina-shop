@@ -1,318 +1,432 @@
 class HomeApiResponse {
-  bool? status;
-  int? code;
-  String? message;
-  Item? item;
+  final String? status;
+  final String? message;
+  final Data? data;
+  final dynamic errors;
+  const HomeApiResponse({this.status, this.message, this.data, this.errors});
+  HomeApiResponse copyWith(
+      {String? status, String? message, Data? data, dynamic? errors}) {
+    return HomeApiResponse(
+        status: status ?? this.status,
+        message: message ?? this.message,
+        data: data ?? this.data,
+        errors: errors ?? this.errors);
+  }
 
-  HomeApiResponse({this.status, this.code, this.message, this.item});
+  Map<String, Object?> toJson() {
+    return {
+      'status': status,
+      'message': message,
+      'data': data?.toJson(),
+      'errors': errors
+    };
+  }
 
-  HomeApiResponse.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    code = json['code'];
-    message = json['message'];
-    item = json['item'] != null ? Item.fromJson(json['item']) : null;
+  static HomeApiResponse fromJson(Map<String, Object?> json) {
+    return HomeApiResponse(
+        status: json['status'] == null ? null : json['status'] as String,
+        message: json['message'] == null ? null : json['message'] as String,
+        data: json['data'] == null
+            ? null
+            : Data.fromJson(json['data'] as Map<String, Object?>),
+        errors: json['errors'] as dynamic);
+  }
+
+  @override
+  String toString() {
+    return '''HomeApiResponse(
+                status:$status,
+message:$message,
+data:${data.toString()},
+errors:$errors
+    ) ''';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is HomeApiResponse &&
+        other.runtimeType == runtimeType &&
+        other.status == status &&
+        other.message == message &&
+        other.data == data &&
+        other.errors == errors;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(runtimeType, status, message, data, errors);
   }
 }
 
-class Item {
-  List<Category>? categories;
-  List<Brand>? brands;
-  List<HomeBanner>? banners;
-  List<Product>? lastProducts;
-  List<Product>? offers;
-  List<Product>? newstProducts;
-  List<Product>? featuredProducts;
-  List<Product>? bestSellerProducts;
-  int? countCarts;
-  List<dynamic>? carts;
+class Data {
+  final List<HomeBanner>? banners;
+  final List<Category>? categories;
+  final List<Product>? newestProducts;
+  final List<Product>? featuredProducts;
+  final List<Product>? bestSellerProducts;
 
-  Item(
-      {this.categories,
-      this.brands,
-      this.banners,
-      this.lastProducts,
-      this.offers,
-      this.newstProducts,
-      this.featuredProducts,
-      this.bestSellerProducts,
-      this.countCarts,
-      this.carts});
-
-  Item.fromJson(Map<String, dynamic> json) {
-    if (json['categories'] != null) {
-      categories = [];
-      json['categories'].forEach((v) {
-        categories?.add(Category.fromJson(v));
-      });
-    }
-    if (json['brands'] != null) {
-      brands = [];
-      json['brands'].forEach((v) {
-        brands?.add(Brand.fromJson(v));
-      });
-    }
-    if (json['banners'] != null) {
-      banners = [];
-      json['banners'].forEach((v) {
-        banners?.add(HomeBanner.fromJson(v));
-      });
-    }
-    if (json['last_products'] != null) {
-      lastProducts = [];
-      json['last_products'].forEach((v) {
-        lastProducts?.add(Product.fromJson(v));
-      });
-    }
-    if (json['offers'] != null) {
-      offers = [];
-      json['offers'].forEach((v) {
-        offers?.add(Product.fromJson(v));
-      });
-    }
-    if (json['newstProducts'] != null) {
-      newstProducts = [];
-      json['newstProducts'].forEach((v) {
-        newstProducts?.add(Product.fromJson(v));
-      });
-    }
-    if (json['featuredProducts'] != null) {
-      featuredProducts = [];
-      json['featuredProducts'].forEach((v) {
-        featuredProducts?.add(Product.fromJson(v));
-      });
-    }
-    if (json['bestSellerProducts'] != null) {
-      bestSellerProducts = [];
-      json['bestSellerProducts'].forEach((v) {
-        bestSellerProducts?.add(Product.fromJson(v));
-      });
-    }
-    countCarts = json['count_carts'];
-    carts = json['carts'];
-  }
-}
-
-class Category {
-  int? id;
-  String? image;
-  int? featured;
-  String? status;
-  String? createdAt;
-  String? name;
-  bool isSelected = false;
-
-  Category({
-    this.id,
-    this.image,
-    this.featured,
-    this.status,
-    this.createdAt,
-    this.name,
+  const Data({
+    this.banners,
+    this.categories,
+    this.newestProducts,
+    this.featuredProducts,
+    this.bestSellerProducts,
   });
 
-  Category.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    image = json['image'];
-    featured = json['featured'];
-    status = json['status'];
-    createdAt = json['created_at'];
-    name = json['name'];
+  Data copyWith({
+    List<HomeBanner>? banners,
+    List<Category>? categories,
+    List<Product>? newestProducts,
+    List<Product>? featuredProducts,
+    List<Product>? bestSellerProducts,
+  }) {
+    return Data(
+      banners: banners ?? this.banners,
+      categories: categories ?? this.categories,
+      newestProducts: newestProducts ?? this.newestProducts,
+      featuredProducts: featuredProducts ?? this.featuredProducts,
+      bestSellerProducts: bestSellerProducts ?? this.bestSellerProducts,
+    );
   }
-}
 
-class Brand {
-  int? id;
-  String? image;
-  int? featured;
-  String? status;
-  String? createdAt;
-  String? name;
-  bool isSelected = false;
-
-  Brand({
-    this.id,
-    this.image,
-    this.featured,
-    this.status,
-    this.createdAt,
-    this.name,
-  });
-
-  Brand.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    image = json['image'];
-    featured = json['featured'];
-    status = json['status'];
-    createdAt = json['created_at'];
-    name = json['name'];
+  Map<String, Object?> toJson() {
+    return {
+      'banners': banners?.map((data) => data.toJson()).toList(),
+      'categories': categories?.map((data) => data.toJson()).toList(),
+      'newestProducts': newestProducts?.map((data) => data.toJson()).toList(),
+      'featuredProducts':
+          featuredProducts?.map((data) => data.toJson()).toList(),
+      'bestSellerProducts':
+          bestSellerProducts?.map((data) => data.toJson()).toList(),
+    };
   }
-}
 
-class HomeBanner {
-  int? id;
-  int? type;
-  int? itemId;
-  String? status;
-  String? image;
-  String? createdAt;
-  String? categoryName;
-  String? details;
-  String? title;
+  static Data fromJson(Map<String, Object?> json) {
+    return Data(
+      banners: json['banners'] == null
+          ? null
+          : (json['banners'] as List)
+              .map<HomeBanner>(
+                  (data) => HomeBanner.fromJson(data as Map<String, Object?>))
+              .toList(),
+      categories: json['categories'] == null
+          ? null
+          : (json['categories'] as List)
+              .map<Category>(
+                  (data) => Category.fromJson(data as Map<String, Object?>))
+              .toList(),
+      newestProducts: json['newestProducts'] == null
+          ? null
+          : (json['newestProducts'] as List)
+              .map<Product>(
+                  (data) => Product.fromJson(data as Map<String, Object?>))
+              .toList(),
+      featuredProducts: json['featuredProducts'] == null
+          ? null
+          : (json['featuredProducts'] as List)
+              .map<Product>(
+                  (data) => Product.fromJson(data as Map<String, Object?>))
+              .toList(),
+      bestSellerProducts: json['bestSellerProducts'] == null
+          ? null
+          : (json['bestSellerProducts'] as List)
+              .map<Product>(
+                  (data) => Product.fromJson(data as Map<String, Object?>))
+              .toList(),
+    );
+  }
 
-  HomeBanner(
-      {this.id,
-      this.type,
-      this.itemId,
-      this.status,
-      this.image,
-      this.createdAt,
-      this.categoryName,
-      this.details,
-      this.title});
+  @override
+  String toString() {
+    return '''Data(
+                banners:${banners.toString()},
+categories:${categories.toString()},
+newestProducts:${newestProducts.toString()},
+featuredProducts:${featuredProducts.toString()},
+bestSellerProducts:${bestSellerProducts.toString()}
+    ) ''';
+  }
 
-  HomeBanner.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    type = json['type'];
-    itemId = json['item_id'];
-    status = json['status'];
-    image = json['image'];
-    createdAt = json['created_at'];
-    categoryName = json['category_name'];
-    details = json['details'];
-    title = json['title'];
+  @override
+  bool operator ==(Object other) {
+    return other is Data &&
+        other.runtimeType == runtimeType &&
+        other.banners == banners &&
+        other.categories == categories &&
+        other.newestProducts == newestProducts &&
+        other.featuredProducts == featuredProducts &&
+        other.bestSellerProducts == bestSellerProducts;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(runtimeType, banners, categories, newestProducts,
+        featuredProducts, bestSellerProducts);
   }
 }
 
 class Product {
-  int? id;
-  int? categoryId;
-  String? image;
-  int? price;
-  dynamic discountPrice;
-  int? featured;
-  dynamic offerEndDate;
-  int? quantity;
-  int? isHasVariant;
-  String? status;
-  int? markLabel;
-  int? isBestSeller;
-  String? createdAt;
-  int? brandId;
-  int? isCart;
-  int? isOutStock;
-  String? isFavorite;
-  String? urlLink;
-  String? description;
-  String? name;
-  dynamic brandName;
-  String? companyName;
-  String? title;
+  final int? id;
+  final int? price;
+  final dynamic discountPrice;
+  final String? name;
+  final String? description;
+  final List<String>? images;
+  bool? isFavorite;
 
-  Product(
-      {this.id,
-      this.categoryId,
-      this.image,
-      this.price,
-      this.discountPrice,
-      this.featured,
-      this.offerEndDate,
-      this.quantity,
-      this.isHasVariant,
-      this.status,
-      this.markLabel,
-      this.isBestSeller,
-      this.createdAt,
-      this.brandId,
-      this.isCart,
-      this.isOutStock,
-      this.isFavorite,
-      this.urlLink,
-      this.description,
-      this.name,
-      this.brandName,
-      this.companyName,
-      this.title});
-  num? calculateOfferPercentage() {
-    if (discountPrice == null || price == null || price == 0) {
-      return 0.0;
-    }
-    return ((1 - (discountPrice! / price!)) * 100).roundToDouble();
-  }
+  static const String _defaultImage = 'https://demo1.weisro.com/newLogo.png';
 
-  Product.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    categoryId = json['category_id'];
-    image = json['image'];
-    price = json['price'];
-    discountPrice = json['discount_price'];
-    featured = json['featured'];
-    offerEndDate = json['offer_end_date'];
-    quantity = json['quantity'];
-    isHasVariant = json['is_has_variant'];
-    status = json['status'];
-    markLabel = json['mark_label'];
-    isBestSeller = json['is_best_seller'];
-    createdAt = json['created_at'];
-    brandId = json['brand_id'];
-    isCart = json['is_cart'];
-    isOutStock = json['is_out_stock'];
-    isFavorite = json['is_fevorite'];
-    urlLink = json['url_link'];
-    description = json['description'];
-    name = json['name'];
-    brandName = json['brand_name'];
-    companyName = json['company_name'];
-    title = json['title'];
-  }
+  Product({
+    this.id,
+    this.price,
+    this.discountPrice,
+    this.name,
+    this.description,
+    this.images,
+    this.isFavorite,
+  });
+
   Product copyWith({
     int? id,
-    int? categoryId,
-    String? image,
     int? price,
-    dynamic discountPrice,
-    int? featured,
-    dynamic offerEndDate,
-    int? quantity,
-    int? isHasVariant,
-    String? status,
-    int? markLabel,
-    int? isBestSeller,
-    String? createdAt,
-    int? brandId,
-    int? isCart,
-    int? isOutStock,
-    String? isFavorite,
-    String? urlLink,
-    String? description,
+    dynamic? discountPrice,
     String? name,
-    dynamic brandName,
-    String? companyName,
-    String? title,
+    String? description,
+    List<String>? images,
+    bool? isFavorite,
   }) {
     return Product(
       id: id ?? this.id,
-      categoryId: categoryId ?? this.categoryId,
-      image: image ?? this.image,
       price: price ?? this.price,
       discountPrice: discountPrice ?? this.discountPrice,
-      featured: featured ?? this.featured,
-      offerEndDate: offerEndDate ?? this.offerEndDate,
-      quantity: quantity ?? this.quantity,
-      isHasVariant: isHasVariant ?? this.isHasVariant,
-      status: status ?? this.status,
-      markLabel: markLabel ?? this.markLabel,
-      isBestSeller: isBestSeller ?? this.isBestSeller,
-      createdAt: createdAt ?? this.createdAt,
-      brandId: brandId ?? this.brandId,
-      isCart: isCart ?? this.isCart,
-      isOutStock: isOutStock ?? this.isOutStock,
-      isFavorite: isFavorite ?? this.isFavorite,
-      urlLink: urlLink ?? this.urlLink,
-      description: description ?? this.description,
       name: name ?? this.name,
-      brandName: brandName ?? this.brandName,
-      companyName: companyName ?? this.companyName,
-      title: title ?? this.title,
+      description: description ?? this.description,
+      images: images ?? this.images,
+      isFavorite: isFavorite ?? this.isFavorite,
     );
+  }
+
+  Map<String, Object?> toJson() {
+    return {
+      'id': id,
+      'price': price,
+      'discount_price': discountPrice,
+      'name': name,
+      'description': description,
+      'images': images,
+      'is_favorite': isFavorite,
+    };
+  }
+
+  static Product fromJson(Map<String, Object?> json) {
+    List<dynamic>? rawImages = json['images'] as List<dynamic>?;
+    List<String> parsedImages = [];
+
+    if (rawImages != null && rawImages.isNotEmpty) {
+      parsedImages = rawImages
+          .map((img) => (img as Map<String, dynamic>)['image'] as String?)
+          .whereType<String>()
+          .toList();
+    }
+
+    if (parsedImages.isEmpty) {
+      parsedImages = [_defaultImage];
+    }
+
+    return Product(
+      id: json['id'] == null ? null : json['id'] as int,
+      price: json['price'] == null ? null : json['price'] as int,
+      discountPrice: json['discount_price'],
+      name: json['name'] == null ? null : json['name'] as String,
+      description:
+          json['description'] == null ? null : json['description'] as String,
+      images: parsedImages,
+      isFavorite:
+          json['is_favorite'] == null ? null : json['is_favorite'] as bool,
+    );
+  }
+
+  @override
+  String toString() {
+    return '''Product(
+                id:$id,
+price:$price,
+discountPrice:$discountPrice,
+name:$name,
+description:$description,
+images:$images,
+isFavorite:$isFavorite
+    ) ''';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is Product &&
+        other.runtimeType == runtimeType &&
+        other.id == id &&
+        other.price == price &&
+        other.discountPrice == discountPrice &&
+        other.name == name &&
+        other.description == description &&
+        other.images == images &&
+        other.isFavorite == isFavorite;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(runtimeType, id, price, discountPrice, name, description,
+        images, isFavorite);
+  }
+}
+
+class Category {
+  final int? id;
+  final String? image;
+  final String? name;
+  bool isSelected = false;
+
+  Category({this.id, this.image, this.name});
+
+  Category copyWith({int? id, String? image, String? name}) {
+    return Category(
+      id: id ?? this.id,
+      image: image ?? this.image,
+      name: name ?? this.name,
+    );
+  }
+
+  Map<String, Object?> toJson() {
+    return {
+      'id': id,
+      'image': image,
+      'name': name,
+    };
+  }
+
+  static Category fromJson(Map<String, Object?> json) {
+    return Category(
+      id: json['id'] == null ? null : json['id'] as int,
+      image: json['image'] == null ? null : json['image'] as String,
+      name: json['name'] == null ? null : json['name'] as String,
+    );
+  }
+
+  @override
+  String toString() {
+    return '''Category(
+                id:$id,
+image:$image,
+name:$name
+    ) ''';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is Category &&
+        other.runtimeType == runtimeType &&
+        other.id == id &&
+        other.image == image &&
+        other.name == name;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(runtimeType, id, image, name);
+  }
+}
+
+class HomeBanner {
+  final int? id;
+  final int? type;
+  final int? itemId;
+  final dynamic externalLink;
+  final String? image;
+  final String? title;
+  final String? details;
+
+  const HomeBanner({
+    this.id,
+    this.type,
+    this.itemId,
+    this.externalLink,
+    this.image,
+    this.title,
+    this.details,
+  });
+
+  HomeBanner copyWith({
+    int? id,
+    int? type,
+    int? itemId,
+    dynamic? externalLink,
+    String? image,
+    String? title,
+    String? details,
+  }) {
+    return HomeBanner(
+      id: id ?? this.id,
+      type: type ?? this.type,
+      itemId: itemId ?? this.itemId,
+      externalLink: externalLink ?? this.externalLink,
+      image: image ?? this.image,
+      title: title ?? this.title,
+      details: details ?? this.details,
+    );
+  }
+
+  Map<String, Object?> toJson() {
+    return {
+      'id': id,
+      'type': type,
+      'item_id': itemId,
+      'external_link': externalLink,
+      'image': image,
+      'title': title,
+      'details': details,
+    };
+  }
+
+  static HomeBanner fromJson(Map<String, Object?> json) {
+    return HomeBanner(
+      id: json['id'] == null ? null : json['id'] as int,
+      type: json['type'] == null ? null : json['type'] as int,
+      itemId: json['item_id'] == null ? null : json['item_id'] as int,
+      externalLink: json['external_link'] as dynamic,
+      image: json['image'] == null ? null : json['image'] as String,
+      title: json['title'] == null ? null : json['title'] as String,
+      details: json['details'] == null ? null : json['details'] as String,
+    );
+  }
+
+  @override
+  String toString() {
+    return '''HomeBanner(
+                id:$id,
+type:$type,
+itemId:$itemId,
+externalLink:$externalLink,
+image:$image,
+title:$title,
+details:$details
+    ) ''';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is HomeBanner &&
+        other.runtimeType == runtimeType &&
+        other.id == id &&
+        other.type == type &&
+        other.itemId == itemId &&
+        other.externalLink == externalLink &&
+        other.image == image &&
+        other.title == title &&
+        other.details == details;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+        runtimeType, id, type, itemId, externalLink, image, title, details);
   }
 }

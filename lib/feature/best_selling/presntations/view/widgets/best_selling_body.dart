@@ -1,6 +1,5 @@
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
-import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
@@ -99,15 +98,14 @@ class BestSellingBody extends StatelessWidget {
                     Product productItem =
                         bestSellingCubit.allBestSellingProducts[index];
                     return ProductsItem(
-                      imageUrl: productItem.image ?? "",
-                      brandName: productItem.brandName ?? "Brand name",
-                      isFavorite: productItem.isFavorite ?? '0',
-                      companyName: productItem.companyName ?? "",
+                      imageUrl: productItem.images?.first ?? "",
+                      brandName: "Brand name",
+                      isFavorite: productItem.isFavorite ?? false,
+                      companyName: "",
                       price: productItem.price ?? 0.000,
                       offerPrice: productItem.discountPrice ?? 0.000,
                       title: productItem.name ?? "No title",
-                      offerPercentage:
-                          productItem.calculateOfferPercentage() ?? 0,
+                      offerPercentage: 0,
                     );
                   },
                 );

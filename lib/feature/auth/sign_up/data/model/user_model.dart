@@ -47,7 +47,6 @@ Future<void> cacheUserInfo(Map<String, dynamic> userInfo) async {
     await CacheHelper.setData(key: Keys.kUserMobile, value: userInfo['mobile']);
   }
   if (userInfo['access_token'] != null) {
-    await CacheHelper.setData(
-        key: Keys.kUserToken, value: userInfo['access_token']);
+   
   }
 }

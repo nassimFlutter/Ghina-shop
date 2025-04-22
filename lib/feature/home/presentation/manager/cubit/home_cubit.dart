@@ -21,7 +21,6 @@ class HomeCubit extends Cubit<HomeCubitState> {
   List<Product> newstProductsList = [];
   List<HomeBanner> bannersList = [];
   List<Category> categoriesList = [];
-  List<Brand> brandsList = [];
 
   // HomeApiResponse homeApiResponse = HomeApiResponse();
   Future<void> getHomePage() async {
@@ -35,13 +34,12 @@ class HomeCubit extends Cubit<HomeCubitState> {
       },
       (getHomePageSuccess) {
         // Safety checks for null and empty lists
-        featuredProductsList = getHomePageSuccess.item?.featuredProducts ?? [];
+        featuredProductsList = getHomePageSuccess.data?.featuredProducts ?? [];
         bestSellerProductsList =
-            getHomePageSuccess.item?.bestSellerProducts ?? [];
-        newstProductsList = getHomePageSuccess.item?.newstProducts ?? [];
-        bannersList = getHomePageSuccess.item?.banners ?? [];
-        categoriesList = getHomePageSuccess.item?.categories ?? [];
-        brandsList = getHomePageSuccess.item?.brands ?? [];
+            getHomePageSuccess.data?.bestSellerProducts ?? [];
+        newstProductsList = getHomePageSuccess.data?.newestProducts ?? [];
+        bannersList = getHomePageSuccess.data?.banners ?? [];
+        categoriesList = getHomePageSuccess.data?.categories ?? [];
 
         // If any list is null or empty, you can initialize it here or handle as needed
         if (featuredProductsList.isEmpty) {
@@ -58,9 +56,6 @@ class HomeCubit extends Cubit<HomeCubitState> {
         }
         if (categoriesList.isEmpty) {
           LoggerHelper.warning('Categories list is empty');
-        }
-        if (brandsList.isEmpty) {
-          LoggerHelper.warning('Brands list is empty');
         }
 
         emit(HomeCubitSuccess());

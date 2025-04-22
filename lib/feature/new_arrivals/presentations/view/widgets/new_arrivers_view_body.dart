@@ -1,6 +1,5 @@
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
-import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
@@ -88,7 +87,7 @@ class NewArriversViewBody extends StatelessWidget {
                 if (newArrivalsCubit.allNewArrivalsProducts.isEmpty) {
                   return SliverFillRemaining(
                     child: NoResult(
-                        title: S.of(context).no_result_found,
+                      title: S.of(context).no_result_found,
                     ),
                   );
                 } else {
@@ -102,15 +101,14 @@ class NewArriversViewBody extends StatelessWidget {
                       Product productItem =
                           newArrivalsCubit.allNewArrivalsProducts[index];
                       return ProductsItem(
-                        imageUrl: productItem.image ?? "",
-                        brandName: productItem.brandName ?? "Brand name",
-                        companyName: productItem.companyName ?? "",
+                        imageUrl: productItem.images?.first ?? "",
+                        brandName: "Brand name",
+                        companyName: "",
                         price: productItem.price ?? 0.000,
                         offerPrice: productItem.discountPrice ?? 0.000,
                         title: productItem.name ?? "No title",
-                        isFavorite: productItem.isFavorite ?? "0",
-                        offerPercentage:
-                            productItem.calculateOfferPercentage() ?? 0,
+                        isFavorite: productItem.isFavorite ?? false,
+                        offerPercentage: 0,
                       );
                     },
                   );

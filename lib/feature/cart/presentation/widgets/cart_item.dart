@@ -64,7 +64,7 @@ class CartItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  cartProduct.title ?? "No title",
+                  cartProduct.id.toString() ?? "No title",
                   style: AppStyles.textStyle18w700,
                 ),
                 SizedBox(height: 10.h),

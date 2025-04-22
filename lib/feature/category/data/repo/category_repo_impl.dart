@@ -36,11 +36,11 @@ class CategoryRepoImpl implements CategoryRepo {
     try {
       var response = await getIt
           .get<ApiService>()
-          .get(endPoint: "${UrlKeys.productCategoryEndPoint}$categoryId");
+          .get(endPoint: "products/categories/$categoryId/products");
 
       if (response != null) {
         List<Product> allProduct = [];
-        for (var element in response) {
+        for (var element in response["data"]["products"]) {
           allProduct.add(Product.fromJson(element));
         }
         return right(allProduct);

@@ -1,3 +1,4 @@
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/error_widget.dart';
@@ -6,6 +7,8 @@ import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/delete_from_my_cart_cubit/delete_from_my_cart_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
+import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view.dart';
+import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view_new.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +25,8 @@ class CartViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     MyCartCubit myCartCubit = MyCartCubit.get(context);
     ChangeQuantityCubit changeQuantityCubit = ChangeQuantityCubit.get(context);
-    changeQuantityCubit
-        .initializeTextEditingControllers(myCartCubit.myCart.myCart ?? []);
+    changeQuantityCubit.initializeTextEditingControllers(
+        myCartCubit.myCart.data?.result?.myCart ?? []);
     myCartCubit.getMyCart(context);
     return BlocConsumer<DeleteFromMyCartCubit, DeleteFromMyCartState>(
       listener: (context, state) async {
@@ -73,7 +76,8 @@ class CartViewBody extends StatelessWidget {
                           },
                         );
                       } else {
-                        if (myCartCubit.myCart.myCart!.isEmpty) {
+                        if (myCartCubit.myCart.data?.result?.myCart?.isEmpty ??
+                            true) {
                           return SizedBox(
                             height: MediaQuery.of(context).size.height -
                                 kToolbarHeight -
@@ -90,20 +94,22 @@ class CartViewBody extends StatelessWidget {
                               ListView.separated(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemCount:
-                                    myCartCubit.myCart.myCart?.length ?? 0,
+                                itemCount: myCartCubit
+                                        .myCart.data?.result?.myCart?.length ??
+                                    0,
                                 separatorBuilder: (context, index) => SizedBox(
                                   height: 20.h,
                                 ),
                                 itemBuilder: (context, index) => CartItem(
-                                  id: myCartCubit.myCart.myCart?[index].id ??
+                                  id: myCartCubit.myCart.data?.result
+                                          ?.myCart?[index].id ??
                                       -1,
-                                  quantity: myCartCubit
-                                          .myCart.myCart?[index].quantity ??
+                                  quantity: myCartCubit.myCart.data?.result
+                                          ?.myCart?[index].quantity ??
                                       0,
-                                  cartProduct: myCartCubit
-                                          .myCart.myCart?[index].product ??
-                                      Product(),
+                                  cartProduct: myCartCubit.myCart.data?.result
+                                          ?.myCart?[index].product ??
+                                      const Product(),
                                 ),
                               ),
                               SizedBox(
@@ -123,8 +129,10 @@ class CartViewBody extends StatelessWidget {
                               CustomRowText(
                                 text1: S.of(context).total,
                                 textStyle1: AppStyles.textStyle18w400,
-                                text2:
-                                    myCartCubit.myCart.totalFinally.toString(),
+                                text2: myCartCubit
+                                        .myCart.data?.result?.totalFinally
+                                        .toString() ??
+                                    "",
                                 textStyle2: AppStyles.textStyle18w700,
                               ),
                               SizedBox(
@@ -133,10 +141,10 @@ class CartViewBody extends StatelessWidget {
                               AppBottom(
                                 title: S.of(context).proceed_to_checkout,
                                 onTap: () {
-                                  // HelperFunctions.navigateToScreen(
-                                  //   context,
-                                  //   const CheckoutView(),
-                                  // );
+                                  HelperFunctions.navigateToScreen(
+                                    context,
+                                    const CheckOutPageNew (),
+                                  );
                                 },
                               ),
                               SizedBox(

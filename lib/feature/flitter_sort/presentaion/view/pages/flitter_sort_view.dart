@@ -30,7 +30,6 @@ class FlitterSortView extends StatelessWidget {
         BlocProvider(
           create: (context) => FlitterCubit()
             ..setMaxPrice(maxPrice: endValue.round())
-            ..setBrandList(BlocProvider.of<HomeCubit>(context).brandsList)
             ..setCategoryList(
                 BlocProvider.of<HomeCubit>(context).categoriesList)
             ..setPage(page),
@@ -166,22 +165,12 @@ class FilterPageBody extends StatelessWidget {
                 ),
                 children: [
                   ListView.builder(
-                    itemCount: flitterCubit.brandsList.length,
                     shrinkWrap: true,
                     padding: EdgeInsets.zero,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      bool isChecked =
-                          flitterCubit.brandsList[index].isSelected;
-
                       return InkWell(
-                        onTap: () {
-                          if (isChecked) {
-                            flitterCubit.deselectBrand(index);
-                          } else {
-                            flitterCubit.selectBrand(index);
-                          }
-                        },
+                        onTap: () {},
                         child: Padding(
                           padding: EdgeInsetsDirectional.only(start: 16.w),
                           child: Column(
@@ -191,18 +180,18 @@ class FilterPageBody extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  CustomCheckBox(
-                                    value: isChecked,
-                                    // onChange: (value) {
-                                    //   if (value != null) {
-                                    //     if (value) {
-                                    //       flitterCubit.selectBrand(brand);
-                                    //     } else {
-                                    //       flitterCubit.deselectBrand(brand);
-                                    //     }
-                                    //   }
-                                    // },
-                                  ),
+                                  // CustomCheckBox(
+                                  //   value: isChecked,
+                                  //   // onChange: (value) {
+                                  //   //   if (value != null) {
+                                  //   //     if (value) {
+                                  //   //       flitterCubit.selectBrand(brand);
+                                  //   //     } else {
+                                  //   //       flitterCubit.deselectBrand(brand);
+                                  //   //     }
+                                  //   //   }
+                                  //   // },
+                                  // ),
                                   // Checkbox(
                                   //   checkColor: Colors.white,
                                   //   activeColor: Colors.black,
@@ -221,10 +210,10 @@ class FilterPageBody extends StatelessWidget {
                                   SizedBox(
                                     width: 16.w,
                                   ),
-                                  Text(
-                                      flitterCubit.brandsList[index].name ?? "",
-                                      style: AppStyles.textStyle16w400
-                                          .copyWith(color: Colors.black)),
+                                  // Text(
+                                  //     flitterCubit.brandsList[index].name ?? "",
+                                  //     style: AppStyles.textStyle16w400
+                                  //         .copyWith(color: Colors.black)),
                                 ],
                               ),
                               SizedBox(

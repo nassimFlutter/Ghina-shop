@@ -54,9 +54,10 @@ class ServerFailure extends Failure {
     LoggerHelper.info('statusCode is $statusCode');
 
     var error;
+    print("here $response");
     if (response is Map) {
       error = response[
-          'data']; // ! here we should change the key after check from haydar baddour
+          'error']; // ! here we should change the key after check from haydar baddour
     }
 
     if (statusCode == 401 || statusCode == 403 || statusCode == 422) {
@@ -74,6 +75,7 @@ class ServerFailure extends Failure {
     }
   }
 }
+
 class ErrorHandler {
   static Failure handleError(dynamic e) {
     if (e is DioException) {

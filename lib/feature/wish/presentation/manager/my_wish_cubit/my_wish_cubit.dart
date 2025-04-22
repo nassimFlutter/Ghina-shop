@@ -10,7 +10,7 @@ part 'my_wish_state.dart';
 
 class MyWishCubit extends Cubit<MyWishState> {
   MyWishCubit() : super(MyWishInitial());
-  MyWishModel myWishModel = MyWishModel();
+  MyWishModel myWishModel = const MyWishModel();
   static MyWishCubit get(context) => BlocProvider.of(context);
   CancelToken cancelToken = CancelToken();
   Future<void> getMyWish() async {

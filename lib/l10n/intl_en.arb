@@ -20,6 +20,7 @@
     "old_password_": "Old Password*",
     "new_password_": "new Password*",
     "confirm_password_": "Confirm Password*",
+    "confirm": "Confirm",
     "changed_password_dialog": "You have successfully\nChanged Your Password",
     "change_password_error": "Change Password Error",
     "change": "Change",
@@ -159,5 +160,13 @@
     "Already_Have": "Already have an account? Login",
     "version": "V.1.0",
     "copyrights": "© 2025 Ghina Shop. All rights reserved",
-    "no_Product_In_Cart": "No products in cart"
+    "no_Product_In_Cart": "No products in cart",
+    "shipping_address": "Shipping Address",
+    "name": "Full Name",
+    "mobile": "Mobile Number",
+    "email": "Email Address",
+    "shipping_address_error": "Please provide a valid shipping address",
+    "shipping_name_error": "Full name is required for shipping",
+    "shipping_mobile_error": "Mobile number is required for shipping",
+    "shipping_email_error": "Email address is required for shipping"
 }
