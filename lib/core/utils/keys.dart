@@ -35,7 +35,7 @@ class UrlKeys {
   //!  change password
   static const changePassEndPoint = 'changePassword';
   //! UserAccounts
-  static const editAccountEndPoint = 'editUserProfile';
+  static const editAccountEndPoint = 'auth/updateMe';
   static const logoutEndPoint = 'logout';
   //! order
   static const getOrdersEndPoint = 'orders';

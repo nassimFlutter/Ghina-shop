@@ -48,13 +48,8 @@ class EditAccountCubit extends Cubit<EditAccountState> {
     result.fold((error) {
       emit(EditAccountFailure(errMessage: error.errMassage));
     }, (edited) async {
-      if (edited.status) {
-        await updateCached();
-        emit(EditAccountSuccess());
-      } else {
-        emit(EditAccountFailure(
-            errMessage: edited.message ?? "The Account not edit"));
-      }
+      await updateCached();
+      emit(EditAccountSuccess());
     });
   }
 }

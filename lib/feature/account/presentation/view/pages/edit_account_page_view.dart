@@ -42,27 +42,14 @@ class EditAccountView extends StatelessWidget {
             BlocConsumer<EditAccountCubit, EditAccountState>(
               listener: (context, state) {
                 if (state is EditAccountSuccess) {
-                  if (editAccountCubit.editAccountResponse.status) {
-                    HelperFunctions.showCustomDialog(
-                        context,
-                        UpdateAccountDialog(
-                          contain: S
-                              .of(context)
-                              .success_update_message, // "Your Account Has been\nsuccessfully updated",
-                          title:
-                              S.of(context).update_account, //"Update Account",
-                        ));
-                  } else {
-                    HelperFunctions.showCustomDialog(
-                        context,
-                        UpdateAccountDialog(
-                          contain:
-                              "${editAccountCubit.editAccountResponse.message}",
-                          title: S
-                              .of(context)
-                              .update_account_error, //"Update Account Error",
-                        ));
-                  }
+                  HelperFunctions.showCustomDialog(
+                      context,
+                      UpdateAccountDialog(
+                        contain: S
+                            .of(context)
+                            .success_update_message, // "Your Account Has been\nsuccessfully updated",
+                        title: S.of(context).update_account, //"Update Account",
+                      ));
                 } else if (state is EditAccountFailure) {
                   editAccountCubit.initTextController();
                   HelperFunctions.showCustomDialog(
@@ -95,18 +82,18 @@ class EditAccountView extends StatelessWidget {
                 }
               },
             ),
-            SizedBox(
-              height: 211.h,
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.only(end: 16.w),
-              child: TerminateAccountBottom(
-                onTap: () {
-                  HelperFunctions.showCustomDialog(
-                      context, const TerminateAccountView());
-                },
-              ),
-            ),
+            // SizedBox(
+            //   height: 211.h,
+            // ),
+            // Padding(
+            //   padding: EdgeInsetsDirectional.only(end: 16.w),
+            //   child: TerminateAccountBottom(
+            //     onTap: () {
+            //       HelperFunctions.showCustomDialog(
+            //           context, const TerminateAccountView());
+            //     },
+            //   ),
+            // ),
             SizedBox(
               height: 64.h,
             ),

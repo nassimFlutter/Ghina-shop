@@ -46,30 +46,33 @@ class MyOrders extends StatelessWidget {
                       child: CustomCircularProgressIndicator(),
                     );
                   } else {
+                    final orders = orderCubit.orderModel.data?.orders ?? [];
+
+                    if (orders.isEmpty) {
+                      return const Expanded(
+                        child: Center(
+                          child: Text(
+                            "لا يوجد طلبات",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      );
+                    }
+
                     return Expanded(
                       child: ListView.builder(
-                        itemCount: orderCubit.orderModel.data?.orders?.length,
+                        itemCount: orders.length,
                         itemBuilder: (context, index) {
-                          Orders? order =
-                              orderCubit.orderModel.data?.orders?[index];
+                          final order = orders[index];
                           return InkWell(
                             onTap: () {
-                              // HelperFunctions.navigateToScreen(
-                              //     context,
-                              //     OrderDetails(
-                              //       orderId: orderCubit.orderModel.data
-                              //               ?.orders?[index].id ??
-                              //           -100,
-                              //     ));
+                              // Add your navigation logic here if needed
                             },
                             child: OrderItem(
-                              amount: orderCubit.orderModel.data?.orders?[index]
-                                      .totalPrice
-                                      .toString() ??
-                                  "",
-                              date: order?.orderedDate.toString() ?? "",
-                              orderId: order?.id.toString() ?? "",
-                              statue: order?.status.toString() ?? "",
+                              amount: order.totalPrice?.toString() ?? "",
+                              date: order.orderedDate?.toString() ?? "",
+                              orderId: order.id?.toString() ?? "",
+                              statue: order.status.toString() ?? "",
                             ),
                           );
                         },
@@ -77,7 +80,7 @@ class MyOrders extends StatelessWidget {
                     );
                   }
                 },
-              ),
+              )
             ],
           ),
         ),

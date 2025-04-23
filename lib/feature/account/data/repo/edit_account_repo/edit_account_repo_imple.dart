@@ -8,13 +8,12 @@ import 'package:dartz/dartz.dart';
 
 class EditAccountRepoImpl implements EditAccountRepo {
   @override
-  Future<Either<Failure, Response>> editAccount(
-      Map<String, dynamic> data) async {
+  Future<Either<Failure, String>> editAccount(Map<String, dynamic> data) async {
     try {
       Map<String, dynamic> response = await getIt
           .get<ApiService>()
-          .post(endPoint: UrlKeys.editAccountEndPoint, data: data);
-      return right(Response.fromJson(response));
+          .put(endPoint: "auth/updateMe", data: data);
+      return right("Updated");
     } catch (e) {
       return left(ErrorHandler.handleError(e));
     }
