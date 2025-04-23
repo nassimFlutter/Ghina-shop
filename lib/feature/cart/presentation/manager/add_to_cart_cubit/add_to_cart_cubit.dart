@@ -12,6 +12,7 @@ class AddToCartCubit extends Cubit<AddToCartState> {
     var result = await getIt
         .get<CartRepo>()
         .addToMyCart(productId, {"quantity": quantity});
+    // {"quantity": quantity}
     result.fold(
       (l) {
         emit(AddToCartFailures(error: l.errMassage));

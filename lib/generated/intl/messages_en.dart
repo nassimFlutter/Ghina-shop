@@ -70,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "choose_language": MessageLookupByLibrary.simpleMessage("Choose Language"),
     "color": MessageLookupByLibrary.simpleMessage("Color"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirm_password_": MessageLookupByLibrary.simpleMessage(
       "Confirm Password*",
     ),
@@ -105,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "e_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
     "edit_account": MessageLookupByLibrary.simpleMessage("edit Account"),
     "edit_address": MessageLookupByLibrary.simpleMessage("Edit Address"),
+    "email": MessageLookupByLibrary.simpleMessage("Email Address"),
     "email_": MessageLookupByLibrary.simpleMessage("Email*"),
     "email_address_validation": MessageLookupByLibrary.simpleMessage(
       "E-mail must be\n a valid email address",
@@ -155,12 +157,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     ),
     "message_": MessageLookupByLibrary.simpleMessage("Message*"),
+    "mobile": MessageLookupByLibrary.simpleMessage("Mobile Number"),
     "mobile_no_": MessageLookupByLibrary.simpleMessage("Mobile No*"),
     "mobile_number_": MessageLookupByLibrary.simpleMessage("Mobile Number*"),
     "my_account": MessageLookupByLibrary.simpleMessage("My Account"),
     "my_addresses": MessageLookupByLibrary.simpleMessage("My Addresses"),
     "my_cart": MessageLookupByLibrary.simpleMessage("My Cart"),
     "my_orders": MessageLookupByLibrary.simpleMessage("My Orders"),
+    "name": MessageLookupByLibrary.simpleMessage("Full Name"),
     "name_required_validation": MessageLookupByLibrary.simpleMessage(
       "Full name is required",
     ),
@@ -234,6 +238,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_area_": MessageLookupByLibrary.simpleMessage("Select Area*"),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "shipping_address": MessageLookupByLibrary.simpleMessage(
+      "Shipping Address",
+    ),
+    "shipping_address_error": MessageLookupByLibrary.simpleMessage(
+      "Please provide a valid shipping address",
+    ),
+    "shipping_email_error": MessageLookupByLibrary.simpleMessage(
+      "Email address is required for shipping",
+    ),
+    "shipping_mobile_error": MessageLookupByLibrary.simpleMessage(
+      "Mobile number is required for shipping",
+    ),
+    "shipping_name_error": MessageLookupByLibrary.simpleMessage(
+      "Full name is required for shipping",
+    ),
     "show_less": MessageLookupByLibrary.simpleMessage("show less"),
     "show_more": MessageLookupByLibrary.simpleMessage("show more"),
     "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),

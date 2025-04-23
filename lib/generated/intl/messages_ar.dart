@@ -72,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkout": MessageLookupByLibrary.simpleMessage("الخروج"),
     "choose_language": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
     "color": MessageLookupByLibrary.simpleMessage("اللون"),
+    "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirm_password_": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور*",
     ),
@@ -103,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "e_mail": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "edit_account": MessageLookupByLibrary.simpleMessage("تحرير الحساب"),
     "edit_address": MessageLookupByLibrary.simpleMessage("تحرير العنوان"),
+    "email": MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكتروني"),
     "email_": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني*"),
     "email_address_validation": MessageLookupByLibrary.simpleMessage(
       "يجب أن يكون البريد الإلكتروني\n عنوان بريد إلكتروني صالح",
@@ -153,12 +155,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "نص لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطبوعات والتصميم.",
     ),
     "message_": MessageLookupByLibrary.simpleMessage("الرسالة*"),
+    "mobile": MessageLookupByLibrary.simpleMessage("رقم الجوال"),
     "mobile_no_": MessageLookupByLibrary.simpleMessage("رقم الجوال*"),
     "mobile_number_": MessageLookupByLibrary.simpleMessage("رقم الجوال*"),
     "my_account": MessageLookupByLibrary.simpleMessage("حسابي"),
     "my_addresses": MessageLookupByLibrary.simpleMessage("عناويني"),
     "my_cart": MessageLookupByLibrary.simpleMessage("سلتي"),
     "my_orders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "name_required_validation": MessageLookupByLibrary.simpleMessage(
       "الاسم الكامل مطلوب",
     ),
@@ -238,6 +242,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_area_": MessageLookupByLibrary.simpleMessage("اختر المنطقة*"),
     "send": MessageLookupByLibrary.simpleMessage("إرسال"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "shipping_address": MessageLookupByLibrary.simpleMessage("عنوان الشحن"),
+    "shipping_address_error": MessageLookupByLibrary.simpleMessage(
+      "يرجى تقديم عنوان شحن صالح",
+    ),
+    "shipping_email_error": MessageLookupByLibrary.simpleMessage(
+      "عنوان البريد الإلكتروني مطلوب للشحن",
+    ),
+    "shipping_mobile_error": MessageLookupByLibrary.simpleMessage(
+      "رقم الجوال مطلوب للشحن",
+    ),
+    "shipping_name_error": MessageLookupByLibrary.simpleMessage(
+      "الاسم الكامل مطلوب للشحن",
+    ),
     "show_less": MessageLookupByLibrary.simpleMessage("عرض أقل"),
     "show_more": MessageLookupByLibrary.simpleMessage("عرض المزيد"),
     "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),

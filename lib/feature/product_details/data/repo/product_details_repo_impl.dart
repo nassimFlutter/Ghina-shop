@@ -13,7 +13,7 @@ class ProductDetailsRepoImpl extends ProductDetailsRepo {
   Future<Either<Failure, ProductDetailsModel>> getProductDetails(int id) async {
     try {
       var result =
-          await getIt.get<ApiService>().get(endPoint: "getProductDetails/$id");
+          await getIt.get<ApiService>().get(endPoint: "/products/product/$id");
       if (result != null) {
         return right(ProductDetailsModel.fromJson(result));
       } else {

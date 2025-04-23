@@ -48,26 +48,28 @@ class MyOrders extends StatelessWidget {
                   } else {
                     return Expanded(
                       child: ListView.builder(
-                        itemCount: orderCubit.orderModel.allOrders?.length,
+                        itemCount: orderCubit.orderModel.data?.orders?.length,
                         itemBuilder: (context, index) {
-                          AllOrder? order =
-                              orderCubit.orderModel.allOrders?[index];
+                          Orders? order =
+                              orderCubit.orderModel.data?.orders?[index];
                           return InkWell(
                             onTap: () {
-                              HelperFunctions.navigateToScreen(
-                                  context,
-                                  OrderDetails(
-                                    orderId: orderCubit
-                                            .orderModel.allOrders?[index].id ??
-                                        -100,
-                                  ));
+                              // HelperFunctions.navigateToScreen(
+                              //     context,
+                              //     OrderDetails(
+                              //       orderId: orderCubit.orderModel.data
+                              //               ?.orders?[index].id ??
+                              //           -100,
+                              //     ));
                             },
                             child: OrderItem(
-                              amount: order?.totalCommissionAmount.toString() ??
-                                  "0",
-                              date: order?.createdAt.toString() ?? "",
+                              amount: orderCubit.orderModel.data?.orders?[index]
+                                      .totalPrice
+                                      .toString() ??
+                                  "",
+                              date: order?.orderedDate.toString() ?? "",
                               orderId: order?.id.toString() ?? "",
-                              statue: order?.statusName ?? "",
+                              statue: order?.status.toString() ?? "",
                             ),
                           );
                         },

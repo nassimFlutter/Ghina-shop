@@ -250,6 +250,11 @@ class S {
     );
   }
 
+  /// `Confirm`
+  String get confirm {
+    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
+  }
+
   /// `You have successfully\nChanged Your Password`
   String get changed_password_dialog {
     return Intl.message(
@@ -1290,6 +1295,71 @@ class S {
     return Intl.message(
       'No products in cart',
       name: 'no_Product_In_Cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping Address`
+  String get shipping_address {
+    return Intl.message(
+      'Shipping Address',
+      name: 'shipping_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get name {
+    return Intl.message('Full Name', name: 'name', desc: '', args: []);
+  }
+
+  /// `Mobile Number`
+  String get mobile {
+    return Intl.message('Mobile Number', name: 'mobile', desc: '', args: []);
+  }
+
+  /// `Email Address`
+  String get email {
+    return Intl.message('Email Address', name: 'email', desc: '', args: []);
+  }
+
+  /// `Please provide a valid shipping address`
+  String get shipping_address_error {
+    return Intl.message(
+      'Please provide a valid shipping address',
+      name: 'shipping_address_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full name is required for shipping`
+  String get shipping_name_error {
+    return Intl.message(
+      'Full name is required for shipping',
+      name: 'shipping_name_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile number is required for shipping`
+  String get shipping_mobile_error {
+    return Intl.message(
+      'Mobile number is required for shipping',
+      name: 'shipping_mobile_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email address is required for shipping`
+  String get shipping_email_error {
+    return Intl.message(
+      'Email address is required for shipping',
+      name: 'shipping_email_error',
       desc: '',
       args: [],
     );

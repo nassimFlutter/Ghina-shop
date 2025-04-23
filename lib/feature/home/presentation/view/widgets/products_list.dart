@@ -56,13 +56,13 @@ class ProductsList extends StatelessWidget {
               }
             },
             title: productItem.name ?? "",
-            isFavorite: productItem.isFavorite ?? "0",
+            isFavorite: productItem.isFavorite ?? false,
             offerPrice: productItem.discountPrice,
             price: productItem.price ?? 0.0,
-            offerPercentage: productItem.calculateOfferPercentage() ?? 0.0,
-            imageUrl: productItem.image ?? "",
-            brandName: productItem.brandName ?? "no name",
-            companyName: productItem.companyName ?? "",
+            offerPercentage: 0.0,
+            imageUrl: productItem.images?.first ?? "",
+            brandName: "no name",
+            companyName: "",
           );
         },
       ),

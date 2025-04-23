@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/utils/keys.dart';
@@ -88,6 +89,8 @@ class HelperFunctions {
       CacheHelper.deleteData(key: Keys.kUserEmail),
       CacheHelper.deleteData(key: Keys.kUserMobile),
       CacheHelper.deleteData(key: Keys.kUserToken),
+      CacheHelper.deleteData(key: Keys.kIsFirstTime),
     ]);
+    log("Clear user data");
   }
 }

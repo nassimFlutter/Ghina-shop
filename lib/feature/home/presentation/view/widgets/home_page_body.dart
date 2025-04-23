@@ -27,7 +27,6 @@ import '../../../../../core/widgets/error_widget.dart';
 import 'ad_list.dart';
 import 'category_home_list.dart';
 import 'home_title.dart';
-import 'let_start_text.dart';
 import 'products_list.dart';
 
 class HomePgeBody extends StatelessWidget {

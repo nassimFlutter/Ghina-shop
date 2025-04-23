@@ -1,5 +1,3 @@
-import '../../../home/data/models/home_model.dart';
-
 class BrandResponse {
   bool? status;
   int? code;
@@ -21,5 +19,12 @@ class BrandResponse {
       items:
           List<Brand>.from(json['items'].map((item) => Brand.fromJson(item))),
     );
+  }
+}
+
+class Brand {
+  Brand();
+  factory Brand.fromJson(Map<String, dynamic> json) {
+    return Brand();
   }
 }

@@ -77,17 +77,17 @@ class MyWishViewBody extends StatelessWidget {
                         },
                       ),
                     ),
-                    AppBarBottom(
-                      iconPath: IconsPath.flitterIcon,
-                      onTap: () {
-                        HelperFunctions.navigateToScreen(
-                          context,
-                          const FlitterSortView(
-                            endValue: 100,
-                          ),
-                        );
-                      },
-                    )
+                    // AppBarBottom(
+                    //   iconPath: IconsPath.flitterIcon,
+                    //   onTap: () {
+                    //     HelperFunctions.navigateToScreen(
+                    //       context,
+                    //       const FlitterSortView(
+                    //         endValue: 100,
+                    //       ),
+                    //     );
+                    //   },
+                    // )
                   ],
                 ),
               ),
@@ -132,15 +132,14 @@ class MyWishViewBody extends StatelessWidget {
                               .addAndRemoveFromFavorite(context,
                                   productId: productItem.id ?? -1);
                         },
-                        imageUrl: productItem.image ?? "",
-                        brandName: productItem.brandName ?? "Brand name",
-                        isFavorite: productItem.isFavorite ?? '0',
-                        companyName: productItem.companyName ?? "",
+                        imageUrl: productItem.images?.first ?? "",
+                        brandName: "Brand name",
+                        isFavorite: true,
+                        companyName: "",
                         price: productItem.price ?? 0.000,
                         offerPrice: productItem.discountPrice ?? 0.000,
                         title: productItem.name ?? "No title",
-                        offerPercentage:
-                            productItem.calculateOfferPercentage() ?? 0,
+                        offerPercentage: 0,
                       );
                     },
                   );

@@ -10,7 +10,7 @@ part 'category_state.dart';
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit() : super(CategoryInitial());
    static CategoryCubit get(context)=> BlocProvider.of(context) ; 
-  CategoryResponse categoryResponse = CategoryResponse();
+  CategoryResponse categoryResponse = const CategoryResponse();
   Future<void> fetchAllCategory() async {
     emit(CategoryLoading());
     var result = await getIt.get<CategoryRepo>().fetchAllCategory();

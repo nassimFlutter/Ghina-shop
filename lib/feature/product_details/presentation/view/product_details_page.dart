@@ -56,12 +56,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               end: 16.w,
                             ),
                             child: AppBarRow(
-                              title: "${cubit.productDetailsModel.items?.name}",
+                              title: "${cubit.productDetailsModel.data?.name}",
                               secondIconPath: IconsPath.buyIcon,
                               // thirdIconPath: IconsPath.favoriteIcon,
                               onSecondIconTap: () {
                                 context.read<AddToCartCubit>().addToCart(
-                                    cubit.productDetailsModel.items?.id
+                                    cubit.productDetailsModel.data?.id
                                             .toString() ??
                                         "",
                                     cubit.quantity);
@@ -85,15 +85,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 borderRadius: BorderRadius.circular(20),
                                 child: PageView.builder(
                                   controller: pageController,
-                                  itemCount: cubit.productDetailsModel.items
+                                  itemCount: cubit.productDetailsModel.data
                                           ?.images?.length ??
                                       0,
                                   onPageChanged: (index) {
                                     cubit.onChangeIndexImages(index);
                                   },
                                   itemBuilder: (context, index) {
-                                    final media = cubit.productDetailsModel
-                                        .items?.images?[index];
+                                    final media = cubit.productDetailsModel.data
+                                        ?.images?[index];
                                     final isVideo = media?.type == 11;
 
                                     if (isVideo) {
@@ -117,9 +117,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             height: 6,
                           ),
                           // ignore: prefer_is_empty
-                          if (cubit.productDetailsModel.items?.image?.length !=
+                          if (cubit.productDetailsModel.data?.image?.length !=
                                   0 &&
-                              cubit.productDetailsModel.items?.image?.length !=
+                              cubit.productDetailsModel.data?.image?.length !=
                                   null)
                             Center(
                               child: SingleChildScrollView(
@@ -129,7 +129,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   children: [
                                     for (int i = 0;
                                         i <
-                                            cubit.productDetailsModel.items!
+                                            cubit.productDetailsModel.data!
                                                 .images!.length;
                                         i++)
                                       Row(
@@ -151,12 +151,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                       : AppColor.borderColor,
                                               imageUrl: cubit
                                                       .productDetailsModel
-                                                      .items
+                                                      .data
                                                       ?.images?[i]
                                                       .image ??
                                                   '',
                                               isVideo: cubit.productDetailsModel
-                                                      .items?.images?[i].type ==
+                                                      .data?.images?[i].type ==
                                                   11,
                                             ),
                                           ),
@@ -183,11 +183,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${cubit.productDetailsModel.items?.name}",
+                                  "${cubit.productDetailsModel.data?.name}",
                                   style: AppStyles.textStyle24w700,
                                 ),
                                 // Text(
-                                //   "${S.of(context).by} ${cubit.productDetailsModel.items?.companyName}",
+                                //   "${S.of(context).by} ${cubit.productDetailsModel.data?.companyName}",
                                 //   style: AppStyles.textStyle16w700.copyWith(
                                 //     color: AppColor.black2,
                                 //   ),
@@ -211,7 +211,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   direction: Axis.horizontal,
                                   allowHalfRating: true,
                                   itemCount: 5,
-                                  itemSize: 32,
                                   unratedColor: Colors.grey.shade300,
                                   itemPadding: const EdgeInsets.symmetric(
                                       horizontal: 4.0),
@@ -259,7 +258,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   style: AppStyles.textStyle18w700,
                                 ),
                                 Text(
-                                  "${cubit.productDetailsModel.items?.description?.replaceAll(RegExp(r'<[^>]*>'), '')}",
+                                  "${cubit.productDetailsModel.data?.description?.replaceAll(RegExp(r'<[^>]*>'), '')}",
                                   style: AppStyles.textStyle16w400.copyWith(
                                     color: AppColor.black,
                                   ),
@@ -295,10 +294,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                         children: [
                                           Visibility(
                                             visible: cubit.productDetailsModel
-                                                    .items?.discountPrice !=
+                                                    .data?.discountPrice !=
                                                 null,
                                             child: Text(
-                                              '${cubit.productDetailsModel.items?.discountPrice} ل.س',
+                                              '${cubit.productDetailsModel.data?.discountPrice} ل.س',
                                               style: AppStyles.textStyle20w700
                                                   .copyWith(
                                                 color: AppColor.redOpacity,
@@ -306,12 +305,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                             ),
                                           ),
                                           Text(
-                                            '${cubit.productDetailsModel.items?.price} ل.س',
+                                            '${cubit.productDetailsModel.data?.price} ل.س',
                                             style: AppStyles.textStyle14w700
                                                 .copyWith(
                                               decoration: cubit
                                                           .productDetailsModel
-                                                          .items
+                                                          .data
                                                           ?.discountPrice !=
                                                       null
                                                   ? TextDecoration.lineThrough
@@ -401,8 +400,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                           context
                                               .read<AddToCartCubit>()
                                               .addToCart(
-                                                  cubit.productDetailsModel
-                                                          .items?.id
+                                                  cubit.productDetailsModel.data
+                                                          ?.id
                                                           .toString() ??
                                                       "",
                                                   cubit.quantity);

@@ -14,14 +14,14 @@ class Keys {
 
 class UrlKeys {
 //!
-  static const categoryEndPoint = "getCategories";
+  static const categoryEndPoint = "category/categories";
   static const productCategoryEndPoint = "productsFilter?category_id=";
   static const brandsEndPoint = "getBrands";
   //! this is the CartUrls ..
-  static const getMyCartEndPoint = "getMyCart";
-  static const addMyCartEndPoint = "addProductToCart/";
+  static const getMyCartEndPoint = "cart/";
+  static const addMyCartEndPoint = "cart/add-product/";
   static const deleteFromCartEndPoint =
-      "deleteProductCart"; //?  this need id in end ex:{{mainURL}}deleteProductCart/1
+      "cart/delete-product"; //?  this need id in end ex:{{mainURL}}deleteProductCart/1
   //! global
   static const getAreaEndPoint = 'getAreas';
   //! Address
@@ -29,7 +29,7 @@ class UrlKeys {
   static const deleteMyAddressEndPoint = 'deleteMyAddress';
   static const addMyAddressEndPoint = 'addAddress';
   //! MyWish
-  static const getMyWishEndPoint = 'getMyFavorites';
+  static const getMyWishEndPoint = 'favorite/';
   static const addRemoveFromFavEndPoint =
       'addAndRemoveFromFavorite'; //! this need Id  ex:{{mainURL}}addAndRemoveFromFavorite/4 -> (4 is product id you want add it or remove it from the wish)
   //!  change password
@@ -38,7 +38,8 @@ class UrlKeys {
   static const editAccountEndPoint = 'editUserProfile';
   static const logoutEndPoint = 'logout';
   //! order
-  static const getOrdersEndPoint = 'getMyOrders';
+  static const getOrdersEndPoint = 'orders';
+  static const createOrder = 'orders';
   static const getOrdersByIdEndPoint =
       'getMyOrderById'; //! need id ex:endpoint/id
   //! search
@@ -50,5 +51,7 @@ class UrlKeys {
   //! OLD URL
   static const oldUrl = "https://bp.linekw.xyz/api/";
   // ! URL
-  static const baseUrl = "https://demo1.weisro.com/api/";
+  // static const baseUrl = "https://demo1.weisro.com/api/";
+  static const baseUrl = "https://ghina-api.weisro.com/best-price/api/v0/";
+  static const apiKey = "ADFRETYUUBFD!#@%*%4455iup!98SCZ@";
 }

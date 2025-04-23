@@ -33,14 +33,14 @@ class ProductGridView extends StatelessWidget {
                 ));
           },
           // onFavoriteTap: ,
-          imageUrl: productItem.image ?? "",
-          brandName: productItem.brandName ?? "No brand Name",
-          isFavorite: productItem.isFavorite ?? "0",
-          companyName: productItem.companyName ?? "company Name",
+          imageUrl: productItem.images?.first ?? "",
+          brandName: "No brand Name",
+          isFavorite: productItem.isFavorite ?? false,
+          companyName: "company Name",
           price: productItem.price ?? 0.000,
           offerPrice: productItem.discountPrice ?? 0.000,
           title: productItem.name ?? "No title",
-          offerPercentage: productItem.calculateOfferPercentage() ?? 0,
+          offerPercentage: 0.0,
         );
       },
     );

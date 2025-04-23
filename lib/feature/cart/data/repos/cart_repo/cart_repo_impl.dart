@@ -3,6 +3,7 @@ import 'package:best_price/core/errors/failures.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
+import 'package:best_price/feature/cart/data/models/order_model.dart';
 import 'package:best_price/feature/cart/data/repos/cart_repo/cart_repo.dart';
 import 'package:dartz/dartz.dart';
 
@@ -22,10 +23,8 @@ class CartRepoImpl implements CartRepo {
   @override
   Future<Either<Failure, String>> deleteFromCart(int productId) async {
     try {
-      await getIt.get<ApiService>().post(
-          endPoint: "${UrlKeys.deleteFromCartEndPoint}/$productId",
-          data: "{}",
-          isLogin: false);
+      await getIt.get<ApiService>().delete(
+          endPoint: "${UrlKeys.deleteFromCartEndPoint}/", id: productId);
       return right("Deleted");
     } catch (e) {
       return left(ErrorHandler.handleError(e));
@@ -35,7 +34,6 @@ class CartRepoImpl implements CartRepo {
   @override
   Future<Either<Failure, String>> changeQuantityFromCart(
       Map<String, dynamic> data) {
-    // TODO: implement changeQuantityFromCart
     throw UnimplementedError();
   }
 
@@ -47,6 +45,20 @@ class CartRepoImpl implements CartRepo {
           .get<ApiService>()
           .post(endPoint: "${UrlKeys.addMyCartEndPoint}$productId", data: data);
       return right("added");
+    } catch (e) {
+      return left(ErrorHandler.handleError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> addOrder(OrderModel order) async {
+    try {
+      final response = await getIt.get<ApiService>().post(
+            endPoint: UrlKeys.createOrder,
+            data: order.toJson(),
+          );
+      print(response);
+      return right("Order created successfully");
     } catch (e) {
       return left(ErrorHandler.handleError(e));
     }

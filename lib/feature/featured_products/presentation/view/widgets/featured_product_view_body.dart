@@ -50,34 +50,34 @@ class FeaturedProductViewBody extends StatelessWidget {
                       },
                     ),
                   ),
-                  AppBarBottom(
-                    iconPath: IconsPath.flitterIcon,
-                    onTap: () {
-                      // HelperFunctions.navigateToScreen(
-                      //     context,
-                      //     FlitterSortView(
-                      //       endValue:
-                      //           featuredProductsCubit.maxProductPrice.toDouble(),
-                      //     ));
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FlitterSortView(
-                            endValue: featuredProductsCubit.maxProductPrice
-                                .toDouble(),
-                            page: "featured",
-                          ),
-                        ),
-                      ).then((value) {
-                        if (value != null) {
-                          //? here will call filter api
-                          // print(value);
-                          featuredProductsCubit
-                              .getFeaturedProductsAfterFilter(value);
-                        }
-                      });
-                    },
-                  )
+                  // AppBarBottom(
+                  //   iconPath: IconsPath.flitterIcon,
+                  //   onTap: () {
+                  //     // HelperFunctions.navigateToScreen(
+                  //     //     context,
+                  //     //     FlitterSortView(
+                  //     //       endValue:
+                  //     //           featuredProductsCubit.maxProductPrice.toDouble(),
+                  //     //     ));
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => FlitterSortView(
+                  //           endValue: featuredProductsCubit.maxProductPrice
+                  //               .toDouble(),
+                  //           page: "featured",
+                  //         ),
+                  //       ),
+                  //     ).then((value) {
+                  //       if (value != null) {
+                  //         //? here will call filter api
+                  //         // print(value);
+                  //         featuredProductsCubit
+                  //             .getFeaturedProductsAfterFilter(value);
+                  //       }
+                  //     });
+                  //   },
+                  // )
                 ],
               ),
             ),
@@ -115,15 +115,14 @@ class FeaturedProductViewBody extends StatelessWidget {
                       Product productItem =
                           featuredProductsCubit.allFeaturedProducts[index];
                       return ProductsItem(
-                        imageUrl: productItem.image ?? "",
-                        brandName: productItem.brandName ?? "Brand name",
-                        companyName: productItem.companyName ?? "",
-                        isFavorite: productItem.isFavorite ?? '0',
+                        imageUrl: productItem.images?.first ?? "",
+                        brandName: "Brand name",
+                        companyName: "",
+                        isFavorite: productItem.isFavorite ?? false,
                         price: productItem.price ?? 0.000,
                         offerPrice: productItem.discountPrice ?? 0.000,
                         title: productItem.name ?? "No title",
-                        offerPercentage:
-                            productItem.calculateOfferPercentage() ?? 0,
+                        offerPercentage: 0,
                       );
                     },
                   );

@@ -56,10 +56,10 @@ class SignUpView extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(start: 16.w),
               child: const SignUpForm(),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.only(start: 16.w),
-              child: const TermOk(),
-            ),
+            // Padding(
+            //   padding: EdgeInsetsDirectional.only(start: 16.w),
+            //   child: const TermOk(),
+            // ),
             SizedBox(
               height: height * 0.07, //60.h,
             ),
@@ -90,6 +90,13 @@ class SignUpView extends StatelessWidget {
                           contain: state.message,
                         ));
                   }
+                } else if (state is SignUpFailure) {
+                  HelperFunctions.showCustomDialog(
+                      context,
+                      UpdateAccountDialog(
+                        title: S.of(context).sign_up_error, //"Sign up Error",
+                        contain: state.errMessage,
+                      ));
                 }
               },
               builder: (context, state) {

@@ -59,7 +59,7 @@ class ProductCategoryViewBody extends StatelessWidget {
                       SizedBox(
                         width: 6.w,
                       ),
-                      const FlitterBottom()
+                      // const FlitterBottom()
                     ],
                   ),
                 );

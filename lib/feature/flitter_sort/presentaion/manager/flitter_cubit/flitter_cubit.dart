@@ -25,41 +25,41 @@ class FlitterCubit extends Cubit<FlitterState> {
   ];
   String? pageTypeForFilter;
 
-  List<Brand> brandsList = [
-    Brand(
-      id: -1,
-      name: "All",
-    ),
-  ];
+  // List<Brand> brandsList = [
+  //   Brand(
+  //     id: -1,
+  //     name: "All",
+  //   ),
+  // ];
 
   void setPage(String? pageTypeForFilter) {
     this.pageTypeForFilter = pageTypeForFilter;
   }
 
   // List<Brand> selectedBrandsList = [];
-  void setBrandList(List<Brand> brandList) {
-    for (var element in brandList) {
-      brandsList.add(Brand(
-        createdAt: element.createdAt,
-        featured: element.featured,
-        id: element.id,
-        image: element.image,
-        name: element.name,
-        status: element.status,
-      ));
-    }
-    // brandsList = brandList;
-    // brandsList.insert(
-    //   0,
-    //   Brand(
-    //     id: -1,
-    //     name: "All",
-    //   ),
-    // );
+  // void setBrandList(List<Brand> brandList) {
+  //   for (var element in brandList) {
+  //     brandsList.add(Brand(
+  //       createdAt: element.createdAt,
+  //       featured: element.featured,
+  //       id: element.id,
+  //       image: element.image,
+  //       name: element.name,
+  //       status: element.status,
+  //     ));
+  //   }
+  // brandsList = brandList;
+  // brandsList.insert(
+  //   0,
+  //   Brand(
+  //     id: -1,
+  //     name: "All",
+  //   ),
+  // );
 
-    // brandsList.addAll(List.from(brandList));
-    // brandsList[2].name = "jjj";
-  }
+  // brandsList.addAll(List.from(brandList));
+  // brandsList[2].name = "jjj";
+  // }
 
   List<Category> categoryList = [
     Category(
@@ -70,12 +70,9 @@ class FlitterCubit extends Cubit<FlitterState> {
   void setCategoryList(List<Category> categoryList) {
     for (var element in categoryList) {
       this.categoryList.add(Category(
-            createdAt: element.createdAt,
-            featured: element.featured,
             id: element.id,
             image: element.image,
             name: element.name,
-            status: element.status,
           ));
     }
   }
@@ -108,40 +105,40 @@ class FlitterCubit extends Cubit<FlitterState> {
     emit(RadioSortChange());
   }
 
-  void selectBrand(int index) {
-    if (index == 0) {
-      for (var element in brandsList) {
-        element.isSelected = true;
-      }
-    } else {
-      brandsList[index].isSelected = true;
-    }
-    // if (index == 0) {
-    //   selectedBrandsList =
-    //       brandsList.where((element) => element.id != -1).toList();
-    // } else {
-    //   selectedBrandsList.add(brandsList[index]);
-    // }
-    emit(BrandsChange());
-  }
+  // void selectBrand(int index) {
+  //   if (index == 0) {
+  //     for (var element in brandsList) {
+  //       element.isSelected = true;
+  //     }
+  //   } else {
+  //     brandsList[index].isSelected = true;
+  //   }
+  //   // if (index == 0) {
+  //   //   selectedBrandsList =
+  //   //       brandsList.where((element) => element.id != -1).toList();
+  //   // } else {
+  //   //   selectedBrandsList.add(brandsList[index]);
+  //   // }
+  //   emit(BrandsChange());
+  // }
 
-  void deselectBrand(int index) {
-    if (index == 0) {
-      for (var element in brandsList) {
-        element.isSelected = false;
-      }
-    } else {
-      brandsList[0].isSelected = false;
-      brandsList[index].isSelected = false;
-    }
-    // if (index == 0) {
-    //   selectedBrandsList.clear();
-    // } else {
-    //   selectedBrandsList
-    //       .removeWhere((element) => element.id == brandsList[index].id);
-    // }
-    emit(BrandsChange());
-  }
+  // void deselectBrand(int index) {
+  //   if (index == 0) {
+  //     for (var element in brandsList) {
+  //       element.isSelected = false;
+  //     }
+  //   } else {
+  //     brandsList[0].isSelected = false;
+  //     brandsList[index].isSelected = false;
+  //   }
+  //   // if (index == 0) {
+  //   //   selectedBrandsList.clear();
+  //   // } else {
+  //   //   selectedBrandsList
+  //   //       .removeWhere((element) => element.id == brandsList[index].id);
+  //   // }
+  //   emit(BrandsChange());
+  // }
 
   void selectCategory(int index) {
     if (index == 0) {
@@ -176,11 +173,11 @@ class FlitterCubit extends Cubit<FlitterState> {
 
     //? add brand query---------------------
     List<int> ids = [];
-    for (var i = 1; i < brandsList.length; i++) {
-      if (brandsList[i].isSelected) {
-        ids.add(brandsList[i].id ?? -1);
-      }
-    }
+    // for (var i = 1; i < brandsList.length; i++) {
+    //   if (brandsList[i].isSelected) {
+    //     ids.add(brandsList[i].id ?? -1);
+    //   }
+    // }
     String brandIdQuery = "";
     for (var i = 0; i < ids.length; i++) {
       if (i < ids.length - 1) {
@@ -234,9 +231,9 @@ class FlitterCubit extends Cubit<FlitterState> {
   }
 
   void resetAllControllers(int realMaxPrice) {
-    for (var element in brandsList) {
-      element.isSelected = false;
-    }
+    // for (var element in brandsList) {
+    //   element.isSelected = false;
+    // }
     for (var element in categoryList) {
       element.isSelected = false;
     }

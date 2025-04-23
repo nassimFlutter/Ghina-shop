@@ -20,6 +20,7 @@
     "old_password_": "كلمة المرور القديمة*",
     "new_password_": "كلمة المرور الجديدة*",
     "confirm_password_": "تأكيد كلمة المرور*",
+    "confirm": "تأكيد",
     "changed_password_dialog": "لقد قمت بتغيير كلمة المرور بنجاح",
     "change_password_error": "خطأ في تغيير كلمة المرور",
     "change": "تغيير",
@@ -159,5 +160,13 @@
     "Already_Have": "هل تملك حساب بلفعل ؟ تسجيل دخول",
     "version": "الإصدار 1.0",
     "copyrights": "© 2025 غنا شوب . جميع الحقوق محفوظة",
-    "no_Product_In_Cart": "لا يوجد منتجات في السلة"
+    "no_Product_In_Cart": "لا يوجد منتجات في السلة",
+    "shipping_address": "عنوان الشحن",
+    "name": "الاسم الكامل",
+    "mobile": "رقم الجوال",
+    "email": "عنوان البريد الإلكتروني",
+    "shipping_address_error": "يرجى تقديم عنوان شحن صالح",
+    "shipping_name_error": "الاسم الكامل مطلوب للشحن",
+    "shipping_mobile_error": "رقم الجوال مطلوب للشحن",
+    "shipping_email_error": "عنوان البريد الإلكتروني مطلوب للشحن"
 }

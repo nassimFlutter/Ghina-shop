@@ -15,11 +15,8 @@ class WishRepoImpl implements WishRepo {
       var response = await getIt
           .get<ApiService>()
           .get(endPoint: UrlKeys.getMyWishEndPoint, cancelToken: cancelToken);
-      if (response['status']) {
-        return right(MyWishModel.fromJson(response));
-      } else {
-        return left(ErrorHandler.handleError("No data"));
-      }
+
+      return right(MyWishModel.fromJson(response));
     } catch (e) {
       return left(ErrorHandler.handleError(e));
     }
