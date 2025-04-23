@@ -54,10 +54,12 @@ class ServerFailure extends Failure {
     LoggerHelper.info('statusCode is $statusCode');
 
     var error;
-    print("here $response");
     if (response is Map) {
-      error = response[
-          'error']; // ! here we should change the key after check from haydar baddour
+      if (response["error"] != null && response["error"] is String) {
+        error = response['error'];
+      } else if (response["message"] != null && response["message"] is String) {
+        error = response['message'];
+      }
     }
 
     if (statusCode == 401 || statusCode == 403 || statusCode == 422) {

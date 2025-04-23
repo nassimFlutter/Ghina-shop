@@ -1,6 +1,7 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,8 @@ class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
     NavBarCubit navBarCubit = NavBarCubit.get(context);
+    // HelperFunctions.clearUserData();
+
     return BlocConsumer<NavBarCubit, NavBarState>(
       listener: (context, state) {
         if (state is ChangeTab) {

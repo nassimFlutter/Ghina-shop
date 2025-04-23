@@ -57,7 +57,7 @@ class CartRepoImpl implements CartRepo {
             endPoint: UrlKeys.createOrder,
             data: order.toJson(),
           );
-
+      print(response);
       return right("Order created successfully");
     } catch (e) {
       return left(ErrorHandler.handleError(e));

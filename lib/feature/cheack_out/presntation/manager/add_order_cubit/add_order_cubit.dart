@@ -35,7 +35,6 @@ class AddOrderCubit extends Cubit<AddOrderState> {
       shippingAddress: shippingAddressController.text.trim(),
       items: items,
     );
-    print("This order data${request.toJson()}");
     final result = await _orderRepo.addOrder(request);
 
     result.fold(

@@ -38,33 +38,33 @@ class NewArriversViewBody extends StatelessWidget {
                       title: S.of(context).new_arrivals, //"New Arrivals",
                     ),
                   ),
-                  AppBarBottom(
-                    iconPath: IconsPath.flitterIcon,
-                    onTap: () {
-                      // HelperFunctions.navigateToScreen(
-                      //   context,
-                      //   const FlitterSortView(
-                      //     endValue: 100,
-                      //   ),
-                      // );
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FlitterSortView(
-                            endValue:
-                                newArrivalsCubit.maxProductPrice.toDouble(),
-                            page: "newst",
-                          ),
-                        ),
-                      ).then((value) {
-                        if (value != null) {
-                          //? here will call filter api
-                          // print(value);
-                          newArrivalsCubit.getNewArrivalsAfterFilter(value);
-                        }
-                      });
-                    },
-                  )
+                  // AppBarBottom(
+                  //   iconPath: IconsPath.flitterIcon,
+                  //   onTap: () {
+                  //     // HelperFunctions.navigateToScreen(
+                  //     //   context,
+                  //     //   const FlitterSortView(
+                  //     //     endValue: 100,
+                  //     //   ),
+                  //     // );
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => FlitterSortView(
+                  //           endValue:
+                  //               newArrivalsCubit.maxProductPrice.toDouble(),
+                  //           page: "newst",
+                  //         ),
+                  //       ),
+                  //     ).then((value) {
+                  //       if (value != null) {
+                  //         //? here will call filter api
+                  //         // print(value);
+                  //         newArrivalsCubit.getNewArrivalsAfterFilter(value);
+                  //       }
+                  //     });
+                  //   },
+                  // )
                 ],
               ),
             ),

@@ -39,12 +39,14 @@ class ApiService {
     bool isLogin = false,
     CancelToken? cancelToken,
   }) async {
+    dio.options.headers["x-api-key"] = UrlKeys.apiKey;
+    dio.options.headers["accept-language"] = "ar";
+
     if (!isLogin) {
       String? token = await CacheHelper.getData(key: Keys.kUserToken);
       LoggerHelper.info(token ?? "cache helper null");
       dio.options.headers["Authorization"] = "Bearer $token";
-      dio.options.headers["accept-language"] = "ar";
-      dio.options.headers["x-api-key"] = UrlKeys.apiKey;
+      // dio.options.headers["x-api-key"] = UrlKeys.apiKey;
     }
     var response =
         await dio.post(endPoint, data: data, cancelToken: cancelToken);
@@ -69,6 +71,8 @@ class ApiService {
     LoggerHelper.info(token);
     dio.options.headers["Authorization"] = "Bearer $token";
     dio.options.headers['Content-Type'] = "application/json";
+    dio.options.headers["x-api-key"] = UrlKeys.apiKey;
+
     var response = await dio.delete('$endPoint$id');
     return response.data;
   }
@@ -79,6 +83,7 @@ class ApiService {
     LoggerHelper.info(token);
     dio.options.headers["Authorization"] = "Bearer $token";
     dio.options.headers['Content-Type'] = "application/json";
+    dio.options.headers["x-api-key"] = UrlKeys.apiKey;
 
     var response = await dio.delete(endPoint, data: data);
     return response.data;

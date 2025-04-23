@@ -50,34 +50,34 @@ class FeaturedProductViewBody extends StatelessWidget {
                       },
                     ),
                   ),
-                  AppBarBottom(
-                    iconPath: IconsPath.flitterIcon,
-                    onTap: () {
-                      // HelperFunctions.navigateToScreen(
-                      //     context,
-                      //     FlitterSortView(
-                      //       endValue:
-                      //           featuredProductsCubit.maxProductPrice.toDouble(),
-                      //     ));
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FlitterSortView(
-                            endValue: featuredProductsCubit.maxProductPrice
-                                .toDouble(),
-                            page: "featured",
-                          ),
-                        ),
-                      ).then((value) {
-                        if (value != null) {
-                          //? here will call filter api
-                          // print(value);
-                          featuredProductsCubit
-                              .getFeaturedProductsAfterFilter(value);
-                        }
-                      });
-                    },
-                  )
+                  // AppBarBottom(
+                  //   iconPath: IconsPath.flitterIcon,
+                  //   onTap: () {
+                  //     // HelperFunctions.navigateToScreen(
+                  //     //     context,
+                  //     //     FlitterSortView(
+                  //     //       endValue:
+                  //     //           featuredProductsCubit.maxProductPrice.toDouble(),
+                  //     //     ));
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => FlitterSortView(
+                  //           endValue: featuredProductsCubit.maxProductPrice
+                  //               .toDouble(),
+                  //           page: "featured",
+                  //         ),
+                  //       ),
+                  //     ).then((value) {
+                  //       if (value != null) {
+                  //         //? here will call filter api
+                  //         // print(value);
+                  //         featuredProductsCubit
+                  //             .getFeaturedProductsAfterFilter(value);
+                  //       }
+                  //     });
+                  //   },
+                  // )
                 ],
               ),
             ),

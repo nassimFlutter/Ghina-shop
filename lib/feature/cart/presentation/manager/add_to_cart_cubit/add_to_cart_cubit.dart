@@ -9,7 +9,9 @@ class AddToCartCubit extends Cubit<AddToCartState> {
   AddToCartCubit() : super(AddToCartInitial());
   Future<void> addToCart(String productId, int quantity) async {
     emit(AddToCartLoading());
-    var result = await getIt.get<CartRepo>().addToMyCart(productId, {});
+    var result = await getIt
+        .get<CartRepo>()
+        .addToMyCart(productId, {"quantity": quantity});
     // {"quantity": quantity}
     result.fold(
       (l) {

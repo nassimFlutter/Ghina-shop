@@ -36,31 +36,31 @@ class BestSellingBody extends StatelessWidget {
                     title: S.of(context).best_selling, //"Best Selling",
                   ),
                 ),
-                AppBarBottom(
-                  iconPath: IconsPath.flitterIcon,
-                  onTap: () {
-                    // HelperFunctions.navigateToScreen(
-                    //     context,
-                    //     FlitterSortView(
-                    //       endValue: 100,
-                    //     ));
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FlitterSortView(
-                          endValue: bestSellingCubit.maxProductPrice.toDouble(),
-                          page: "bestseller",
-                        ),
-                      ),
-                    ).then((value) {
-                      if (value != null) {
-                        //? here will call filter api
-                        // print(value);
-                        bestSellingCubit.getBestSellingAfterFilter(value);
-                      }
-                    });
-                  },
-                )
+                // AppBarBottom(
+                //   iconPath: IconsPath.flitterIcon,
+                //   onTap: () {
+                //     // HelperFunctions.navigateToScreen(
+                //     //     context,
+                //     //     FlitterSortView(
+                //     //       endValue: 100,
+                //     //     ));
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => FlitterSortView(
+                //           endValue: bestSellingCubit.maxProductPrice.toDouble(),
+                //           page: "bestseller",
+                //         ),
+                //       ),
+                //     ).then((value) {
+                //       if (value != null) {
+                //         //? here will call filter api
+                //         // print(value);
+                //         bestSellingCubit.getBestSellingAfterFilter(value);
+                //       }
+                //     });
+                //   },
+                // )
               ],
             ),
           ),

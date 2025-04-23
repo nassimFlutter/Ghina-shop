@@ -77,17 +77,17 @@ class MyWishViewBody extends StatelessWidget {
                         },
                       ),
                     ),
-                    AppBarBottom(
-                      iconPath: IconsPath.flitterIcon,
-                      onTap: () {
-                        HelperFunctions.navigateToScreen(
-                          context,
-                          const FlitterSortView(
-                            endValue: 100,
-                          ),
-                        );
-                      },
-                    )
+                    // AppBarBottom(
+                    //   iconPath: IconsPath.flitterIcon,
+                    //   onTap: () {
+                    //     HelperFunctions.navigateToScreen(
+                    //       context,
+                    //       const FlitterSortView(
+                    //         endValue: 100,
+                    //       ),
+                    //     );
+                    //   },
+                    // )
                   ],
                 ),
               ),

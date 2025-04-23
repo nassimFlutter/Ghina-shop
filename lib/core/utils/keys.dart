@@ -38,7 +38,7 @@ class UrlKeys {
   static const editAccountEndPoint = 'editUserProfile';
   static const logoutEndPoint = 'logout';
   //! order
-  static const getOrdersEndPoint = 'getMyOrders';
+  static const getOrdersEndPoint = 'orders';
   static const createOrder = 'orders';
   static const getOrdersByIdEndPoint =
       'getMyOrderById'; //! need id ex:endpoint/id

@@ -1,3 +1,5 @@
+import 'package:best_price/core/theme/app_color.dart';
+import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
@@ -6,11 +8,15 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
+import 'package:best_price/feature/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class CheckOutPageBodyNew extends StatelessWidget {
   const CheckOutPageBodyNew({
@@ -99,12 +105,47 @@ class CheckOutPageBodyNew extends StatelessWidget {
             SizedBox(
               height: 32.h,
             ),
-            AppBottom(
-              title: S.of(context).confirm,
-              onTap: () async {
-                if (_formKey.currentState!.validate()) {
-                  addOrderCubit.submitOrder(context);
+            BlocConsumer<AddOrderCubit, AddOrderState>(
+              listener: (context, state) {
+                if (state is AddOrderSuccess) {
+                  showTopSnackBar(
+                    Overlay.of(context),
+                    CustomSnackBar.success(
+                      message: state.successMessage, // Dynamic success message
+                      backgroundColor: AppColor.green,
+                      textStyle: AppStyles.textStyle14.copyWith(
+                        color: AppColor.whiteColorOpacity,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  );
+
+                  // Optional: Navigate or clear cart
+                  // Navigator.pop(context);
+                } else if (state is AddOrderError) {
+                  showTopSnackBar(
+                    Overlay.of(context),
+                    CustomSnackBar.error(
+                      message: state.errorMessage, // Dynamic error message
+                      backgroundColor: Colors.red,
+                      textStyle: AppStyles.textStyle14.copyWith(
+                        color: AppColor.whiteColorOpacity,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  );
                 }
+              },
+              builder: (context, state) {
+                final addOrderCubit = AddOrderCubit.get(context);
+                return AppBottom(
+                  title: S.of(context).confirm,
+                  onTap: () async {
+                    if (_formKey.currentState!.validate()) {
+                      addOrderCubit.submitOrder(context);
+                    }
+                  },
+                );
               },
             )
           ]),

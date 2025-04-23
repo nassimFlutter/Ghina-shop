@@ -1,5 +1,7 @@
 import 'package:best_price/core/api/api_service.dart';
+import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/errors/failures.dart';
+import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/auth/sign_up/data/model/user_model.dart';
@@ -12,24 +14,30 @@ class SignUpRepoImpl implements SignUprRepo {
   Future<Either<Failure, Tuple2<bool, String>>> signUp(UserModel user) async {
     try {
       var response = await getIt.get<ApiService>().post(
-            endPoint: "signUp",
+            endPoint: "auth/signup",
             data: user.toJson(),
             isLogin: true,
           );
 
       String? message;
-      bool status = response['status'];
       //! handel message from backEnd
       if (response['message'] != null) {
         message = response['message'];
       }
       //! handel statue ....
-      if (status) {
-        if (response["user"] != null) {
-          await cacheUserInfo(response['user']);
-        }
+
+      if (response["user"] != null) {
+        await cacheUserInfo(response['user']);
       }
-      return right(Tuple2<bool, String>(status, message ?? ""));
+      if (response['result'] != null) {
+        await cacheUserInfo(response['result']);
+      }
+      if (response['token'] != null && response['token'] is String) {
+        await CacheHelper.setData(
+            key: Keys.kUserToken, value: response['token']);
+      }
+
+      return right(Tuple2<bool, String>(true, message ?? ""));
     } catch (e) {
       if (e is DioException) {
         LoggerHelper.error(' ########### Dio Exception #################');
