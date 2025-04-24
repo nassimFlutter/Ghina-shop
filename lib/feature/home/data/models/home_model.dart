@@ -170,21 +170,22 @@ class Product {
   final int? price;
   final dynamic discountPrice;
   final String? name;
+  final String? image;
   final String? description;
   final List<String>? images;
   bool? isFavorite;
 
   static const String _defaultImage = 'https://demo1.weisro.com/newLogo.png';
 
-  Product({
-    this.id,
-    this.price,
-    this.discountPrice,
-    this.name,
-    this.description,
-    this.images,
-    this.isFavorite,
-  });
+  Product(
+      {this.id,
+      this.price,
+      this.discountPrice,
+      this.name,
+      this.description,
+      this.images,
+      this.isFavorite,
+      this.image});
 
   Product copyWith({
     int? id,
@@ -238,6 +239,7 @@ class Product {
       price: json['price'] == null ? null : json['price'] as int,
       discountPrice: json['discount_price'],
       name: json['name'] == null ? null : json['name'] as String,
+      image: json['image'] == null ? null : json['image'] as String,
       description:
           json['description'] == null ? null : json['description'] as String,
       images: parsedImages,

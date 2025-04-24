@@ -60,7 +60,7 @@ class ProductsList extends StatelessWidget {
             offerPrice: productItem.discountPrice,
             price: productItem.price ?? 0.0,
             offerPercentage: 0.0,
-            imageUrl: productItem.images?.first ?? "",
+            imageUrl: productItem.image ?? "",
             brandName: "no name",
             companyName: "",
           );

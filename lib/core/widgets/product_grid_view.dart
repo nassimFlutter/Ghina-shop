@@ -31,7 +31,7 @@ class ProductGridView extends StatelessWidget {
                 ));
           },
           // onFavoriteTap: ,
-          imageUrl: productItem.images?.first ?? "",
+          imageUrl: productItem.image ?? "",
           brandName: "No brand Name",
           isFavorite: productItem.isFavorite ?? false,
           companyName: "company Name",

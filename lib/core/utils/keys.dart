@@ -33,7 +33,7 @@ class UrlKeys {
   static const addRemoveFromFavEndPoint =
       'addAndRemoveFromFavorite'; //! this need Id  ex:{{mainURL}}addAndRemoveFromFavorite/4 -> (4 is product id you want add it or remove it from the wish)
   //!  change password
-  static const changePassEndPoint = 'changePassword';
+  static const changePassEndPoint = 'auth/changePassword';
   //! UserAccounts
   static const editAccountEndPoint = 'auth/updateMe';
   static const logoutEndPoint = 'logout';

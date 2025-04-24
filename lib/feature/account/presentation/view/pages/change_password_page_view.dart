@@ -96,27 +96,17 @@ class ForgetPasswordView extends StatelessWidget {
               BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
                 listener: (context, state) {
                   if (state is ForgetPasswordSuccess) {
-                    if (forgetPasswordCubit.changePasswordResponse.status) {
-                      HelperFunctions.showCustomDialog(
-                          context,
-                          UpdateAccountDialog(
-                            contain: S
-                                .of(context)
-                                .changed_password_dialog, //"You have successfully\nChanged Your Password",
-                            title: S
-                                .of(context)
-                                .change_password, //"Change Password",
-                          ));
-                    } else {
-                      HelperFunctions.showCustomDialog(
-                          context,
-                          UpdateAccountDialog(
-                            contain: forgetPasswordCubit
-                                    .changePasswordResponse.message ??
-                                "",
-                            title: S.of(context).change_password,
-                          ));
-                    }
+                    HelperFunctions.showCustomDialog(
+                        context,
+                        UpdateAccountDialog(
+                          contain: S
+                              .of(context)
+                              .changed_password_dialog, //"You have successfully\nChanged Your Password",
+                          title: S
+                              .of(context)
+                              .change_password, //"Change Password",
+                        ));
+
                     //! if state is ForgetPasswordFailures
                   } else if (state is ForgetPasswordFailures) {
                     HelperFunctions.showCustomDialog(
