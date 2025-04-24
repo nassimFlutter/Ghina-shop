@@ -201,13 +201,13 @@ class MyApp extends StatelessWidget {
                 ],
                 supportedLocales: S.delegate.supportedLocales,
                 debugShowCheckedModeBanner: false,
-                title: 'Best Price',
+                title: 'Ghina Shop',
                 theme: ThemeData(
                   scaffoldBackgroundColor: Colors.white,
                   useMaterial3: false,
                 ),
                 // home: const SplashView(),
-                home: SplashView()
+                home: const SplashView()
                 // home: const ProductDetailsPage(),
                 ),
           );

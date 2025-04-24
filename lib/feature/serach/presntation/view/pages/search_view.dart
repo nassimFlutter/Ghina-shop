@@ -79,6 +79,11 @@ class SearchViewBody extends StatelessWidget {
                 ],
               ),
             ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 19.h,
+              ),
+            ),
             BlocConsumer<SearchCubit, SearchState>(
               listener: (context, state) {},
               builder: (context, state) {

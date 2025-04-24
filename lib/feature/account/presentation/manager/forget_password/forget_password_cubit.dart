@@ -21,15 +21,15 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   GlobalKey<FormState> changePassFormKey = GlobalKey<FormState>();
   Response changePasswordResponse = Response(status: false);
   //! --------------- End Var ---------------------------------------
-  
+
 //* -------------------- Functions -----------------------------------
-void clearControllers() {
+  void clearControllers() {
     oldPasswordController.clear();
     newPasswordController.clear();
     confirmPasswordController.clear();
-}
+  }
 //* -------------------- End Functions -----------------------------------
-  
+
 //? ------------------- Apis -------------------------------------
   Future<void> changePassword() async {
     if (!changePassFormKey.currentState!.validate()) {
@@ -47,10 +47,8 @@ void clearControllers() {
       LoggerHelper.error(error.errMassage);
       emit(ForgetPasswordFailures(errMessage: error.errMassage));
     }, (changed) {
-      changePasswordResponse = changed;
       emit(ForgetPasswordSuccess());
     });
   }
 //? ------------------- End Apis -------------------------------------
-  
 }

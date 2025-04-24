@@ -8,7 +8,7 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
-import 'package:best_price/feature/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
+import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -106,7 +106,7 @@ class CheckOutPageBodyNew extends StatelessWidget {
               height: 32.h,
             ),
             BlocConsumer<AddOrderCubit, AddOrderState>(
-              listener: (context, state) {
+              listener: (context, state) async {
                 if (state is AddOrderSuccess) {
                   showTopSnackBar(
                     Overlay.of(context),
@@ -119,6 +119,8 @@ class CheckOutPageBodyNew extends StatelessWidget {
                       ),
                     ),
                   );
+                  await  BlocProvider.of<MyCartCubit>(context)
+                      .getMyCart(context);
 
                   // Optional: Navigate or clear cart
                   // Navigator.pop(context);

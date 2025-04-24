@@ -3,5 +3,5 @@ import 'package:best_price/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ChangePasswordRepo {
-  Future<Either<Failure, Response>> changeMyPassword(Map<String, dynamic> data);
+  Future<Either<Failure, String>> changeMyPassword(Map<String, dynamic> data);
 }

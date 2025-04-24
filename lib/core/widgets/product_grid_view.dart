@@ -16,12 +16,10 @@ class ProductGridView extends StatelessWidget {
     return SliverGrid.builder(
       itemCount: productList.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisSpacing: 50.w,
-        // mainAxisSpacing: 150.h,
-        // childAspectRatio: 160.w / 300.h,
-        crossAxisCount: 2,
-        mainAxisExtent: 320.w,
-      ),
+          crossAxisSpacing: 50.w,
+          mainAxisSpacing: 0.h,
+          crossAxisCount: 2,
+          childAspectRatio: 0.6),
       itemBuilder: (context, index) {
         Product productItem = productList[index];
         return ProductsItem(
@@ -33,7 +31,7 @@ class ProductGridView extends StatelessWidget {
                 ));
           },
           // onFavoriteTap: ,
-          imageUrl: productItem.images?.first ?? "",
+          imageUrl: productItem.image ?? "",
           brandName: "No brand Name",
           isFavorite: productItem.isFavorite ?? false,
           companyName: "company Name",

@@ -1,10 +1,7 @@
 import 'package:best_price/core/theme/app_color.dart';
-import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
-import 'package:best_price/feature/account/data/models/order_model/order_model.dart';
 import 'package:best_price/feature/account/presentation/manager/order_cubit/order_cubit.dart';
-import 'package:best_price/feature/account/presentation/view/pages/order_details.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/order_item.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +14,7 @@ class MyOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OrderCubit orderCubit = OrderCubit.get(context);
+    orderCubit.getAllMyOrder();
     return Scaffold(
       backgroundColor: Colors.white,
       body: RefreshIndicator(
@@ -46,30 +44,33 @@ class MyOrders extends StatelessWidget {
                       child: CustomCircularProgressIndicator(),
                     );
                   } else {
+                    final orders = orderCubit.orderModel.data?.orders ?? [];
+
+                    if (orders.isEmpty) {
+                      return const Expanded(
+                        child: Center(
+                          child: Text(
+                            "لا يوجد طلبات",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      );
+                    }
+
                     return Expanded(
                       child: ListView.builder(
-                        itemCount: orderCubit.orderModel.data?.orders?.length,
+                        itemCount: orders.length,
                         itemBuilder: (context, index) {
-                          Orders? order =
-                              orderCubit.orderModel.data?.orders?[index];
+                          final order = orders[index];
                           return InkWell(
                             onTap: () {
-                              // HelperFunctions.navigateToScreen(
-                              //     context,
-                              //     OrderDetails(
-                              //       orderId: orderCubit.orderModel.data
-                              //               ?.orders?[index].id ??
-                              //           -100,
-                              //     ));
+                              // Add your navigation logic here if needed
                             },
                             child: OrderItem(
-                              amount: orderCubit.orderModel.data?.orders?[index]
-                                      .totalPrice
-                                      .toString() ??
-                                  "",
-                              date: order?.orderedDate.toString() ?? "",
-                              orderId: order?.id.toString() ?? "",
-                              statue: order?.status.toString() ?? "",
+                              amount: order.totalPrice?.toString() ?? "",
+                              date: order.orderedDate?.toString() ?? "",
+                              orderId: order.id?.toString() ?? "",
+                              statue: order.status.toString() ?? "",
                             ),
                           );
                         },
@@ -77,7 +78,7 @@ class MyOrders extends StatelessWidget {
                     );
                   }
                 },
-              ),
+              )
             ],
           ),
         ),

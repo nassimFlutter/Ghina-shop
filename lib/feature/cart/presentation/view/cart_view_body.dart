@@ -101,7 +101,6 @@ class CartViewBody extends StatelessWidget {
                                   height: 20.h,
                                 ),
                                 itemBuilder: (context, index) => CartItem(
-                                
                                   id: myCartCubit.myCart.data?.result
                                           ?.myCart?[index].id ??
                                       -1,
@@ -140,11 +139,11 @@ class CartViewBody extends StatelessWidget {
                                 height: 45.h,
                               ),
                               AppBottom(
-                                title: S.of(context).proceed_to_checkout,
+                                title: "المتابعة والدفع",
                                 onTap: () {
                                   HelperFunctions.navigateToScreen(
                                     context,
-                                    const CheckOutPageNew (),
+                                    const CheckOutPageNew(),
                                   );
                                 },
                               ),

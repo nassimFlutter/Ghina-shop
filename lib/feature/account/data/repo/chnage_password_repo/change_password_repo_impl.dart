@@ -8,13 +8,14 @@ import 'package:dartz/dartz.dart';
 
 class ChangePasswordRepoImpl implements ChangePasswordRepo {
   @override
-  Future<Either<Failure, Response>> changeMyPassword(
+  Future<Either<Failure, String>> changeMyPassword(
       Map<String, dynamic> data) async {
     try {
-      var response = await getIt
+      await getIt
           .get<ApiService>()
           .post(endPoint: UrlKeys.changePassEndPoint, data: data);
-      return right(Response.fromJson(response));
+
+      return right("Ok");
     } catch (e) {
       return left(ErrorHandler.handleError(e));
     }
