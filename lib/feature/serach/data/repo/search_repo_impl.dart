@@ -14,8 +14,8 @@ class SearchRepoImpl implements SearchRepo {
       List<Product> searchResult = [];
       var response = await getIt
           .get<ApiService>()
-          .get(endPoint: "${UrlKeys.searchEndPoint}$searchQuery");
-      for (var product in response['products']) {
+          .get(endPoint: "products/products?keyword=$searchQuery");
+      for (var product in response["data"]['products']) {
         searchResult.add(Product.fromJson(product));
       }
       return right(searchResult);
