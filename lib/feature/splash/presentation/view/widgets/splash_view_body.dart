@@ -21,7 +21,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       }
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -29,12 +29,24 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         final double screenHeight = constraints.maxHeight;
         final double screenWidth = constraints.maxWidth;
 
-        return Center(
-          child: Image.asset(
-            IconsPath.splashLogo,
-            width: screenWidth * 0.8,
-            height: screenHeight * 0.2,
-          ),
+        return Stack(
+          children: [
+            SizedBox(
+              width: screenWidth,
+              height: screenHeight,
+              child: Image.asset(
+                ImagePath.newSplashImage,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Center(
+              child: Image.asset(
+                IconsPath.splashLogo,
+                width: screenWidth * 0.8,
+                height: screenHeight * 0.2,
+              ),
+            ),
+          ],
         );
       },
     );
