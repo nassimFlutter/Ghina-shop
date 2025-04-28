@@ -63,221 +63,234 @@ class HomePgeBody extends StatelessWidget {
           )
         ],
       ),
-      body: SafeArea(
-        child: BlocConsumer<HomeCubit, HomeCubitState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            if (state is HomeCubitFailure) {
-              return const CustomErrorWidget();
-            } else {
-              return Column(
-                children: [
-                  SizedBox(height: 26.h),
-                  BlocBuilder<HomeCubit, HomeCubitState>(
-                    builder: (context, state) {
-                      if (state is HomeCubitLoading) {
-                        return const ShimmerCategoryHomeList();
-                      } else {
-                        return Padding(
-                          padding: EdgeInsetsDirectional.symmetric(
-                              horizontal: Dimensions.dStartPadding.w),
-                          child: const CategoryHomeList(),
-                        );
-                      }
-                    },
-                  ),
-                  Expanded(
-                    child: ListView(
-                      padding: EdgeInsetsDirectional.symmetric(
-                          horizontal: Dimensions.dStartPadding.w),
-                      children: [
-                        SizedBox(height: 26.h),
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerLetStartText();
-                            } else {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                                child: SizedBox(
-                                  height: 30.h,
-                                  child: Marquee(
-                                    text:
-                                        '🛍️ اكتشف أفضل العروض! 🚀 جديد كل يوم! 💰 تسوق بذكاء، ووفر أكثر!',
-                                    style: AppStyles.textStyle17w700
-                                        .copyWith(color: AppColor.black),
-                                    scrollAxis: Axis.horizontal,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    blankSpace: 40.0,
-                                    velocity: 50.0,
-                                    pauseAfterRound: const Duration(seconds: 1),
-                                    startPadding: 10.0,
-                                    accelerationDuration: const Duration(seconds: 1),
-                                    accelerationCurve: Curves.linear,
-                                    decelerationDuration:
-                                        const Duration(milliseconds: 500),
-                                    decelerationCurve: Curves.easeOut,
-                                  ),
-                                ),
-                              );
-                            }
-                          },
-                        ),
-
-                        SizedBox(height: 12.h),
-                        //!................ here Ad list .......
-                        BlocConsumer<HomeCubit, HomeCubitState>(
-                          listener: (context, state) {},
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerAdList();
-                            } else {
-                              return const AdList();
-                            }
-                          },
-                        ),
-
-                        //! in this there ara margin ..
-                        //? this category in home page ..
-
-                        SizedBox(height: 30.h),
-                        //! Featured products
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerHomeTitle(title: "");
-                            } else {
-                              return HomeTitle(
-                                title: S
-                                    .of(context)
-                                    .featured_products, //'Featured products',
-                                onTap: () {
-                                  BlocProvider.of<FeaturedProductsCubit>(
-                                          context)
-                                      .getFeaturedProducts();
-
-                                  HelperFunctions.navigateToScreen(
-                                      context, const FeaturedProductView());
-                                },
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: 16.h),
-                        //! Featured products List
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerProductsList();
-                            } else {
-                              // HelperFunctions.navigateToScreen(
-                              //                   context,
-                              //                   ProductDetailsPage(
-                              //                     id: productItem.id ?? 0,
-                              //                   ));
-                              return BlocBuilder<AddAndRemoveFromFavoriteCubit,
-                                  AddAndRemoveFromFavoriteState>(
-                                builder: (context, state) {
-                                  return ProductsList(
-                                    productList: homeCubit.featuredProductsList,
-                                  );
-                                },
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: 30.h),
-
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerHomeTitle(title: "");
-                            } else {
-                              return HomeTitle(
-                                title: S
-                                    .of(context)
-                                    .best_selling, //'Best Selling',
-                                onTap: () {
-                                  BlocProvider.of<BestSellingCubit>(context)
-                                      .getBestSellingProducts();
-
-                                  HelperFunctions.navigateToScreen(
-                                    context,
-                                    const BestSellingView(),
-                                  );
-                                },
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: 16.h),
-                        // ! Best Selling List
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerProductsList();
-                            } else {
-                              return BlocBuilder<AddAndRemoveFromFavoriteCubit,
-                                  AddAndRemoveFromFavoriteState>(
-                                builder: (context, state) {
-                                  return ProductsList(
-                                    productList:
-                                        homeCubit.bestSellerProductsList,
-                                  );
-                                },
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: 30.h),
-
-                        // ! New Arrivals List
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerHomeTitle(title: "");
-                            } else {
-                              return HomeTitle(
-                                title: S.of(context).new_arrivals,
-                                //'New Arrivals',
-                                onTap: () {
-                                  BlocProvider.of<NewArrivalsCubit>(context)
-                                      .getAllNewArrivalsProducts();
-
-                                  HelperFunctions.navigateToScreen(
-                                      context, const NewArriversView());
-                                },
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: 16.h),
-
-                        BlocBuilder<HomeCubit, HomeCubitState>(
-                          builder: (context, state) {
-                            if (state is HomeCubitLoading) {
-                              return const ShimmerProductsList();
-                            } else {
-                              return BlocBuilder<AddAndRemoveFromFavoriteCubit,
-                                  AddAndRemoveFromFavoriteState>(
-                                builder: (context, state) {
-                                  return ProductsList(
-                                    productList: homeCubit.newstProductsList,
-                                  );
-                                },
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: 40.h),
-                      ],
+      body: RefreshIndicator(
+        color: AppColor.pirateGold,
+        onRefresh: () async {
+          homeCubit.getHomePage();
+        },
+        child: SafeArea(
+          child: BlocConsumer<HomeCubit, HomeCubitState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is HomeCubitFailure) {
+                return const CustomErrorWidget();
+              } else {
+                return Column(
+                  children: [
+                    SizedBox(height: 26.h),
+                    BlocBuilder<HomeCubit, HomeCubitState>(
+                      builder: (context, state) {
+                        if (state is HomeCubitLoading) {
+                          return const ShimmerCategoryHomeList();
+                        } else {
+                          return Padding(
+                            padding: EdgeInsetsDirectional.symmetric(
+                                horizontal: Dimensions.dStartPadding.w),
+                            child: const CategoryHomeList(),
+                          );
+                        }
+                      },
                     ),
-                  ),
-                ],
-              );
-            }
-          },
+                    Expanded(
+                      child: ListView(
+                        padding: EdgeInsetsDirectional.symmetric(
+                            horizontal: Dimensions.dStartPadding.w),
+                        children: [
+                          SizedBox(height: 26.h),
+                          BlocBuilder<HomeCubit, HomeCubitState>(
+                            builder: (context, state) {
+                              if (state is HomeCubitLoading) {
+                                return const ShimmerLetStartText();
+                              } else {
+                                return Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.w),
+                                  child: SizedBox(
+                                    height: 30.h,
+                                    child: Marquee(
+                                      text:
+                                          '🛍️ اكتشف أفضل العروض! 🚀 جديد كل يوم! 💰 تسوق بذكاء، ووفر أكثر!',
+                                      style: AppStyles.textStyle17w700
+                                          .copyWith(color: AppColor.black),
+                                      scrollAxis: Axis.horizontal,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      blankSpace: 40.0,
+                                      velocity: 50.0,
+                                      pauseAfterRound:
+                                          const Duration(seconds: 1),
+                                      startPadding: 10.0,
+                                      accelerationDuration:
+                                          const Duration(seconds: 1),
+                                      accelerationCurve: Curves.linear,
+                                      decelerationDuration:
+                                          const Duration(milliseconds: 500),
+                                      decelerationCurve: Curves.easeOut,
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+
+                          SizedBox(height: 12.h),
+                          //!................ here Ad list .......
+                          BlocConsumer<HomeCubit, HomeCubitState>(
+                            listener: (context, state) {},
+                            builder: (context, state) {
+                              if (state is HomeCubitLoading) {
+                                return const ShimmerAdList();
+                              } else {
+                                return const AdList();
+                              }
+                            },
+                          ),
+
+                          //! in this there ara margin ..
+                          //? this category in home page ..
+
+                          SizedBox(height: 30.h),
+                          //! Featured products
+                          BlocBuilder<HomeCubit, HomeCubitState>(
+                            builder: (context, state) {
+                              if (state is HomeCubitLoading) {
+                                return const ShimmerHomeTitle(title: "");
+                              } else {
+                                return HomeTitle(
+                                  title: S
+                                      .of(context)
+                                      .featured_products, //'Featured products',
+                                  onTap: () {
+                                    BlocProvider.of<FeaturedProductsCubit>(
+                                            context)
+                                        .getFeaturedProducts();
+
+                                    HelperFunctions.navigateToScreen(
+                                        context, const FeaturedProductView());
+                                  },
+                                );
+                              }
+                            },
+                          ),
+                          SizedBox(height: 16.h),
+                          //! Featured products List
+                          BlocBuilder<HomeCubit, HomeCubitState>(
+                            builder: (context, state) {
+                              if (state is HomeCubitLoading) {
+                                return const ShimmerProductsList();
+                              } else {
+                                // HelperFunctions.navigateToScreen(
+                                //                   context,
+                                //                   ProductDetailsPage(
+                                //                     id: productItem.id ?? 0,
+                                //                   ));
+                                return BlocBuilder<
+                                    AddAndRemoveFromFavoriteCubit,
+                                    AddAndRemoveFromFavoriteState>(
+                                  builder: (context, state) {
+                                    return ProductsList(
+                                      productList:
+                                          homeCubit.featuredProductsList,
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                          ),
+                          SizedBox(height: 30.h),
+
+                          BlocBuilder<HomeCubit, HomeCubitState>(
+                            builder: (context, state) {
+                              if (state is HomeCubitLoading) {
+                                return const ShimmerHomeTitle(title: "");
+                              } else {
+                                return HomeTitle(
+                                  title: S
+                                      .of(context)
+                                      .best_selling, //'Best Selling',
+                                  onTap: () {
+                                    BlocProvider.of<BestSellingCubit>(context)
+                                        .getBestSellingProducts();
+
+                                    HelperFunctions.navigateToScreen(
+                                      context,
+                                      const BestSellingView(),
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                          ),
+                          SizedBox(height: 16.h),
+                          // ! Best Selling List
+                          BlocBuilder<HomeCubit, HomeCubitState>(
+                            builder: (context, state) {
+                              if (state is HomeCubitLoading) {
+                                return const ShimmerProductsList();
+                              } else {
+                                return BlocBuilder<
+                                    AddAndRemoveFromFavoriteCubit,
+                                    AddAndRemoveFromFavoriteState>(
+                                  builder: (context, state) {
+                                    return ProductsList(
+                                      productList:
+                                          homeCubit.bestSellerProductsList,
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                          ),
+                          SizedBox(height: 30.h),
+
+                          // ! New Arrivals List
+                          BlocBuilder<HomeCubit, HomeCubitState>(
+                            builder: (context, state) {
+                              if (state is HomeCubitLoading) {
+                                return const ShimmerHomeTitle(title: "");
+                              } else {
+                                return HomeTitle(
+                                  title: S.of(context).new_arrivals,
+                                  //'New Arrivals',
+                                  onTap: () {
+                                    BlocProvider.of<NewArrivalsCubit>(context)
+                                        .getAllNewArrivalsProducts();
+
+                                    HelperFunctions.navigateToScreen(
+                                        context, const NewArriversView());
+                                  },
+                                );
+                              }
+                            },
+                          ),
+                          SizedBox(height: 16.h),
+
+                          BlocBuilder<HomeCubit, HomeCubitState>(
+                            builder: (context, state) {
+                              if (state is HomeCubitLoading) {
+                                return const ShimmerProductsList();
+                              } else {
+                                return BlocBuilder<
+                                    AddAndRemoveFromFavoriteCubit,
+                                    AddAndRemoveFromFavoriteState>(
+                                  builder: (context, state) {
+                                    return ProductsList(
+                                      productList: homeCubit.newstProductsList,
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                          ),
+                          SizedBox(height: 40.h),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              }
+            },
+          ),
         ),
       ),
     );

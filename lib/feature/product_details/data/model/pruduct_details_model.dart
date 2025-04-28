@@ -62,6 +62,7 @@ errors:$errors
 class Data {
   final int? id;
   final String? image;
+  final String? video;
   final int? price;
   final int? discountPrice;
   final bool? featured;
@@ -94,6 +95,7 @@ class Data {
       this.description,
       this.images,
       this.variants,
+      this.video,
       this.rate});
   Data copyWith(
       {int? id,
@@ -160,6 +162,7 @@ class Data {
     return Data(
         id: json['id'] == null ? null : json['id'] as int,
         image: json['image'] == null ? null : json['image'] as String,
+        video: json['video'] == null ? null : json['video'] as String,
         price: json['price'] == null ? null : json['price'] as int,
         discountPrice: json['discount_price'] == null
             ? null

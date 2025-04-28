@@ -125,10 +125,10 @@ class S {
     );
   }
 
-  /// `The Password must be\n at least 6 characters.`
+  /// `The Password must be\n at least 8 characters.`
   String get password_length_validation {
     return Intl.message(
-      'The Password must be\n at least 6 characters.',
+      'The Password must be\n at least 8 characters.',
       name: 'password_length_validation',
       desc: '',
       args: [],
@@ -795,10 +795,10 @@ class S {
     );
   }
 
-  /// `You have successfully\nRegistered with Best Price`
+  /// `You have successfully\nRegistered with Ghina shop`
   String get success_register_message {
     return Intl.message(
-      'You have successfully\nRegistered with Best Price',
+      'You have successfully\nRegistered with Ghina shop',
       name: 'success_register_message',
       desc: '',
       args: [],
@@ -1245,9 +1245,9 @@ class S {
     return Intl.message('Price', name: 'price', desc: '', args: []);
   }
 
-  /// `Best Price`
+  /// `Ghina shop`
   String get title {
-    return Intl.message('Best Price', name: 'title', desc: '', args: []);
+    return Intl.message('Ghina shop', name: 'title', desc: '', args: []);
   }
 
   /// `Forget Password?`
@@ -1363,6 +1363,21 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message('Pending', name: 'pending', desc: '', args: []);
+  }
+
+  /// `Confirmed`
+  String get confirmed {
+    return Intl.message('Confirmed', name: 'confirmed', desc: '', args: []);
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message('Unknown', name: 'unknown', desc: '', args: []);
   }
 }
 

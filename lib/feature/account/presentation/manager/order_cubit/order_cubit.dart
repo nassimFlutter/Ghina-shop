@@ -9,12 +9,13 @@ part 'order_state.dart';
 
 class OrderCubit extends Cubit<OrderState> {
   OrderCubit() : super(OrderInitial());
-  OrderModel orderModel = OrderModel();
+  OrderModel orderModel = const OrderModel();
   static OrderCubit get(context) => BlocProvider.of(context);
   Future<void> getAllMyOrder() async {
     emit(OrderLoading());
     var result = await getIt.get<OrderRepo>().getAllMyOrder();
     result.fold((error) {
+      // print(error.errMassage);
       emit(OrderFailures(errMessage: error.errMassage));
     }, (getOrder) {
       orderModel = getOrder;

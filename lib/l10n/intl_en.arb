@@ -6,7 +6,7 @@
     "phone_length_validation": "The Mobile must be between 8\n and 15 digits",
     "name_required_validation": "Full name is required",
     "password_required_validation": "Password is required",
-    "password_length_validation": "The Password must be\n at least 6 characters.",
+    "password_length_validation": "The Password must be\n at least 8 characters.",
     "this_required_validations": "this is required",
     "password_confirm_validation": "Confirm password is required",
     "passwords_do_not_match": "Passwords do not match",
@@ -93,7 +93,7 @@
     "dont_have_an_account_Register": "Don’t have an account? Register",
     "password": "Password",
     "enter_your_password": "Enter your password",
-    "success_register_message": "You have successfully\nRegistered with Best Price",
+    "success_register_message": "You have successfully\nRegistered with Ghina shop",
     "phone_number_": "Phone Number*",
     "password_": "Password*",
     "no_products_available": "No products available",
@@ -154,7 +154,7 @@
     "delete_address_contain_message": "Are you sure you want to delete your address?",
     "no_result_found": "No Result Found",
     "price": "Price",
-    "title": "Best Price",
+    "title": "Ghina shop",
     "Forget_Password": "Forget Password?",
     "Enter_Here": "Enter Here",
     "Already_Have": "Already have an account? Login",
@@ -168,5 +168,8 @@
     "shipping_address_error": "Please provide a valid shipping address",
     "shipping_name_error": "Full name is required for shipping",
     "shipping_mobile_error": "Mobile number is required for shipping",
-    "shipping_email_error": "Email address is required for shipping"
+    "shipping_email_error": "Email address is required for shipping",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "unknown": "Unknown"
 }

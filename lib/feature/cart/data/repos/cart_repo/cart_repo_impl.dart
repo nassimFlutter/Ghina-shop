@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:best_price/core/api/api_service.dart';
 import 'package:best_price/core/errors/failures.dart';
 import 'package:best_price/core/utils/keys.dart';
@@ -57,7 +59,7 @@ class CartRepoImpl implements CartRepo {
             endPoint: UrlKeys.createOrder,
             data: order.toJson(),
           );
-      print(response);
+      log(name: "Add Order API", "$response and this body ${order.toJson()}");
       return right("Order created successfully");
     } catch (e) {
       return left(ErrorHandler.handleError(e));

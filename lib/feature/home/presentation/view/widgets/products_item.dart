@@ -74,7 +74,7 @@ class ProductsItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Visibility(
-                    visible: newofferPrice! > 0,
+                    visible: newofferPrice! > 0 && newofferPrice != price,
                     child: Text(
                       newofferPrice! > 0
                           ? newofferPrice!.toStringAsFixed(3)
@@ -95,9 +95,10 @@ class ProductsItem extends StatelessWidget {
                           fontSize: 10,
                           fontFamily: 'Josefin Sans',
                           fontWeight: FontWeight.w700,
-                          decoration: newofferPrice! > 0
-                              ? TextDecoration.lineThrough
-                              : null,
+                          decoration:
+                              newofferPrice! > 0 && newofferPrice != price
+                                  ? TextDecoration.lineThrough
+                                  : null,
                           height: 0.24,
                         ),
                       ),

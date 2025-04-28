@@ -76,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password_": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور*",
     ),
+    "confirmed": MessageLookupByLibrary.simpleMessage("تم التأكيد"),
     "connection_not_found": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على اتصال، تحقق من اتصالك بالإنترنت",
     ),
@@ -200,7 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تأكيد كلمة المرور مطلوب",
     ),
     "password_length_validation": MessageLookupByLibrary.simpleMessage(
-      "يجب أن تتكون كلمة المرور\n من ما لا يقل عن 6 أحرف.",
+      "يجب أن تتكون كلمة المرور\n من ما لا يقل عن 8 أحرف.",
     ),
     "password_required_validation": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور مطلوبة",
@@ -213,6 +214,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "payment_details": MessageLookupByLibrary.simpleMessage("تفاصيل الدفع"),
     "payment_method": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
     "phone_length_validation": MessageLookupByLibrary.simpleMessage(
       "يجب أن يتراوح رقم الجوال بين 8\n و 15 رقمًا",
     ),
@@ -267,7 +269,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
     "success": MessageLookupByLibrary.simpleMessage("نجاح"),
     "success_register_message": MessageLookupByLibrary.simpleMessage(
-      "لقد سجلت بنجاح مع أفضل سعر",
+      "لقد سجلت بنجاح مع  غنا شوب",
     ),
     "success_update_message": MessageLookupByLibrary.simpleMessage(
       "تم تحديث حسابك بنجاح",
@@ -291,8 +293,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "this_required_validations": MessageLookupByLibrary.simpleMessage(
       "هذا مطلوب",
     ),
-    "title": MessageLookupByLibrary.simpleMessage("أفضل سعر"),
+    "title": MessageLookupByLibrary.simpleMessage("غنا شوب"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+    "unknown": MessageLookupByLibrary.simpleMessage("غير معروف"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_account": MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
     "update_account_error": MessageLookupByLibrary.simpleMessage(

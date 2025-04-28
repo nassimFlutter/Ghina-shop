@@ -74,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password_": MessageLookupByLibrary.simpleMessage(
       "Confirm Password*",
     ),
+    "confirmed": MessageLookupByLibrary.simpleMessage("Confirmed"),
     "connection_not_found": MessageLookupByLibrary.simpleMessage(
       "Connection not found, make sure you are\nconnected to internet",
     ),
@@ -196,7 +197,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Confirm password is required",
     ),
     "password_length_validation": MessageLookupByLibrary.simpleMessage(
-      "The Password must be\n at least 6 characters.",
+      "The Password must be\n at least 8 characters.",
     ),
     "password_required_validation": MessageLookupByLibrary.simpleMessage(
       "Password is required",
@@ -209,6 +210,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "payment_details": MessageLookupByLibrary.simpleMessage("Payment Details"),
     "payment_method": MessageLookupByLibrary.simpleMessage("Payment Method"),
+    "pending": MessageLookupByLibrary.simpleMessage("Pending"),
     "phone_length_validation": MessageLookupByLibrary.simpleMessage(
       "The Mobile must be between 8\n and 15 digits",
     ),
@@ -265,7 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
     "success_register_message": MessageLookupByLibrary.simpleMessage(
-      "You have successfully\nRegistered with Best Price",
+      "You have successfully\nRegistered with Ghina shop",
     ),
     "success_update_message": MessageLookupByLibrary.simpleMessage(
       "Your Account Has been\nsuccessfully updated",
@@ -293,8 +295,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "this_required_validations": MessageLookupByLibrary.simpleMessage(
       "this is required",
     ),
-    "title": MessageLookupByLibrary.simpleMessage("Best Price"),
+    "title": MessageLookupByLibrary.simpleMessage("Ghina shop"),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "update": MessageLookupByLibrary.simpleMessage("update"),
     "update_account": MessageLookupByLibrary.simpleMessage("Update Account"),
     "update_account_error": MessageLookupByLibrary.simpleMessage(

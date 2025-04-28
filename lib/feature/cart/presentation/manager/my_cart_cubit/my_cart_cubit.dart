@@ -35,8 +35,13 @@ class MyCartCubit extends Cubit<MyCartState> {
     final cartItems = myCart.data?.result?.myCart ?? [];
 
     for (var item in cartItems) {
-      final price = item.product?.discountPrice ?? item.product?.price ?? 0.0;
-      total += price * (item.quantity ?? 0);
+      double originalPrice = (item.product?.price ?? 0).toDouble();
+      double discountPercentage = (item.product?.discountPrice ?? 0).toDouble();
+
+      double finalPrice =
+          originalPrice - (originalPrice * discountPercentage / 100);
+
+      total += finalPrice * (item.quantity ?? 0);
     }
 
     final updatedResult =

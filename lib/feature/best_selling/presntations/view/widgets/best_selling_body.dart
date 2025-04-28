@@ -97,13 +97,21 @@ class BestSellingBody extends StatelessWidget {
                   itemBuilder: (context, index) {
                     Product productItem =
                         bestSellingCubit.allBestSellingProducts[index];
+
+                    double price = (productItem.price ?? 0).toDouble();
+                    double discountPercentage =
+                        (productItem.discountPrice ?? 0).toDouble();
+
+                    double offerPrice =
+                        price - (price * discountPercentage / 100);
+
                     return ProductsItem(
                       imageUrl: productItem.images?.first ?? "",
                       brandName: "Brand name",
                       isFavorite: productItem.isFavorite ?? false,
                       companyName: "",
                       price: productItem.price ?? 0.000,
-                      offerPrice: productItem.discountPrice ?? 0.000,
+                      offerPrice: offerPrice,
                       title: productItem.name ?? "No title",
                       offerPercentage: 0,
                     );

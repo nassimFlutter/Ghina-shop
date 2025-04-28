@@ -26,10 +26,10 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       emit(ProductDetailsCubitFailure(errMessage: error.errMassage));
     }, (getHomePageSuccess) {
       productDetailsModel = getHomePageSuccess;
-      productDetailsModel.data?.images?.add(const Images(
-          image:
-              "https://drive.google.com/file/d/10pPaPxrVe4q8oeEOZJVBBD_YtpcInJoe/view?usp=sharing",
-          type: 11));
+      // productDetailsModel.data?.images?.add(const Images(
+      //     image:
+      //         "https://drive.google.com/file/d/10pPaPxrVe4q8oeEOZJVBBD_YtpcInJoe/view?usp=sharing",
+      //     type: 11));
       emit(ProductDetailsCubitSuccess());
     });
   }

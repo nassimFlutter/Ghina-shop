@@ -2,11 +2,9 @@ import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
-import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/custom_no_internet_page.dart';
-import 'package:best_price/feature/flitter_sort/presentaion/view/pages/flitter_sort_view.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
@@ -27,7 +25,7 @@ class MyWishView extends StatelessWidget {
           HelperFunctions.navigateToBack(context);
           return false;
         },
-        child: Scaffold(
+        child: const Scaffold(
           body: MyWishViewBody(),
         ),
       ),
@@ -52,7 +50,6 @@ class MyWishViewBody extends StatelessWidget {
       child: BlocListener<AddAndRemoveFromFavoriteCubit,
           AddAndRemoveFromFavoriteState>(
         listener: (context, state) {
-          // TODO: implement listener
           if (state is AddAndRemoveFromFavoriteSuccess) {
             myWishCubit.getMyWish();
           }
@@ -94,7 +91,7 @@ class MyWishViewBody extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 17.h,
+                height: 25.h,
               ),
             ),
             BlocConsumer<MyWishCubit, MyWishState>(
@@ -115,33 +112,43 @@ class MyWishViewBody extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return SliverGrid.builder(
-                    itemCount: myWishCubit.myWishModel.items?.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisSpacing: 50.w,
-                        // mainAxisSpacing: 150.h,
-                        crossAxisCount: 2,
-                        mainAxisExtent: 355.h),
-                    itemBuilder: (context, index) {
-                      Product productItem =
-                          myWishCubit.myWishModel.items?[index] ?? Product();
-                      return ProductsItem(
-                        onFavoriteTap: () {
-                          BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
-                                  context)
-                              .addAndRemoveFromFavorite(context,
-                                  productId: productItem.id ?? -1);
-                        },
-                        imageUrl: productItem.images?.first ?? "",
-                        brandName: "Brand name",
-                        isFavorite: true,
-                        companyName: "",
-                        price: productItem.price ?? 0.000,
-                        offerPrice: productItem.discountPrice ?? 0.000,
-                        title: productItem.name ?? "No title",
-                        offerPercentage: 0,
-                      );
-                    },
+                  return SliverPadding(
+                    padding:
+                        const EdgeInsetsDirectional.symmetric(horizontal: 10),
+                    sliver: SliverGrid.builder(
+                      itemCount: myWishCubit.myWishModel.items?.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisSpacing: 50.w,
+                          // mainAxisSpacing: 150.h,
+                          crossAxisCount: 2,
+                          mainAxisExtent: 355.h),
+                      itemBuilder: (context, index) {
+                        Product productItem =
+                            myWishCubit.myWishModel.items?[index] ?? Product();
+                        double price = (productItem.price ?? 0).toDouble();
+                        double discountPercentage =
+                            (productItem.discountPrice ?? 0).toDouble();
+
+                        double offerPrice =
+                            price - (price * discountPercentage / 100);
+                        return ProductsItem(
+                          onFavoriteTap: () {
+                            BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
+                                    context)
+                                .addAndRemoveFromFavorite(context,
+                                    productId: productItem.id ?? -1);
+                          },
+                          imageUrl: productItem.image ?? "",
+                          brandName: "Brand name",
+                          isFavorite: true,
+                          companyName: "",
+                          price: productItem.price ?? 0.000,
+                          offerPrice: offerPrice,
+                          title: productItem.name ?? "No title",
+                          offerPercentage: 0,
+                        );
+                      },
+                    ),
                   );
                 }
               },
