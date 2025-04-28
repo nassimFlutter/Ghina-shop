@@ -41,7 +41,7 @@ class Validate {
       return S
           .of(context)
           .password_required_validation; //"Password is required";
-    } else if (value.length < 6) {
+    } else if (value.length < 8) {
       return S
           .of(context)
           .password_length_validation; //"The Password must be\n at least 6 characters.";

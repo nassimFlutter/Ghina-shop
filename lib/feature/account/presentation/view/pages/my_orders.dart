@@ -70,7 +70,7 @@ class MyOrders extends StatelessWidget {
                               amount: order.totalPrice?.toString() ?? "",
                               date: order.orderedDate?.toString() ?? "",
                               orderId: order.id?.toString() ?? "",
-                              statue: order.status.toString() ?? "",
+                              statue: order.status ?? 0,
                             ),
                           );
                         },

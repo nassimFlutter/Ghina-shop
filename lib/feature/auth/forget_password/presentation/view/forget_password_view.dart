@@ -54,20 +54,20 @@ class ForgetPasswordView extends StatelessWidget {
                   style: AppStyles.textStyle24,
                 ),
               ),
-              SizedBox(
-                height: 14.h,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Center(
-                  child: Text(
-                      S
-                          .of(context)
-                          .lorem_small, // 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                      textAlign: TextAlign.center,
-                      style: AppStyles.textStyle14),
-                ),
-              ),
+              // SizedBox(
+              //   height: 14.h,
+              // ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 16.w),
+              //   child: Center(
+              //     child: Text(
+              //         S
+              //             .of(context)
+              //             .lorem_small, // 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+              //         textAlign: TextAlign.center,
+              //         style: AppStyles.textStyle14),
+              //   ),
+              // ),
               SizedBox(
                 height: 60.h,
               ),

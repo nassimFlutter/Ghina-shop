@@ -145,13 +145,13 @@ class Pagination {
 
   static Pagination fromJson(Map<String, Object?> json) {
     return Pagination(
-        currentPage:
-            json['currentPage'] == null ? null : json['currentPage'] as String,
-        limit: json['limit'] == null ? null : json['limit'] as int,
-        numberOfPages:
-            json['numberOfPages'] == null ? null : json['numberOfPages'] as int,
-        next: json['next'] as dynamic,
-        prev: json['prev'] as dynamic);
+      currentPage: json['currentPage']?.toString(),
+      limit: json['limit'] == null ? null : json['limit'] as int,
+      numberOfPages:
+          json['numberOfPages'] == null ? null : json['numberOfPages'] as int,
+      next: json['next'],
+      prev: json['prev'],
+    );
   }
 
   @override

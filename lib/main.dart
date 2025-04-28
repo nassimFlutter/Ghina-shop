@@ -192,7 +192,7 @@ class MyApp extends StatelessWidget {
             splitScreenMode: true,
             builder: (context, child) => MaterialApp(
                 // locale: Locale(BlocProvider.of<LangCubit>(context).lang),
-                locale: const Locale("ar"),
+                locale: Locale(BlocProvider.of<LangCubit>(context).lang),
                 localizationsDelegates: const [
                   S.delegate,
                   GlobalMaterialLocalizations.delegate,

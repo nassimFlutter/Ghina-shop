@@ -6,7 +6,7 @@
     "phone_length_validation": "يجب أن يتراوح رقم الجوال بين 8\n و 15 رقمًا",
     "name_required_validation": "الاسم الكامل مطلوب",
     "password_required_validation": "كلمة المرور مطلوبة",
-    "password_length_validation": "يجب أن تتكون كلمة المرور\n من ما لا يقل عن 6 أحرف.",
+    "password_length_validation": "يجب أن تتكون كلمة المرور\n من ما لا يقل عن 8 أحرف.",
     "this_required_validations": "هذا مطلوب",
     "password_confirm_validation": "تأكيد كلمة المرور مطلوب",
     "passwords_do_not_match": "كلمات المرور غير متطابقة",
@@ -93,7 +93,7 @@
     "dont_have_an_account_Register": "ليس لديك حساب؟ سجل",
     "password": "كلمة المرور",
     "enter_your_password": "أدخل كلمة المرور الخاصة بك",
-    "success_register_message": "لقد سجلت بنجاح مع أفضل سعر",
+    "success_register_message": "لقد سجلت بنجاح مع  غنا شوب",
     "phone_number_": "رقم الهاتف*",
     "password_": "كلمة المرور*",
     "no_products_available": "لا تتوفر منتجات",
@@ -154,7 +154,7 @@
     "delete_address_contain_message": "هل أنت متأكد من حذف عنوانك؟",
     "no_result_found": "لا يوجد نتائج",
     "price": "السعر",
-    "title": "أفضل سعر",
+    "title": "غنا شوب",
     "Forget_Password": "نسيت كلمة المرور؟",
     "Enter_Here": "ادخل هنا",
     "Already_Have": "هل تملك حساب بلفعل ؟ تسجيل دخول",
@@ -168,5 +168,8 @@
     "shipping_address_error": "يرجى تقديم عنوان شحن صالح",
     "shipping_name_error": "الاسم الكامل مطلوب للشحن",
     "shipping_mobile_error": "رقم الجوال مطلوب للشحن",
-    "shipping_email_error": "عنوان البريد الإلكتروني مطلوب للشحن"
+    "shipping_email_error": "عنوان البريد الإلكتروني مطلوب للشحن",
+    "pending": "قيد الانتظار",
+    "confirmed": "تم التأكيد",
+    "unknown": "غير معروف"
 }

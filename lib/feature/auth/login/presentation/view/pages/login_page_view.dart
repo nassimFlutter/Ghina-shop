@@ -87,11 +87,18 @@ class LoginView extends StatelessWidget {
                   } else {
                     HelperFunctions.showCustomDialog(
                         context,
-                        UpdateAccountDialog(
+                        UpdateAccountDialog(  
                           title: S.of(context).sign_up_error, //"Sign up error",
                           contain: state.message,
                         ));
                   }
+                } else if (state is LoginFailure) {
+                  HelperFunctions.showCustomDialog(
+                      context,
+                      UpdateAccountDialog(
+                        title: S.of(context).sign_up_error, //"Sign up error",
+                        contain: state.errMessage,
+                      ));
                 }
               },
               builder: (context, state) {

@@ -6,7 +6,7 @@ import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class OrderItem extends StatelessWidget {
+class OrderItem extends StatefulWidget {
   const OrderItem({
     super.key,
     required this.orderId,
@@ -15,7 +15,25 @@ class OrderItem extends StatelessWidget {
     required this.statue,
   });
   // todo : finish translate
-  final String orderId, date, amount, statue;
+  final String orderId, date, amount;
+  final int statue;
+
+  @override
+  State<OrderItem> createState() => _OrderItemState();
+}
+
+class _OrderItemState extends State<OrderItem> {
+  String getOrderStatusText(int status) {
+    switch (status) {
+      case 0:
+        return S.current.pending; // Assuming you have it in translation
+      case 1:
+        return S.current.confirmed; // Assuming you have it in translation
+      default:
+        return S.current.unknown; // Or some default fallback
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -44,12 +62,12 @@ class OrderItem extends StatelessWidget {
                 children: [
                   InfoWidgetLeft(
                     title: S.of(context).order_ID, //'Order ID',
-                    value: orderId,
+                    value: widget.orderId,
                   ),
                   const Spacer(),
                   InfoWidgetRight(
                     title: S.of(context).date, //"Date",
-                    value: date.substring(0, 10),
+                    value: widget.date.substring(0, 10),
                   ),
                 ],
               ),
@@ -65,7 +83,7 @@ class OrderItem extends StatelessWidget {
                 children: [
                   InfoWidgetLeft(
                     title: S.of(context).amount, //'Amount',
-                    value: amount,
+                    value: widget.amount,
                   ),
                   const Spacer(),
                   Container(
@@ -78,10 +96,11 @@ class OrderItem extends StatelessWidget {
                       ),
                     ),
                     child: Center(
-                      child: Text(statue,
+                      child: Text(getOrderStatusText(widget.statue),
                           textAlign: TextAlign.center,
-                          style: AppStyles.textStyle16w400
-                              .copyWith(color: AppColor.black)),
+                          style: AppStyles.textStyle16w400.copyWith(
+                            color: AppColor.black,
+                          )),
                     ),
                   ),
                 ],
