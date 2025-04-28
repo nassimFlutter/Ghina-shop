@@ -167,7 +167,7 @@ bestSellerProducts:${bestSellerProducts.toString()}
 
 class Product {
   final int? id;
-  final int? price;
+  final num? price;
   final dynamic discountPrice;
   final String? name;
   final String? image;
@@ -189,7 +189,7 @@ class Product {
 
   Product copyWith({
     int? id,
-    int? price,
+    num? price,
     dynamic? discountPrice,
     String? name,
     String? description,
@@ -236,7 +236,7 @@ class Product {
 
     return Product(
       id: json['id'] == null ? null : json['id'] as int,
-      price: json['price'] == null ? null : json['price'] as int,
+      price: json['price'] == null ? null : json['price'] as num,
       discountPrice: json['discount_price'],
       name: json['name'] == null ? null : json['name'] as String,
       image: json['image'] == null ? null : json['image'] as String,

@@ -22,23 +22,29 @@ class ProductGridView extends StatelessWidget {
           childAspectRatio: 0.6),
       itemBuilder: (context, index) {
         Product productItem = productList[index];
+
+        double price = (productItem.price ?? 0).toDouble();
+        double discountPercentage = (productItem.discountPrice ?? 0).toDouble();
+
+        double offerPrice = price - (price * discountPercentage / 100);
+
         return ProductsItem(
           onTap: () {
             HelperFunctions.navigateToScreen(
-                context,
-                ProductDetailsPage(
-                  id: productItem.id ?? 0,
-                ));
+              context,
+              ProductDetailsPage(
+                id: productItem.id ?? 0,
+              ),
+            );
           },
-          // onFavoriteTap: ,
           imageUrl: productItem.image ?? "",
           brandName: "No brand Name",
           isFavorite: productItem.isFavorite ?? false,
           companyName: "company Name",
-          price: productItem.price ?? 0.000,
-          offerPrice: productItem.discountPrice ?? 0.000,
+          price: price,
+          offerPrice: offerPrice,
           title: productItem.name ?? "No title",
-          offerPercentage: 0.0,
+          offerPercentage: discountPercentage,
         );
       },
     );

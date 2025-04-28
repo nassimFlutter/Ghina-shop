@@ -31,6 +31,9 @@ class CartItem extends StatelessWidget {
   final int id;
   @override
   Widget build(BuildContext context) {
+    double price = (cartProduct.price ?? 0).toDouble();
+    double discountPercentage = (cartProduct.discountPrice ?? 0).toDouble();
+    double offerPrice = price - (price * discountPercentage / 100);
     return Container(
       padding: EdgeInsetsDirectional.only(
         start: 8.w,
@@ -70,8 +73,8 @@ class CartItem extends StatelessWidget {
                 SizedBox(height: 10.h),
                 RichText(
                   text: TextSpan(
-                    text: cartProduct.discountPrice != null
-                        ? cartProduct.discountPrice.toString()
+                    text: offerPrice != cartProduct.price
+                        ? offerPrice.toString() 
                         : "",
                     style: AppStyles.textStyle16w700,
                     children: [

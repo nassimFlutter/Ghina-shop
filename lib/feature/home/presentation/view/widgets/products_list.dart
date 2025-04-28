@@ -33,7 +33,11 @@ class ProductsList extends StatelessWidget {
           Product productItem = productList[index];
           debugPrint(
               'productItem: ${productItem.name} ${productItem.isFavorite}');
+          double price = (productItem.price ?? 0).toDouble();
+          double discountPercentage =
+              (productItem.discountPrice ?? 0).toDouble();
 
+          double offerPrice = price - (price * discountPercentage / 100);
           return ProductsItem(
             onTap: () {
               HelperFunctions.navigateToScreen(
@@ -57,7 +61,7 @@ class ProductsList extends StatelessWidget {
             },
             title: productItem.name ?? "",
             isFavorite: productItem.isFavorite ?? false,
-            offerPrice: productItem.discountPrice,
+            offerPrice: offerPrice,
             price: productItem.price ?? 0.0,
             offerPercentage: 0.0,
             imageUrl: productItem.image ?? "",
