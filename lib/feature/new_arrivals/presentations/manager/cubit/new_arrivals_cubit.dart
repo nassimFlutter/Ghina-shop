@@ -2,7 +2,6 @@ import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/flitter_sort/data/repo/filter_repo.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/new_arrivals/data/repo/new_arrivals_repo/new_arrivals_repo.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 

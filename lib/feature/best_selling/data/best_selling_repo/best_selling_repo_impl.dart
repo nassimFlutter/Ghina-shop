@@ -9,10 +9,11 @@ class BestSellingRepoImpl implements BestSellingRepo {
   @override
   Future<Either<Failure, Tuple2<List<Product>, num>>> getBestSelling() async {
     try {
-      var response =
-          await getIt.get<ApiService>().get(endPoint: "getBestSellerProducts");
+      var response = await getIt
+          .get<ApiService>()
+          .get(endPoint: "products/products/best-sellers");
       List<Product> productsList = [];
-      for (var element in response) {
+      for (var element in response['data']['products']) {
         productsList.add(Product.fromJson(element));
       }
       num maxPrice = 0;

@@ -1,12 +1,10 @@
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
-import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
-import 'package:best_price/feature/flitter_sort/presentaion/view/pages/flitter_sort_view.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -123,7 +121,7 @@ class FeaturedProductViewBody extends StatelessWidget {
                           price - (price * discountPercentage / 100);
 
                       return ProductsItem(
-                        imageUrl: productItem.images?.first ?? "",
+                        imageUrl: productItem.image ?? "",
                         brandName: "Brand name",
                         companyName: "",
                         isFavorite: productItem.isFavorite ?? false,
