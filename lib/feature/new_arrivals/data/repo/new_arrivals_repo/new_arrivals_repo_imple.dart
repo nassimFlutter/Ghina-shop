@@ -10,10 +10,11 @@ class NewArrivalsProductsRepoImpl implements NewArrivalsProductsRepo {
   Future<Either<Failure, Tuple2<List<Product>, num>>>
       getNewArrivalsProducts() async {
     try {
-      var response =
-          await getIt.get<ApiService>().get(endPoint: "getNewestProducts");
+      var response = await getIt
+          .get<ApiService>()
+          .get(endPoint: "products/products?sort=-created_at");
       List<Product> productsList = [];
-      for (var element in response) {
+      for (var element in response['data']['products']) {
         productsList.add(Product.fromJson(element));
       }
       num maxPrice = 0;
