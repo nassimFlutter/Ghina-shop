@@ -6,6 +6,7 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/validate.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
+import 'package:best_price/core/widgets/custom_loading.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_field_text.dart';
 import 'package:best_price/feature/auth/shared/widgets/auth_text_field.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
@@ -91,27 +92,27 @@ class CheckOutPageBodyNew extends StatelessWidget {
             SizedBox(
               height: 32.h,
             ),
-            AuthFieldText(
-              title: S.of(context).e_mail,
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            AuthTextField(
-              textEditingController: addOrderCubit.emailController,
-              keyboardType: TextInputType.emailAddress,
-              validator: (p0) => Validate.validateEmail(context, p0),
-            ),
-            SizedBox(
-              height: 32.h,
-            ),
+            // AuthFieldText(
+            //   title: S.of(context).e_mail,
+            // ),
+            // SizedBox(
+            //   height: 20.h,
+            // ),
+            // AuthTextField(
+            //   textEditingController: addOrderCubit.emailController,
+            //   keyboardType: TextInputType.emailAddress,
+            //   validator: (p0) => Validate.validateEmail(context, p0),
+            // ),
+            // SizedBox(
+            //   height: 32.h,
+            // ),
             BlocConsumer<AddOrderCubit, AddOrderState>(
               listener: (context, state) async {
                 if (state is AddOrderSuccess) {
                   showTopSnackBar(
                     Overlay.of(context),
                     CustomSnackBar.success(
-                      message: state.successMessage, // Dynamic success message
+                      message: "تم انشاء الطلب بنجاح",
                       backgroundColor: AppColor.green,
                       textStyle: AppStyles.textStyle14.copyWith(
                         color: AppColor.whiteColorOpacity,
@@ -119,11 +120,13 @@ class CheckOutPageBodyNew extends StatelessWidget {
                       ),
                     ),
                   );
-                  await  BlocProvider.of<MyCartCubit>(context)
+                  await BlocProvider.of<MyCartCubit>(context)
                       .getMyCart(context);
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                  }
 
                   // Optional: Navigate or clear cart
-                  // Navigator.pop(context);
                 } else if (state is AddOrderError) {
                   showTopSnackBar(
                     Overlay.of(context),
@@ -140,14 +143,20 @@ class CheckOutPageBodyNew extends StatelessWidget {
               },
               builder: (context, state) {
                 final addOrderCubit = AddOrderCubit.get(context);
-                return AppBottom(
-                  title: S.of(context).confirm,
-                  onTap: () async {
-                    if (_formKey.currentState!.validate()) {
-                      addOrderCubit.submitOrder(context);
-                    }
-                  },
-                );
+                if (state is AddOrderLoading) {
+                  return const Center(
+                    child: CustomLoading(),
+                  );
+                } else {
+                  return AppBottom(
+                    title: S.of(context).confirm,
+                    onTap: () async {
+                      if (_formKey.currentState!.validate()) {
+                        addOrderCubit.submitOrder(context);
+                      }
+                    },
+                  );
+                }
               },
             )
           ]),

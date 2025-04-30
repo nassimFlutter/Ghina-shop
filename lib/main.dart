@@ -1,6 +1,5 @@
 import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/utils/bloc_observer.dart';
-import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/account/presentation/manager/add_address/add_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/address_cubit/address_cubit.dart';
@@ -30,18 +29,16 @@ import 'package:best_price/feature/category/presentaion/manager/category_cubit/c
 import 'package:best_price/feature/category/presentaion/manager/category_product_cubit/category_product_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/manager/selected_address_cubit/selected_address_cubit.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
-import 'package:best_price/feature/flitter_sort/presentaion/manager/flitter_cubit/flitter_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
 import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boarding_cubit.dart';
-import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
+import 'package:best_price/feature/product_details/presentation/manager/rate_product_cubit/rate_product_cubit.dart';
 import 'package:best_price/feature/serach/presntation/manager/cubit/search_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/feature/splash/presentation/view/pages/splash.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
-import 'package:best_price/feature/wish/presentation/manager/my_wish_cubit/my_wish_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -182,6 +179,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DeleteFromMyCartCubit(),
+        ),
+        BlocProvider(
+          create: (context) => RateProductCubit(),
         ),
       ],
       child: BlocBuilder<LangCubit, LangState>(

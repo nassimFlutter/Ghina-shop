@@ -31,7 +31,7 @@ class AddOrderCubit extends Cubit<AddOrderState> {
     final request = OrderModel(
       name: fullNameController.text.trim(),
       mobile: phoneController.text.trim(),
-      email: emailController.text.trim(),
+      email: "test@gmail.com",
       shippingAddress: shippingAddressController.text.trim(),
       items: items,
     );
