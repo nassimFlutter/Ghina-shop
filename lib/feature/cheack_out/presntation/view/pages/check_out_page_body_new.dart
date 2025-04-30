@@ -91,20 +91,20 @@ class CheckOutPageBodyNew extends StatelessWidget {
             SizedBox(
               height: 32.h,
             ),
-            AuthFieldText(
-              title: S.of(context).e_mail,
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            AuthTextField(
-              textEditingController: addOrderCubit.emailController,
-              keyboardType: TextInputType.emailAddress,
-              validator: (p0) => Validate.validateEmail(context, p0),
-            ),
-            SizedBox(
-              height: 32.h,
-            ),
+            // AuthFieldText(
+            //   title: S.of(context).e_mail,
+            // ),
+            // SizedBox(
+            //   height: 20.h,
+            // ),
+            // AuthTextField(
+            //   textEditingController: addOrderCubit.emailController,
+            //   keyboardType: TextInputType.emailAddress,
+            //   validator: (p0) => Validate.validateEmail(context, p0),
+            // ),
+            // SizedBox(
+            //   height: 32.h,
+            // ),
             BlocConsumer<AddOrderCubit, AddOrderState>(
               listener: (context, state) async {
                 if (state is AddOrderSuccess) {
@@ -119,7 +119,7 @@ class CheckOutPageBodyNew extends StatelessWidget {
                       ),
                     ),
                   );
-                  await  BlocProvider.of<MyCartCubit>(context)
+                  await BlocProvider.of<MyCartCubit>(context)
                       .getMyCart(context);
 
                   // Optional: Navigate or clear cart

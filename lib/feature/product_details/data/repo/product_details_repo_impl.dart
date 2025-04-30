@@ -28,4 +28,25 @@ class ProductDetailsRepoImpl extends ProductDetailsRepo {
       return left(ServerFailure(e.toString(), 500));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> addRate(int productId, int rate) async {
+    try {
+      await getIt.get<ApiService>().post(
+        endPoint: "products/rate",
+        data: {
+          "productId": productId,
+          "rating": rate,
+        },
+      );
+      return right("تم تقيم المنتج بنجاح");
+    } catch (e) {
+      return left(ErrorHandler.handleError(e));
+    }
+  }
 }
+    // {
+    // "productId": 17,
+    // "rating":2
+    
+    // }

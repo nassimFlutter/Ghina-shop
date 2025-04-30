@@ -48,8 +48,9 @@ class CategoryCard extends StatelessWidget {
                     height: 42.w,
                   ),
                 ),
-                height: 42.w,
-                width: 42.w,
+                height: 90.w,
+                width: 90.w,
+                fit: BoxFit.scaleDown,
               ),
               SizedBox(
                 height: 37.h,

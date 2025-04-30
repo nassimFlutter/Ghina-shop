@@ -7,6 +7,7 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/custom_no_internet_page.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
+import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
 import 'package:best_price/feature/wish/presentation/manager/my_wish_cubit/my_wish_cubit.dart';
 import 'package:flutter/material.dart';
@@ -131,21 +132,31 @@ class MyWishViewBody extends StatelessWidget {
 
                         double offerPrice =
                             price - (price * discountPercentage / 100);
-                        return ProductsItem(
-                          onFavoriteTap: () {
-                            BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
-                                    context)
-                                .addAndRemoveFromFavorite(context,
-                                    productId: productItem.id ?? -1);
+                        return GestureDetector(
+                          onTap: () {
+                            HelperFunctions.navigateToScreen(
+                              context,
+                              ProductDetailsPage(
+                                id: productItem.id ?? 0,
+                              ),
+                            );
                           },
-                          imageUrl: productItem.image ?? "",
-                          brandName: "Brand name",
-                          isFavorite: true,
-                          companyName: "",
-                          price: productItem.price ?? 0.000,
-                          offerPrice: offerPrice,
-                          title: productItem.name ?? "No title",
-                          offerPercentage: 0,
+                          child: ProductsItem(
+                            onFavoriteTap: () {
+                              BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
+                                      context)
+                                  .addAndRemoveFromFavorite(context,
+                                      productId: productItem.id ?? -1);
+                            },
+                            imageUrl: productItem.image ?? "",
+                            brandName: "Brand name",
+                            isFavorite: true,
+                            companyName: "",
+                            price: productItem.price ?? 0.000,
+                            offerPrice: offerPrice,
+                            title: productItem.name ?? "No title",
+                            offerPercentage: 0,
+                          ),
                         );
                       },
                     ),

@@ -4,6 +4,7 @@ import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/feature/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
+import 'package:best_price/feature/product_details/presentation/manager/rate_product_cubit/rate_product_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +29,7 @@ class ProductDetailsPage extends StatefulWidget {
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
 // todo : finish translate
   final PageController pageController = PageController();
-
+  int roundedRating = 0;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -37,6 +38,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           listener: (BuildContext context, ProductDetailsState state) {},
           builder: (BuildContext context, ProductDetailsState state) {
             ProductDetailsCubit cubit = ProductDetailsCubit.get(context);
+            double price =
+                (cubit.productDetailsModel.data?.price ?? 0).toDouble();
+            double discountPercentage =
+                (cubit.productDetailsModel.data?.discountPrice ?? 0).toDouble();
+
+            double offerPrice = price - (price * discountPercentage / 100);
+            final hasVideo = cubit.productDetailsModel.data?.video != null;
+            final images = cubit.productDetailsModel.data?.images;
+            final hasImages = images != null && images.isNotEmpty;
+            final fallbackImage = cubit.productDetailsModel.data?.image;
+            final pageCount = (hasVideo ? 1 : 0) +
+                (hasImages ? images!.length : (fallbackImage != null ? 1 : 0));
             return Scaffold(
               backgroundColor: Colors.white,
               body: state is ProductDetailsCubitLoading
@@ -84,40 +97,37 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: PageView.builder(
-                                  controller: pageController,
-                                  itemCount:
-                                      cubit.productDetailsModel.data?.video !=
-                                              null
-                                          ? 1
-                                          : (cubit.productDetailsModel.data
-                                                  ?.images?.length ??
-                                              0),
-                                  onPageChanged: (index) {
-                                    cubit.onChangeIndexImages(index);
-                                  },
-                                  itemBuilder: (context, index) {
-                                    final hasVideo =
-                                        cubit.productDetailsModel.data?.video !=
-                                            null;
-                                    if (hasVideo) {
-                                      return VideoPlayerWidget(
-                                        videoUrl:
-                                            "https://demo1.weisro.com/assets/uploads/images/${cubit.productDetailsModel.data?.video ?? ""}",
-                                      );
-                                    } else {
-                                      final media = cubit.productDetailsModel
-                                          .data?.images?[index];
-                                      return CustomNetworkImageWidget(
-                                        height: double.infinity,
-                                        width: double.infinity,
-                                        urlImage: media?.image ??
-                                            cubit.productDetailsModel.data
-                                                ?.image ??
-                                            "",
-                                      );
-                                    }
-                                  },
-                                ),
+                                    controller: pageController,
+                                    itemCount: pageCount,
+                                    onPageChanged: (index) {
+                                      cubit.onChangeIndexImages(index);
+                                    },
+                                    itemBuilder: (context, index) {
+                                      if (hasVideo && index == 0) {
+                                        return VideoPlayerWidget(
+                                          videoUrl:
+                                              "https://demo1.weisro.com/assets/uploads/images/${cubit.productDetailsModel.data?.video ?? ""}",
+                                        );
+                                      } else {
+                                        final adjustedIndex =
+                                            hasVideo ? index - 1 : index;
+
+                                        if (hasImages) {
+                                          final image = images?[adjustedIndex];
+                                          return CustomNetworkImageWidget(
+                                            height: double.infinity,
+                                            width: double.infinity,
+                                            urlImage: image?.image ?? "",
+                                          );
+                                        } else {
+                                          return CustomNetworkImageWidget(
+                                            height: double.infinity,
+                                            width: double.infinity,
+                                            urlImage: fallbackImage ?? "",
+                                          );
+                                        }
+                                      }
+                                    }),
                               ),
                             ),
                           ),
@@ -126,79 +136,100 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             height: 6,
                           ),
                           // ignore: prefer_is_empty
-                          if (cubit.productDetailsModel.data?.image?.length !=
-                                  0 &&
-                              cubit.productDetailsModel.data?.image?.length !=
-                                  null)
+                          if ((cubit.productDetailsModel.data?.video != null) ||
+                              (cubit.productDetailsModel.data?.images
+                                      ?.isNotEmpty ??
+                                  false))
                             Center(
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
-                                child: cubit.productDetailsModel.data?.video !=
-                                        null
-                                    ? Row(
-                                        mainAxisSize: MainAxisSize.min,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    // Show video thumbnail if exists
+                                    if (cubit.productDetailsModel.data?.video !=
+                                        null)
+                                      GestureDetector(
+                                        onTap: () {
+                                          cubit.onChangeIndexImages(0);
+                                          pageController.animateToPage(
+                                            0,
+                                            duration: const Duration(
+                                                milliseconds: 300),
+                                            curve: Curves.easeInOut,
+                                          );
+                                        },
+                                        child: SmallPhotoOptionWidget(
+                                          borderColor:
+                                              cubit.indexImagesDetails == 0
+                                                  ? AppColor.pirateGold
+                                                  : AppColor.borderColor,
+                                          imageUrl:
+                                              '', // TODO: Use video thumbnail if available
+                                          isVideo: true,
+                                        ),
+                                      ),
+
+                                    if (cubit.productDetailsModel.data?.video !=
+                                            null &&
+                                        (cubit.productDetailsModel.data?.images
+                                                ?.isNotEmpty ??
+                                            false))
+                                      const SizedBox(width: 14),
+
+                                    // Show image thumbnails
+                                    for (int i = 0;
+                                        i <
+                                            (cubit.productDetailsModel.data
+                                                    ?.images?.length ??
+                                                0);
+                                        i++)
+                                      Row(
                                         children: [
                                           GestureDetector(
                                             onTap: () {
-                                              cubit.onChangeIndexImages(0);
+                                              // If video exists, images start from index 1
+                                              final pageIndex = (cubit
+                                                          .productDetailsModel
+                                                          .data
+                                                          ?.video !=
+                                                      null)
+                                                  ? i + 1
+                                                  : i;
+
+                                              cubit.onChangeIndexImages(
+                                                  pageIndex);
                                               pageController.animateToPage(
-                                                0,
+                                                pageIndex,
                                                 duration: const Duration(
                                                     milliseconds: 300),
                                                 curve: Curves.easeInOut,
                                               );
                                             },
-                                            child: const SmallPhotoOptionWidget(
-                                              borderColor: AppColor.pirateGold,
-                                              imageUrl:
-                                                  '', // You can put video thumbnail if available
-                                              isVideo: true,
+                                            child: SmallPhotoOptionWidget(
+                                              borderColor: cubit
+                                                          .indexImagesDetails ==
+                                                      ((cubit.productDetailsModel
+                                                                  .data?.video !=
+                                                              null)
+                                                          ? i + 1
+                                                          : i)
+                                                  ? AppColor.pirateGold
+                                                  : AppColor.borderColor,
+                                              imageUrl: cubit
+                                                      .productDetailsModel
+                                                      .data
+                                                      ?.images?[i]
+                                                      .image ??
+                                                  '',
+                                              isVideo: false,
                                             ),
                                           ),
-                                        ],
-                                      )
-                                    : Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          for (int i = 0;
-                                              i <
-                                                  cubit.productDetailsModel
-                                                      .data!.images!.length;
-                                              i++)
-                                            Row(
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    cubit
-                                                        .onChangeIndexImages(i);
-                                                    pageController
-                                                        .animateToPage(
-                                                      i,
-                                                      duration: const Duration(
-                                                          milliseconds: 300),
-                                                      curve: Curves.easeInOut,
-                                                    );
-                                                  },
-                                                  child: SmallPhotoOptionWidget(
-                                                    borderColor: i ==
-                                                            cubit
-                                                                .indexImagesDetails
-                                                        ? AppColor.pirateGold
-                                                        : AppColor.borderColor,
-                                                    imageUrl: cubit
-                                                            .productDetailsModel
-                                                            .data
-                                                            ?.images?[i]
-                                                            .image ??
-                                                        '',
-                                                    isVideo: false,
-                                                  ),
-                                                ),
-                                                const SizedBox(width: 14),
-                                              ],
-                                            ),
+                                          const SizedBox(width: 14),
                                         ],
                                       ),
+                                  ],
+                                ),
                               ),
                             ),
 
@@ -235,7 +266,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 ),
                                 SizedBox(height: 8.h),
                                 RatingBar.builder(
-                                  initialRating: 0,
+                                  initialRating: double.tryParse(cubit
+                                              .productDetailsModel.data?.rate ??
+                                          '0') ??
+                                      0,
                                   minRating: 1,
                                   direction: Axis.horizontal,
                                   allowHalfRating: true,
@@ -247,23 +281,61 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     Icons.star,
                                     color: Colors.amber,
                                   ),
-                                  onRatingUpdate: (rating) {},
+                                  onRatingUpdate: (rating) {
+                                    roundedRating = rating.ceil();
+                                  },
                                 ),
                                 SizedBox(height: 12.h),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColor.buddhaGold),
-                                  onPressed: () {
-                                    showTopSnackBar(
-                                      Overlay.of(context),
-                                      const CustomSnackBar.success(
-                                        message: "تم إرسال تقييمك بنجاح!",
-                                        backgroundColor: AppColor.green,
-                                      ),
-                                    );
+                                BlocConsumer<RateProductCubit,
+                                    RateProductState>(
+                                  listener: (context, state) {
+                                    if (state is RateProductSuccess) {
+                                      showTopSnackBar(
+                                        Overlay.of(context),
+                                        const CustomSnackBar.success(
+                                          message: "تم إرسال تقييمك بنجاح!",
+                                          backgroundColor: AppColor.green,
+                                        ),
+                                      );
+                                    } else if (state is RateProductFailures) {
+                                      showTopSnackBar(
+                                        Overlay.of(context),
+                                        const CustomSnackBar.error(
+                                          message: "خطا في ارسال التقيم",
+                                          backgroundColor: AppColor.red,
+                                        ),
+                                      );
+                                    }
                                   },
-                                  child: Text("إرسال التقييم",
-                                      style: TextStyle(fontSize: 14.sp)),
+                                  builder: (context, state) {
+                                    if (state is RateProductLoading) {
+                                      return const Center(
+                                          child: CustomLoading());
+                                    } else {
+                                      return ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppColor.buddhaGold),
+                                        onPressed: () async {
+                                          if (roundedRating == 0) {
+                                            null;
+                                          } else {
+                                            await context
+                                                .read<RateProductCubit>()
+                                                .addRate(
+                                                  context,
+                                                  cubit.productDetailsModel.data
+                                                          ?.id ??
+                                                      0,
+                                                  roundedRating,
+                                                );
+                                          }
+                                        },
+                                        child: Text("إرسال التقييم",
+                                            style: TextStyle(fontSize: 14.sp)),
+                                      );
+                                    }
+                                  },
                                 ),
                               ],
                             ),
@@ -322,11 +394,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       Column(
                                         children: [
                                           Visibility(
-                                            visible: cubit.productDetailsModel
-                                                    .data?.discountPrice !=
-                                                null,
+                                            visible: offerPrice !=
+                                                cubit.productDetailsModel.data
+                                                    ?.price,
                                             child: Text(
-                                              '${cubit.productDetailsModel.data?.discountPrice} ل.س',
+                                              '$offerPrice ل.س',
                                               style: AppStyles.textStyle20w700
                                                   .copyWith(
                                                 color: AppColor.redOpacity,

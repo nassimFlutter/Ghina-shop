@@ -10,7 +10,6 @@ import 'package:best_price/feature/account/presentation/manager/address_cubit/ad
 import 'package:best_price/feature/account/presentation/view/pages/add_address_page_view.dart';
 import 'package:best_price/feature/cheack_out/presntation/manager/selected_address_cubit/selected_address_cubit.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_unsuccessfull.dart';
-import 'package:best_price/feature/cheack_out/presntation/view/pages/checkout_success.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:expandable_text/expandable_text.dart';
