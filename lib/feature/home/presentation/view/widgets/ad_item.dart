@@ -31,7 +31,7 @@ class AdItem extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsetsDirectional.only(top: 22.h, start: 24.w),
                   child: Text(
-                    banner?.title ?? "No title",
+                    banner?.title ?? "",
                     style: AppStyles.textStyle20w700.copyWith(
                         fontWeight: FontWeight.w400, color: Colors.white),
                     overflow: TextOverflow.ellipsis,
@@ -45,7 +45,7 @@ class AdItem extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsetsDirectional.only(start: 24.w),
                   child: Text(
-                    banner?.details ?? "No details",
+                    banner?.details ?? "",
                     style: AppStyles.textStyle12w700.copyWith(
                         fontWeight: FontWeight.w400, color: Colors.white),
                     overflow: TextOverflow.ellipsis,

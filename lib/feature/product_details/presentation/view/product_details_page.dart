@@ -359,7 +359,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   style: AppStyles.textStyle18w700,
                                 ),
                                 Text(
-                                  "${cubit.productDetailsModel.data?.description?.replaceAll(RegExp(r'<[^>]*>'), '')}",
+                                  "${cubit.productDetailsModel.data?.description?.replaceAll(RegExp(r'<[^>]*>'), '').replaceAll('&nbsp;', '')}",
                                   style: AppStyles.textStyle16w400.copyWith(
                                     color: AppColor.black,
                                   ),

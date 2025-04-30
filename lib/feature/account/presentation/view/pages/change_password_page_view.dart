@@ -83,15 +83,16 @@ class ForgetPasswordView extends StatelessWidget {
                 height: 8.h,
               ),
               AuthTextField(
-                  validator: (p0) {
-                    return Validate.validateConfirmPassword(context, p0,
-                        forgetPasswordCubit.newPasswordController.text);
-                  },
-                  textEditingController:
-                      forgetPasswordCubit.confirmPasswordController,
-                  keyboardType: TextInputType.visiblePassword),
+                validator: (p0) {
+                  return Validate.validateConfirmPassword(context, p0,
+                      forgetPasswordCubit.newPasswordController.text);
+                },
+                textEditingController:
+                    forgetPasswordCubit.confirmPasswordController,
+                keyboardType: TextInputType.visiblePassword,
+              ),
               SizedBox(
-                height: 348.h,
+                height: 100.h,
               ),
               BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
                 listener: (context, state) {
