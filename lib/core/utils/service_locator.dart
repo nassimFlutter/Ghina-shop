@@ -46,6 +46,8 @@ import 'package:best_price/feature/new_arrivals/data/repo/new_arrivals_repo/new_
 import 'package:best_price/feature/new_arrivals/data/repo/new_arrivals_repo/new_arrivals_repo_imple.dart';
 import 'package:best_price/feature/serach/data/repo/search_repo_impl.dart';
 import 'package:best_price/feature/serach/data/repo/serach_repo.dart';
+import 'package:best_price/feature/stores/data/repo/store_repo.dart';
+import 'package:best_price/feature/stores/data/repo/store_repo_impl.dart';
 import 'package:best_price/feature/wish/data/repo/add_remove_repo.dart';
 import 'package:best_price/feature/wish/data/repo/add_remove_repo_impl.dart';
 import 'package:best_price/feature/wish/data/repo/wish_repo.dart';
@@ -100,4 +102,5 @@ void setupServiceLocator() {
       AddRemoveFromFavoriteRepoImpl());
   getIt.registerSingleton<OrderDetailsRepo>(OrderDetailsRepoImpl());
   getIt.registerSingleton<FilterRepo>(FilterRepoImpl());
+  getIt.registerSingleton<StoreRepo>(StoreRepoImpl());
 }

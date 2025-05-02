@@ -262,6 +262,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "sign_up_error": MessageLookupByLibrary.simpleMessage("Sign up error"),
     "size": MessageLookupByLibrary.simpleMessage("Size"),
     "sort_by": MessageLookupByLibrary.simpleMessage("Sort By"),
+    "storeName": MessageLookupByLibrary.simpleMessage("store name"),
+    "stores": MessageLookupByLibrary.simpleMessage("stores"),
     "street_": MessageLookupByLibrary.simpleMessage("Street*"),
     "sub_total": MessageLookupByLibrary.simpleMessage("Sub Total"),
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),

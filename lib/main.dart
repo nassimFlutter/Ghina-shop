@@ -38,6 +38,8 @@ import 'package:best_price/feature/serach/presntation/manager/cubit/search_cubit
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/feature/splash/presentation/view/pages/splash.dart';
+import 'package:best_price/feature/stores/presntation/managers/get_all_products_for_store_cubit/get_all_products_for_store_cubit.dart';
+import 'package:best_price/feature/stores/presntation/managers/get_all_products_for_store_cubit/get_all_stores_cubit.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -182,6 +184,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => RateProductCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetAllStoresCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetAllProductsForStoreCubit(),
         ),
       ],
       child: BlocBuilder<LangCubit, LangState>(
