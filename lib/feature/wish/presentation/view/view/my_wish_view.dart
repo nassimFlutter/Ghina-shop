@@ -142,6 +142,14 @@ class MyWishViewBody extends StatelessWidget {
                             );
                           },
                           child: ProductsItem(
+                            onTap: () {
+                              HelperFunctions.navigateToScreen(
+                                context,
+                                ProductDetailsPage(
+                                  id: productItem.id ?? 0,
+                                ),
+                              );
+                            },
                             onFavoriteTap: () {
                               BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
                                       context)

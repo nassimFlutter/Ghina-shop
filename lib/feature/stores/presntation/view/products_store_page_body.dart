@@ -6,7 +6,9 @@ import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
+import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
 import 'package:best_price/feature/stores/presntation/managers/get_all_products_for_store_cubit/get_all_products_for_store_cubit.dart';
+import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -99,15 +101,29 @@ class _ProductsStorePageBodyState extends State<ProductsStorePageBody> {
                       double offerPrice =
                           price - (price * discountPercentage / 100);
 
-                      return ProductsItem(
-                        imageUrl: productItem.image ?? "",
-                        brandName: "Brand name",
-                        companyName: "",
-                        isFavorite: productItem.isFavorite ?? false,
-                        price: productItem.price ?? 0.000,
-                        offerPrice: offerPrice,
-                        title: productItem.name ?? "No title",
-                        offerPercentage: 0,
+                      return BlocBuilder<AddAndRemoveFromFavoriteCubit,
+                          AddAndRemoveFromFavoriteState>(
+                        builder: (context, state) {
+                          return ProductsItem(
+                            imageUrl: productItem.image ?? "",
+                            brandName: "Brand name",
+                            companyName: "",
+                            isFavorite: productItem.isFavorite ?? false,
+                            price: productItem.price ?? 0.000,
+                            offerPrice: offerPrice,
+                            title: productItem.name ?? "No title",
+                            offerPercentage: 0,
+                            onTap: () {
+                              HelperFunctions.navigateToScreen(
+                                context,
+                                ProductDetailsPage(
+                                  id: productItem.id ?? 0,
+                                ),
+                              );
+                            },
+                            onFavoriteTap: () {},
+                          );
+                        },
                       );
                     },
                   );
