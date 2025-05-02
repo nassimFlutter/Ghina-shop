@@ -3,6 +3,7 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:best_price/feature/best_selling/presntations/manager/best_selling_cubit/best_selling_cubit.dart';
 import 'package:best_price/feature/best_selling/presntations/view/pages/best_selling_view.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
@@ -70,7 +71,14 @@ class HomePgeBody extends StatelessWidget {
         },
         child: SafeArea(
           child: BlocConsumer<HomeCubit, HomeCubitState>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              if (state is HomeCubitFailure) {
+                if (state.code == 401) {
+                  HelperFunctions.navigateToScreenAndRemove(
+                      context, const LoginView());
+                }
+              }
+            },
             builder: (context, state) {
               if (state is HomeCubitFailure) {
                 return const CustomErrorWidget();

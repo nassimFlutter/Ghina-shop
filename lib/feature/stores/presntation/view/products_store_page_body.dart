@@ -101,8 +101,19 @@ class _ProductsStorePageBodyState extends State<ProductsStorePageBody> {
                       double offerPrice =
                           price - (price * discountPercentage / 100);
 
-                      return BlocBuilder<AddAndRemoveFromFavoriteCubit,
+                      return BlocConsumer<AddAndRemoveFromFavoriteCubit,
                           AddAndRemoveFromFavoriteState>(
+                        listener: (context, state) {
+                          if (state is AddAndRemoveFromFavoriteSuccess) {
+                            if (state.productId == productItem.id) {
+                              if (state.successMessage == "removed") {
+                                productItem.isFavorite = false;
+                              } else {
+                                productItem.isFavorite = true;
+                              }
+                            }
+                          }
+                        },
                         builder: (context, state) {
                           return ProductsItem(
                             imageUrl: productItem.image ?? "",
@@ -121,7 +132,12 @@ class _ProductsStorePageBodyState extends State<ProductsStorePageBody> {
                                 ),
                               );
                             },
-                            onFavoriteTap: () {},
+                            onFavoriteTap: () {
+                              BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
+                                      context)
+                                  .addAndRemoveFromFavorite(context,
+                                      productId: productItem.id ?? -1);
+                            },
                           );
                         },
                       );

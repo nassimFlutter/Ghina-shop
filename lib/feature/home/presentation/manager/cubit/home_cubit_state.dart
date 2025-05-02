@@ -10,6 +10,7 @@ final class HomeCubitSuccess extends HomeCubitState {}
 
 final class HomeCubitFailure extends HomeCubitState {
   final String errMessage;
+  final int code;
 
-  HomeCubitFailure({required this.errMessage});
+  HomeCubitFailure({required this.errMessage, required this.code});
 }
