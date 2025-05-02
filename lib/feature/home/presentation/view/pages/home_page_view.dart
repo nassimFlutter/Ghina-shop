@@ -92,6 +92,17 @@ class _HomePageViewState extends State<HomePageView> {
                 label: S.of(context).category, //"category",
               ),
               BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(IconsPath.storeIcon,
+                    fit: BoxFit.cover,
+                    colorFilter: const ColorFilter.mode(
+                        AppColor.buddhaGold, BlendMode.srcIn)),
+                icon: SvgPicture.asset(
+                  IconsPath.storeIcon,
+                  fit: BoxFit.cover,
+                ),
+                label: S.of(context).stores, //"category",
+              ),
+              BottomNavigationBarItem(
                 activeIcon: SvgPicture.asset(
                   IconsPath.cartSelectedIcon,
                   fit: BoxFit.cover,

@@ -264,6 +264,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "sign_up_error": MessageLookupByLibrary.simpleMessage("خطأ في التسجيل"),
     "size": MessageLookupByLibrary.simpleMessage("الحجم"),
     "sort_by": MessageLookupByLibrary.simpleMessage("الترتيب حسب"),
+    "storeName": MessageLookupByLibrary.simpleMessage("اسم المتجر"),
+    "stores": MessageLookupByLibrary.simpleMessage("المتاجر"),
     "street_": MessageLookupByLibrary.simpleMessage("الشارع*"),
     "sub_total": MessageLookupByLibrary.simpleMessage("المجموع الفرعي"),
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),

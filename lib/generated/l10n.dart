@@ -1379,6 +1379,16 @@ class S {
   String get unknown {
     return Intl.message('Unknown', name: 'unknown', desc: '', args: []);
   }
+
+  /// `stores`
+  String get stores {
+    return Intl.message('stores', name: 'stores', desc: '', args: []);
+  }
+
+  /// `store name`
+  String get storeName {
+    return Intl.message('store name', name: 'storeName', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

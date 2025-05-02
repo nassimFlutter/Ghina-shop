@@ -171,5 +171,7 @@
     "shipping_email_error": "Email address is required for shipping",
     "pending": "Pending",
     "confirmed": "Confirmed",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "stores": "stores",
+    "storeName": "store name"
 }
