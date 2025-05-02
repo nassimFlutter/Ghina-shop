@@ -1,5 +1,6 @@
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_bottom.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
@@ -8,6 +9,7 @@ import 'package:best_price/feature/flitter_sort/presentaion/view/pages/flitter_s
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
+import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -115,6 +117,14 @@ class NewArriversViewBody extends StatelessWidget {
                         title: productItem.name ?? "No title",
                         isFavorite: productItem.isFavorite ?? false,
                         offerPercentage: 0,
+                        onTap: () {
+                          HelperFunctions.navigateToScreen(
+                            context,
+                            ProductDetailsPage(
+                              id: productItem.id ?? 0,
+                            ),
+                          );
+                        },
                       );
                     },
                   );
