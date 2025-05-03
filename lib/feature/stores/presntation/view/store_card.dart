@@ -1,6 +1,5 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
-import 'package:best_price/generated/l10n.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,11 +22,11 @@ class StoreCard extends StatelessWidget {
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 13.h,
+            height: 30.h,
           ),
           ClipRRect(
             borderRadius: BorderRadius.circular(5),
@@ -44,16 +43,16 @@ class StoreCard extends StatelessWidget {
               ),
               height: 72.w,
               width: 160.w,
-              fit: BoxFit.scaleDown,
+              fit: BoxFit.fill,
             ),
           ),
           SizedBox(
-            height: 8.h,
+            height: 20.h,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 3),
             child: Text(
-              "${S.of(context).storeName}: $storeName",
+              "$storeName",
               style: AppStyles.textStyle17w700
                   .copyWith(fontWeight: FontWeight.w400, color: Colors.black),
             ),

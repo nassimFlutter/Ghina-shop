@@ -8,6 +8,7 @@ import 'package:best_price/feature/best_selling/presntations/manager/best_sellin
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
+import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -105,21 +106,43 @@ class BestSellingBody extends StatelessWidget {
                     double offerPrice =
                         price - (price * discountPercentage / 100);
 
-                    return ProductsItem(
-                      imageUrl: productItem.image ?? "",
-                      brandName: "Brand name",
-                      isFavorite: productItem.isFavorite ?? false,
-                      companyName: "",
-                      price: productItem.price ?? 0.000,
-                      offerPrice: offerPrice,
-                      title: productItem.name ?? "No title",
-                      offerPercentage: 0,
-                      onTap: () {
-                        HelperFunctions.navigateToScreen(
-                          context,
-                          ProductDetailsPage(
-                            id: productItem.id ?? 0,
-                          ),
+                    return BlocConsumer<AddAndRemoveFromFavoriteCubit,
+                        AddAndRemoveFromFavoriteState>(
+                      listener: (context, state) {
+                        if (state is AddAndRemoveFromFavoriteSuccess) {
+                          if (state.productId == productItem.id) {
+                            if (state.successMessage == "removed") {
+                              productItem.isFavorite = false;
+                            } else {
+                              productItem.isFavorite = true;
+                            }
+                          }
+                        }
+                      },
+                      builder: (context, state) {
+                        return ProductsItem(
+                          imageUrl: productItem.image ?? "",
+                          brandName: "Brand name",
+                          isFavorite: productItem.isFavorite ?? false,
+                          companyName: "",
+                          price: productItem.price ?? 0.000,
+                          offerPrice: offerPrice,
+                          title: productItem.name ?? "No title",
+                          offerPercentage: 0,
+                          onTap: () {
+                            HelperFunctions.navigateToScreen(
+                              context,
+                              ProductDetailsPage(
+                                id: productItem.id ?? 0,
+                              ),
+                            );
+                          },
+                          onFavoriteTap: () {
+                            BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
+                                    context)
+                                .addAndRemoveFromFavorite(context,
+                                    productId: productItem.id ?? -1);
+                          },
                         );
                       },
                     );

@@ -50,7 +50,9 @@ class AddAndRemoveFromFavoriteCubit
       }
 
       emit(AddAndRemoveFromFavoriteSuccess(
-          successMessage: addOrRemove.data?.operation ?? ""));
+        productId: productId,
+        successMessage: addOrRemove.data?.operation ?? "",
+      ));
     });
   }
 

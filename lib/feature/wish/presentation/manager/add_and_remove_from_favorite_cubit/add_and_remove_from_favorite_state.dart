@@ -12,8 +12,10 @@ final class AddAndRemoveFromFavoriteLoading
 final class AddAndRemoveFromFavoriteSuccess
     extends AddAndRemoveFromFavoriteState {
   final String successMessage;
+  final int productId;
 
-  AddAndRemoveFromFavoriteSuccess({required this.successMessage});
+  AddAndRemoveFromFavoriteSuccess(
+      {required this.productId, required this.successMessage});
 }
 
 final class AddAndRemoveFromFavoriteFailures

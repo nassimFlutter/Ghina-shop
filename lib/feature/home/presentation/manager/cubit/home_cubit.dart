@@ -30,7 +30,8 @@ class HomeCubit extends Cubit<HomeCubitState> {
     result.fold(
       (error) {
         LoggerHelper.error(error.errMassage, error.statusCode);
-        emit(HomeCubitFailure(errMessage: error.errMassage));
+        emit(HomeCubitFailure(
+            errMessage: error.errMassage, code: error.statusCode));
       },
       (getHomePageSuccess) {
         // Safety checks for null and empty lists
