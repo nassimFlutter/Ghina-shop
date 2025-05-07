@@ -173,5 +173,9 @@
     "confirmed": "تم التأكيد",
     "unknown": "غير معروف",
     "stores": "المتاجر",
-    "storeName": "اسم المتجر"
+    "storeName": "اسم المتجر",
+    "ordered": "تم الطلب",
+    "underDelivery": "قيد التوصيل",
+    "delivered": "تم التوصيل",
+    "Cancelled": "تم الغاء"
 }

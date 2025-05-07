@@ -106,7 +106,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       if (hasVideo && index == 0) {
                                         return VideoPlayerWidget(
                                           videoUrl:
-                                              "https://demo1.weisro.com/assets/uploads/images/${cubit.productDetailsModel.data?.video ?? ""}",
+                                                "https://demo1.weisro.com/assets/uploads/images/${cubit.productDetailsModel.data?.video ?? ""}",
                                         );
                                       } else {
                                         final adjustedIndex =

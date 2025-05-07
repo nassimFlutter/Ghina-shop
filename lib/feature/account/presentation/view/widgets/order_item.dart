@@ -1,5 +1,6 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
+import 'package:best_price/feature/account/presentation/manager/order_cubit/order_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/info_widget_left.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/info_widget_right.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -23,19 +24,10 @@ class OrderItem extends StatefulWidget {
 }
 
 class _OrderItemState extends State<OrderItem> {
-  String getOrderStatusText(int status) {
-    switch (status) {
-      case 0:
-        return S.current.pending; // Assuming you have it in translation
-      case 1:
-        return S.current.confirmed; // Assuming you have it in translation
-      default:
-        return S.current.unknown; // Or some default fallback
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    OrderCubit orderCubit = OrderCubit.get(context);
+
     return Padding(
       padding: EdgeInsetsDirectional.only(end: 16.w),
       child: Container(
@@ -90,16 +82,18 @@ class _OrderItemState extends State<OrderItem> {
                     width: 138.82.w,
                     height: 50.h,
                     decoration: ShapeDecoration(
-                      color: AppColor.yalow,
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.r),
                       ),
                     ),
                     child: Center(
-                      child: Text(getOrderStatusText(widget.statue),
+                      child: Text(
+                          orderCubit.getOrderStatusText(widget.statue, context),
                           textAlign: TextAlign.center,
                           style: AppStyles.textStyle16w400.copyWith(
-                            color: AppColor.black,
+                            color:
+                                orderCubit.getOrderStatusColor(widget.statue),
                           )),
                     ),
                   ),

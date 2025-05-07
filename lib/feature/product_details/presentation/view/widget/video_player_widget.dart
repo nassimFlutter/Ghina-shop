@@ -19,8 +19,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(Uri.parse(
-        "https://drive.google.com/uc?export=download&id=10pPaPxrVe4q8oeEOZJVBBD_YtpcInJoe"))
+    _controller = VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl))
       ..initialize().then((_) {
         setState(() {
           _chewieController = ChewieController(

@@ -1,7 +1,9 @@
+import 'package:best_price/core/errors/failures.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/data/repos/cart_repo/cart_repo.dart';
 import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,9 +54,9 @@ class MyCartCubit extends Cubit<MyCartState> {
 
   Future<void> getMyCart(BuildContext context) async {
     emit(MyCartLoading());
-    var result = await getIt.get<CartRepo>().getMyCart();
+    Either<Failure, CartModel> result = await getIt.get<CartRepo>().getMyCart();
     result.fold((error) {
-      print(error.errMassage);
+      debugPrint(error.errMassage);
       emit(MyCartFailures(errMessage: error.errMassage));
     }, (fetchMyCart) {
       myCart = fetchMyCart;

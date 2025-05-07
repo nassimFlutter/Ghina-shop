@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Already_Have": MessageLookupByLibrary.simpleMessage(
       "Already have an account? Login",
     ),
+    "Cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
     "Enter_Here": MessageLookupByLibrary.simpleMessage("Enter Here"),
     "Forget_Password": MessageLookupByLibrary.simpleMessage("Forget Password?"),
     "Lets_start_shopping": MessageLookupByLibrary.simpleMessage(
@@ -95,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_your_address": MessageLookupByLibrary.simpleMessage(
       "Delete Your Address",
     ),
+    "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
     "delivery": MessageLookupByLibrary.simpleMessage("Delivery"),
     "delivery_details": MessageLookupByLibrary.simpleMessage(
       "Delivery Details",
@@ -189,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "order_ID": MessageLookupByLibrary.simpleMessage("Order ID"),
     "order_details": MessageLookupByLibrary.simpleMessage("Order Details"),
     "order_status": MessageLookupByLibrary.simpleMessage("Order status"),
+    "ordered": MessageLookupByLibrary.simpleMessage("Ordered"),
     "our_policies": MessageLookupByLibrary.simpleMessage("Our Policies"),
     "our_policy": MessageLookupByLibrary.simpleMessage("Our Policy"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -299,6 +302,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "title": MessageLookupByLibrary.simpleMessage("Ghina shop"),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "underDelivery": MessageLookupByLibrary.simpleMessage("Under Delivery"),
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "update": MessageLookupByLibrary.simpleMessage("update"),
     "update_account": MessageLookupByLibrary.simpleMessage("Update Account"),
