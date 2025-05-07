@@ -1375,11 +1375,6 @@ class S {
     return Intl.message('Confirmed', name: 'confirmed', desc: '', args: []);
   }
 
-  /// `Unknown`
-  String get unknown {
-    return Intl.message('Unknown', name: 'unknown', desc: '', args: []);
-  }
-
   /// `stores`
   String get stores {
     return Intl.message('stores', name: 'stores', desc: '', args: []);
@@ -1388,6 +1383,36 @@ class S {
   /// `store name`
   String get storeName {
     return Intl.message('store name', name: 'storeName', desc: '', args: []);
+  }
+
+  /// `Ordered`
+  String get ordered {
+    return Intl.message('Ordered', name: 'ordered', desc: '', args: []);
+  }
+
+  /// `Under Delivery`
+  String get underDelivery {
+    return Intl.message(
+      'Under Delivery',
+      name: 'underDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivered`
+  String get delivered {
+    return Intl.message('Delivered', name: 'delivered', desc: '', args: []);
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message('Unknown', name: 'unknown', desc: '', args: []);
+  }
+
+  /// `Cancelled`
+  String get Cancelled {
+    return Intl.message('Cancelled', name: 'Cancelled', desc: '', args: []);
   }
 }
 

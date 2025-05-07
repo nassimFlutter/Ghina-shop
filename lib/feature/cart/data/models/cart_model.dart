@@ -97,7 +97,7 @@ class Data {
 }
 
 class Result {
-  final int? totalFinally;
+  final num? totalFinally;
   final int? subTotal;
   final List<MyCart>? myCart;
   const Result({this.totalFinally, this.subTotal, this.myCart});
@@ -120,7 +120,7 @@ class Result {
   static Result fromJson(Map<String, Object?> json) {
     return Result(
         totalFinally:
-            json['totalFinally'] == null ? null : json['totalFinally'] as int,
+            json['totalFinally'] == null ? null : json['totalFinally'] as num,
         subTotal: json['sub_total'] == null ? null : json['sub_total'] as int,
         myCart: json['myCart'] == null
             ? null
@@ -157,9 +157,9 @@ class Result {
 class MyCart {
   final int? id;
   final int? quantity;
-  final int? price;
-  final int? discountedPrice;
-  final int? totalPrice;
+  final num? price;
+  final num? discountedPrice;
+  final num? totalPrice;
   final Product? product;
   final dynamic variant;
   const MyCart(
@@ -173,9 +173,9 @@ class MyCart {
   MyCart copyWith(
       {int? id,
       int? quantity,
-      int? price,
-      int? discountedPrice,
-      int? totalPrice,
+      num? price,
+      num? discountedPrice,
+      num? totalPrice,
       Product? product,
       dynamic? variant}) {
     return MyCart(
@@ -204,12 +204,12 @@ class MyCart {
     return MyCart(
         id: json['id'] == null ? null : json['id'] as int,
         quantity: json['quantity'] == null ? null : json['quantity'] as int,
-        price: json['price'] == null ? null : json['price'] as int,
+        price: json['price'] == null ? null : json['price'] as num,
         discountedPrice: json['discountedPrice'] == null
             ? null
-            : json['discountedPrice'] as int,
+            : json['discountedPrice'] as num,
         totalPrice:
-            json['totalPrice'] == null ? null : json['totalPrice'] as int,
+            json['totalPrice'] == null ? null : json['totalPrice'] as num,
         product: json['product'] == null
             ? null
             : Product.fromJson(json['product'] as Map<String, Object?>),
@@ -253,7 +253,7 @@ class Product {
   final int? id;
   final String? image;
   final String? name;
-  final int? price;
+  final num? price;
   final dynamic discountPrice;
   final bool? isHasVariant;
   final dynamic variants;
@@ -297,7 +297,7 @@ class Product {
         id: json['id'] == null ? null : json['id'] as int,
         image: json['image'] == null ? null : json['image'] as String,
         name: json['name'] == null ? null : json['name'] as String,
-        price: json['price'] == null ? null : json['price'] as int,
+        price: json['price'] == null ? null : json['price'] as num,
         discountPrice: json['discountPrice'] as dynamic,
         isHasVariant:
             json['isHasVariant'] == null ? null : json['isHasVariant'] as bool,

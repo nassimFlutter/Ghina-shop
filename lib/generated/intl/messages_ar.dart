@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Already_Have": MessageLookupByLibrary.simpleMessage(
       "هل تملك حساب بلفعل ؟ تسجيل دخول",
     ),
+    "Cancelled": MessageLookupByLibrary.simpleMessage("تم الغاء"),
     "Enter_Here": MessageLookupByLibrary.simpleMessage("ادخل هنا"),
     "Forget_Password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
@@ -95,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل أنت متأكد أنك تريد حذف العنصر من السلة؟",
     ),
     "delete_your_address": MessageLookupByLibrary.simpleMessage("حذف عنوانك"),
+    "delivered": MessageLookupByLibrary.simpleMessage("تم التوصيل"),
     "delivery": MessageLookupByLibrary.simpleMessage("التوصيل"),
     "delivery_details": MessageLookupByLibrary.simpleMessage("تفاصيل التسليم"),
     "description": MessageLookupByLibrary.simpleMessage("الوصف"),
@@ -193,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "order_ID": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "order_details": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "order_status": MessageLookupByLibrary.simpleMessage("حالة الطلب"),
+    "ordered": MessageLookupByLibrary.simpleMessage("تم الطلب"),
     "our_policies": MessageLookupByLibrary.simpleMessage("سياساتنا"),
     "our_policy": MessageLookupByLibrary.simpleMessage("سياساتنا"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -297,6 +300,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "title": MessageLookupByLibrary.simpleMessage("غنا شوب"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+    "underDelivery": MessageLookupByLibrary.simpleMessage("قيد التوصيل"),
     "unknown": MessageLookupByLibrary.simpleMessage("غير معروف"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_account": MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
