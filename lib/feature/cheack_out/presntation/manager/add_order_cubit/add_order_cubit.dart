@@ -39,6 +39,7 @@ class AddOrderCubit extends Cubit<AddOrderState> {
 
     result.fold(
       (failure) {
+        print(failure.errMassage);
         emit(AddOrderError(errorMessage: failure.errMassage));
       },
       (successMessage) {

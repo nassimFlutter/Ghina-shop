@@ -15,8 +15,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductsStorePageBody extends StatefulWidget {
-  const ProductsStorePageBody({super.key, required this.storeId});
+  const ProductsStorePageBody(
+      {super.key, required this.storeId, required this.phone});
   final int storeId;
+  final String phone;
   @override
   State<ProductsStorePageBody> createState() => _ProductsStorePageBodyState();
 }
@@ -129,6 +131,7 @@ class _ProductsStorePageBodyState extends State<ProductsStorePageBody> {
                                 context,
                                 ProductDetailsPage(
                                   id: productItem.id ?? 0,
+                                  phone: widget.phone,
                                 ),
                               );
                             },

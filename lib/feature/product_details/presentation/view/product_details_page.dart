@@ -3,6 +3,7 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
+import 'package:best_price/core/widgets/whats_app_fab.dart';
 import 'package:best_price/feature/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:best_price/feature/product_details/presentation/manager/rate_product_cubit/rate_product_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -19,9 +20,9 @@ import 'widget/small_photo_option_widget_new.dart';
 import 'widget/video_player_widget.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key, required this.id});
+  const ProductDetailsPage({super.key, required this.id, this.phone});
   final int id;
-
+  final String? phone;
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
@@ -52,6 +53,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 (hasImages ? images!.length : (fallbackImage != null ? 1 : 0));
             return Scaffold(
               backgroundColor: Colors.white,
+              floatingActionButton: Visibility(
+                  visible: widget.phone != null,
+                  child:
+                      WhatsAppFloatingButton(phoneNumber: widget.phone ?? "")),
               body: state is ProductDetailsCubitLoading
                   ? Container(
                       // padding: EdgeInsets.only(top: 100),
@@ -106,7 +111,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       if (hasVideo && index == 0) {
                                         return VideoPlayerWidget(
                                           videoUrl:
-                                                "https://demo1.weisro.com/assets/uploads/images/${cubit.productDetailsModel.data?.video ?? ""}",
+                                              "https://demo1.weisro.com/assets/uploads/images/${cubit.productDetailsModel.data?.video ?? ""}",
                                         );
                                       } else {
                                         final adjustedIndex =

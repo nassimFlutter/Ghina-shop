@@ -52,7 +52,7 @@ class StoreCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 3),
             child: Text(
-              "$storeName",
+              storeName,
               style: AppStyles.textStyle17w700
                   .copyWith(fontWeight: FontWeight.w400, color: Colors.black),
             ),

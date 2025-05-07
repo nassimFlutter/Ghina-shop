@@ -20,7 +20,6 @@ class OrderCubit extends Cubit<OrderState> {
     Either<Failure, OrderModel> result =
         await getIt.get<OrderRepo>().getAllMyOrder();
     result.fold((error) {
-      // print(error.errMassage);
       emit(OrderFailures(errMessage: error.errMassage));
     }, (getOrder) {
       orderModel = getOrder;
@@ -33,13 +32,12 @@ class OrderCubit extends Cubit<OrderState> {
       case 0:
         return S.of(context).pending;
       case 1:
-        return S.of(context).ordered;
-      case 2:
         return S.of(context).underDelivery;
-      case 3:
+      case 2:
         return S.of(context).delivered;
-      case 4:
+      case 3:
         return S.of(context).Cancelled;
+
       default:
         return S.of(context).unknown;
     }
@@ -52,11 +50,9 @@ class OrderCubit extends Cubit<OrderState> {
       case 1:
         return Colors.black;
       case 2:
-        return AppColor.buddhaGold;
-      case 3:
         return AppColor.green;
-      case 4:
-        return Colors.red;
+      case 3:
+        return AppColor.red;
       default:
         return AppColor.green;
     }
