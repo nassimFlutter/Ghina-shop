@@ -1,7 +1,6 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
-import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +18,9 @@ class HomePageView extends StatefulWidget {
 class _HomePageViewState extends State<HomePageView> {
   int _selectedIndex = 0;
 // todo : finish translate
-  Future<void> openWhatsApp() async {
-    const phoneNumber = '+963931451710'; // Replace with your number
-    const url = 'https://wa.me/$phoneNumber';
+  Future<void> openWhatsApp(String phone) async {
+    String phoneNumber = phone;
+    String url = 'https://wa.me/$phoneNumber';
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
     } else {
@@ -45,7 +44,7 @@ class _HomePageViewState extends State<HomePageView> {
           backgroundColor: Colors.white,
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              openWhatsApp();
+              openWhatsApp('+963931451710');
             },
             backgroundColor: AppColor.green,
             child: SvgPicture.asset(

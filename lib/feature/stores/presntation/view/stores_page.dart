@@ -76,8 +76,12 @@ class _StoresPageViewState extends State<StoresPageView> {
                     Data? store = state.stores.data?[index];
                     return GestureDetector(
                       onTap: () {
-                        HelperFunctions.navigateToScreen(context,
-                            ProductsStorePage(storeId: store?.id ?? 0));
+                        HelperFunctions.navigateToScreen(
+                            context,
+                            ProductsStorePage(
+                              storeId: store?.id ?? 0,
+                              phone: store?.mobile ?? "",
+                            ));
                       },
                       child: StoreCard(
                         storeName: store?.name ?? "",
