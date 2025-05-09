@@ -1414,6 +1414,21 @@ class S {
   String get Cancelled {
     return Intl.message('Cancelled', name: 'Cancelled', desc: '', args: []);
   }
+
+  /// `delivery Date`
+  String get deliveryDate {
+    return Intl.message(
+      'delivery Date',
+      name: 'deliveryDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `cancel Note`
+  String get cancelNote {
+    return Intl.message('cancel Note', name: 'cancelNote', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

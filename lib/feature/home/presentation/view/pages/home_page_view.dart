@@ -31,7 +31,6 @@ class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
     NavBarCubit navBarCubit = NavBarCubit.get(context);
-    // HelperFunctions.clearUserData();
 
     return BlocConsumer<NavBarCubit, NavBarState>(
       listener: (context, state) {
@@ -40,94 +39,106 @@ class _HomePageViewState extends State<HomePageView> {
         }
       },
       builder: (context, state) {
-        return Scaffold(
-          backgroundColor: Colors.white,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              openWhatsApp('+963931451710');
-            },
-            backgroundColor: AppColor.green,
-            child: SvgPicture.asset(
-              IconsPath.whatsAppIcon, // Add your WhatsApp SVG icon path
-              color: Colors.white,
-              height: 28,
+        return WillPopScope(
+          onWillPop: () async {
+            if (_selectedIndex != 0) {
+              setState(() {
+                _selectedIndex = 0;
+                navBarCubit.changeTab(0, context);
+              });
+              return false; // prevent default pop
+            }
+            return true; // allow exit if on home
+          },
+          child: Scaffold(
+            backgroundColor: Colors.white,
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                openWhatsApp('+963931451710');
+              },
+              backgroundColor: AppColor.green,
+              child: SvgPicture.asset(
+                IconsPath.whatsAppIcon,
+                color: Colors.white,
+                height: 28,
+              ),
             ),
+            bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              currentIndex: _selectedIndex,
+              onTap: (value) {
+                setState(() {
+                  _selectedIndex = value;
+                });
+                navBarCubit.changeTab(value, context);
+              },
+              showUnselectedLabels: true,
+              selectedLabelStyle: AppStyles.textStyle12w700,
+              unselectedLabelStyle: AppStyles.textStyle12w700,
+              selectedItemColor: AppColor.corn,
+              unselectedItemColor: Colors.black,
+              items: [
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(IconsPath.homeSelectedIcon,
+                      fit: BoxFit.cover,
+                      colorFilter: const ColorFilter.mode(
+                          AppColor.buddhaGold, BlendMode.srcIn)),
+                  icon: SvgPicture.asset(
+                    IconsPath.homeIcon,
+                    fit: BoxFit.cover,
+                  ),
+                  label: S.of(context).home,
+                ),
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(IconsPath.categorySelectedIcon,
+                      fit: BoxFit.cover,
+                      colorFilter: const ColorFilter.mode(
+                          AppColor.buddhaGold, BlendMode.srcIn)),
+                  icon: SvgPicture.asset(
+                    IconsPath.categoryIcon,
+                    fit: BoxFit.cover,
+                  ),
+                  label: S.of(context).category,
+                ),
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(IconsPath.storeIcon,
+                      fit: BoxFit.cover,
+                      colorFilter: const ColorFilter.mode(
+                          AppColor.buddhaGold, BlendMode.srcIn)),
+                  icon: SvgPicture.asset(
+                    IconsPath.storeIcon,
+                    fit: BoxFit.cover,
+                  ),
+                  label: S.of(context).stores,
+                ),
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                    IconsPath.cartSelectedIcon,
+                    fit: BoxFit.cover,
+                    colorFilter: const ColorFilter.mode(
+                        AppColor.buddhaGold, BlendMode.srcIn),
+                  ),
+                  icon: SvgPicture.asset(
+                    IconsPath.cartIcon,
+                    fit: BoxFit.cover,
+                  ),
+                  label: S.of(context).cart,
+                ),
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(IconsPath.accountSelectedIcon,
+                      fit: BoxFit.cover,
+                      colorFilter: const ColorFilter.mode(
+                          AppColor.buddhaGold, BlendMode.srcIn)),
+                  icon: SvgPicture.asset(
+                    IconsPath.accountIcon,
+                    fit: BoxFit.cover,
+                  ),
+                  label: S.of(context).account,
+                ),
+              ],
+            ),
+            body: navBarCubit.screens[_selectedIndex],
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: _selectedIndex,
-            onTap: (value) {
-              _selectedIndex = value;
-              navBarCubit.changeTab(value, context);
-            },
-            showUnselectedLabels: true,
-            selectedLabelStyle: AppStyles.textStyle12w700,
-            unselectedLabelStyle: AppStyles.textStyle12w700,
-            selectedItemColor: AppColor.corn,
-
-            unselectedItemColor: Colors.black,
-            // backgroundColor: Colors.white,
-            items: [
-              BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(IconsPath.homeSelectedIcon,
-                    fit: BoxFit.cover,
-                    colorFilter: const ColorFilter.mode(
-                        AppColor.buddhaGold, BlendMode.srcIn)),
-                icon: SvgPicture.asset(
-                  IconsPath.homeIcon,
-                  fit: BoxFit.cover,
-                ),
-                label: S.of(context).home, //"Home",
-              ),
-              BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(IconsPath.categorySelectedIcon,
-                    fit: BoxFit.cover,
-                    colorFilter: const ColorFilter.mode(
-                        AppColor.buddhaGold, BlendMode.srcIn)),
-                icon: SvgPicture.asset(
-                  IconsPath.categoryIcon,
-                  fit: BoxFit.cover,
-                ),
-                label: S.of(context).category, //"category",
-              ),
-              BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(IconsPath.storeIcon,
-                    fit: BoxFit.cover,
-                    colorFilter: const ColorFilter.mode(
-                        AppColor.buddhaGold, BlendMode.srcIn)),
-                icon: SvgPicture.asset(
-                  IconsPath.storeIcon,
-                  fit: BoxFit.cover,
-                ),
-                label: S.of(context).stores, //"category",
-              ),
-              BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(
-                  IconsPath.cartSelectedIcon,
-                  fit: BoxFit.cover,
-                  colorFilter: const ColorFilter.mode(
-                      AppColor.buddhaGold, BlendMode.srcIn),
-                ),
-                icon: SvgPicture.asset(
-                  IconsPath.cartIcon,
-                  fit: BoxFit.cover,
-                ),
-                label: S.of(context).cart, //"cart",
-              ),
-              BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(IconsPath.accountSelectedIcon,
-                    fit: BoxFit.cover,
-                    colorFilter: const ColorFilter.mode(
-                        AppColor.buddhaGold, BlendMode.srcIn)),
-                icon: SvgPicture.asset(
-                  IconsPath.accountIcon,
-                  fit: BoxFit.cover,
-                ),
-                label: S.of(context).account, //"account",
-              ),
-            ],
-          ),
-          body: navBarCubit.screens[_selectedIndex],
         );
       },
     );

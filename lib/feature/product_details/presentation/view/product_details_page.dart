@@ -9,6 +9,7 @@ import 'package:best_price/feature/product_details/presentation/manager/rate_pro
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
@@ -360,14 +361,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  S.of(context).description, //   "Description",
+                                  S.of(context).description,
                                   style: AppStyles.textStyle18w700,
                                 ),
-                                Text(
-                                  "${cubit.productDetailsModel.data?.description?.replaceAll(RegExp(r'<[^>]*>'), '').replaceAll('&nbsp;', '')}",
-                                  style: AppStyles.textStyle16w400.copyWith(
-                                    color: AppColor.black,
-                                  ),
+                                Html(
+                                  data: cubit.productDetailsModel.data
+                                          ?.description ??
+                                      '',
+                                  style: {
+                                    "body": Style(
+                                      fontSize: FontSize(16.sp),
+                                      color: AppColor.black,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  },
                                 ),
                               ],
                             ),

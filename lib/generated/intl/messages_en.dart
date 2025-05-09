@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "block_no_": MessageLookupByLibrary.simpleMessage("Block No*"),
     "brands": MessageLookupByLibrary.simpleMessage("Brands"),
     "by": MessageLookupByLibrary.simpleMessage("by"),
+    "cancelNote": MessageLookupByLibrary.simpleMessage("cancel Note"),
     "cart": MessageLookupByLibrary.simpleMessage("cart"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
@@ -98,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
     "delivery": MessageLookupByLibrary.simpleMessage("Delivery"),
+    "deliveryDate": MessageLookupByLibrary.simpleMessage("delivery Date"),
     "delivery_details": MessageLookupByLibrary.simpleMessage(
       "Delivery Details",
     ),

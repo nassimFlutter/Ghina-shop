@@ -177,5 +177,7 @@
     "ordered": "تم الطلب",
     "underDelivery": "قيد التوصيل",
     "delivered": "تم التوصيل",
-    "Cancelled": "تم الغاء"
+    "Cancelled": "تم الغاء",
+    "deliveryDate": "وقت التوصيل",
+    "cancelNote": "سبب الرفض"
 }

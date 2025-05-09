@@ -7,14 +7,15 @@ class ApiService {
   final Dio dio;
 
   ApiService(this.dio);
-
+  final String language = CacheHelper.getData(key: Keys.kLang);
   Future<dynamic> get(
       {required String endPoint, CancelToken? cancelToken}) async {
-    dio.options.headers['accept-language'] = 'ar';
+    dio.options.headers['accept-language'] = language;
     String token = await CacheHelper.getData(key: Keys.kUserToken);
     LoggerHelper.info(token);
     dio.options.headers["Authorization"] = "Bearer $token";
-    dio.options.headers["accept-language"] = "ar";
+    dio.options.headers["accept-language"] =
+        CacheHelper.getData(key: Keys.kLang);
     dio.options.headers["x-api-key"] = UrlKeys.apiKey;
     var response = await dio.get(endPoint, cancelToken: cancelToken);
     return response.data;
@@ -25,7 +26,8 @@ class ApiService {
     CancelToken? cancelToken,
     required var data,
   }) async {
-    dio.options.headers['Accept-Language'] = 'en';
+    dio.options.headers['Accept-Language'] =
+        CacheHelper.getData(key: Keys.kLang);
     String token = await CacheHelper.getData(key: Keys.kUserToken);
     LoggerHelper.info(token);
     dio.options.headers["Authorization"] = "Bearer $token";
@@ -40,7 +42,8 @@ class ApiService {
     CancelToken? cancelToken,
   }) async {
     dio.options.headers["x-api-key"] = UrlKeys.apiKey;
-    dio.options.headers["accept-language"] = "ar";
+    dio.options.headers["accept-language"] =
+        CacheHelper.getData(key: Keys.kLang);
 
     if (!isLogin) {
       String? token = await CacheHelper.getData(key: Keys.kUserToken);

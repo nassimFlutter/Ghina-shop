@@ -14,9 +14,12 @@ class OrderItem extends StatefulWidget {
     required this.date,
     required this.amount,
     required this.statue,
+    this.deliveryDate,
+    this.cancelNote,
   });
   // todo : finish translate
   final String orderId, date, amount;
+  final String? deliveryDate, cancelNote;
   final int statue;
 
   @override
@@ -92,6 +95,7 @@ class _OrderItemState extends State<OrderItem> {
                           orderCubit.getOrderStatusText(widget.statue, context),
                           textAlign: TextAlign.center,
                           style: AppStyles.textStyle16w400.copyWith(
+                            fontWeight: FontWeight.w600,
                             color:
                                 orderCubit.getOrderStatusColor(widget.statue),
                           )),
@@ -102,6 +106,46 @@ class _OrderItemState extends State<OrderItem> {
             ),
             SizedBox(
               height: 26.h,
+            ),
+            Visibility(
+              visible: widget.deliveryDate != null &&
+                  widget.deliveryDate!.isNotEmpty &&
+                  widget.statue != 3,
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(start: 10),
+                child: InfoWidgetLeft(
+                  title: S.of(context).deliveryDate, //'Amount',
+                  value: orderCubit.formatDateTime(widget.deliveryDate),
+                ),
+              ),
+            ),
+            Visibility(
+              visible: widget.deliveryDate != null &&
+                  widget.deliveryDate!.isNotEmpty &&
+                  widget.statue != 3,
+              child: SizedBox(
+                height: 26.h,
+              ),
+            ),
+            Visibility(
+              visible: widget.cancelNote != null &&
+                  widget.cancelNote!.isNotEmpty &&
+                  widget.statue == 3,
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(start: 10),
+                child: InfoWidgetLeft(
+                  title: S.of(context).cancelNote, //'Amount',
+                  value: widget.cancelNote ?? "",
+                ),
+              ),
+            ),
+            Visibility(
+              visible: widget.cancelNote != null &&
+                  widget.cancelNote!.isNotEmpty &&
+                  widget.statue == 3,
+              child: SizedBox(
+                height: 26.h,
+              ),
             ),
           ],
         ),

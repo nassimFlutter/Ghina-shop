@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:best_price/core/api/api_service.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/feature/account/data/repo/address_repo/address_repo.dart';
@@ -20,7 +22,6 @@ import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo.d
 import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo_impl.dart';
-import 'package:best_price/feature/account/presentation/view/pages/order_details.dart';
 import 'package:best_price/feature/auth/forget_password/data/forget_password_repo/forget_password_repo.dart';
 import 'package:best_price/feature/auth/forget_password/data/forget_password_repo/forget_password_repo_impl.dart';
 import 'package:best_price/feature/auth/login/data/login_repo/login_repo.dart';
@@ -53,21 +54,36 @@ import 'package:best_price/feature/wish/data/repo/add_remove_repo_impl.dart';
 import 'package:best_price/feature/wish/data/repo/wish_repo.dart';
 import 'package:best_price/feature/wish/data/repo/wish_repo_impl.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../feature/product_details/data/repo/product_details_repo.dart';
 import '../../feature/product_details/data/repo/product_details_repo_impl.dart';
 
 final getIt = GetIt.instance;
-
-void setupServiceLocator() {
-  getIt.registerSingleton<Dio>(
-    Dio(
-      BaseOptions(
-        baseUrl: UrlKeys.baseUrl,
-      ),
+Dio _createDioInstance() {
+  final Dio dio = Dio(
+    BaseOptions(
+      baseUrl: UrlKeys.baseUrl,
     ),
   );
+
+  if (true) {
+    (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
+  }
+
+  return dio;
+}
+
+final Dio dio = _createDioInstance();
+
+void setupServiceLocator() {
+  getIt.registerSingleton<Dio>(dio);
 
   getIt.registerSingleton<ApiService>(
     ApiService(
