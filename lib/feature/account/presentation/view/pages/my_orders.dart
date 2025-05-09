@@ -71,6 +71,8 @@ class MyOrders extends StatelessWidget {
                               date: order.orderedDate?.toString() ?? "",
                               orderId: order.id?.toString() ?? "",
                               statue: order.status ?? 0,
+                              deliveryDate: order.deliveryDate,
+                              cancelNote: order.cancelNote,
                             ),
                           );
                         },

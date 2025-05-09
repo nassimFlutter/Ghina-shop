@@ -98,7 +98,12 @@ class _StoresPageViewState extends State<StoresPageView> {
               );
             }
           },
-        )
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 40.h,
+          ),
+        ),
       ],
     ));
   }

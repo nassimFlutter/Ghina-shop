@@ -177,5 +177,7 @@
     "underDelivery": "Under Delivery",
     "delivered": "Delivered",
     "unknown": "Unknown",
-    "Cancelled": "Cancelled"
+    "Cancelled": "Cancelled",
+    "deliveryDate": "delivery Date",
+    "cancelNote": "cancel Note"
 }

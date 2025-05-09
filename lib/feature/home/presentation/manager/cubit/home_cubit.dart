@@ -4,6 +4,7 @@ import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/home/data/home_repo/home_repo.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'home_cubit_state.dart';
 
@@ -26,7 +27,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
   Future<void> getHomePage() async {
     emit(HomeCubitLoading());
 
-    var result = await getIt.get<HomeRepo>().getHomePage();
+    Either<Failure, HomeApiResponse> result = await getIt.get<HomeRepo>().getHomePage();
     result.fold(
       (error) {
         LoggerHelper.error(error.errMassage, error.statusCode);

@@ -7,6 +7,7 @@ import 'package:best_price/generated/l10n.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 
 part 'order_state.dart';
@@ -46,15 +47,25 @@ class OrderCubit extends Cubit<OrderState> {
   Color getOrderStatusColor(int status) {
     switch (status) {
       case 0:
-        return Colors.purpleAccent;
+        return Colors.orange;
       case 1:
-        return Colors.black;
+        return Colors.purple;
       case 2:
         return AppColor.green;
       case 3:
         return AppColor.red;
       default:
         return AppColor.green;
+    }
+  }
+
+  String formatDateTime(String? isoDate) {
+    if (isoDate == null || isoDate.isEmpty) return "";
+    try {
+      final dateTime = DateTime.parse(isoDate).toLocal();
+      return DateFormat('yyyy-MM-dd HH:mm', 'en').format(dateTime);
+    } catch (e) {
+      return "";
     }
   }
 }

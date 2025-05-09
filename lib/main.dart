@@ -51,8 +51,8 @@ import 'feature/product_details/presentation/manager/product_details_cubit/produ
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
-  setupServiceLocator();
   await CacheHelper.cacheInit();
+  setupServiceLocator();
   // CacheHelper.clearCashe();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
@@ -98,7 +98,7 @@ class MyApp extends StatelessWidget {
           create: (context) => NavBarCubit(),
         ),
         BlocProvider(
-          create: (context) => HomeCubit()..getHomePage(),
+          create: (context) => HomeCubit(),
         ),
         // BlocProvider(
         //   create: (context) => FlitterCubit(),

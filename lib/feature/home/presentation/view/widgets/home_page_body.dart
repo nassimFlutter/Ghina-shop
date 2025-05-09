@@ -30,8 +30,20 @@ import 'category_home_list.dart';
 import 'home_title.dart';
 import 'products_list.dart';
 
-class HomePgeBody extends StatelessWidget {
+class HomePgeBody extends StatefulWidget {
   const HomePgeBody({super.key});
+
+  @override
+  State<HomePgeBody> createState() => _HomePgeBodyState();
+}
+
+class _HomePgeBodyState extends State<HomePgeBody> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<HomeCubit>(context).getHomePage();
+  }
+
 // todo : finish translate
   @override
   Widget build(BuildContext context) {

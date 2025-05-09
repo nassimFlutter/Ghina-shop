@@ -1,11 +1,9 @@
 import 'package:best_price/core/cache/cache_helper.dart';
-import 'package:best_price/core/errors/failures.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/auth/login/data/login_repo/login_repo.dart';
 import 'package:best_price/feature/auth/sign_up/data/model/user_model.dart';
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';

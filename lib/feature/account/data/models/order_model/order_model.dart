@@ -187,22 +187,26 @@ class Orders {
   final int? id;
   final int? status;
   final String? orderedDate;
+  final String? deliveryDate;
   final String? discount;
-  final int? deliveryCost;
+  final num? deliveryCost;
   final String? shippingAddress;
   final String? discountCode;
-  final int? totalPrice;
-  final int? countItems;
+  final String? cancelNote;
+  final num? totalPrice;
+  final num? countItems;
   final List<Products>? products;
   const Orders(
       {this.id,
       this.status,
       this.orderedDate,
+      this.deliveryDate,
       this.discount,
       this.deliveryCost,
       this.shippingAddress,
       this.discountCode,
       this.totalPrice,
+      this.cancelNote,
       this.countItems,
       this.products});
   Orders copyWith(
@@ -252,19 +256,24 @@ class Orders {
         orderedDate: json['ordered_date'] == null
             ? null
             : json['ordered_date'] as String,
+        deliveryDate: json['delivery_date'] == null
+            ? null
+            : json['delivery_date'] as String,
         discount: json['discount'] == null ? null : json['discount'] as String,
         deliveryCost:
-            json['delivery_cost'] == null ? null : json['delivery_cost'] as int,
+            json['delivery_cost'] == null ? null : json['delivery_cost'] as num,
         shippingAddress: json['shipping_address'] == null
             ? null
             : json['shipping_address'] as String,
         discountCode: json['discount_code'] == null
             ? null
             : json['discount_code'] as String,
+        cancelNote:
+            json['cancel_note'] == null ? null : json["cancel_note"] as String,
         totalPrice:
-            json['total_price'] == null ? null : json['total_price'] as int,
+            json['total_price'] == null ? null : json['total_price'] as num,
         countItems:
-            json['count_items'] == null ? null : json['count_items'] as int,
+            json['count_items'] == null ? null : json['count_items'] as num,
         products: json['products'] == null
             ? null
             : (json['products'] as List)

@@ -28,6 +28,7 @@ class LoginRepoImpl implements LoginRepo {
       return right(const Tuple2<bool, String>(true, "تم التسجيل بنجاح"));
     } catch (e) {
       if (e is DioException) {
+      
         LoggerHelper.error(' ########### Dio Exception #################');
         LoggerHelper.error(e.message ?? "");
         return left(ServerFailure.fromDioError(e));
