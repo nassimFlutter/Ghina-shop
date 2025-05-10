@@ -8,6 +8,7 @@ import 'package:best_price/feature/best_selling/presntations/manager/best_sellin
 import 'package:best_price/feature/best_selling/presntations/view/pages/best_selling_view.dart';
 import 'package:best_price/feature/featured_products/presentation/manager/featured_products_cubit/featured_products_cubit.dart';
 import 'package:best_price/feature/featured_products/presentation/view/pages/featured_products_view.dart';
+import 'package:best_price/feature/home/presentation/manager/cubit/get_news_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_ad_list.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/shimmer_category_home_list.dart';
@@ -42,6 +43,7 @@ class _HomePgeBodyState extends State<HomePgeBody> {
   void initState() {
     super.initState();
     BlocProvider.of<HomeCubit>(context).getHomePage();
+    BlocProvider.of<GetNewsCubit>(context).getAllNews();
   }
 
 // todo : finish translate
@@ -80,6 +82,7 @@ class _HomePgeBodyState extends State<HomePgeBody> {
         color: AppColor.pirateGold,
         onRefresh: () async {
           homeCubit.getHomePage();
+          BlocProvider.of<GetNewsCubit>(context).getAllNews();
         },
         child: SafeArea(
           child: BlocConsumer<HomeCubit, HomeCubitState>(
@@ -111,49 +114,53 @@ class _HomePgeBodyState extends State<HomePgeBody> {
                         }
                       },
                     ),
+                    SizedBox(height: 26.h),
+                    BlocBuilder<GetNewsCubit, GetNewsState>(
+                      builder: (context, state) {
+                        if (state is GetNewsLoading) {
+                          return const ShimmerLetStartText();
+                        } else if (state is GetNewsSuccess) {
+                          final newsData = state.allNews.data ?? [];
+                          final allNewsText = newsData
+                              .map((e) => e.content)
+                              .where((content) =>
+                                  content != null && content.isEmpty == false)
+                              .join(' • ');
+
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.w),
+                            child: SizedBox(
+                              height: 30.h,
+                              child: Marquee(
+                                text: allNewsText,
+                                style: AppStyles.textStyle17w700
+                                    .copyWith(color: AppColor.black),
+                                scrollAxis: Axis.horizontal,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                blankSpace: 40.0,
+                                velocity: 50.0,
+                                pauseAfterRound: const Duration(seconds: 1),
+                                startPadding: 10.0,
+                                accelerationDuration:
+                                    const Duration(seconds: 1),
+                                accelerationCurve: Curves.linear,
+                                decelerationDuration:
+                                    const Duration(milliseconds: 500),
+                                decelerationCurve: Curves.easeOut,
+                              ),
+                            ),
+                          );
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                    ),
                     Expanded(
                       child: ListView(
                         padding: EdgeInsetsDirectional.symmetric(
                             horizontal: Dimensions.dStartPadding.w),
                         children: [
-                          SizedBox(height: 26.h),
-                          BlocBuilder<HomeCubit, HomeCubitState>(
-                            builder: (context, state) {
-                              if (state is HomeCubitLoading) {
-                                return const ShimmerLetStartText();
-                              } else {
-                                return Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 16.w),
-                                  child: SizedBox(
-                                    height: 30.h,
-                                    child: Marquee(
-                                      text:
-                                          '🛍️ اكتشف أفضل العروض! 🚀 جديد كل يوم! 💰 تسوق بذكاء، ووفر أكثر!',
-                                      style: AppStyles.textStyle17w700
-                                          .copyWith(color: AppColor.black),
-                                      scrollAxis: Axis.horizontal,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      blankSpace: 40.0,
-                                      velocity: 50.0,
-                                      pauseAfterRound:
-                                          const Duration(seconds: 1),
-                                      startPadding: 10.0,
-                                      accelerationDuration:
-                                          const Duration(seconds: 1),
-                                      accelerationCurve: Curves.linear,
-                                      decelerationDuration:
-                                          const Duration(milliseconds: 500),
-                                      decelerationCurve: Curves.easeOut,
-                                    ),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
-
-                          SizedBox(height: 12.h),
+                          SizedBox(height: 15.h),
                           //!................ here Ad list .......
                           BlocConsumer<HomeCubit, HomeCubitState>(
                             listener: (context, state) {},
