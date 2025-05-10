@@ -4,16 +4,38 @@ import 'package:best_price/core/utils/logger.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/home/data/home_repo/home_repo.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
+import 'package:best_price/feature/home/data/models/news_response_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-  class HomeRepoImpl implements HomeRepo {
+class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, HomeApiResponse>> getHomePage() async {
     try {
-      var result = await getIt.get<ApiService>().get(endPoint: "home/getHomePage");
+      var result =
+          await getIt.get<ApiService>().get(endPoint: "home/getHomePage");
       if (result != null) {
         return right(HomeApiResponse.fromJson(result));
+      } else {
+        return left(ServerFailure('No data found', 404));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        LoggerHelper.error(' ########### Dio Exception #################');
+        LoggerHelper.error(e.message ?? "");
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString(), 500));
+    }
+  }
+
+  @override
+  Future<Either<Failure, NewsResponseModel>> getNewsApi() async {
+    try {
+      var result =
+          await getIt.get<ApiService>().get(endPoint: "appInformation/news");
+      if (result != null) {
+        return right(NewsResponseModel.fromJson(result));
       } else {
         return left(ServerFailure('No data found', 404));
       }
