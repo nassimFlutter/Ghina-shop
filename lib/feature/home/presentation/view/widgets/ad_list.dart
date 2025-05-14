@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/category/presentaion/view/pages/product_category_view.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/ad_item.dart';
 import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
@@ -61,11 +62,20 @@ class _AdListState extends State<AdList> {
           return GestureDetector(
             onTap: () {
               final banner = homeCubit.bannersList[index];
-              if (banner.itemId != null) {
-                HelperFunctions.navigateToScreen(
-                  context,
-                  ProductDetailsPage(id: banner.itemId!),
-                );
+              if (banner.type != null) {
+                if (banner.type == 1) {
+                  if (banner.itemId != null) {
+                    HelperFunctions.navigateToScreen(
+                      context,
+                      ProductDetailsPage(id: banner.itemId!),
+                    );
+                  }
+                } else if (banner.type == 2) {
+                  HelperFunctions.navigateToScreen(
+                      context,
+                      ProductCategoryView(
+                          title: "", categoryId: banner.itemId!));
+                }
               }
             },
             child: AdItem(

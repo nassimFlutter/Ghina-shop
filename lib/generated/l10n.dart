@@ -1429,6 +1429,11 @@ class S {
   String get cancelNote {
     return Intl.message('cancel Note', name: 'cancelNote', desc: '', args: []);
   }
+
+  /// `Wish list`
+  String get Wishlist {
+    return Intl.message('Wish list', name: 'Wishlist', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

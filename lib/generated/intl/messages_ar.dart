@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "لنبدأ التسوق!",
     ),
     "NO_CONNECTION": MessageLookupByLibrary.simpleMessage("لا يوجد اتصال"),
+    "Wishlist": MessageLookupByLibrary.simpleMessage("قائمة المفضلة"),
     "about_best_price": MessageLookupByLibrary.simpleMessage("عن غنا شوب"),
     "account": MessageLookupByLibrary.simpleMessage("الحساب"),
     "add_address": MessageLookupByLibrary.simpleMessage("إضافة عنوان"),
@@ -53,7 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل أنت متأكد أنك تريد الخروج؟",
     ),
     "avenue": MessageLookupByLibrary.simpleMessage("شارع"),
-    "best_selling": MessageLookupByLibrary.simpleMessage("الأكثر مبيعًا"),
+    "best_selling": MessageLookupByLibrary.simpleMessage("الأكثر مبيعاً"),
     "block_no_": MessageLookupByLibrary.simpleMessage("رقم البلوك*"),
     "brands": MessageLookupByLibrary.simpleMessage("العلامات التجارية"),
     "by": MessageLookupByLibrary.simpleMessage("بواسطة"),
@@ -171,7 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name_required_validation": MessageLookupByLibrary.simpleMessage(
       "الاسم الكامل مطلوب",
     ),
-    "new_arrivals": MessageLookupByLibrary.simpleMessage("المضافة حديثا"),
+    "new_arrivals": MessageLookupByLibrary.simpleMessage("المضافة حديثاً"),
     "new_password_": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الجديدة*",
     ),

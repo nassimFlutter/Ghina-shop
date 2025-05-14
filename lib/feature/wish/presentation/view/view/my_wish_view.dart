@@ -10,6 +10,7 @@ import 'package:best_price/feature/home/presentation/view/widgets/products_item.
 import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
 import 'package:best_price/feature/wish/presentation/manager/my_wish_cubit/my_wish_cubit.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,7 +70,7 @@ class MyWishViewBody extends StatelessWidget {
                     Expanded(
                       child: AppBarRow(
                         iconPath: IconsPath.arrowLeftIcon,
-                        title: "Wish list",
+                        title: S.of(context).wish_list,
                         onFirstIconTap: () {
                           HelperFunctions.navigateToBack(context);
                         },
@@ -120,9 +121,9 @@ class MyWishViewBody extends StatelessWidget {
                       itemCount: myWishCubit.myWishModel.items?.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisSpacing: 50.w,
-                          // mainAxisSpacing: 150.h,
+                          mainAxisSpacing: 0.h,
                           crossAxisCount: 2,
-                          mainAxisExtent: 355.h),
+                          mainAxisExtent: 280.h),
                       itemBuilder: (context, index) {
                         Product productItem =
                             myWishCubit.myWishModel.items?[index] ?? Product();
