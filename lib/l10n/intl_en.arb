@@ -179,5 +179,6 @@
     "unknown": "Unknown",
     "Cancelled": "Cancelled",
     "deliveryDate": "delivery Date",
-    "cancelNote": "cancel Note"
+    "cancelNote": "cancel Note",
+    "Wishlist":"Wish list"
 }

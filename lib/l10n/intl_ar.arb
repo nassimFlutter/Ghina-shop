@@ -130,7 +130,7 @@
     "delivery": "التوصيل",
     "featured_products": "المنتجات المميزة",
     "error_try_again": "خطأ، حاول مرة أخرى",
-    "best_selling": "الأكثر مبيعًا",
+    "best_selling": "الأكثر مبيعاً",
     "payment_method": "طريقة الدفع",
     "edit_address": "تحرير العنوان",
     "select_address": "اختر العنوان",
@@ -139,7 +139,7 @@
     "category": "الفئة",
     "cart": "السلة",
     "account": "الحساب",
-    "new_arrivals": "المضافة حديثا",
+    "new_arrivals": "المضافة حديثاً",
     "see_all": "عرض الكل",
     "Lets_start_shopping": "لنبدأ التسوق!",
     "choose_language": "اختر اللغة",
@@ -179,5 +179,6 @@
     "delivered": "تم التوصيل",
     "Cancelled": "تم الغاء",
     "deliveryDate": "وقت التوصيل",
-    "cancelNote": "سبب الرفض"
+    "cancelNote": "سبب الرفض",
+    "Wishlist": "قائمة المفضلة"
 }

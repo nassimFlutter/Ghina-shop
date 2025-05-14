@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Let’s start shopping!",
     ),
     "NO_CONNECTION": MessageLookupByLibrary.simpleMessage("NO CONNECTION"),
+    "Wishlist": MessageLookupByLibrary.simpleMessage("Wish list"),
     "about_best_price": MessageLookupByLibrary.simpleMessage(
       "About Ghina Shop",
     ),
