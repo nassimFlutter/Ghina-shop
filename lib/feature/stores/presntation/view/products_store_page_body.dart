@@ -33,128 +33,134 @@ class _ProductsStorePageBodyState extends State<ProductsStorePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.only(
-        start: Dimensions.dStartPadding,
-        end: Dimensions.dStartPadding,
-      ),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsetsDirectional.only(
-                top: Dimensions.dTopPadding.h,
-                end: Dimensions.dStartPadding,
-                start: Dimensions.dStartPadding,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: AppBarRow(
-                      iconPath: IconsPath.arrowLeftIcon,
-                      title: S.of(context).products, // "Featured Products",
-                      onFirstIconTap: () {
-                        HelperFunctions.navigateToBack(context);
-                      },
+    return RefreshIndicator(
+      onRefresh: () async {
+        BlocProvider.of<GetAllProductsForStoreCubit>(context)
+            .getAllProductForStore(widget.storeId);
+      },
+      child: Padding(
+        padding: EdgeInsetsDirectional.only(
+          start: Dimensions.dStartPadding,
+          end: Dimensions.dStartPadding,
+        ),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(
+                  top: Dimensions.dTopPadding.h,
+                  end: Dimensions.dStartPadding,
+                  start: Dimensions.dStartPadding,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: AppBarRow(
+                        iconPath: IconsPath.arrowLeftIcon,
+                        title: S.of(context).products, // "Featured Products",
+                        onFirstIconTap: () {
+                          HelperFunctions.navigateToBack(context);
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 17.h,
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 17.h,
+              ),
             ),
-          ),
-          BlocConsumer<GetAllProductsForStoreCubit,
-              GetAllProductsForStoreState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              if (state is GetAllProductsForStoreLoading) {
-                return const SliverFillRemaining(
-                  child: Center(
-                    child: CustomCircularProgressIndicator(),
-                  ),
-                );
-              } else if (state is GetAllProductsForStoreSuccess) {
-                if (state.products.isEmpty) {
-                  return SliverFillRemaining(
-                    child: NoResult(
-                      title: S.of(context).no_result_found,
+            BlocConsumer<GetAllProductsForStoreCubit,
+                GetAllProductsForStoreState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state is GetAllProductsForStoreLoading) {
+                  return const SliverFillRemaining(
+                    child: Center(
+                      child: CustomCircularProgressIndicator(),
                     ),
                   );
-                } else {
-                  return SliverGrid.builder(
-                    itemCount: state.products.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisSpacing: 50.w,
-                        // mainAxisSpacing: 150.h,
-                        crossAxisCount: 2,
-                        mainAxisExtent: 355.h),
-                    itemBuilder: (context, index) {
-                      Product productItem = state.products[index];
+                } else if (state is GetAllProductsForStoreSuccess) {
+                  if (state.products.isEmpty) {
+                    return SliverFillRemaining(
+                      child: NoResult(
+                        title: S.of(context).no_result_found,
+                      ),
+                    );
+                  } else {
+                    return SliverGrid.builder(
+                      itemCount: state.products.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisSpacing: 50.w,
+                          // mainAxisSpacing: 150.h,
+                          crossAxisCount: 2,
+                          mainAxisExtent: 355.h),
+                      itemBuilder: (context, index) {
+                        Product productItem = state.products[index];
 
-                      double price = (productItem.price ?? 0).toDouble();
-                      double discountPercentage =
-                          (productItem.discountPrice ?? 0).toDouble();
+                        double price = (productItem.price ?? 0).toDouble();
+                        double discountPercentage =
+                            (productItem.discountPrice ?? 0).toDouble();
 
-                      double offerPrice =
-                          price - (price * discountPercentage / 100);
+                        double offerPrice =
+                            price - (price * discountPercentage / 100);
 
-                      return BlocConsumer<AddAndRemoveFromFavoriteCubit,
-                          AddAndRemoveFromFavoriteState>(
-                        listener: (context, state) {
-                          if (state is AddAndRemoveFromFavoriteSuccess) {
-                            if (state.productId == productItem.id) {
-                              if (state.successMessage == "removed") {
-                                productItem.isFavorite = false;
-                              } else {
-                                productItem.isFavorite = true;
+                        return BlocConsumer<AddAndRemoveFromFavoriteCubit,
+                            AddAndRemoveFromFavoriteState>(
+                          listener: (context, state) {
+                            if (state is AddAndRemoveFromFavoriteSuccess) {
+                              if (state.productId == productItem.id) {
+                                if (state.successMessage == "removed") {
+                                  productItem.isFavorite = false;
+                                } else {
+                                  productItem.isFavorite = true;
+                                }
                               }
                             }
-                          }
-                        },
-                        builder: (context, state) {
-                          return ProductsItem(
-                            imageUrl: productItem.image ?? "",
-                            brandName: "Brand name",
-                            companyName: "",
-                            isFavorite: productItem.isFavorite ?? false,
-                            price: productItem.price ?? 0.000,
-                            offerPrice: offerPrice,
-                            title: productItem.name ?? "No title",
-                            offerPercentage: 0,
-                            onTap: () {
-                              HelperFunctions.navigateToScreen(
-                                context,
-                                ProductDetailsPage(
-                                  id: productItem.id ?? 0,
-                                  phone: widget.phone,
-                                ),
-                              );
-                            },
-                            onFavoriteTap: () {
-                              BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
-                                      context)
-                                  .addAndRemoveFromFavorite(context,
-                                      productId: productItem.id ?? -1);
-                            },
-                          );
-                        },
-                      );
-                    },
+                          },
+                          builder: (context, state) {
+                            return ProductsItem(
+                              imageUrl: productItem.image ?? "",
+                              brandName: "Brand name",
+                              companyName: "",
+                              isFavorite: productItem.isFavorite ?? false,
+                              price: productItem.price ?? 0.000,
+                              offerPrice: offerPrice,
+                              title: productItem.name ?? "No title",
+                              offerPercentage: 0,
+                              onTap: () {
+                                HelperFunctions.navigateToScreen(
+                                  context,
+                                  ProductDetailsPage(
+                                    id: productItem.id ?? 0,
+                                    phone: widget.phone,
+                                  ),
+                                );
+                              },
+                              onFavoriteTap: () {
+                                BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
+                                        context)
+                                    .addAndRemoveFromFavorite(context,
+                                        productId: productItem.id ?? -1);
+                              },
+                            );
+                          },
+                        );
+                      },
+                    );
+                  }
+                } else {
+                  return const SliverToBoxAdapter(
+                    child: SizedBox.shrink(),
                   );
                 }
-              } else {
-                return const SliverToBoxAdapter(
-                  child: SizedBox.shrink(),
-                );
-              }
-            },
-          )
-        ],
+              },
+            )
+          ],
+        ),
       ),
     );
   }

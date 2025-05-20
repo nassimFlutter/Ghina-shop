@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/account/presentation/view/widgets/susses_account_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,21 +33,40 @@ class WhatsAppFloatingButton extends StatelessWidget {
     return number;
   }
 
-  Future<void> _openWhatsApp(String number) async {
+  Future<void> _openWhatsApp(String number, BuildContext context) async {
     final formatted = normalizePhoneNumber(number);
-    final url = 'https://wa.me/${formatted.replaceAll('+', '')}';
+    const String text = "";
+    final androidUrl = "whatsapp://send?phone=" + formatted + "&text=$text";
+    final webUrl = 'https://wa.me/${formatted.replaceAll('+', '')}';
 
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-    } else {
-      debugPrint('Could not open WhatsApp for $formatted');
+    try {
+      final androidUri = Uri.parse(androidUrl);
+      final webUri = Uri.parse(webUrl);
+
+      if (await canLaunchUrl(androidUri)) {
+        await launchUrl(androidUri);
+      } else if (await canLaunchUrl(webUri)) {
+        await launchUrl(webUri, mode: LaunchMode.externalApplication);
+      } else {
+        if (context.mounted) {
+          HelperFunctions.showCustomDialog(
+            context,
+            const UpdateAccountDialog(
+              title: "",
+              contain: "لم يتم تثبيت WhatsApp أو لا يمكن فتحه",
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      log("Error opening WhatsApp: $e");
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => _openWhatsApp(phoneNumber),
+      onPressed: () => _openWhatsApp(phoneNumber, context),
       backgroundColor: AppColor.green,
       child: SvgPicture.asset(
         IconsPath.whatsAppIcon,

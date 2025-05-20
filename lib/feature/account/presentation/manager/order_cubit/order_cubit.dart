@@ -62,7 +62,7 @@ class OrderCubit extends Cubit<OrderState> {
   String formatDateTime(String? isoDate) {
     if (isoDate == null || isoDate.isEmpty) return "";
     try {
-      final dateTime = DateTime.parse(isoDate).toLocal();
+      final dateTime = DateTime.parse(isoDate);
       return DateFormat('yyyy-MM-dd HH:mm', 'en').format(dateTime);
     } catch (e) {
       return "";

@@ -1,6 +1,5 @@
 import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/theme/app_style.dart';
-import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
@@ -12,7 +11,6 @@ import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/widgets/app_bar_bottom.dart';
 import '../../../../../../core/widgets/app_bottom.dart';
 import '../widgets/forget_password_text.dart';
 import '../widgets/login_form.dart';
