@@ -1,3 +1,4 @@
+import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/utils/constants.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
@@ -38,6 +39,7 @@ class _ProductsStorePageBodyState extends State<ProductsStorePageBody> {
         BlocProvider.of<GetAllProductsForStoreCubit>(context)
             .getAllProductForStore(widget.storeId);
       },
+      color: AppColor.pirateGold,
       child: Padding(
         padding: EdgeInsetsDirectional.only(
           start: Dimensions.dStartPadding,
