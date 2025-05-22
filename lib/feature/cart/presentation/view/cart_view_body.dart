@@ -1,3 +1,4 @@
+import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
@@ -39,6 +40,7 @@ class CartViewBody extends StatelessWidget {
           onRefresh: () async {
             await myCartCubit.getMyCart(context);
           },
+          color: AppColor.pirateGold,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: SingleChildScrollView(
