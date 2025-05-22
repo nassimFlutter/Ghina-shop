@@ -40,7 +40,6 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.videoUrl);
     return _chewieController != null && _controller.value.isInitialized
         ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

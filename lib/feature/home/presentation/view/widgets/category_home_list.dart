@@ -1,4 +1,3 @@
-import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/category/presentaion/view/pages/product_category_view.dart';
 import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.dart';
@@ -14,7 +13,7 @@ class CategoryHomeList extends StatefulWidget {
 }
 
 class _CategoryHomeListState extends State<CategoryHomeList> {
-  String? _selectedCategoryName;
+  String? selectedCategoryName;
   @override
   Widget build(BuildContext context) {
     final homeCubit = HomeCubit.get(context);
@@ -56,7 +55,7 @@ class _CategoryHomeListState extends State<CategoryHomeList> {
               },
               onSelected: (selected) {
                 setState(() {
-                  _selectedCategoryName = selected;
+                  selectedCategoryName = selected;
                 });
 
                 final selectedCategory = categories.firstWhere(

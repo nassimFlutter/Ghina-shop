@@ -109,10 +109,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       cubit.onChangeIndexImages(index);
                                     },
                                     itemBuilder: (context, index) {
+                                      // https://demo1.weisro.com/assets/uploads/images/
                                       if (hasVideo && index == 0) {
                                         return VideoPlayerWidget(
-                                          videoUrl:
-                                              "https://demo1.weisro.com/assets/uploads/images/${cubit.productDetailsModel.data?.video ?? ""}",
+                                          videoUrl: cubit.productDetailsModel
+                                                  .data?.video ??
+                                              "",
                                         );
                                       } else {
                                         final adjustedIndex =
@@ -170,8 +172,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                               cubit.indexImagesDetails == 0
                                                   ? AppColor.pirateGold
                                                   : AppColor.borderColor,
-                                          imageUrl:
-                                              '', // TODO: Use video thumbnail if available
+                                          imageUrl: '',
                                           isVideo: true,
                                         ),
                                       ),

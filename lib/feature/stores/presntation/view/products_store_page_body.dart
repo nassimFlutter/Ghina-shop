@@ -39,7 +39,7 @@ class _ProductsStorePageBodyState extends State<ProductsStorePageBody> {
         BlocProvider.of<GetAllProductsForStoreCubit>(context)
             .getAllProductForStore(widget.storeId);
       },
-      color: AppColor.pirateGold,
+      color: AppColor.corn,
       child: Padding(
         padding: EdgeInsetsDirectional.only(
           start: Dimensions.dStartPadding,

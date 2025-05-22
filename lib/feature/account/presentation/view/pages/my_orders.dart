@@ -18,7 +18,7 @@ class MyOrders extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: RefreshIndicator(
-        color: AppColor.buddhaGold,
+        color: AppColor.corn,
         onRefresh: () async {
           await orderCubit.getAllMyOrder();
         },
