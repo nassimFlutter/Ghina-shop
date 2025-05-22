@@ -45,7 +45,7 @@ class MyWishViewBody extends StatelessWidget {
     MyWishCubit myWishCubit = MyWishCubit.get(context);
 
     return RefreshIndicator(
-      color: AppColor.buddhaGold,
+      color: AppColor.corn,
       onRefresh: () async {
         myWishCubit.getMyWish();
       },

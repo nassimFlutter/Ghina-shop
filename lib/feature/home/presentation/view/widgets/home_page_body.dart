@@ -80,7 +80,7 @@ class _HomePgeBodyState extends State<HomePgeBody> {
       ),
       body: SafeArea(
         child: RefreshIndicator(
-          color: AppColor.pirateGold,
+          color: AppColor.corn,
           onRefresh: () async {
             homeCubit.getHomePage();
             BlocProvider.of<GetNewsCubit>(context).getAllNews();
@@ -162,7 +162,7 @@ class _HomePgeBodyState extends State<HomePgeBody> {
                       ),
                       Expanded(
                         child: RefreshIndicator(
-                          color: AppColor.pirateGold,
+                          color: AppColor.corn,
                           onRefresh: () async {
                             homeCubit.getHomePage();
                             BlocProvider.of<GetNewsCubit>(context).getAllNews();

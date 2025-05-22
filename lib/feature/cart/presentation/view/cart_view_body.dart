@@ -40,7 +40,7 @@ class CartViewBody extends StatelessWidget {
           onRefresh: () async {
             await myCartCubit.getMyCart(context);
           },
-          color: AppColor.pirateGold,
+          color: AppColor.corn,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: SingleChildScrollView(

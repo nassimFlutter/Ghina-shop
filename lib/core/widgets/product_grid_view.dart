@@ -2,7 +2,6 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
-import 'package:best_price/feature/wish/data/repo/add_remove_repo.dart';
 import 'package:best_price/feature/wish/presentation/manager/add_and_remove_from_favorite_cubit/add_and_remove_from_favorite_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
