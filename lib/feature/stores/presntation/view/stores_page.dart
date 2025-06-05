@@ -1,4 +1,3 @@
-import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/dimensions.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
@@ -7,11 +6,9 @@ import 'package:best_price/feature/stores/data/models/store_response.dart';
 import 'package:best_price/feature/stores/presntation/managers/get_all_products_for_store_cubit/get_all_stores_cubit.dart';
 import 'package:best_price/feature/stores/presntation/view/products_store_page.dart';
 import 'package:best_price/generated/l10n.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'store_card.dart';
 
@@ -86,7 +83,7 @@ class _StoresPageViewState extends State<StoresPageView> {
                       child: StoreCard(
                         storeName: store?.name ?? "",
                         imageUrl: store?.image ??
-                            "https://demo1.weisro.com/newLogo.png",
+                            "https://dashboard.ghinashop.net/newLogo.png",
                       ),
                     );
                   },
