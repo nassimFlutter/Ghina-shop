@@ -137,14 +137,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => StaticPageCubit(),
         ),
-        BlocProvider(
-          create: (context) => SettingCubitCubit(),
-        ),
+
         BlocProvider(
           create: (context) => ChangeQuantityCubit(),
         ),
         BlocProvider(
-          create: (context) => SettingCubitCubit(),
+          create: (context) => SettingCubitCubit()..getLinks(),
         ),
         BlocProvider(
           create: (context) => ForgetPasswordCubit(),

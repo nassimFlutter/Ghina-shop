@@ -1,11 +1,13 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/constants.dart';
+import 'package:best_price/feature/account/presentation/manager/setting_cubit_cubit/setting_cubit_cubit.dart';
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageView extends StatefulWidget {
@@ -26,6 +28,22 @@ class _HomePageViewState extends State<HomePageView> {
     } else {
       debugPrint('Could not open WhatsApp');
     }
+  }
+
+  Widget buildShimmerWhatsAppButton() {
+    return Shimmer.fromColors(
+      baseColor: AppColor.green.withOpacity(0.6),
+      highlightColor: Colors.white.withOpacity(0.7),
+      child: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColor.green,
+        child: SvgPicture.asset(
+          IconsPath.whatsAppIcon,
+          color: Colors.white,
+          height: 28,
+        ),
+      ),
+    );
   }
 
   @override
@@ -52,16 +70,27 @@ class _HomePageViewState extends State<HomePageView> {
           },
           child: Scaffold(
             backgroundColor: Colors.white,
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                openWhatsApp('+963931451710');
+            floatingActionButton:
+                BlocBuilder<SettingCubitCubit, SettingCubitState>(
+              builder: (context, state) {
+                if (state is SettingCubitLoading) {
+                  return buildShimmerWhatsAppButton();
+                }
+                {
+                  return FloatingActionButton(
+                    onPressed: () {
+                      openWhatsApp(
+                          context.read<SettingCubitCubit>().whatsAppNumber);
+                    },
+                    backgroundColor: AppColor.green,
+                    child: SvgPicture.asset(
+                      IconsPath.whatsAppIcon,
+                      color: Colors.white,
+                      height: 28,
+                    ),
+                  );
+                }
               },
-              backgroundColor: AppColor.green,
-              child: SvgPicture.asset(
-                IconsPath.whatsAppIcon,
-                color: Colors.white,
-                height: 28,
-              ),
             ),
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
