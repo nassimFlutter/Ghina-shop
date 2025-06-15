@@ -29,79 +29,82 @@ class _StoresPageViewState extends State<StoresPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(
-      slivers: [
-        SliverPadding(
-          padding: EdgeInsetsDirectional.only(
-              top: Dimensions.dTopPadding, start: Dimensions.dStartPadding),
-          sliver: SliverToBoxAdapter(
-            child: Text(
-              S.of(context).stores, // 'stores',
-              style: AppStyles.textStyle20w700,
+        body: SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: EdgeInsetsDirectional.only(
+                top: Dimensions.dTopPadding, start: Dimensions.dStartPadding),
+            sliver: SliverToBoxAdapter(
+              child: Text(
+                S.of(context).stores, // 'stores',
+                style: AppStyles.textStyle20w700,
+              ),
             ),
           ),
-        ),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 40.h,
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 40.h,
+            ),
           ),
-        ),
-        BlocBuilder<GetAllStoresCubit, GetAllStoresState>(
-          builder: (context, state) {
-            if (state is GetAllStoresLoading) {
-              return SliverGrid.builder(
-                  itemCount: 12,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 15.w,
-                    mainAxisSpacing: 15.h,
-                    crossAxisCount: 2,
-                  ),
-                  itemBuilder: (context, index) {
-                    return const ShimmerCategoryCard();
-                  });
-            } else if (state is GetAllStoresSuccess) {
-              return SliverPadding(
-                padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
-                sliver: SliverGrid.builder(
-                  itemCount: state.stores.data?.length ?? 0,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          BlocBuilder<GetAllStoresCubit, GetAllStoresState>(
+            builder: (context, state) {
+              if (state is GetAllStoresLoading) {
+                return SliverGrid.builder(
+                    itemCount: 12,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisSpacing: 15.w,
                       mainAxisSpacing: 15.h,
                       crossAxisCount: 2,
-                      childAspectRatio: 1.1),
-                  itemBuilder: (BuildContext context, int index) {
-                    Data? store = state.stores.data?[index];
-                    return GestureDetector(
-                      onTap: () {
-                        HelperFunctions.navigateToScreen(
-                            context,
-                            ProductsStorePage(
-                              storeId: store?.id ?? 0,
-                              phone: store?.mobile ?? "",
-                            ));
-                      },
-                      child: StoreCard(
-                        storeName: store?.name ?? "",
-                        imageUrl: store?.image ??
-                            "https://dashboard.ghinashop.net/newLogo.png",
-                      ),
-                    );
-                  },
-                ),
-              );
-            } else {
-              return const SliverToBoxAdapter(
-                child: SizedBox.shrink(),
-              );
-            }
-          },
-        ),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 40.h,
+                    ),
+                    itemBuilder: (context, index) {
+                      return const ShimmerCategoryCard();
+                    });
+              } else if (state is GetAllStoresSuccess) {
+                return SliverPadding(
+                  padding:
+                      const EdgeInsetsDirectional.symmetric(horizontal: 16),
+                  sliver: SliverGrid.builder(
+                    itemCount: state.stores.data?.length ?? 0,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisSpacing: 15.w,
+                        mainAxisSpacing: 15.h,
+                        crossAxisCount: 2,
+                        childAspectRatio: 1.1),
+                    itemBuilder: (BuildContext context, int index) {
+                      Data? store = state.stores.data?[index];
+                      return GestureDetector(
+                        onTap: () {
+                          HelperFunctions.navigateToScreen(
+                              context,
+                              ProductsStorePage(
+                                storeId: store?.id ?? 0,
+                                phone: store?.mobile ?? "",
+                              ));
+                        },
+                        child: StoreCard(
+                          storeName: store?.name ?? "",
+                          imageUrl: store?.image ??
+                              "https://dashboard.ghinashop.net/newLogo.png",
+                        ),
+                      );
+                    },
+                  ),
+                );
+              } else {
+                return const SliverToBoxAdapter(
+                  child: SizedBox.shrink(),
+                );
+              }
+            },
           ),
-        ),
-      ],
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 40.h,
+            ),
+          ),
+        ],
+      ),
     ));
   }
 }
