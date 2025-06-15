@@ -1,4 +1,5 @@
 import 'package:best_price/core/cache/cache_helper.dart';
+import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/keys.dart';
@@ -85,7 +86,7 @@ class LoginView extends StatelessWidget {
                   } else {
                     HelperFunctions.showCustomDialog(
                         context,
-                        UpdateAccountDialog(  
+                        UpdateAccountDialog(
                           title: S.of(context).sign_up_error, //"Sign up error",
                           contain: state.message,
                         ));
@@ -124,11 +125,13 @@ class LoginView extends StatelessWidget {
                 HelperFunctions.navigateToScreen(context, const SignUpView());
               },
               child: Text(
-                  S
-                      .of(context)
-                      .dont_have_an_account_Register, //'Don’t have an account? Register',
-                  textAlign: TextAlign.center,
-                  style: AppStyles.textStyle16w400),
+                S
+                    .of(context)
+                    .dont_have_an_account_Register, //'Don’t have an account? Register',
+                textAlign: TextAlign.center,
+                style: AppStyles.textStyle16w400.copyWith(
+                    color: AppColor.buddhaGold, fontWeight: FontWeight.bold),
+              ),
             ),
             SizedBox(
               height: 35.h,

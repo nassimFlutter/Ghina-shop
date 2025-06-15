@@ -180,5 +180,6 @@
     "Cancelled": "تم الغاء",
     "deliveryDate": "وقت التوصيل",
     "cancelNote": "سبب الرفض",
-    "Wishlist": "قائمة المفضلة"
+    "Wishlist": "قائمة المفضلة",
+    "no_items_in_wishlist": "لا يوجد عناصر في المفضلة"
 }

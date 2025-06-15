@@ -183,6 +183,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "No Added Address",
     ),
     "no_internet": MessageLookupByLibrary.simpleMessage("No internet"),
+    "no_items_in_wishlist": MessageLookupByLibrary.simpleMessage(
+      "No items in Wishlist",
+    ),
     "no_products_available": MessageLookupByLibrary.simpleMessage(
       "No products available",
     ),

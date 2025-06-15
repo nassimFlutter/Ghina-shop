@@ -185,6 +185,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_internet": MessageLookupByLibrary.simpleMessage(
       "لا يوجد اتصال بالإنترنت",
     ),
+    "no_items_in_wishlist": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد عناصر في المفضلة",
+    ),
     "no_products_available": MessageLookupByLibrary.simpleMessage(
       "لا تتوفر منتجات",
     ),

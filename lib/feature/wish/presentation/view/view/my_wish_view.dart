@@ -5,6 +5,7 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/core/widgets/custom_no_internet_page.dart';
+import 'package:best_price/core/widgets/not_found_widget.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/products_item.dart';
 import 'package:best_price/feature/product_details/presentation/view/product_details_page.dart';
@@ -114,62 +115,68 @@ class MyWishViewBody extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return SliverPadding(
-                    padding:
-                        const EdgeInsetsDirectional.symmetric(horizontal: 10),
-                    sliver: SliverGrid.builder(
-                      itemCount: myWishCubit.myWishModel.items?.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  final items = myWishCubit.myWishModel.items;
+                  if (items == null || items.isEmpty) {
+                    return SliverFillRemaining(
+                      child:
+                          NoResult(title: S.of(context).no_items_in_wishlist),
+                    );
+                  } else {
+                    return SliverPadding(
+                      padding:
+                          const EdgeInsetsDirectional.symmetric(horizontal: 10),
+                      sliver: SliverGrid.builder(
+                        itemCount: items.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisSpacing: 50.w,
                           mainAxisSpacing: 0.h,
                           crossAxisCount: 2,
-                          mainAxisExtent: 280.h),
-                      itemBuilder: (context, index) {
-                        Product productItem =
-                            myWishCubit.myWishModel.items?[index] ?? Product();
-                        double price = (productItem.price ?? 0).toDouble();
-                        double discountPercentage =
-                            (productItem.discountPrice ?? 0).toDouble();
+                          mainAxisExtent: 280.h,
+                        ),
+                        itemBuilder: (context, index) {
+                          Product productItem = items[index];
+                          double price = (productItem.price ?? 0).toDouble();
+                          double discountPercentage =
+                              (productItem.discountPrice ?? 0).toDouble();
+                          double offerPrice =
+                              price - (price * discountPercentage / 100);
 
-                        double offerPrice =
-                            price - (price * discountPercentage / 100);
-                        return GestureDetector(
-                          onTap: () {
-                            HelperFunctions.navigateToScreen(
-                              context,
-                              ProductDetailsPage(
-                                id: productItem.id ?? 0,
-                              ),
-                            );
-                          },
-                          child: ProductsItem(
+                          return GestureDetector(
                             onTap: () {
                               HelperFunctions.navigateToScreen(
                                 context,
-                                ProductDetailsPage(
-                                  id: productItem.id ?? 0,
-                                ),
+                                ProductDetailsPage(id: productItem.id ?? 0),
                               );
                             },
-                            onFavoriteTap: () {
-                              BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
-                                      context)
-                                  .addAndRemoveFromFavorite(context,
-                                      productId: productItem.id ?? -1);
-                            },
-                            imageUrl: productItem.image ?? "",
-                            brandName: "Brand name",
-                            isFavorite: true,
-                            companyName: "",
-                            price: productItem.price ?? 0.000,
-                            offerPrice: offerPrice,
-                            title: productItem.name ?? "No title",
-                            offerPercentage: 0,
-                          ),
-                        );
-                      },
-                    ),
-                  );
+                            child: ProductsItem(
+                              onTap: () {
+                                HelperFunctions.navigateToScreen(
+                                  context,
+                                  ProductDetailsPage(id: productItem.id ?? 0),
+                                );
+                              },
+                              onFavoriteTap: () {
+                                BlocProvider.of<AddAndRemoveFromFavoriteCubit>(
+                                        context)
+                                    .addAndRemoveFromFavorite(
+                                  context,
+                                  productId: productItem.id ?? -1,
+                                );
+                              },
+                              imageUrl: productItem.image ?? "",
+                              brandName: "Brand name",
+                              isFavorite: true,
+                              companyName: "",
+                              price: productItem.price ?? 0.000,
+                              offerPrice: offerPrice,
+                              title: productItem.name ?? "No title",
+                              offerPercentage: 0,
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  }
                 }
               },
             )

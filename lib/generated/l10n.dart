@@ -1434,6 +1434,16 @@ class S {
   String get Wishlist {
     return Intl.message('Wish list', name: 'Wishlist', desc: '', args: []);
   }
+
+  /// `No items in Wishlist`
+  String get no_items_in_wishlist {
+    return Intl.message(
+      'No items in Wishlist',
+      name: 'no_items_in_wishlist',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

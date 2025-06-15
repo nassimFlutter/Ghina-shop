@@ -16,7 +16,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widgets/already_have_an_account_text.dart';
 import '../widgets/sign_up_form.dart';
-import '../widgets/term_ok.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
