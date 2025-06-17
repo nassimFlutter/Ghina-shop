@@ -77,6 +77,7 @@ class Data {
   final String? description;
   final List<Images>? images;
   final List<dynamic>? variants;
+  final int? minSellerQuantity;
   final dynamic rate;
   const Data(
       {this.id,
@@ -96,7 +97,8 @@ class Data {
       this.images,
       this.variants,
       this.video,
-      this.rate});
+      this.rate,
+      this.minSellerQuantity});
   Data copyWith(
       {int? id,
       String? image,
@@ -160,41 +162,42 @@ class Data {
 
   static Data fromJson(Map<String, Object?> json) {
     return Data(
-        id: json['id'] == null ? null : json['id'] as int,
-        image: json['image'] == null ? null : json['image'] as String,
-        video: json['video'] == null ? null : json['video'] as String,
-        price: json['price'] == null ? null : json['price'] as int,
-        discountPrice: json['discount_price'] == null
-            ? null
-            : json['discount_price'] as int,
-        featured: json['featured'] == null ? null : json['featured'] as bool,
-        offerEndDate: json['offer_end_date'] == null
-            ? null
-            : json['offer_end_date'] as String,
-        quantity: json['quantity'] == null ? null : json['quantity'] as int,
-        isHasVariant: json['is_has_variant'] == null
-            ? null
-            : json['is_has_variant'] as bool,
-        status: json['status'] == null ? null : json['status'] as String,
-        markLabel:
-            json['mark_label'] == null ? null : json['mark_label'] as int,
-        isBestSeller: json['is_best_seller'] == null
-            ? null
-            : json['is_best_seller'] as int,
-        createdAt:
-            json['created_at'] == null ? null : json['created_at'] as String,
-        name: json['name'] == null ? null : json['name'] as String,
-        description:
-            json['description'] == null ? null : json['description'] as String,
-        images: json['images'] == null
-            ? null
-            : (json['images'] as List)
-                .map<Images>(
-                    (data) => Images.fromJson(data as Map<String, Object?>))
-                .toList(),
-        variants:
-            json['variants'] == null ? null : json['variants'] as List<dynamic>,
-        rate: json['rate'] as dynamic);
+      id: json['id'] == null ? null : json['id'] as int,
+      image: json['image'] == null ? null : json['image'] as String,
+      video: json['video'] == null ? null : json['video'] as String,
+      price: json['price'] == null ? null : json['price'] as int,
+      discountPrice:
+          json['discount_price'] == null ? null : json['discount_price'] as int,
+      featured: json['featured'] == null ? null : json['featured'] as bool,
+      offerEndDate: json['offer_end_date'] == null
+          ? null
+          : json['offer_end_date'] as String,
+      quantity: json['quantity'] == null ? null : json['quantity'] as int,
+      isHasVariant: json['is_has_variant'] == null
+          ? null
+          : json['is_has_variant'] as bool,
+      status: json['status'] == null ? null : json['status'] as String,
+      markLabel: json['mark_label'] == null ? null : json['mark_label'] as int,
+      isBestSeller:
+          json['is_best_seller'] == null ? null : json['is_best_seller'] as int,
+      createdAt:
+          json['created_at'] == null ? null : json['created_at'] as String,
+      name: json['name'] == null ? null : json['name'] as String,
+      description:
+          json['description'] == null ? null : json['description'] as String,
+      images: json['images'] == null
+          ? null
+          : (json['images'] as List)
+              .map<Images>(
+                  (data) => Images.fromJson(data as Map<String, Object?>))
+              .toList(),
+      variants:
+          json['variants'] == null ? null : json['variants'] as List<dynamic>,
+      rate: json['rate'] as dynamic,
+      minSellerQuantity: json["min_seller_quantity"] == null
+          ? null
+          : json["min_seller_quantity"] as int,
+    );
   }
 
   @override
