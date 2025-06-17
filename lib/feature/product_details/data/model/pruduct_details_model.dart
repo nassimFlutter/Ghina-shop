@@ -78,27 +78,30 @@ class Data {
   final List<Images>? images;
   final List<dynamic>? variants;
   final int? minSellerQuantity;
+  final bool? isSeller;
   final dynamic rate;
-  const Data(
-      {this.id,
-      this.image,
-      this.price,
-      this.discountPrice,
-      this.featured,
-      this.offerEndDate,
-      this.quantity,
-      this.isHasVariant,
-      this.status,
-      this.markLabel,
-      this.isBestSeller,
-      this.createdAt,
-      this.name,
-      this.description,
-      this.images,
-      this.variants,
-      this.video,
-      this.rate,
-      this.minSellerQuantity});
+  const Data({
+    this.id,
+    this.image,
+    this.price,
+    this.discountPrice,
+    this.featured,
+    this.offerEndDate,
+    this.quantity,
+    this.isHasVariant,
+    this.status,
+    this.markLabel,
+    this.isBestSeller,
+    this.createdAt,
+    this.name,
+    this.description,
+    this.images,
+    this.variants,
+    this.video,
+    this.rate,
+    this.minSellerQuantity,
+    this.isSeller,
+  });
   Data copyWith(
       {int? id,
       String? image,
@@ -197,6 +200,7 @@ class Data {
       minSellerQuantity: json["min_seller_quantity"] == null
           ? null
           : json["min_seller_quantity"] as int,
+      isSeller: json['isSeller'] == null ? null : json['isSeller'] as bool,
     );
   }
 

@@ -496,10 +496,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                           message:
                                               "تمت إضافة العنصر إلى سلة التسوق بنجاح!",
                                           backgroundColor: AppColor.green,
-                                          textStyle: AppStyles.textStyle14.copyWith(
-                                              color: AppColor.whiteColorOpacity,
-                                              fontWeight: FontWeight
-                                                  .w700), // Custom color if needed
+                                          textStyle:
+                                              AppStyles.textStyle14.copyWith(
+                                            color: AppColor.whiteColorOpacity,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       );
                                     }
@@ -511,18 +512,38 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     } else {
                                       return AppBottom(
                                         onTap: () {
+                                          final product =
+                                              cubit.productDetailsModel.data;
+
+                                          if ((product?.isSeller ?? false) &&
+                                              (product?.minSellerQuantity !=
+                                                      null &&
+                                                  product!.minSellerQuantity! >
+                                                      cubit.quantity)) {
+                                            showTopSnackBar(
+                                              Overlay.of(context),
+                                              CustomSnackBar.error(
+                                                message:
+                                                    "الحد الأدنى للكمية للبائع هو ${product.minSellerQuantity} عناصر.",
+                                                backgroundColor: Colors.red,
+                                                textStyle: AppStyles.textStyle14
+                                                    .copyWith(
+                                                  color: AppColor
+                                                      .whiteColorOpacity,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            );
+                                            return; // ❗ prevent adding to cart
+                                          }
+
                                           context
                                               .read<AddToCartCubit>()
                                               .addToCart(
-                                                  cubit.productDetailsModel.data
-                                                          ?.id
-                                                          .toString() ??
-                                                      "",
+                                                  product?.id?.toString() ?? "",
                                                   cubit.quantity);
                                         },
-                                        title: S
-                                            .of(context)
-                                            .add_to_cart, //"Add to Cart",
+                                        title: S.of(context).add_to_cart,
                                       );
                                     }
                                   },
