@@ -10,7 +10,8 @@ class SearchField extends StatelessWidget {
   const SearchField({
     super.key,
     this.controller,
-    this.onFieldSubmitted, this.onChanged,
+    this.onFieldSubmitted,
+    this.onChanged,
   });
 
   final TextEditingController? controller;
@@ -40,9 +41,14 @@ class SearchField extends StatelessWidget {
             hintStyle:
                 AppStyles.textStyle14.copyWith(color: AppColor.greyOpacity),
             prefixIcon: Padding(
-                padding: EdgeInsetsDirectional.only(start: 11.w, end: 12.w),
-                child: SvgPicture.asset(IconsPath.searchIcon,
-                    width: 24.w, height: 24.h, color: AppColor.greyOpacity)),
+              padding: EdgeInsetsDirectional.only(start: 11.w, end: 12.w),
+              child: SvgPicture.asset(
+                IconsPath.searchIcon,
+                width: 24.w,
+                height: 24.h,
+                color: AppColor.buddhaGold,
+              ),
+            ),
             border: InputBorder.none,
             contentPadding: const EdgeInsetsDirectional.only(top: 0)),
       ),

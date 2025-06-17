@@ -63,6 +63,8 @@ class _HomePgeBodyState extends State<HomePgeBody> {
           child: Padding(
             padding: EdgeInsetsDirectional.only(end: 16.w, bottom: 9.h),
             child: SvgPicture.asset(
+              colorFilter:
+                  const ColorFilter.mode(AppColor.buddhaGold, BlendMode.srcIn),
               IconsPath.searchIcon,
               width: 24.w,
               fit: BoxFit.cover,
