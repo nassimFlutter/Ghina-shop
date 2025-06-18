@@ -457,10 +457,33 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                           SizedBox(
                                             width: 10.w,
                                           ),
-                                          Text(
-                                            cubit.quantity.toString(),
-                                            style: AppStyles.textStyle18w700,
+                                        SizedBox(
+                                            width: 60,
+                                            child: TextFormField(
+                                              initialValue:
+                                                  cubit.quantity.toString(),
+                                              textAlign: TextAlign.center,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              style: AppStyles.textStyle18w700,
+                                              decoration: const InputDecoration(
+                                                isDense: true,
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                        vertical: 8),
+                                                border: OutlineInputBorder(),
+                                              ),
+                                              onChanged: (value) {
+                                                final intVal =
+                                                    int.tryParse(value);
+                                                if (intVal != null &&
+                                                    intVal >= 0) {
+                                                  cubit.setQuantity(intVal);
+                                                }
+                                              },
+                                            ),
                                           ),
+
                                           SizedBox(
                                             width: 10.w,
                                           ),

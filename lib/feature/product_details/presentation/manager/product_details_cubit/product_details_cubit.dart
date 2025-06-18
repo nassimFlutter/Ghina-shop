@@ -53,6 +53,11 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     emit(IndexChanges());
   }
 
+  void setQuantity(int value) {
+    quantity = value;
+    emit(IndexChanges());
+  }
+
   int quantity = 01;
   int quantityData = 1;
 

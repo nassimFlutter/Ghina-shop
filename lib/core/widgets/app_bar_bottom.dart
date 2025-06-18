@@ -37,6 +37,8 @@ class AppBarBottom extends StatelessWidget {
           child: Center(
             child: SvgPicture.asset(
               iconPath,
+              colorFilter:
+                  const ColorFilter.mode(AppColor.buddhaGold, BlendMode.srcIn),
               // fit: BoxFit.cover,
             ),
           ),
