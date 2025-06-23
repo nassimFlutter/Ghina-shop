@@ -19,6 +19,7 @@ import '../../../../core/widgets/custom_network_image_widget.dart';
 import '../manager/product_details_cubit/product_details_cubit.dart';
 import 'widget/small_photo_option_widget_new.dart';
 import 'widget/video_player_widget.dart';
+import 'widget/full_screen_image_viewer.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({super.key, required this.id, this.phone});
@@ -30,8 +31,46 @@ class ProductDetailsPage extends StatefulWidget {
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
 // todo : finish translate
+
   final PageController pageController = PageController();
   int roundedRating = 0;
+
+  // Helper method to get all image URLs
+  List<String> _getImageUrls(ProductDetailsCubit cubit) {
+    final images = cubit.productDetailsModel.data?.images;
+    final fallbackImage = cubit.productDetailsModel.data?.image;
+
+    List<String> imageUrls = [];
+
+    if (images != null && images.isNotEmpty) {
+      for (var image in images) {
+        if (image.image != null && image.image!.isNotEmpty) {
+          imageUrls.add(image.image!);
+        }
+      }
+    } else if (fallbackImage != null && fallbackImage.isNotEmpty) {
+      imageUrls.add(fallbackImage);
+    }
+
+    return imageUrls;
+  }
+
+  // Method to open full screen image viewer
+  void _openFullScreenViewer(ProductDetailsCubit cubit, int initialIndex) {
+    final imageUrls = _getImageUrls(cubit);
+    if (imageUrls.isNotEmpty) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => FullScreenImageViewer(
+            imageUrls: imageUrls,
+            initialIndex: initialIndex,
+            productName: cubit.productDetailsModel.data?.name,
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -122,16 +161,34 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
                                         if (hasImages) {
                                           final image = images?[adjustedIndex];
-                                          return CustomNetworkImageWidget(
-                                            height: double.infinity,
-                                            width: double.infinity,
-                                            urlImage: image?.image ?? "",
+                                          return GestureDetector(
+                                            onTap: () {
+                                              _openFullScreenViewer(
+                                                  cubit, adjustedIndex);
+                                            },
+                                            child: Hero(
+                                              tag:
+                                                  'product_image_$adjustedIndex',
+                                              child: CustomNetworkImageWidget(
+                                                height: double.infinity,
+                                                width: double.infinity,
+                                                urlImage: image?.image ?? "",
+                                              ),
+                                            ),
                                           );
                                         } else {
-                                          return CustomNetworkImageWidget(
-                                            height: double.infinity,
-                                            width: double.infinity,
-                                            urlImage: fallbackImage ?? "",
+                                          return GestureDetector(
+                                            onTap: () {
+                                              _openFullScreenViewer(cubit, 0);
+                                            },
+                                            child: Hero(
+                                              tag: 'product_image_0',
+                                              child: CustomNetworkImageWidget(
+                                                height: double.infinity,
+                                                width: double.infinity,
+                                                urlImage: fallbackImage ?? "",
+                                              ),
+                                            ),
                                           );
                                         }
                                       }
@@ -457,11 +514,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                           SizedBox(
                                             width: 10.w,
                                           ),
-                                        SizedBox(
+                                          SizedBox(
                                             width: 60,
                                             child: TextFormField(
-                                              initialValue:
-                                                  cubit.quantity.toString(),
+                                              controller:
+                                                  cubit.quantityController,
                                               textAlign: TextAlign.center,
                                               keyboardType:
                                                   TextInputType.number,
@@ -483,7 +540,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                               },
                                             ),
                                           ),
-
                                           SizedBox(
                                             width: 10.w,
                                           ),
