@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -11,12 +12,14 @@ part 'product_details_state.dart';
 
 class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   ProductDetailsCubit(this.id) : super(ProductDetailsInitial()) {
+    quantityController = TextEditingController(text: quantity.toString());
     getProductDetails(id);
   }
 
   final int id;
   static ProductDetailsCubit get(context) => BlocProvider.of(context);
   ProductDetailsModel productDetailsModel = const ProductDetailsModel();
+  late TextEditingController quantityController;
 
   Future<void> getProductDetails(int id) async {
     emit(ProductDetailsCubitLoading());
@@ -53,11 +56,6 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     emit(IndexChanges());
   }
 
-  void setQuantity(int value) {
-    quantity = value;
-    emit(IndexChanges());
-  }
-
   int quantity = 01;
   int quantityData = 1;
 
@@ -76,16 +74,23 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
 
   //   return false;
   // }
-
-  plusQuantity() {
+  void plusQuantity() {
     quantity++;
+    quantityController.text = quantity.toString();
     emit(IndexChanges());
   }
 
-  minQuantity() {
+  void minQuantity() {
     if (quantity > 1) {
       quantity--;
+      quantityController.text = quantity.toString();
     }
+    emit(IndexChanges());
+  }
+
+  void setQuantity(int value) {
+    quantity = value;
+    quantityController.text = value.toString();
     emit(IndexChanges());
   }
 }
