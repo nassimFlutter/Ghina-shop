@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:best_price/core/api/api_service.dart';
 import 'package:best_price/core/errors/failures.dart';
 import 'package:best_price/core/utils/service_locator.dart';
@@ -24,6 +26,7 @@ class StoreRepoImpl implements StoreRepo {
   Future<Either<Failure, List<Product>>> getAllProductsForStore(
       int storeId) async {
     try {
+      log("This Store Id $storeId");
       var response = await getIt
           .get<ApiService>()
           .get(endPoint: "/products/seller/$storeId/products");

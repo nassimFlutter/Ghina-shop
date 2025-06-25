@@ -14,6 +14,7 @@ import 'package:best_price/feature/cheack_out/presntation/manager/add_order_cubi
 import 'package:best_price/feature/splash/presentation/manager/lang_cubit/lang_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
@@ -85,6 +86,10 @@ class CheckOutPageBodyNew extends StatelessWidget {
               height: 20.h,
             ),
             AuthTextField(
+              maxLength: 10,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+              ],
               textEditingController: addOrderCubit.phoneController,
               keyboardType: TextInputType.phone,
               validator: (p0) => Validate.validatePhoneNumber(context, p0),

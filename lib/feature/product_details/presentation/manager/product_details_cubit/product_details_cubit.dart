@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +25,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
 
   Future<void> getProductDetails(int id) async {
     emit(ProductDetailsCubitLoading());
+    log("Item Id $id");
     var result = await getIt.get<ProductDetailsRepo>().getProductDetails(id);
     result.fold((error) {
       LoggerHelper.error(error.errMassage, error.statusCode);
