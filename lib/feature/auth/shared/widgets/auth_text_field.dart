@@ -15,6 +15,7 @@ class AuthTextField extends StatelessWidget {
     this.maxLine = 1,
     this.inputFormatters,
     required this.keyboardType,
+    this.maxLength,
   }) : super(key: key);
 // todo : finish translate
   final TextEditingController textEditingController;
@@ -23,6 +24,7 @@ class AuthTextField extends StatelessWidget {
   final int minLine, maxLine;
   final TextInputType keyboardType;
   final List<TextInputFormatter>? inputFormatters;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class AuthTextField extends StatelessWidget {
           FocusManager.instance.primaryFocus?.unfocus();
         },
         minLines: minLine,
+        maxLength: maxLength,
         maxLines: maxLine,
         inputFormatters: inputFormatters,
         style: AppStyles.textStyle14.copyWith(color: AppColor.silver),

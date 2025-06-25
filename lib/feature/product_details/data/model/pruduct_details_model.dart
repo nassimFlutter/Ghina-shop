@@ -63,8 +63,8 @@ class Data {
   final int? id;
   final String? image;
   final String? video;
-  final int? price;
-  final int? discountPrice;
+  final num? price;
+  final num? discountPrice;
   final bool? featured;
   final String? offerEndDate;
   final int? quantity;
@@ -168,9 +168,9 @@ class Data {
       id: json['id'] == null ? null : json['id'] as int,
       image: json['image'] == null ? null : json['image'] as String,
       video: json['video'] == null ? null : json['video'] as String,
-      price: json['price'] == null ? null : json['price'] as int,
+      price: json['price'] == null ? null : json['price'] as num,
       discountPrice:
-          json['discount_price'] == null ? null : json['discount_price'] as int,
+          json['discount_price'] == null ? null : json['discount_price'] as num,
       featured: json['featured'] == null ? null : json['featured'] as bool,
       offerEndDate: json['offer_end_date'] == null
           ? null

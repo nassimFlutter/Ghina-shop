@@ -468,7 +468,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                 cubit.productDetailsModel.data
                                                     ?.price,
                                             child: Text(
-                                              '$offerPrice ل.س',
+                                              '${offerPrice.toStringAsFixed(2)} ل.س',
                                               style: AppStyles.textStyle20w700
                                                   .copyWith(
                                                 color: AppColor.redOpacity,
@@ -476,7 +476,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                             ),
                                           ),
                                           Text(
-                                            '${cubit.productDetailsModel.data?.price} ل.س',
+                                            '${cubit.productDetailsModel.data?.price?.toStringAsFixed(2)} ل.س',
                                             style: AppStyles.textStyle14w700
                                                 .copyWith(
                                               decoration: cubit
