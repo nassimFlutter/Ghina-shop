@@ -58,6 +58,36 @@ class CategoryRepoImpl implements CategoryRepo {
   }
 
   @override
+  Future<Either<Failure, List<Product>>> getProductByCategoryIdWithPagination({
+    required int categoryId,
+    required int page,
+    int limit = 10,
+  }) async {
+    try {
+      var response = await getIt.get<ApiService>().get(
+          endPoint:
+              "products/categories/$categoryId/products?page=$page&limit=$limit");
+
+      if (response != null) {
+        List<Product> allProduct = [];
+        for (var element in response["data"]["products"]) {
+          allProduct.add(Product.fromJson(element));
+        }
+        return right(allProduct);
+      } else {
+        return left(ServerFailure('No data found', 404));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        LoggerHelper.error(' ########### Dio Exception #################');
+        LoggerHelper.error(e.message ?? "");
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString(), 500));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<Product>>> searchProductCategory(
       String name, String category) async {
     try {
