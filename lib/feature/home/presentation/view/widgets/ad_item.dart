@@ -1,4 +1,3 @@
-import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/feature/home/data/models/home_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -14,11 +13,12 @@ class AdItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 315.w,
       // height: 180.h,
-      margin: EdgeInsetsDirectional.only(end: 10.w),
+      margin: EdgeInsetsDirectional.only(
+        end: 10.w,
+      ),
       decoration: BoxDecoration(
-          color: AppColor.corn, borderRadius: BorderRadius.circular(16.r)),
+          color: Colors.black38, borderRadius: BorderRadius.circular(16.r)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -59,10 +59,10 @@ class AdItem extends StatelessWidget {
           // SizedBox(width: 20.w),
           Padding(
               padding:
-                  EdgeInsetsDirectional.only(top: 9.h, end: 8.5.w, bottom: 9.h),
+                  EdgeInsetsDirectional.only(top: 9.h, end: 2, bottom: 9.h),
               child: CachedNetworkImage(
-                width: 126.w,
-                height: 130.17.h,
+                width: 130.w,
+                height: 150.h,
                 fit: BoxFit.scaleDown,
                 imageUrl: banner?.image ?? "",
               ))

@@ -111,7 +111,8 @@ class _HomePgeBodyState extends State<HomePgeBody> {
                           } else {
                             return Padding(
                               padding: EdgeInsetsDirectional.symmetric(
-                                  horizontal: Dimensions.dStartPadding.w),
+                                horizontal: Dimensions.dStartPadding.w,
+                              ),
                               child: const CategoryHomeList(),
                             );
                           }

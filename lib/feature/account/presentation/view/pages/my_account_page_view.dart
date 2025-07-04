@@ -3,8 +3,10 @@ import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
+import 'package:best_price/feature/account/presentation/manager/get_user_info_cubit/get_user_info_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/logout_cubit/logout_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/copy_rights_widgets.dart';
+import 'package:best_price/feature/account/presentation/view/widgets/my_account_info_shimmer.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/options_list_title.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/settings_list_options.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/support_list_options.dart';
@@ -17,8 +19,20 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../widgets/my_account_info.dart';
 import '../widgets/my_account_options.dart';
 
-class MyAccountViewBody extends StatelessWidget {
+class MyAccountViewBody extends StatefulWidget {
   const MyAccountViewBody({super.key});
+
+  @override
+  State<MyAccountViewBody> createState() => _MyAccountViewBodyState();
+}
+
+class _MyAccountViewBodyState extends State<MyAccountViewBody> {
+  @override
+  void initState() {
+    super.initState();
+    GetUserInfoCubit.get(context).getUserInfo();
+  }
+
 // todo : finish translate
   @override
   Widget build(BuildContext context) {
@@ -53,7 +67,19 @@ class MyAccountViewBody extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.only(end: 16.w),
-                  child: const MyAccountInfo(),
+                  child: BlocBuilder<GetUserInfoCubit, GetUserInfoState>(
+                    builder: (context, state) {
+                      if (state is GetUserInfoSuccess) {
+                        return MyAccountInfo(userInfo: state.userInfo);
+                      } else if (state is GetUserInfoLoading) {
+                        return const MyAccountInfoShimmer();
+                      } else if (state is GetUserInfoFailure) {
+                        return Text(state.error);
+                      } else {
+                        return const SizedBox.shrink();
+                      }
+                    },
+                  ),
                 ),
                 SizedBox(
                   height: 30.h,

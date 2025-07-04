@@ -86,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "© 2025 Ghina Shop. All rights reserved",
     ),
     "coupon_code": MessageLookupByLibrary.simpleMessage("Coupon Code"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
     "date": MessageLookupByLibrary.simpleMessage("Date"),
     "date_and_time": MessageLookupByLibrary.simpleMessage("Date & Time"),
     "delete_address_contain_message": MessageLookupByLibrary.simpleMessage(
@@ -176,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "new_arrivals": MessageLookupByLibrary.simpleMessage("New Arrivals"),
     "new_password_": MessageLookupByLibrary.simpleMessage("new Password*"),
+    "no": MessageLookupByLibrary.simpleMessage("No"),
     "no_Product_In_Cart": MessageLookupByLibrary.simpleMessage(
       "No products in cart",
     ),
@@ -320,6 +322,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Welcome to Ghina Shop We respect your privacy and are committed to protecting your personal information. This Privacy Policy is designed to help you understand how we collect, use, disclose, and safeguard your personal information. By using our website or mobile application, you consent to the practices described in this Privacy Policy.Information We CollectPersonal Information: We may collect personal information that you provide to us, such as your name, email address, postal address, phone number, and other similar information.Usage Information: We may collect information about your use of our services, including but not limited to your IP address, device information, browser type, and operating system.",
     ),
     "wish_list": MessageLookupByLibrary.simpleMessage("Wish list"),
+    "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "your_purchase_was": MessageLookupByLibrary.simpleMessage(
       "Your Purchase was",
     ),

@@ -1,6 +1,7 @@
 import 'package:best_price/core/cache/cache_helper.dart';
 import 'package:best_price/core/theme/app_style.dart';
 import 'package:best_price/core/utils/keys.dart';
+import 'package:best_price/feature/account/data/models/user_info_model.dart';
 import 'package:best_price/feature/account/presentation/manager/edit_account_cubit/edit_account_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,14 +10,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class MyAccountInfo extends StatelessWidget {
   const MyAccountInfo({
     super.key,
+    required this.userInfo,
   });
-
+  final UserInfoResponse userInfo;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<EditAccountCubit, EditAccountState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Container(
           decoration: AppStyles.accountContainerDecoration(),
@@ -30,14 +30,14 @@ class MyAccountInfo extends StatelessWidget {
                   height: 18.h,
                 ),
                 Text(
-                  CacheHelper.getData(key: Keys.kUserName),
+                  userInfo.data?.name ?? "",
                   style: AppStyles.textStyle20w700,
                 ),
                 SizedBox(
                   height: 5.h,
                 ),
                 Text(
-                  CacheHelper.getData(key: Keys.kUserEmail),
+                  userInfo.data?.email ?? "",
                   style:
                       AppStyles.textStyle16w400.copyWith(color: Colors.black),
                 ),
@@ -45,7 +45,7 @@ class MyAccountInfo extends StatelessWidget {
                   height: 7.h,
                 ),
                 Text(
-                  CacheHelper.getData(key: Keys.kUserMobile),
+                  userInfo.data?.mobile ?? "",
                   style:
                       AppStyles.textStyle16w400.copyWith(color: Colors.black),
                 ),

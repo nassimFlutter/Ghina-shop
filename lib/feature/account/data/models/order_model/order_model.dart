@@ -250,7 +250,6 @@ class Orders {
   }
 
   static Orders fromJson(Map<String, Object?> json) {
-  
     return Orders(
         id: json['id'] == null ? null : json['id'] as int,
         status: json['status'] == null ? null : json['status'] as int,
@@ -335,7 +334,7 @@ products:${products.toString()}
 class Products {
   final int? id;
   final String? name;
-  final int? price;
+  final num? price;
   final int? quantity;
   const Products({this.id, this.name, this.price, this.quantity});
   Products copyWith({int? id, String? name, int? price, int? quantity}) {
@@ -354,7 +353,7 @@ class Products {
     return Products(
         id: json['id'] == null ? null : json['id'] as int,
         name: json['name'] == null ? null : json['name'] as String,
-        price: json['price'] == null ? null : json['price'] as int,
+        price: json['price'] == null ? null : json['price'] as num,
         quantity: json['quantity'] == null ? null : json['quantity'] as int);
   }
 

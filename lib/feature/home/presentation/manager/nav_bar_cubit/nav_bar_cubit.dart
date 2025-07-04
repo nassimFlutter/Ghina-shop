@@ -6,10 +6,8 @@ import 'package:best_price/feature/cart/presentation/view/cart_view_body.dart';
 import 'package:best_price/feature/category/presentaion/view/pages/category_body.dart';
 import 'package:best_price/feature/home/presentation/view/widgets/home_page_body.dart';
 import 'package:best_price/feature/stores/presntation/view/stores_page.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'nav_bar_state.dart';
 
@@ -32,7 +30,7 @@ class NavBarCubit extends Cubit<NavBarState> {
   void changeTab(int index, BuildContext context) {
     bool isGuest = HelperFunctions.isGuest();
     if (index == 2 && isGuest) {
-      HelperFunctions.navigateToScreen(context, LoginView());
+      HelperFunctions.navigateToScreen(context, const LoginView());
     }
     emit(ChangeTab(index: index));
   }
