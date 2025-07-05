@@ -79,7 +79,7 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
   Future<void> loadMoreProducts(int categoryId) async {
     if (isLoadingMore || !hasMoreData) return;
 
-    isLoadingMore = true;
+    isLoadingMore = true; 
     emit(CategoryProductLoadingMore());
 
     currentPage++;

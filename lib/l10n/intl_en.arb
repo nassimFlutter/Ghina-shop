@@ -181,5 +181,8 @@
     "deliveryDate": "delivery Date",
     "cancelNote": "cancel Note",
     "Wishlist": "Wish list",
-    "no_items_in_wishlist": "No items in Wishlist"
+    "no_items_in_wishlist": "No items in Wishlist",
+    "dashboard": "Dashboard",
+    "yes": "Yes",
+    "no": "No"
 }

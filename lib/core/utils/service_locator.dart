@@ -22,6 +22,7 @@ import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo.d
 import 'package:best_price/feature/account/data/repo/setting_repo/setting_repo_impl.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo.dart';
 import 'package:best_price/feature/account/data/repo/static_page_repo/static_page_repo_impl.dart';
+import 'package:best_price/feature/account/presentation/manager/get_user_info_cubit/get_user_info_cubit.dart';
 import 'package:best_price/feature/auth/forget_password/data/forget_password_repo/forget_password_repo.dart';
 import 'package:best_price/feature/auth/forget_password/data/forget_password_repo/forget_password_repo_impl.dart';
 import 'package:best_price/feature/auth/login/data/login_repo/login_repo.dart';

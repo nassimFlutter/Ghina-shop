@@ -8,7 +8,6 @@ import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/presentation/manager/change_quantity_cubit/change_quantity_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/delete_from_my_cart_cubit/delete_from_my_cart_cubit.dart';
 import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
-import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view.dart';
 import 'package:best_price/feature/cheack_out/presntation/view/pages/cheackout_view_new.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';

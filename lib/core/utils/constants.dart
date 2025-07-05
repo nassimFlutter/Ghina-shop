@@ -112,4 +112,5 @@ class IconsPath {
   static const toTopArrow = "$_basePath/toTopArrow.svg";
   static const toDownArrow = "$_basePath/toDownArrow.svg";
   static const storeIcon = "$_basePath/store.svg";
+  static const dashboradIcon = "$_basePath/dashboard.svg";
 }

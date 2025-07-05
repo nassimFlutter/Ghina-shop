@@ -5,7 +5,6 @@ import 'package:best_price/core/utils/helper_functions.dart';
 
 import 'package:best_price/feature/cart/data/models/cart_model.dart';
 import 'package:best_price/feature/cart/presentation/manager/delete_from_my_cart_cubit/delete_from_my_cart_cubit.dart';
-import 'package:best_price/feature/cart/presentation/manager/my_cart_cubit/my_cart_cubit.dart';
 import 'package:best_price/feature/cart/presentation/widgets/custom_edit_quantity.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:cached_network_image/cached_network_image.dart';

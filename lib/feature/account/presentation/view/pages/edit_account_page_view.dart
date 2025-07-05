@@ -3,7 +3,7 @@ import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/manager/edit_account_cubit/edit_account_cubit.dart';
-import 'package:best_price/feature/account/presentation/view/pages/terminate_account_view.dart';
+import 'package:best_price/feature/account/presentation/manager/get_user_info_cubit/get_user_info_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/susses_account_dialog.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/app_bar_row.dart';
 import '../widgets/edit_account_form.dart';
-import '../widgets/terminate_account_bottom.dart';
 
 class EditAccountView extends StatelessWidget {
   const EditAccountView({super.key});
@@ -50,6 +49,8 @@ class EditAccountView extends StatelessWidget {
                             .success_update_message, // "Your Account Has been\nsuccessfully updated",
                         title: S.of(context).update_account, //"Update Account",
                       ));
+
+                  GetUserInfoCubit.get(context).getUserInfo();
                 } else if (state is EditAccountFailure) {
                   editAccountCubit.initTextController();
                   HelperFunctions.showCustomDialog(

@@ -67,7 +67,8 @@ class MyOrders extends StatelessWidget {
                               // Add your navigation logic here if needed
                             },
                             child: OrderItem(
-                              amount: order.totalPrice?.toString() ?? "",
+                              amount:
+                                  order.totalPrice?.toStringAsFixed(2) ?? "",
                               date: order.orderedDate?.toString() ?? "",
                               orderId: order.id?.toString() ?? "",
                               statue: order.status ?? 0,

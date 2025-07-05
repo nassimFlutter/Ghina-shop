@@ -88,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "© 2025 غنا شوب . جميع الحقوق محفوظة",
     ),
     "coupon_code": MessageLookupByLibrary.simpleMessage("كود الكوبون"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
     "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
     "date_and_time": MessageLookupByLibrary.simpleMessage("التاريخ والوقت"),
     "delete_address_contain_message": MessageLookupByLibrary.simpleMessage(
@@ -176,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_password_": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الجديدة*",
     ),
+    "no": MessageLookupByLibrary.simpleMessage("لا"),
     "no_Product_In_Cart": MessageLookupByLibrary.simpleMessage(
       "لا يوجد منتجات في السلة",
     ),
@@ -318,6 +320,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "مرحبًا بك في غنا شوب . نحن نحترم خصوصيتك ونلتزم بحماية معلوماتك الشخصية. تم تصميم سياسة الخصوصية هذه لمساعدتك في فهم كيفية جمعنا واستخدامنا وكشفنا وحفظنا لمعلوماتك الشخصية. من خلال استخدام موقعنا الإلكتروني أو تطبيق الجوال، فإنك توافق على الممارسات الموضحة في سياسة الخصوصية هذه. المعلومات التي نجمعها: المعلومات الشخصية: قد نقوم بجمع المعلومات الشخصية التي تقدمها لنا، مثل اسمك وعنوان بريدك الإلكتروني وعنوانك البريدي ورقم هاتفك ومعلومات مماثلة أخرى. المعلومات المستخدمة: قد نجمع معلومات حول استخدامك لخدماتنا، بما في ذلك على سبيل المثال لا الحصر عنوان IP الخاص بك ومعلومات الجهاز ونوع المتصفح ونظام التشغيل.",
     ),
     "wish_list": MessageLookupByLibrary.simpleMessage("قائمة الرغبات"),
+    "yes": MessageLookupByLibrary.simpleMessage("نعم"),
     "your_purchase_was": MessageLookupByLibrary.simpleMessage(
       "كانت عملية شرائك",
     ),

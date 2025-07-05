@@ -9,6 +9,7 @@ import 'package:best_price/feature/account/presentation/manager/contact_us_cubit
 import 'package:best_price/feature/account/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/edit_account_cubit/edit_account_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/forget_password/forget_password_cubit.dart';
+import 'package:best_price/feature/account/presentation/manager/get_user_info_cubit/get_user_info_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/logout_cubit/logout_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/order_cubit/order_cubit.dart';
 import 'package:best_price/feature/account/presentation/manager/order_details_cubit/order_details_cubit.dart';
@@ -192,6 +193,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => GetAllProductsForStoreCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetUserInfoCubit(),
         ),
       ],
       child: BlocBuilder<LangCubit, LangState>(

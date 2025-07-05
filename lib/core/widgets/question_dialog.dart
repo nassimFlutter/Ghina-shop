@@ -1,5 +1,6 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/theme/app_style.dart';
+import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -67,7 +68,7 @@ class QuestionDialog extends StatelessWidget {
                           side: const BorderSide(color: AppColor.buddhaGold)),
                     ),
                     child: Center(
-                      child: Text('No',
+                      child: Text(S.of(context).no,
                           textAlign: TextAlign.center,
                           style: AppStyles.textStyle17w700
                               .copyWith(color: Colors.black)),
@@ -89,7 +90,7 @@ class QuestionDialog extends StatelessWidget {
                       ),
                     ),
                     child: Center(
-                      child: Text('Yes',
+                      child: Text(S.of(context).yes,
                           textAlign: TextAlign.center,
                           style: AppStyles.textStyle17w700),
                     ),
