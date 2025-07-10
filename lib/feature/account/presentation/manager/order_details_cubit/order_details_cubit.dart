@@ -1,7 +1,6 @@
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/account/data/models/orders_details/order_details_model.dart';
 import 'package:best_price/feature/account/data/repo/order_details_repo/order_details_repo.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
