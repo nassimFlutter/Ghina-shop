@@ -184,5 +184,10 @@
     "no_items_in_wishlist": "No items in Wishlist",
     "dashboard": "Dashboard",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "item": "item",
+    "items": "items",
+    "quantity": "Quantity",
+    "deliveryCost": "Delivery Cost",
+    "deliveryDate": "Delivery Date"
 }

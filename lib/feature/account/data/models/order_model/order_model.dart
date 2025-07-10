@@ -336,17 +336,40 @@ class Products {
   final String? name;
   final num? price;
   final int? quantity;
-  const Products({this.id, this.name, this.price, this.quantity});
-  Products copyWith({int? id, String? name, int? price, int? quantity}) {
+  final String? deliveryDate;
+  final num? deliveryCost;
+  const Products(
+      {this.id,
+      this.name,
+      this.price,
+      this.quantity,
+      this.deliveryDate,
+      this.deliveryCost});
+  Products copyWith(
+      {int? id,
+      String? name,
+      int? price,
+      int? quantity,
+      String? deliveryDate,
+      num? deliveryCost}) {
     return Products(
         id: id ?? this.id,
         name: name ?? this.name,
         price: price ?? this.price,
-        quantity: quantity ?? this.quantity);
+        quantity: quantity ?? this.quantity,
+        deliveryDate: deliveryDate ?? this.deliveryDate,
+        deliveryCost: deliveryCost ?? this.deliveryCost);
   }
 
   Map<String, Object?> toJson() {
-    return {'id': id, 'name': name, 'price': price, 'quantity': quantity};
+    return {
+      'id': id,
+      'name': name,
+      'price': price,
+      'quantity': quantity,
+      'delivery_date': deliveryDate,
+      'delivery_cost': deliveryCost
+    };
   }
 
   static Products fromJson(Map<String, Object?> json) {
@@ -354,7 +377,13 @@ class Products {
         id: json['id'] == null ? null : json['id'] as int,
         name: json['name'] == null ? null : json['name'] as String,
         price: json['price'] == null ? null : json['price'] as num,
-        quantity: json['quantity'] == null ? null : json['quantity'] as int);
+        quantity: json['quantity'] == null ? null : json['quantity'] as int,
+        deliveryDate: json['delivery_date'] == null
+            ? null
+            : json['delivery_date'] as String,
+        deliveryCost: json['delivery_cost'] == null
+            ? null
+            : json['delivery_cost'] as num);
   }
 
   @override
@@ -363,7 +392,9 @@ class Products {
                 id:$id,
 name:$name,
 price:$price,
-quantity:$quantity
+quantity:$quantity,
+deliveryDate:$deliveryDate,
+deliveryCost:$deliveryCost
     ) ''';
   }
 
@@ -374,11 +405,14 @@ quantity:$quantity
         other.id == id &&
         other.name == name &&
         other.price == price &&
-        other.quantity == quantity;
+        other.quantity == quantity &&
+        other.deliveryDate == deliveryDate &&
+        other.deliveryCost == deliveryCost;
   }
 
   @override
   int get hashCode {
-    return Object.hash(runtimeType, id, name, price, quantity);
+    return Object.hash(
+        runtimeType, id, name, price, quantity, deliveryDate, deliveryCost);
   }
 }

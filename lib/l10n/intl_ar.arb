@@ -184,5 +184,10 @@
     "no_items_in_wishlist": "لا يوجد عناصر في المفضلة",
     "dashboard": "لوحة التحكم",
     "yes": "نعم",
-    "no": "لا"
+    "no": "لا",
+    "item": "عنصر",
+    "items": "عناصر",
+    "quantity": "الكمية",
+    "deliveryCost": "تكلفة التوصيل",
+    "deliveryDate": "وقت التوصيل"
 }

@@ -1415,10 +1415,10 @@ class S {
     return Intl.message('Cancelled', name: 'Cancelled', desc: '', args: []);
   }
 
-  /// `delivery Date`
+  /// `Delivery Date`
   String get deliveryDate {
     return Intl.message(
-      'delivery Date',
+      'Delivery Date',
       name: 'deliveryDate',
       desc: '',
       args: [],
@@ -1458,6 +1458,31 @@ class S {
   /// `No`
   String get no {
     return Intl.message('No', name: 'no', desc: '', args: []);
+  }
+
+  /// `item`
+  String get item {
+    return Intl.message('item', name: 'item', desc: '', args: []);
+  }
+
+  /// `items`
+  String get items {
+    return Intl.message('items', name: 'items', desc: '', args: []);
+  }
+
+  /// `Quantity`
+  String get quantity {
+    return Intl.message('Quantity', name: 'quantity', desc: '', args: []);
+  }
+
+  /// `Delivery Cost`
+  String get deliveryCost {
+    return Intl.message(
+      'Delivery Cost',
+      name: 'deliveryCost',
+      desc: '',
+      args: [],
+    );
   }
 }
 

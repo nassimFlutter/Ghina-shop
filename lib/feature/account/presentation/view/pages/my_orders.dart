@@ -1,8 +1,10 @@
 import 'package:best_price/core/theme/app_color.dart';
 import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
 import 'package:best_price/feature/account/presentation/manager/order_cubit/order_cubit.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/order_item.dart';
+import 'package:best_price/feature/account/presentation/view/pages/order_products.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,7 +66,16 @@ class MyOrders extends StatelessWidget {
                           final order = orders[index];
                           return InkWell(
                             onTap: () {
-                              // Add your navigation logic here if needed
+                              // Navigate to order products page with the products list
+                              if (order.id != null && order.products != null) {
+                                HelperFunctions.navigateToScreen(
+                                  context,
+                                  OrderProducts(
+                                    products: order.products!,
+                                    orderId: order.id.toString(),
+                                  ),
+                                );
+                              }
                             },
                             child: OrderItem(
                               amount:
