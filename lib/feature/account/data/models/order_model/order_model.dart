@@ -335,6 +335,7 @@ class Products {
   final int? id;
   final String? name;
   final num? price;
+  final num? discount;
   final int? quantity;
   final String? deliveryDate;
   final num? deliveryCost;
@@ -344,12 +345,14 @@ class Products {
       this.price,
       this.quantity,
       this.deliveryDate,
+      this.discount,
       this.deliveryCost});
   Products copyWith(
       {int? id,
       String? name,
       int? price,
       int? quantity,
+      num? discount,
       String? deliveryDate,
       num? deliveryCost}) {
     return Products(
@@ -375,6 +378,7 @@ class Products {
   static Products fromJson(Map<String, Object?> json) {
     return Products(
         id: json['id'] == null ? null : json['id'] as int,
+        discount: json['discount'] == null ? null : json['discount'] as num,
         name: json['name'] == null ? null : json['name'] as String,
         price: json['price'] == null ? null : json['price'] as num,
         quantity: json['quantity'] == null ? null : json['quantity'] as int,

@@ -35,6 +35,7 @@ import 'package:best_price/feature/home/presentation/manager/cubit/home_cubit.da
 import 'package:best_price/feature/home/presentation/manager/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:best_price/feature/new_arrivals/presentations/manager/cubit/new_arrivals_cubit.dart';
 import 'package:best_price/feature/on_boarding/presentation/manager/cubit/on_boarding_cubit.dart';
+import 'package:best_price/feature/product_details/presentation/manager/random_products_cubit/random_products_cubit.dart';
 import 'package:best_price/feature/product_details/presentation/manager/rate_product_cubit/rate_product_cubit.dart';
 import 'package:best_price/feature/serach/presntation/manager/cubit/search_cubit.dart';
 import 'package:best_price/feature/splash/presentation/manager/connectivity_cubit/connectivity_cubit.dart';
@@ -196,6 +197,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => GetUserInfoCubit(),
+        ),
+        BlocProvider(
+          create: (context) => RandomProductsCubit(),
         ),
       ],
       child: BlocBuilder<LangCubit, LangState>(

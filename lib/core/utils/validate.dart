@@ -4,7 +4,8 @@ class Validate {
   // todo : finish translates
   static String? validateEmail(context, String? value) {
     if (value == null || value.isEmpty) {
-      return S.of(context).email_required_validation; //"E-mail is required";
+      // Email is optional, so no error if empty
+      return null;
     } else if (!value.contains('@')) {
       return S.of(context).email_contain_validation; //"E-mail must contains @";
     } else {

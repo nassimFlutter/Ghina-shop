@@ -22,6 +22,14 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController fullNameController = TextEditingController();
   GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
+  String formatPhoneNumber(String phone) {
+    phone = phone.trim();
+    if (phone.startsWith('0')) {
+      phone = phone.substring(1);
+    }
+    return '+963$phone';
+  }
+
   Future<void> signUp() async {
     if (!signUpFormKey.currentState!.validate()) {
       return;
@@ -30,7 +38,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     UserModel newUser = UserModel(
         name: fullNameController.text.trim(),
         email: emailController.text.trim(),
-        mobile: phoneController.text.trim(),
+        mobile: formatPhoneNumber(phoneController.text),
         password: passwordController.text.trim(),
         confirmPassword: confirmPasswordController.text.trim());
 
@@ -43,6 +51,19 @@ class SignUpCubit extends Cubit<SignUpState> {
 
       emit(SignUpSuccess(
           statueMessage: success.value1, message: success.value2));
+    });
+  }
+
+  Future<void> verifyCode(String phone, String code) async {
+    emit(SignUpLoading());
+    print('phone: $phone');
+    print('code: $code');
+    var result = await getIt.get<SignUprRepo>().verificationCode(phone, code);
+    result.fold((error) {
+      LoggerHelper.error(error.errMassage);
+      emit(SignUpFailure(errMessage: error.errMassage));
+    }, (message) {
+      emit(SignUpSuccess(statueMessage: true, message: message));
     });
   }
 }

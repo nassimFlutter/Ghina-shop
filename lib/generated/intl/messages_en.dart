@@ -115,7 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_account": MessageLookupByLibrary.simpleMessage("edit Account"),
     "edit_address": MessageLookupByLibrary.simpleMessage("Edit Address"),
     "email": MessageLookupByLibrary.simpleMessage("Email Address"),
-    "email_": MessageLookupByLibrary.simpleMessage("Email*"),
+    "email_": MessageLookupByLibrary.simpleMessage("Email"),
     "email_address_validation": MessageLookupByLibrary.simpleMessage(
       "E-mail must be\n a valid email address",
     ),
@@ -195,10 +195,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "No products available",
     ),
     "no_result_found": MessageLookupByLibrary.simpleMessage("No Result Found"),
+    "notes": MessageLookupByLibrary.simpleMessage("notes"),
     "notification": MessageLookupByLibrary.simpleMessage("Notification"),
     "office_no": MessageLookupByLibrary.simpleMessage("Office No"),
     "ok": MessageLookupByLibrary.simpleMessage("Ok"),
     "old_password_": MessageLookupByLibrary.simpleMessage("Old Password*"),
+    "optional": MessageLookupByLibrary.simpleMessage("Optional"),
     "order_ID": MessageLookupByLibrary.simpleMessage("Order ID"),
     "order_details": MessageLookupByLibrary.simpleMessage("Order Details"),
     "order_status": MessageLookupByLibrary.simpleMessage("Order status"),
@@ -320,6 +322,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "update_account": MessageLookupByLibrary.simpleMessage("Update Account"),
     "update_account_error": MessageLookupByLibrary.simpleMessage(
       "Update Account Error",
+    ),
+    "verify_otp": MessageLookupByLibrary.simpleMessage("Verify OTP"),
+    "verify_otp_error": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid 5-digit code.",
+    ),
+    "verify_otp_message": MessageLookupByLibrary.simpleMessage(
+      "Please enter the verification code sent to your WhatsApp",
     ),
     "version": MessageLookupByLibrary.simpleMessage("V.1.0"),
     "welcome_policy_message": MessageLookupByLibrary.simpleMessage(

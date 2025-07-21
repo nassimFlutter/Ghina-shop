@@ -47,4 +47,26 @@ class SignUpRepoImpl implements SignUprRepo {
       return left(ServerFailure(e.toString(), 500));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> verificationCode(
+      String phoneNumber, String code) async {
+    try {
+      var response = await getIt.get<ApiService>().post(
+        endPoint: "auth/verify-signup-otp",
+        data: {
+          "email": phoneNumber,
+          "otp": code,
+        },
+      );
+      return right(response['message']);
+    } catch (e) {
+      if (e is DioException) {
+        LoggerHelper.error(' ########### Dio Exception #################');
+        LoggerHelper.error(e.message ?? "");
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString(), 500));
+    }
+  }
 }
