@@ -3,10 +3,8 @@ import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/utils/service_locator.dart';
 import 'package:best_price/feature/auth/login/data/login_repo/login_repo.dart';
 import 'package:best_price/feature/auth/sign_up/data/model/user_model.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'login_state.dart';
 
@@ -17,6 +15,13 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  String formatPhoneNumber(String phone) {
+    phone = phone.trim();
+    if (phone.startsWith('0')) {
+      phone = phone.substring(1);
+    }
+    return '+963$phone';
+  }
 
   //! --------------------- Apis ---------------------------
   Future<void> logIn() async {
@@ -25,7 +30,7 @@ class LoginCubit extends Cubit<LoginState> {
     }
     emit(LoginLoading());
     UserModel loginUser = UserModel(
-        email: emailController.text.trim(),
+        email: formatPhoneNumber(emailController.text),
         password: passwordController.text.trim());
     var result = await getIt.get<LoginRepo>().login(loginUser);
     result.fold((error) {

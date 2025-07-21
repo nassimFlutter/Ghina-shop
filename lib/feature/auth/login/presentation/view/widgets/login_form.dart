@@ -23,18 +23,18 @@ class LoginForm extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AuthFieldText(
-                title: S.of(context).e_mail, // "E-mail",
+                title: S.of(context).phone_number_, // "E-mail",
               ),
               SizedBox(
                 height: 6.h,
               ),
               AuthTextField(
                 textEditingController: loginCubit.emailController,
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.phone,
                 validator: (p0) {
-                  return Validate.validateEmail(context, p0);
+                  return Validate.validatePhoneNumber(context, p0);
                 },
-                hintText: S.of(context).enter_your_email, //"Enter your email",
+                hintText: S.of(context).enter_your_phone, //"Enter your email",
               ),
               SizedBox(
                 height: 12.h,

@@ -69,7 +69,8 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 12.h,
             ),
-            const ForgetPasswordText(),
+
+            // const ForgetPasswordText(),
             SizedBox(
               height: height * 0.09, //76.h,
             ),

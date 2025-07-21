@@ -8,6 +8,7 @@ import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/susses_account_dialog.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/manager/sign_up/sign_up_cubit.dart';
+import 'package:best_price/feature/auth/sign_up/presentation/view/otp_page_view.dart';
 import 'package:best_price/feature/home/presentation/view/pages/home_page_view.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -76,10 +77,14 @@ class SignUpView extends StatelessWidget {
                               .success_register_message, // "You have successfully\nRegistered with Best Price",
                         ));
                     Future.delayed(const Duration(seconds: 3), () {
-                      HelperFunctions.navigateToScreen(
-                        context,
-                        const HomePageView(),
-                      );
+                      if (context.mounted) {
+                        HelperFunctions.navigateToScreen(
+                          context,
+                          OtpPageView(
+                              phoneOrEmail: signUpCubit.formatPhoneNumber(
+                                  signUpCubit.phoneController.text)),
+                        );
+                      }
                     });
                   } else {
                     HelperFunctions.showCustomDialog(

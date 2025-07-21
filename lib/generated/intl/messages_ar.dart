@@ -113,7 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_account": MessageLookupByLibrary.simpleMessage("تحرير الحساب"),
     "edit_address": MessageLookupByLibrary.simpleMessage("تحرير العنوان"),
     "email": MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكتروني"),
-    "email_": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني*"),
+    "email_": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "email_address_validation": MessageLookupByLibrary.simpleMessage(
       "يجب أن يكون البريد الإلكتروني\n عنوان بريد إلكتروني صالح",
     ),
@@ -197,12 +197,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "لا تتوفر منتجات",
     ),
     "no_result_found": MessageLookupByLibrary.simpleMessage("لا يوجد نتائج"),
+    "notes": MessageLookupByLibrary.simpleMessage("ملاحظات اضافية"),
     "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "office_no": MessageLookupByLibrary.simpleMessage("رقم المكتب"),
     "ok": MessageLookupByLibrary.simpleMessage("حسنًا"),
     "old_password_": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور القديمة*",
     ),
+    "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
     "order_ID": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "order_details": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "order_status": MessageLookupByLibrary.simpleMessage("حالة الطلب"),
@@ -318,6 +320,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "update_account": MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
     "update_account_error": MessageLookupByLibrary.simpleMessage(
       "خطأ في تحديث الحساب",
+    ),
+    "verify_otp": MessageLookupByLibrary.simpleMessage("التحقق من رمز التحقق"),
+    "verify_otp_error": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال رمز تحقق صالح.",
+    ),
+    "verify_otp_message": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال رمز التحقق المرسل إلى الواتس اب",
     ),
     "version": MessageLookupByLibrary.simpleMessage("الإصدار 1.0"),
     "welcome_policy_message": MessageLookupByLibrary.simpleMessage(

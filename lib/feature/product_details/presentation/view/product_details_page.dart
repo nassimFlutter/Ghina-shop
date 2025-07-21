@@ -5,6 +5,8 @@ import 'package:best_price/core/widgets/app_bar_row.dart';
 import 'package:best_price/core/widgets/app_bottom.dart';
 import 'package:best_price/core/widgets/whats_app_fab.dart';
 import 'package:best_price/feature/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
+import 'package:best_price/feature/home/presentation/view/widgets/products_list.dart';
+import 'package:best_price/feature/product_details/presentation/manager/random_products_cubit/random_products_cubit.dart';
 import 'package:best_price/feature/product_details/presentation/manager/rate_product_cubit/rate_product_cubit.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +24,11 @@ import 'widget/video_player_widget.dart';
 import 'widget/full_screen_image_viewer.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key, required this.id, this.phone});
+  const ProductDetailsPage({
+    super.key,
+    required this.id,
+    this.phone,
+  });
   final int id;
   final String? phone;
   @override
@@ -30,6 +36,11 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<RandomProductsCubit>().getRandomProducts();
+  }
 // todo : finish translate
 
   final PageController pageController = PageController();
@@ -630,6 +641,27 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 const SizedBox(
                                   height: 32,
                                 ),
+                                Align(
+                                  alignment: AlignmentDirectional.topStart,
+                                  child: Text(
+                                    "المنتجات المقترحة لك",
+                                    style: AppStyles.textStyle18w700,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 32,
+                                ),
+                                BlocBuilder<RandomProductsCubit,
+                                    RandomProductsState>(
+                                  builder: (context, state) {
+                                    if (state is RandomProductsSuccess) {
+                                      return ProductsList(
+                                          productList: state.products);
+                                    } else {
+                                      return SizedBox();
+                                    }
+                                  },
+                                )
                               ],
                             ),
                           ),

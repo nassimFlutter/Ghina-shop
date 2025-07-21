@@ -17,7 +17,8 @@ List<Widget> buildAuthTextFields(context, SignUpCubit signUpCubit) {
       "keyboardType": TextInputType.name,
     },
     {
-      "title": S.of(context).email_, //"Email*",
+      "title":
+          "${S.of(context).email_} (${S.of(context).optional})", //"Email*",
       "textEditingController": signUpCubit.emailController,
       "validator": (value) => Validate.validateEmail(context, value),
       "keyboardType": TextInputType.emailAddress,

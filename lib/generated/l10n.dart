@@ -310,9 +310,9 @@ class S {
     );
   }
 
-  /// `Email*`
+  /// `Email`
   String get email_ {
-    return Intl.message('Email*', name: 'email_', desc: '', args: []);
+    return Intl.message('Email', name: 'email_', desc: '', args: []);
   }
 
   /// `Message*`
@@ -1483,6 +1483,41 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Optional`
+  String get optional {
+    return Intl.message('Optional', name: 'optional', desc: '', args: []);
+  }
+
+  /// `Verify OTP`
+  String get verify_otp {
+    return Intl.message('Verify OTP', name: 'verify_otp', desc: '', args: []);
+  }
+
+  /// `Please enter the verification code sent to your WhatsApp`
+  String get verify_otp_message {
+    return Intl.message(
+      'Please enter the verification code sent to your WhatsApp',
+      name: 'verify_otp_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid 5-digit code.`
+  String get verify_otp_error {
+    return Intl.message(
+      'Please enter a valid 5-digit code.',
+      name: 'verify_otp_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `notes`
+  String get notes {
+    return Intl.message('notes', name: 'notes', desc: '', args: []);
   }
 }
 

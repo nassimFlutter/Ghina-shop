@@ -28,7 +28,7 @@
     "contact_us": "Contact Us",
     "full_name_": "Full Name*",
     "mobile_number_": "Mobile Number*",
-    "email_": "Email*",
+    "email_": "Email",
     "message_": "Message*",
     "success": "Success",
     "ok": "Ok",
@@ -189,5 +189,10 @@
     "items": "items",
     "quantity": "Quantity",
     "deliveryCost": "Delivery Cost",
-    "deliveryDate": "Delivery Date"
+    "deliveryDate": "Delivery Date",
+    "optional": "Optional",
+    "verify_otp": "Verify OTP",
+    "verify_otp_message": "Please enter the verification code sent to your WhatsApp",
+    "verify_otp_error": "Please enter a valid 5-digit code.",
+    "notes": "notes"
 }

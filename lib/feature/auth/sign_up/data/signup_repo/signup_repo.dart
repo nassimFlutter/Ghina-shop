@@ -4,4 +4,6 @@ import 'package:dartz/dartz.dart';
 
 abstract class SignUprRepo {
   Future<Either<Failure, Tuple2<bool, String>>> signUp(UserModel user);
+  Future<Either<Failure, String>> verificationCode(
+      String phoneNumber, String code);
 }
