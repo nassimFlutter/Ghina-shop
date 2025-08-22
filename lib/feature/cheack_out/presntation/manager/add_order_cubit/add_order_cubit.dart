@@ -14,6 +14,7 @@ class AddOrderCubit extends Cubit<AddOrderState> {
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController shippingAddressController = TextEditingController();
+  TextEditingController noteController = TextEditingController();
   final CartRepo _orderRepo = getIt<CartRepo>();
   Future<void> submitOrder(BuildContext context) async {
     emit(AddOrderLoading());
@@ -29,6 +30,7 @@ class AddOrderCubit extends Cubit<AddOrderState> {
     }).toList();
 
     final request = OrderModel(
+      noteController.text,
       name: fullNameController.text.trim(),
       mobile: phoneController.text.trim(),
       email: "test@gmail.com",
@@ -39,7 +41,6 @@ class AddOrderCubit extends Cubit<AddOrderState> {
 
     result.fold(
       (failure) {
-        print(failure.errMassage);
         emit(AddOrderError(errorMessage: failure.errMassage));
       },
       (successMessage) {

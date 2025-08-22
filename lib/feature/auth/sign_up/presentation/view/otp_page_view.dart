@@ -1,8 +1,10 @@
 import 'package:best_price/core/theme/app_color.dart';
+import 'package:best_price/core/utils/helper_functions.dart';
+import 'package:best_price/feature/auth/login/presentation/view/pages/login_page_view.dart';
 import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import '../manager/sign_up/sign_up_cubit.dart';
 
 class OtpPageView extends StatefulWidget {
@@ -14,44 +16,18 @@ class OtpPageView extends StatefulWidget {
 }
 
 class _OtpPageViewState extends State<OtpPageView> {
-  final List<TextEditingController> _controllers =
-      List.generate(5, (_) => TextEditingController());
-  final List<FocusNode> _focusNodes = List.generate(5, (_) => FocusNode());
+  String _otp = '';
   String? _error;
 
-  @override
-  void dispose() {
-    for (final c in _controllers) {
-      c.dispose();
-    }
-    for (final f in _focusNodes) {
-      f.dispose();
-    }
-    super.dispose();
-  }
-
-  void _onChanged(int idx, String value) {
-    if (value.length == 1 && idx < 4) {
-      _focusNodes[idx + 1].requestFocus();
-    }
-    if (value.isEmpty && idx > 0) {
-      _focusNodes[idx - 1].requestFocus();
-    }
-    setState(() {
-      _error = null;
-    });
-  }
-
-  void _submit(BuildContext context) async {
-    final otp = _controllers.map((c) => c.text).join();
-    if (otp.length != 5 || otp.contains(RegExp(r'[^0-9]'))) {
+  void _submit(BuildContext context) {
+    if (_otp.length != 5 || _otp.contains(RegExp(r'[^0-9]'))) {
       setState(() {
         _error = S.of(context).verify_otp_error;
       });
       return;
     }
     final cubit = SignUpCubit.get(context);
-    cubit.verifyCode(widget.phoneOrEmail ?? '', otp);
+    cubit.verifyCode(widget.phoneOrEmail ?? '', _otp);
   }
 
   @override
@@ -65,8 +41,11 @@ class _OtpPageViewState extends State<OtpPageView> {
       ),
       body: BlocConsumer<SignUpCubit, SignUpState>(
         listener: (context, state) {
-          if (state is SignUpSuccess && state.statueMessage) {
-          } else if (state is SignUpFailure) {
+          if (state is SignUpSuccess) {
+            HelperFunctions.navigateToScreenAndRemove(
+                context, const LoginView());
+          }
+          if (state is SignUpFailure) {
             setState(() {
               _error = state.errMessage;
             });
@@ -85,33 +64,27 @@ class _OtpPageViewState extends State<OtpPageView> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(5, (i) {
-                    return Container(
-                      width: 48,
-                      margin: const EdgeInsets.symmetric(horizontal: 6),
-                      child: TextFormField(
-                        controller: _controllers[i],
-                        focusNode: _focusNodes[i],
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.center,
-                        maxLength: 1,
-                        style: theme.textTheme.headlineMedium,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(1),
-                        ],
-                        decoration: InputDecoration(
-                          counterText: '',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        onChanged: (v) => _onChanged(i, v),
-                      ),
-                    );
-                  }),
+                OtpTextField(
+                  autoFocus: true,
+                  numberOfFields: 5,
+                  borderColor: AppColor.yalow,
+                  focusedBorderColor: AppColor.yalow,
+                  cursorColor: AppColor.yalow,
+                  showFieldAsBox: true,
+                  borderRadius: BorderRadius.circular(8),
+                  fieldWidth: 48,
+                  onCodeChanged: (code) {
+                    setState(() {
+                      _error = null;
+                      _otp = code;
+                    });
+                  },
+                  onSubmit: (code) {
+                    setState(() {
+                      _otp = code;
+                    });
+                    _submit(context);
+                  },
                 ),
                 const SizedBox(height: 16),
                 if (_error != null)
@@ -136,6 +109,7 @@ class _OtpPageViewState extends State<OtpPageView> {
                         : const Text('Verify'),
                   ),
                 ),
+                // Uncomment if you want to add resend functionality:
                 // const SizedBox(height: 16),
                 // TextButton(
                 //   onPressed: isLoading ? null : _resend,

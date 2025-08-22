@@ -73,6 +73,7 @@ class MyOrders extends StatelessWidget {
                                   OrderProducts(
                                     products: order.products!,
                                     orderId: order.id.toString(),
+                                    statues: order.status ?? 0,
                                   ),
                                 );
                               }

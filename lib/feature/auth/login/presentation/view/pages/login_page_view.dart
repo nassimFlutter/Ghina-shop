@@ -118,8 +118,8 @@ class LoginView extends StatelessWidget {
                 }
               },
             ),
-            const Expanded(
-              child: SizedBox(),
+            const SizedBox(
+              height: 30,
             ),
             GestureDetector(
               onTap: () {

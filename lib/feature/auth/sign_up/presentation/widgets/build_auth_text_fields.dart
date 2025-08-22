@@ -6,7 +6,8 @@ import 'package:best_price/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-List<Widget> buildAuthTextFields(context, SignUpCubit signUpCubit) {
+List<Widget> buildAuthTextFields(
+    context, SignUpCubit signUpCubit, FocusNode? firstFieldFocus) {
   List<Widget> fields = [];
 // todo : finish translate
   List<Map<String, dynamic>> fieldsData = [
@@ -15,6 +16,7 @@ List<Widget> buildAuthTextFields(context, SignUpCubit signUpCubit) {
       "textEditingController": signUpCubit.fullNameController,
       "validator": (value) => Validate.validateFullName(context, value),
       "keyboardType": TextInputType.name,
+      "focusNode": firstFieldFocus, // إضافة FocusNode للحقل الأول
     },
     {
       "title":
@@ -55,6 +57,7 @@ List<Widget> buildAuthTextFields(context, SignUpCubit signUpCubit) {
             validator: data["validator"],
             hintText: S.of(context).Enter_Here,
             keyboardType: data['keyboardType'],
+            focusNode: data['focusNode'],
           ),
           SizedBox(
             height: 20.h,

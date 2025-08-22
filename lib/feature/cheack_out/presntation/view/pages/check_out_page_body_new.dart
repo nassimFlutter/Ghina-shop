@@ -105,14 +105,14 @@ class CheckOutPageBodyNew extends StatelessWidget {
             ),
             AuthTextField(
               maxLine: 3,
-              textEditingController: addOrderCubit.phoneController,
+              textEditingController: addOrderCubit.noteController,
               keyboardType: TextInputType.text,
             ),
             SizedBox(
               height: 32.h,
             ),
             // AuthFieldText(
-            //   title: S.of(context).e_mail,
+            //   title: S.of(context). e_mail,
             // ),
             // SizedBox(
             //   height: 20.h,

@@ -16,6 +16,7 @@ class AuthTextField extends StatelessWidget {
     this.inputFormatters,
     required this.keyboardType,
     this.maxLength,
+    this.focusNode,
   }) : super(key: key);
 // todo : finish translate
   final TextEditingController textEditingController;
@@ -25,12 +26,14 @@ class AuthTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLength;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsDirectional.only(end: 16.w),
       child: TextFormField(
+        focusNode: focusNode,
         onTapOutside: (event) {
           FocusManager.instance.primaryFocus?.unfocus();
         },
