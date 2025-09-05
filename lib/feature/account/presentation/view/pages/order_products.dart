@@ -13,10 +13,12 @@ class OrderProducts extends StatelessWidget {
     super.key,
     required this.products,
     required this.orderId,
+    required this.statues,
   });
 
   final List<Products> products;
   final String orderId;
+  final int statues;
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +156,8 @@ class OrderProducts extends StatelessWidget {
                                   ],
                                 ),
                                 if (product.deliveryCost != null &&
-                                    product.deliveryCost != 0) ...[
+                                    product.deliveryCost != 0 &&
+                                    statues == 1) ...[
                                   SizedBox(height: 4.h),
                                   Row(
                                     children: [
@@ -175,7 +178,8 @@ class OrderProducts extends StatelessWidget {
                                     ],
                                   ),
                                 ],
-                                if (product.deliveryDate != null) ...[
+                                if (product.deliveryDate != null &&
+                                    statues == 1) ...[
                                   SizedBox(height: 4.h),
                                   Row(
                                     children: [
@@ -201,23 +205,23 @@ class OrderProducts extends StatelessWidget {
                                   ),
                                 ],
                                 SizedBox(height: 8.h),
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 8.w,
-                                    vertical: 4.h,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: AppColor.corn.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(6.r),
-                                  ),
-                                  child: Text(
-                                    "${S.of(context).total}: "
-                                    "${(((product.price ?? 0) * (1 - ((product.discount ?? 0) / 100)) * (product.quantity ?? 0)).toStringAsFixed(2))} ل.س",
-                                    style: AppStyles.textStyle12w700.copyWith(
-                                      color: AppColor.corn,
-                                    ),
-                                  ),
-                                ),
+                                // Container(
+                                //   padding: EdgeInsets.symmetric(
+                                //     horizontal: 8.w,
+                                //     vertical: 4.h,
+                                //   ),
+                                //   decoration: BoxDecoration(
+                                //     color: AppColor.corn.withOpacity(0.1),
+                                //     borderRadius: BorderRadius.circular(6.r),
+                                //   ),
+                                //   child: Text(
+                                //     "${S.of(context).total}: "
+                                //     "${(((product.price ?? 0) * (1 - ((product.discount ?? 0) / 100)) * (product.quantity ?? 0)).toStringAsFixed(2))} ل.س",
+                                //     style: AppStyles.textStyle12w700.copyWith(
+                                //       color: AppColor.corn,
+                                //     ),
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),

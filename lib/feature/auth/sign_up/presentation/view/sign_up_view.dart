@@ -18,8 +18,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/already_have_an_account_text.dart';
 import '../widgets/sign_up_form.dart';
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
+
+  @override
+  State<SignUpView> createState() => _SignUpViewState();
+}
+
+class _SignUpViewState extends State<SignUpView> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   // todo : finish translate
 //! note : the padding for list in zero each element  has a custom padding
   @override
@@ -32,7 +48,7 @@ class SignUpView extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.only(start: 16.w, top: 4.h),
+              padding: EdgeInsetsDirectional.only(start: 16.w, top: 12.h),
               child: const Row(
                 children: [
                   AppBarBottom(
@@ -47,8 +63,14 @@ class SignUpView extends StatelessWidget {
             Center(
               child: Text(S.of(context).sign_up, //'Sign Up',
                   textAlign: TextAlign.center,
-                  style: AppStyles.textStyle24),
+                  style: AppStyles.textStyle24
+                      .copyWith(fontWeight: FontWeight.w700)),
             ),
+            SizedBox(
+              height: 26.h,
+            ),
+            const AlreadyHaveAnAccountText(),
+
             SizedBox(
               height: 14.h,
             ),
@@ -60,9 +82,7 @@ class SignUpView extends StatelessWidget {
             //   padding: EdgeInsetsDirectional.only(start: 16.w),
             //   child: const TermOk(),
             // ),
-            SizedBox(
-              height: height * 0.07, //60.h,
-            ),
+
             BlocConsumer<SignUpCubit, SignUpState>(
               listener: (context, state) {
                 if (state is SignUpSuccess) {
@@ -121,10 +141,6 @@ class SignUpView extends StatelessWidget {
             ),
             SizedBox(
               height: 35.h,
-            ),
-            const AlreadyHaveAnAccountText(),
-            SizedBox(
-              height: 26.h,
             ),
           ],
         ),

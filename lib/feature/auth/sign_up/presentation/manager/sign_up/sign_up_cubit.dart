@@ -56,8 +56,6 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   Future<void> verifyCode(String phone, String code) async {
     emit(SignUpLoading());
-    print('phone: $phone');
-    print('code: $code');
     var result = await getIt.get<SignUprRepo>().verificationCode(phone, code);
     result.fold((error) {
       LoggerHelper.error(error.errMassage);

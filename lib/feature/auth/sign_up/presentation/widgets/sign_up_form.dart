@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 class SignUpForm extends StatelessWidget {
   const SignUpForm({
     super.key,
+    this.firstFieldFocus,
   });
+
+  final FocusNode? firstFieldFocus;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class SignUpForm extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: buildAuthTextFields(context, signUpCubit),
+        children: buildAuthTextFields(context, signUpCubit, firstFieldFocus),
       ),
     );
   }

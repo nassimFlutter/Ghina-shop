@@ -15,7 +15,7 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        HelperFunctions.navigateToScreen(context, const LoginView());
+        HelperFunctions.navigateToScreenAndReplace(context, const LoginView());
       },
       splashColor: Colors.white,
       hoverColor: Colors.white,

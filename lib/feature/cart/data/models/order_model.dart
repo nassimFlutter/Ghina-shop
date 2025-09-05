@@ -4,8 +4,10 @@ class OrderModel {
   final String mobile;
   final String email;
   final List<OrderItem> items;
+  final String? note;
 
-  OrderModel({
+  OrderModel(
+    this.note, {
     required this.shippingAddress,
     required this.name,
     required this.mobile,
@@ -20,6 +22,7 @@ class OrderModel {
       "mobile": mobile,
       "email": email,
       "items": items.map((item) => item.toJson()).toList(),
+      "note": note ?? ""
     };
   }
 }

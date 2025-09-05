@@ -6,6 +6,7 @@ import 'package:best_price/core/utils/keys.dart';
 import 'package:best_price/core/widgets/circular_progress_indicator.dart';
 import 'package:best_price/feature/account/presentation/view/widgets/susses_account_dialog.dart';
 import 'package:best_price/feature/auth/login/presentation/manager/cubit/login_cubit.dart';
+import 'package:best_price/feature/auth/sign_up/presentation/view/otp_page_view.dart';
 import 'package:best_price/feature/auth/sign_up/presentation/view/sign_up_view.dart';
 import 'package:best_price/feature/home/presentation/view/pages/home_page_view.dart';
 import 'package:best_price/generated/l10n.dart';
@@ -13,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/widgets/app_bottom.dart';
-import '../widgets/forget_password_text.dart';
 import '../widgets/login_form.dart';
 
 class LoginView extends StatelessWidget {
@@ -93,12 +93,13 @@ class LoginView extends StatelessWidget {
                         ));
                   }
                 } else if (state is LoginFailure) {
-                  HelperFunctions.showCustomDialog(
-                      context,
-                      UpdateAccountDialog(
-                        title: S.of(context).sign_up_error, //"Sign up error",
-                        contain: state.errMessage,
-                      ));
+                  if (state.errMessage == "Please verify your account first") {
+                    HelperFunctions.navigateToScreenAndRemove(
+                        context,
+                        OtpPageView(
+                          phoneOrEmail: loginCubit.emailController.text,
+                        ));
+                  }
                 }
               },
               builder: (context, state) {
@@ -118,8 +119,8 @@ class LoginView extends StatelessWidget {
                 }
               },
             ),
-            const Expanded(
-              child: SizedBox(),
+            const SizedBox(
+              height: 30,
             ),
             GestureDetector(
               onTap: () {
