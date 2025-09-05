@@ -26,21 +26,13 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-  late FocusNode _firstFieldFocus;
-
   @override
   void initState() {
     super.initState();
-    _firstFieldFocus = FocusNode();
-    // التركيز التلقائي على أول حقل بعد بناء الواجهة
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _firstFieldFocus.requestFocus();
-    });
   }
 
   @override
   void dispose() {
-    _firstFieldFocus.dispose();
     super.dispose();
   }
 
@@ -84,7 +76,7 @@ class _SignUpViewState extends State<SignUpView> {
             ),
             Padding(
               padding: EdgeInsetsDirectional.only(start: 16.w),
-              child: SignUpForm(firstFieldFocus: _firstFieldFocus),
+              child: const SignUpForm(),
             ),
             // Padding(
             //   padding: EdgeInsetsDirectional.only(start: 16.w),

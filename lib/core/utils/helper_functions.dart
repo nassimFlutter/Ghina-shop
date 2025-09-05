@@ -26,6 +26,15 @@ class HelperFunctions {
     );
   }
 
+  static void navigateToScreenAndReplace(BuildContext context, Widget screen) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => screen,
+      ),
+    );
+  }
+
   static void navigateToBack(BuildContext context) {
     Navigator.of(context).pop();
   }
